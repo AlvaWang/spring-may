@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <link href="../static/lib/css/bootstrap.min.css" th:href="@{/lib/css/bootstrap.min.css}" rel="stylesheet" />
+        <link href="../static/lib/css/font-awesome.min.css" th:href="@{/lib/css/font-awesome.min.css}" rel="stylesheet" />
+        <link rel="stylesheet" href="../static/css/app.css" th:href="@{/css/app.css}" />
+        <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}" />
+        <script src="../static/lib/jquery.min.js" th:src="@{/webjars/jquery/2.2.3/jquery.min.js}"></script>
+        <script src="../static/lib/bootstrap.min.js" th:href="@{/webjars/bootstrap/3.3.6/js/bootstrap.min.js}"></script>
+    </head>
+    <body>
+        <!-- Navbar -->
+        <div class="header" th:fragment="header" style="background: rgba(0,0,0,0)!important;">
+            <nav id="navbar" class="navbar navbar-collapse collapse" style="box-shadow: none;">
+                <div class="my-logo">
+                    <div>
+                        <div class="logo">
+                            <a href="/" class="my-logo-a"  >
+                                <img src="../img/logo.png" alt="" class="logo" />
+                                <span style="margin: 3px 10px;width: 130px;font-size: 16px">中国创新创业大赛 军转民分站</span>
+                                <!--<span></span>-->
+                            </a>
+                        </div>
+
+                        <!--<div><span>起迈科技技术有限公司</span><span>技术支持</span></div>-->
+
+                        <div class="container" style="width: 80%;padding: 0;margin-left: 20%">
+                            <!--<div class="mask"></div>-->
+                            <div class="navigation">
+                                <ul class="nav" style="height:100%;display: inline;min-width: 600px;">
+
+                                    <li>
+                                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                           aria-expanded="false">赛事概况 <span class="caret"></span></a>
+                                        <ul class="dropdown-menu" role="menu" style="min-width: 80px">
+                                            <li ><a href="/intro/info">大赛通知</a></li>
+                                            <li><a href="/intro/regulation">大赛章程</a></li>
+                                            <li><a href="/intro/org">组织机构</a></li>
+                                            <li><a href="/intro/rule">竞赛规则</a></li>
+                                        </ul>
+                                    </li>
+
+                                    <li>
+                                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                           aria-expanded="false">新闻中心 <span class="caret"></span></a>
+                                        <ul class="dropdown-menu" role="menu" style="min-width: 80px">
+                                            <li><a href="/threads?type=NATIONAL">全国大赛</a></li>
+                                            <li><a href="/threads?type=MAIN">军转民分区</a></li>
+                                            <li><a href="/threads?type=REPORT">赛事报告</a></li>
+                                            <li><a href="/threads?type=OTHER">其他资讯</a></li>
+                                        </ul>
+                                    </li>
+
+                                    <li>
+                                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                           aria-expanded="false">往期回顾 <span class="caret"></span></a>
+                                        <ul class="dropdown-menu" role="menu" style="min-width: 80px">
+                                            <li><a href="/pictures">照片展示</a></li>
+                                            <li><a href="/threads?type=VIDEO">视频展示</a></li>
+                                            <li><a href="/threads?type=PROJECT">优秀项目</a></li>
+                                            <li><a href="/avatars">专家委员会</a></li>
+                                        </ul>
+                                    </li>
+
+                                    <li><a href="http://www.cxcyds.com/" class="dropdown-toggle">参赛报名</a></li>
+                                    <li style="margin-left: 0;" class="active"><a href="/" class="dropdown-toggle"><div style="float: right;min-width: 80px;text-align: center">首页</div></a></li>
+                                </ul>
+                            </div>
+                            <div class="login_but">
+                                <button type="button" class="login-button"><a  href="https://baoming.cxcyds.com/member/login" style="color: white">登录</a></button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </nav>
+        </div>
+        <script>
+            $(function () {
+                $('.dropdown-toggle').dropdown()
+            });
+        </script>
+    </body>
+</html>

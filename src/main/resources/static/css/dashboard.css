@@ -1,0 +1,123 @@
+.img-responsive {
+    margin: 0 auto;
+    cursor: pointer;
+}
+.avatar {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    max-width: 120px;
+    min-width: 120px;
+}
+.picture {
+    border-radius: 5px;
+    width: 200px;
+    height: auto;
+    max-width: 200px;
+    min-width: 200px;
+}
+
+.placeholder {
+    text-align: center;
+}
+
+a, a:hover, a:visited, a:focus {
+    text-decoration: none;
+    color: #333;
+}
+
+.modal-dialog {
+    width: 80%;
+    margin-top: 5%;
+}
+.res-dialog {
+    width: 50%;
+    min-width: 600px;
+    margin-top: 10%;
+}
+
+.jumbotron {
+    padding: 0;
+    background:none;
+}
+
+@media screen and (max-width: 768px) {
+    .modal-dialog {
+        width: auto;
+        margin-top: 10%;
+    }
+}
+
+label {
+    font-family: "Microsoft YaHei UI","Microsoft YaHei" ;
+    font-size: 1.125em;
+}
+
+#confirmModal {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.my-upload {
+    float: left;
+    display: inline;
+    margin-left: 60px;
+}
+.my-upload input{
+    width: 200px;
+    height: auto;
+}
+
+.video-container {
+    display: block;
+    text-align: center;
+    background: #eee;
+}
+.del-btn {
+    position: absolute;
+    top: 0;
+    right:0;
+    background: none;
+    border: none;
+    display: none;
+}
+.del-btn svg path{
+    fill: #c00;
+}
+.placeholder:hover  button{
+    display: block;
+}
+
+.page-nav {
+    margin: 20px auto;
+    text-align: center;
+    width: 100%;
+    display: inline-block;
+}
+
+.buttons button {
+    background: none;
+    border:none;
+    border-radius: 2px;
+    color:#999;
+}
+
+.buttons button:hover {
+    background: #aaa;
+    color: white;
+}
+
+video {
+    width: 80%;
+    height: auto;
+}
+
+.img-Upload {
+    height: 32px;
+    opacity: 0;
+    width: 39px;
+    /* width: inherit; */
+    position: absolute;
+    top: 0;
+    left: 0;
+}

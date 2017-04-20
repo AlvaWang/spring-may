@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ch_CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>中国创新创业大赛 - 军转民分站</title>
+    <link href="../static/lib/css/bootstrap.min.css" th:href="@{/lib/css/bootstrap.min.css}" rel="stylesheet" />
+    <link href="../static/lib/css/font-awesome.min.css" th:href="@{/lib/css/font-awesome.min.css}" rel="stylesheet" />
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}" />
+    <script src="../static/lib/jquery.min.js" th:src="@{/webjars/jquery/2.2.3/jquery.min.js}"></script>
+    <script src="../static/lib/bootstrap.min.js" th:src="@{/webjars/bootstrap/3.3.6/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div id="body">
+    <div id="main">
+        <!-- Header -->
+        <div th:replace="fragments/header :: header"></div>
+        <div class="row thread">
+            <div class="col-lg-12">
+                <h1 style="text-align: center;">第二届“创青春”中国青年创新创业大赛</h1>
+                <h1 style="text-align: center;">竞赛规则（商工组、现代农业组）</h1>
+                <p style="text-align: center;">&nbsp;</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp; 一、赛事组织规范</p>
+                <p><b>&nbsp;&nbsp; &nbsp;&nbsp;</b><b>（一）参赛者报名</b></p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp;1.参赛者可登录中国青年创新创业大赛官网注册并提交相关资料。</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp;2.参赛者在报名表中所选择的“项目所在地”，即为该参赛者地区赛的参赛地。</p>
+                <p><b>&nbsp; &nbsp; &nbsp;</b><b>（二）评审委员会的产生</b></p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp;1.评审委员会由创业导师、专家学者、投资人组成。</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp;2.创业导师由各合作创业服务机构和各地团组织推荐，须经大赛组委会审核确认。</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp;3.专家学者由大赛组委会定向邀请。</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp;4.投资人由大赛组委会定向邀请及各合作机构推荐，经大赛组委会资格审核后确定。</p>
+                <p><b>&nbsp; &nbsp; &nbsp;&nbsp;</b><b>（三）地区赛评委的产生</b></p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp;1.按照每场比赛不少于5名评委，评委人数须为单数。</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp;2.从对该地区有投资意向的投资人、专家学者、创业导师中产生。</p>
+                <p><b>&nbsp; &nbsp; &nbsp;</b><b>（四）地区赛的组织</b></p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp;1.不少于项目审查、初赛、决赛三个步骤。</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp;2.地区赛按照大赛组委会所分配的晋级名额选拔相应数目的参赛项目参加全国赛。</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp;3.地区赛要录制高清视频资料，地区赛结束时报全国大赛组委会秘书处。</p>
+                <p>&nbsp; &nbsp; &nbsp;
+                    &nbsp;4.如果某省（自治区、直辖市）未达到100个参赛项目，上述项目原则上应合并到临近省级赛区，赛区合并后，晋级全国赛名额为合并省（自治区、直辖市）名额之和。</p>
+                <p><b>&nbsp; &nbsp; &nbsp;&nbsp;</b><b>（五）全国赛的组织</b></p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;全国赛由大赛组委会秘书处负责组织，对各省（自治区、直辖市）推荐报送的项目进行评审，按照创意组、初创组、成长组及专项赛分别评出金奖、银奖、铜奖及优秀奖，各奖项数量分别不超过全国赛入围项目的5%、10%、20%。</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp;综合考察各地赛事组织情况及推报项目获奖情况，对赛事组织工作优秀的省份给予资金等鼓励。</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp;二、评审标准</p>
+                <p><b>&nbsp; &nbsp; &nbsp;&nbsp;</b><b>（一）创意组评分表</b></p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp;评分项目评分标准所占比重：</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp;产品（服务）此项主要考察：原创设计、视角独特、主题鲜明、商业价值、社会需求、技术含量、发展态势预测。25%</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp;团队此项主要考察：创始团队完整性、互补性、资历背景及资源整合能力。30%</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp;商业模式此项主要考察：商业模式设计合理性及可行性。15%</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp;市场及竞争此项主要考察：市场前景乐观，适于自主创业，市场变化趋势及潜力，目标市场及客户定位，市场调查分析。15%</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp;计划书此项主要考察：简明扼要，描述准确，突出项目特点；材料详实，文字表达清楚；选题与创意紧密结合，新颖独特。10%</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp;其他社会效益、带动就业能力。5%</p>
+                <p><b>&nbsp; &nbsp; &nbsp;&nbsp;</b><b>（二）初创组、成长组评分表</b></p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp;评分项目评分标准所占比重</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp;产品（服务）此项主要考察：产品(服务)所针对的用户群是否合理、解决了用户的哪些问题、进入的时间点是否合适。25%</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp;团队此项主要考察：创始团队完整性、互补性、资历背景及资源整合能力。30%</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp;商业模式此项主要考察：商业模式设计合理性及可行性。15%</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp;市场及竞争此项主要考察：市场容量、前瞻性、成长性、该项目的竞争壁垒、市场策略(计划)的可执行性及执行情况。15%</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp;运营状况此项主要考察：该项目的运营策略及目前运营状况，包括财务数据、用户数据、客户情况。10%</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp;其他社会效益、带动就业能力。5%</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;三、注意事项</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp;1.比赛期间，遵守比赛秩序，服从大赛组委会与地区赛组委会的安排，严格按照分组参加比赛。</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp;2.参赛企业、团队可申请携带自己的产品在现场进行演示，以取得最佳效果。</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp;3.其他</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp;（1）在陈述中语言应简洁明了，重点突出，避免过多使用专业和抽象词汇。</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp;（2）评委或投资人最想听到的或最关注的产品、技术或服务的介绍。</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp;（3）讲清楚参赛项目是做什么的，比如：参赛项目是为什么样的人，提供什么样的服务。</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp;（4）商业（盈利）模式：需要明确说出与现有模式相比，参赛项目最大的差异点和创新点。</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp;（5）讲清楚参赛项目的团队，怎样才能把这件事做好。</p>
+                <p>&nbsp; &nbsp; &nbsp; &nbsp;（6）对参赛项目现状的了解，有清晰的业务规划、战略目标及可执行性。</p>
+            </div>
+        </div>
+        <div th:replace="fragments/footer :: footer">&copy; 2016 blog.codeleak.pl</div>
+    </div>
+</div>
+
+</body>
+</html>

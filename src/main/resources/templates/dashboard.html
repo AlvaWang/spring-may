@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>控制台</title>
+    <link href="../static/lib/css/prettify.css" th:href="@{/lib/css/prettify.css}" rel="stylesheet"/>
+    <link href="../static/lib/css/bootstrap.min.css" th:href="@{/lib/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link href="../static/lib/css/font-awesome.min.css" th:href="@{/lib/css/font-awesome.min.css}" rel="stylesheet"/>
+    <link href="../static/css/editor.css" th:href="@{/css/editor.css}" rel="stylesheet"/>
+    <link href="../static/css/dashboard.css" th:href="@{/css/dashboard.css}" rel="stylesheet"/>
+</head>
+
+<body>
+<!--这个控制台应该有哪些东西 简单来说应该是post以及resource的crud操作-->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">资源控制台</a>
+            <ul class="navbar-collapse collapse nav navbar-nav navbar-left">
+                <li><a type="button" class="btn"  href="#tab-resources" data-toggle="tab">Pictures</a></li>
+                <li><a type="button" class="btn" href="#tab-posts" data-toggle="tab" >Posts</a></li>
+            </ul>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a type="button" class="btn" id="add_post" data-toggle="modal" data-target="#PostModal">新建帖子</a></li>
+                <li><a type="button" class="btn" id="add_resource" data-toggle="modal" data-target="#ResourceModal">新建图片</a></li>
+            </ul>
+            <form class="navbar-form navbar-right" id="searchForm">
+                <input class="form-control" placeholder="Search..." name="name" type="text"/>
+            </form>
+        </div>
+    </div>
+</nav>
+
+<!--Main Content-->
+<div class="container-fluid">
+    <div class="row tab-content" style="margin-top: 40px;">
+        <div class="col-sm-9 col-md-12 main tab-pane fade in active container" id="tab-resources">
+
+            <h2 class="page-header"><a href="#avatars" data-toggle="collapse">Avatars</a></h2>
+            <div class="row placeholders content collapse in" id="avatars"></div>
+
+            <h2 class="page-header"><a href="#pictures" data-toggle="collapse">Pictures</a></h2>
+            <div class="row placeholders content collapse in" id="pictures"></div>
+        </div>
+
+        <div  class="col-sm-9 col-md-12 main tab-pane fade container" id="tab-posts">
+            <h2 class="page-header"><a href="#posts" data-toggle="collapse">Posts</a></h2>
+            <div class="table-responsive  content collapse in">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Type</th>
+                        <th>Thumbnail</th>
+                        <th>Outline</th>
+                        <th>Created At</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="posts">
+                    </tbody>
+                </table>
+            </div>
+            <nav id="post_pages"></nav>
+        </div>
+    </div>
+</div>
+
+<!-- Resource Modal -->
+<div class="modal fade" id="ResourceModal" role="dialog">
+    <div class="modal-dialog res-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Pictures Management</h4>
+            </div>
+            <div class="modal-body">
+                <div class="jumbotron">
+                    <div class="pull-right"></div>
+                        <div class="form-group">
+                            <label for="name">名字:</label>
+                            <input type="text" class="form-control" id="name"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">简介:</label>
+                            <input type="text" class="form-control" id="description"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="url">URL:</label>
+                            <form id="url-file" class="my-upload">
+                                <input id="url-upload" class="imgUpload" type="file" name="uploadfile"
+                                       accept="image/*"/>
+                            </form>
+                            <input type="text" class="form-control" id="url"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="resourceType">类型:</label>
+                            <select class="form-control" id="resourceType" name="resourceType">
+                                <option>AVATAR</option>
+                                <option>PICTURE</option>
+                            </select>
+                        </div>
+                        <hr/>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="reset" class="btn btn-default" data-dismiss="modal" onclick="reset()">Close</button>
+                <button type="button" class="btn btn-default" id="resource_submit">Submit</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Post Modal -->
+<div class="modal fade" id="PostModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Posts Management</h4>
+            </div>
+            <div class="modal-body">
+                <div class="jumbotron">
+                    <div class="pull-right"></div>
+                    <div class="form-group">
+                        <label for="title">标题:</label>
+                        <input type="text" class="form-control" id="title"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="url">缩略图:</label>
+                        <form id="thumbnail-file" class="my-upload">
+                            <input id="thumbnail-upload" class="imgUpload" type="file" name="uploadfile"
+                                   accept="image/*"/>
+                        </form>
+                        <input type="text" class="form-control" id="thumbnail"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="outline">简介:</label>
+                        <input type="text" class="form-control" id="outline"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="resourceType">类型:</label>
+                        <select class="form-control" id="postType" name="postType">
+                            <option>MAIN</option>
+                            <option>NATIONAL</option>
+                            <option>OTHER</option>
+                            <option>REPORT</option>
+                            <option>VIDEO</option>
+                            <option>PROJECT</option>
+                        </select>
+                    </div>
+                    <hr/>
+                    <label for="editor">内容:</label>
+                    <div id="alerts"></div>
+                    <div class="btn-toolbar" data-role="editor-toolbar" data-target="#editor">
+                        <div class="btn-group">
+                            <a class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                               title="Font"><i class="fa fa-font"></i><b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                            </ul>
+                        </div>
+                        <div class="btn-group">
+                            <a class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                               title="Font Size"><i class="fa fa-text-height"></i>&nbsp;<b
+                                    class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a data-edit="fontSize 5" class="fs-Five">Huge</a></li>
+                                <li><a data-edit="fontSize 3" class="fs-Three">Normal</a></li>
+                                <li><a data-edit="fontSize 1" class="fs-One">Small</a></li>
+                            </ul>
+                        </div>
+                        <div class="btn-group">
+                            <a class="btn btn-default" data-edit="bold" title="Bold (Ctrl/Cmd+B)"><i
+                                    class="fa fa-bold"></i></a>
+                            <a class="btn btn-default" data-edit="italic" title="Italic (Ctrl/Cmd+I)"><i
+                                    class="fa fa-italic"></i></a>
+                            <a class="btn btn-default" data-edit="strikethrough" title="Strikethrough"><i
+                                    class="fa fa-strikethrough"></i></a>
+                            <a class="btn btn-default" data-edit="underline" title="Underline (Ctrl/Cmd+U)"><i
+                                    class="fa fa-underline"></i></a>
+                        </div>
+                        <div class="btn-group">
+                            <a class="btn btn-default" data-edit="insertunorderedlist" title="Bullet list"><i
+                                    class="fa fa-list-ul"></i></a>
+                            <a class="btn btn-default" data-edit="insertorderedlist" title="Number list"><i
+                                    class="fa fa-list-ol"></i></a>
+                            <a class="btn btn-default" data-edit="outdent" title="Reduce indent (Shift+Tab)"><i
+                                    class="fa fa-outdent"></i></a>
+                            <a class="btn btn-default" data-edit="indent" title="Indent (Tab)"><i
+                                    class="fa fa-indent"></i></a>
+                        </div>
+                        <div class="btn-group">
+                            <a class="btn btn-default" data-edit="justifyleft" title="Align Left (Ctrl/Cmd+L)"><i
+                                    class="fa fa-align-left"></i></a>
+                            <a class="btn btn-default" data-edit="justifycenter" title="Center (Ctrl/Cmd+E)"><i
+                                    class="fa fa-align-center"></i></a>
+                            <a class="btn btn-default" data-edit="justifyright" title="Align Right (Ctrl/Cmd+R)"><i
+                                    class="fa fa-align-right"></i></a>
+                            <a class="btn btn-default" data-edit="justifyfull" title="Justify (Ctrl/Cmd+J)"><i
+                                    class="fa fa-align-justify"></i></a>
+                        </div>
+                        <div class="btn-group">
+                            <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="Hyperlink"><i
+                                    class="fa fa-link"></i></a>
+                            <div class="dropdown-menu input-append">
+                                <input placeholder="URL" type="text" data-edit="createLink"/>
+                                <button class="btn" type="button">Add</button>
+                            </div>
+                        </div>
+                        <div class="btn-group">
+                            <a class="btn btn-default" data-edit="unlink" title="Remove Hyperlink"><i
+                                    class="fa fa-unlink"></i></a>
+						<span class="btn btn-default" title="Insert picture (or just drag )" id="pictureBtn"> <i
+                                class="fa fa-picture-o"></i>
+                            <form id="upload-image-form">
+								<input id="image-upload" class="img-Upload" type="file" name="uploadfile"
+                                        data-target="#pictureBtn"
+                                       accept="image/*"/>
+                            </form>
+						</span>
+                        <span class="btn btn-default" title="Insert video" id="videoBtn">
+                            <i>
+                                <svg style="width:15px;height:15px" viewBox="0 0 24 24">
+                                    <path fill="#000000" d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z" />
+                                </svg>
+                            </i>
+                            <form id="upload-video-form">
+								<input id="video-upload" class="img-Upload" type="file" name="uploadfile"
+                                       data-target="#pictureBtn"
+                                       accept="video/*"/>
+                            </form>
+						</span>
+                        </div>
+                        <div class="btn-group">
+                            <a class="btn btn-default" data-edit="undo" title="Undo (Ctrl/Cmd+Z)"><i
+                                    class="fa fa-undo"></i></a>
+                            <a class="btn btn-default" data-edit="redo" title="Redo (Ctrl/Cmd+Y)"><i
+                                    class="fa fa-repeat"></i></a>
+                        </div>
+                        <input class="pull-right" type="text" data-edit="inserttext" id="voiceBtn"/>
+                    </div>
+                    <div id="editor" name="content" class="lead" data-placeholder="Go ahead&hellip;"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="reset" class="btn btn-default" data-dismiss="modal" onclick="reset()">Close</button>
+                <button type="button" class="btn btn-default" id="post_submit">Submit</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Confirm Modal -->
+<div class="modal fade" id="confirmModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">提示信息</h4>
+            </div>
+            <div class="modal-body">
+                <p id="msg">操作已成功</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Delete Modal -->
+<div class="modal fade" id="deleteModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">提示信息</h4>
+            </div>
+            <div class="modal-body">
+                <p id="delete_msg">确定要执行删除操作？</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="delete_post_btn" data-dismiss="modal">确定</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+<script src="../static/lib/js/jquery.min.js" th:src="@{/webjars/jquery/2.2.3/jquery.min.js}"></script>
+<script src="../static/lib/js/bootstrap.min.js" th:src="@{/webjars/bootstrap/3.3.6/js/bootstrap.min.js}"></script>
+<script src="../static/lib/js/jquery.hotkeys.js" th:src="@{/lib/js/jquery.hotkeys.js}"></script>
+<script src="../static/lib/js/bootstrap-wysiwyg.min.js" th:src="@{/lib/js/bootstrap-wysiwyg.min.js}"></script>
+<script src="../static/lib/js/prettify.js" th:src="@{/lib/js/prettify.js}"></script>
+<script src="../static/lib/js/moment.min.js" th:src="@{/lib/js/moment.min.js}"></script>
+<script src="../static/js/dashboard.js" th:src="@{/js/dashboard.js}"></script>
+
+</html>

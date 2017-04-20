@@ -1,0 +1,55 @@
+# Server Settingd
+server:
+  address: 0.0.0.0
+  port: 80
+
+# Spring Settings
+spring:
+  thymeleaf:
+    cache: true
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/may?characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: testtest
+    test-on-borrow: true
+    validation-query: SELECT 1
+    time-between-eviction-runs-millis: 3600000
+
+
+
+# Security Settings
+security:
+  basic:
+    path: /dashboard/**,/resources/**,/posts/**
+    realm: BASIC
+    authorize-mode: role
+  user:
+    name: test
+    password: 123456
+    role: ADMIN
+  sessions: stateless
+# 只有同源的请求
+  enable-csrf: false
+
+# Logging Settings
+logging:
+  file: /var/spring_may/log
+  level:
+    net.bambooslips.demo: DEBUG
+    org.springframework.web: DEBUG
+
+# Custom properties
+uploaded-files:
+  path: /var/spring_may/uploaded_files
+
+multipart:
+  max-file-size: 50Mb
+  max-request-size: 50Mb

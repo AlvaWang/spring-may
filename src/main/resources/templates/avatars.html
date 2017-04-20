@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ch_CN" xmlns:th="http://www.thymeleaf.org">
+<head >
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>中国创新创业大赛 - 军转民分站</title>
+    <link href="../static/lib/css/bootstrap.min.css" th:href="@{/lib/css/bootstrap.min.css}" rel="stylesheet" />
+    <link href="../static/lib/css/font-awesome.min.css" th:href="@{/lib/css/font-awesome.min.css}" rel="stylesheet" />
+    <link rel="stylesheet" href="../static/css/app.css" th:href="@{/css/app.css}" />
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}" />
+    <style>
+        .img-responsive {
+            border-radius: 50%;
+            margin: 0 auto;
+            width: 120px;
+            height: 120px;
+            max-width: 120px;
+        }
+        .placeholder {
+            text-align: center;
+        }
+        .my-content {
+            margin-top: 180px;
+        }
+        h2 {
+            font-family: "Microsoft YaHei UI","Microsoft YaHei" ;
+            margin-left: 3em;
+        }
+
+        .page-nav {
+            margin: 20px auto 140px;
+            text-align: center;
+        }
+    </style>
+    <script src="../static/lib/js/jquery.min.js" th:src="@{/webjars/jquery/2.2.3/jquery.min.js}"></script>
+    <script src="../static/lib/js/bootstrap.min.js" th:src="@{/webjars/bootstrap/3.3.6/js/bootstrap.min.js}"></script>
+    <script src="../static/lib/js/lightbox.min.js" th:src="@{/lib/js/lightbox.min.js}"></script>
+</head>
+<body >
+<div id="body">
+    <div id="main">
+        <!-- Header -->
+        <div th:replace="fragments/header :: header"></div>
+        <div class="container my-content">
+            <h2>专家评委团</h2>
+            <hr/>
+            <div class="col-xs-6 col-sm-3 placeholder" th:each="avatar:${avatars.content}">
+                <img th:src="${avatar.url}" class="img-responsive" alt="placeholder"/>
+                <h4 th:text="${avatar.name}"> Name </h4>
+                <span th:text="${avatar.content}" class="text-muted"> Introduction </span>
+            </div>
+        </div>
+        <nav class="page-nav">
+            <ul class="pagination">
+
+                <li>
+                    <a th:href="'/avatars?page='+ ${avatars.number == 0 ? 0:avatars.number - 1}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+
+                <li th:if="${avatars.totalPages != 0}" th:each="i : ${#numbers.sequence(1, avatars.totalPages)}"><a th:href="'/avatars?page='+${i - 1}" th:text="${i}">null</a></li>
+
+                <li>
+                    <a  th:href="'/avatars?page=' + ${avatars.number == avatars.totalPages - 1 ? avatars.totalPages - 1:avatars.number + 1}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div th:replace="fragments/footer :: footer">&copy; 2016 www.bambooslips.net</div>
+    </div>
+</div>
+
+</body>
+</html>

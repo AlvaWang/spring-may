@@ -1,0 +1,414 @@
+html, body {
+    height: 100%;
+}
+body {
+    color: #565656;
+    /*background: #ffffff;*/
+}
+h2, h3, h4, h5, h6 {
+    font-weight: normal;
+}
+#body {
+    min-height: 100%;
+    height: auto !important;
+    position: relative;
+}
+#main {
+    padding-bottom: 60px;
+}
+#footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    clear: both;
+    /*margin-bottom: 10px;*/
+    background: #12aaf0;
+    height: 130px;
+}
+#footer p {
+    margin-bottom: 0;
+    font-family: 幼圆;
+    font-size: 14px !important;
+    color: #fff;
+    line-height: 30px !important;
+    /*float: left;*/
+    margin-left: 20px;
+    text-align: center;
+    /*width: 350px;*/
+}
+span.helper {
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.header {
+    background: #ffffff;
+    /*opacity: 1!important;*/
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 1083;
+}
+.header .logo-container {
+    padding-right: 60px;
+}
+.header .logo-a {
+    padding: 5px 0;
+    display: inline-block;
+}
+.header .logo {
+    height: 50px;
+    margin-top: 3px;
+    min-width: 20%;
+}
+.header .navbar {
+    margin-bottom: 0 !important;
+    border-bottom: none;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+}
+.header .navbar ul {
+    width: 100%;
+}
+.header .navbar ul.nav-ten li {
+    width: 11.11%;
+}
+.header .navbar ul li:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+}
+.header .dropdown-menu {
+    border: none;
+    border-radius: 0;
+}
+.header .dropdown-menu li {
+    width: 100% !important;
+}
+.header .dropdown-menu li a {
+    line-height: 2;
+}
+.header .navbar .youth a {
+    padding: 5px 10px;
+}
+.header .navbar .youth a img {
+    height: 40px;
+}
+.header .logos-div {
+    padding: 15px 0;
+    position: relative;
+}
+.header .logos {
+    height: 50px;
+}
+.header .links {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    bottom: 20px;
+}
+.header .links .yan {
+    height: 100%;
+    width: 110px;
+    display: inline-block;
+}
+.header .links .psbc {
+    height: 100%;
+    width: 180px;
+    display: inline-block;
+}
+.header .links .youth {
+    height: 100%;
+    width: 80px;
+    display: inline-block;
+}
+.header .button a {
+    height: 35px;
+    line-height: 35px;
+    padding: 0 30px;
+    margin-top: 8px;
+    color: #ffffff !important;
+}
+.header .button a:hover, .header .button a:focus {
+    color: #ffffff !important;
+    background: #a22b2f !important;
+    border: 1px solid #a22b2f !important;
+}
+
+
+.index .index-text-1 {
+    margin-top: 50px;
+}
+.index .index-text-2 {
+    height: 450px;
+}
+.index .section-banner .button {
+    /*display: block;*/
+    /*height: 45px;*/
+    /*width: 160px;*/
+    /*text-align: center;*/
+    /*margin: 720px 860px;*/
+    /*position: fixed;*/
+    display: block;
+    height: 70px;
+    width: 200px;
+    text-align: center;
+    margin: 0 auto auto;
+}
+.index .section-banner .button img {
+    height: 70px;
+}
+#fp-nav ul li a span, .fp-slidesNav ul li a span {
+    /*background: #888888;*/
+    background:#75ac1c;
+}
+.container-fluid {
+    padding: 0;
+}
+.btn-inverse {
+    font-size: 12px;
+    color: #d62631;
+    border: 1px solid #d62631;
+    border-radius: 2px;
+}
+.btn-my {
+    border: 1px solid #d62631;
+    border-radius: 2px;
+    color: #ffffff;
+    background: #d62631;
+}
+.btn-my:hover, .btn-my:focus {
+    color: #ffffff;
+    background: #a22b2f;
+    border: 1px solid #a22b2f;
+}
+
+.section-intro .container, .section-time .container, .section-org .container {
+    padding-top: 20px;
+}
+.section-org h5 {
+    margin-top: 40px;
+}
+.section-org .item {
+    margin-top: 30px;
+}
+.section-padding {
+    padding: 0 200px;
+}
+.section .description p {
+    line-height: 1.8;
+}
+.apply-chose, .apply-form, .apply-success, .article, .teacher {
+    padding-top: 140px;
+}
+.apply-chose h3 {
+    margin: 30px 0;
+}
+.apply-chose .panel {
+    min-height: 200px;
+    cursor: pointer;
+}
+.apply-chose .panel h4 {
+    margin-bottom: 20px;
+}
+.apply-chose .next, .apply-form .next {
+    width: 140px;
+    margin-top: 50px;
+}
+.apply-chose p.description {
+    line-height: 1.8;
+    text-align: center;
+}
+.apply-chose p.chose {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    color: #dedede;
+    transition: color 0.3s ease;
+    -webkit-transition: color 0.3s ease;
+}
+.apply-chose .panel.active p.chose {
+    color: #d62631;
+}
+.apply-form .steps {
+    margin: 10px 0;
+    padding: 10px 0;
+}
+.apply-form .steps .step {
+    padding: 5px 0;
+    background: #ffffff;
+    border: 1px solid #dedede;
+    margin-right: -1px;
+    transition: background .1s ease;
+}
+.apply-form .steps .step.active {
+    color: #ffffff;
+    background: #d62631;
+}
+.apply-form .steps .step .name {
+    font-size: 18px;
+    margin-bottom: 0;
+}
+.apply-form .steps .step .description {
+    margin-bottom: 0;
+}
+.apply-form .sections .section {
+    display: none;
+}
+.apply-form .sections .section.on {
+    display: block;
+}
+.apply-buttons {
+    margin: 30px 0;
+}
+.apply-buttons button {
+    width: 120px;
+}
+.apply-form .section-2 .types p {
+    display: none;
+}
+.apply-form .section-2 .types p.on {
+    display: block;
+}
+.apply-form .section-2 .types i {
+    color: #cdcdcd;
+}
+.apply-form .section-2 .types button.active i {
+    color: #d62631;
+}
+.apply-form .form-grouping .type {
+    display: none;
+}
+.apply-form .form-grouping .type.on {
+    display: block;
+}
+.account {
+    padding-top: 180px;
+}
+.account .panel {
+    padding-top: 20px;
+}
+.account .error-tip {
+    text-align: center;
+    margin-bottom: 0;
+    color: #d62631;
+}
+
+
+.index-2 .index-text-1 {
+    height: 380px;
+}
+
+.apply-success h3 {
+    margin-top: 50px;
+}
+.article .list-group-item {
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px dashed #ddd;
+    background: transparent;
+}
+.article .list-group-item:hover {
+    background: #f6f6f6;
+    transition: background .1s ease;
+    -webkit-transition: background .1s ease;
+}
+.article .list-group-item .media-body {
+    padding: 5px;
+}
+.pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover {
+    background: #d62631;
+    border: 1px solid #d62631;
+}
+.pagination > li > a, .pagination > li > span {
+    color: #d62631;
+}
+.pagination > li > a:focus, .pagination > li > a:hover, .pagination > li > span:focus, .pagination > li > span:hover {
+    color: #d62631;
+}
+table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+}
+table > tbody > tr > td, table > tbody > tr > th, table > tfoot > tr > td, table > tfoot > tr > th, table > thead > tr > td, table > thead > tr > th {
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border: 1px solid #ddd;
+}
+table > thead > tr > th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #ddd
+}
+table > caption + thead > tr:first-child > td, table > caption + thead > tr:first-child > th, table > colgroup + thead > tr:first-child > td, table > colgroup + thead > tr:first-child > th, table > thead:first-child > tr:first-child > td, table > thead:first-child > tr:first-child > th {
+    border-top: 0;
+}
+table > tbody + tbody {
+    border-top: 2px solid #ddd
+}
+table > thead > tr > td, table > thead > tr > th {
+    border-bottom-width: 2px
+}
+.teacher .t {
+    width: 135px;
+    margin: auto;
+}
+.teacher .t .c {
+    height: 135px;
+    position: relative;
+}
+.teacher .t .description {
+    padding: 3px 0;
+    opacity: 0;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    transition: opacity .2s ease;
+}
+.teacher .t:hover .description {
+    opacity: 1;
+}
+.intro-container {
+    padding-top: 128px;
+}
+.intro-rule {
+    width: 700px;
+    margin-top: 30px;
+}
+.intro-rule-container .links .one {
+    position: absolute;
+    top: 365px;
+    height: 140px;
+    width: 610px;
+    margin-left: -300px;
+}
+.intro-rule-container .links .two {
+    position: absolute;
+    top: 505px;
+    height: 140px;
+    width: 610px;
+    margin-left: -300px;
+}
+
+.article img {
+    max-width: 100%;
+}
+
+.article p {
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.other-industry input.form-control {
+    display: inline-block;
+    width: auto;
+}

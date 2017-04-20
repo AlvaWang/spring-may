@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ch_CN" xmlns:th="http://www.thymeleaf.org">
+<head >
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>中国创新创业大赛 - 军转民分站</title>
+    <link href="../static/lib/css/bootstrap.min.css" th:href="@{/lib/css/bootstrap.min.css}" rel="stylesheet" />
+    <link href="../static/lib/css/font-awesome.min.css" th:href="@{/lib/css/font-awesome.min.css}" rel="stylesheet" />
+    <link rel="stylesheet" href="../static/lib/css/lightbox.min.css" th:href="@{/lib/css/lightbox.min.css}" />
+    <link rel="stylesheet" href="../static/css/app.css" th:href="@{/css/app.css}" />
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}" />
+    <script src="../static/lib/js/jquery.min.js" th:src="@{/webjars/jquery/2.2.3/jquery.min.js}"></script>
+    <script src="../static/lib/js/bootstrap.min.js" th:src="@{/webjars/bootstrap/3.3.6/js/bootstrap.min.js}"></script>
+    <script src="../static/lib/js/lightbox.min.js" th:src="@{/lib/js/lightbox.min.js}"></script>
+    <style>
+
+        .my-content {
+            margin-top: 180px;
+        }
+        h2 {
+            font-family: "Microsoft YaHei UI","Microsoft YaHei" ;
+            margin-left: 3em;
+        }
+
+        .page-nav {
+            margin: 20px auto;
+            text-align: center;
+        }
+        .img-container {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            margin: 15px;
+            justify-content: flex-end;
+        }
+        .thumb-image {
+            width: 198px;
+            border-radius: 5px;
+        }
+        section {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        label {
+            font-family: "Microsoft YaHei UI","Microsoft YaHei" ;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+<div id="body">
+    <div id="main">
+        <!-- Header -->
+        <div th:replace="fragments/header :: header"></div>
+
+        <div class="container my-content">
+            <h2>照片展示</h2>
+            <hr/>
+            <section>
+                <div th:each="picture : ${pictures.content}" class="img-container">
+                    <a  th:href="${picture.url}"
+                            class="image-link" data-lightbox="example-set" th:attr="data-title=${picture.content}">
+                        <img class="thumb-image" th:src="@{'/files/thumbnails/'+ ${#strings.arraySplit(picture.url, '/')[1]}}" alt=""/>
+                    </a>
+                    <label th:text="${picture.name}"></label>
+                </div>
+            </section>
+        </div>
+        <nav class="page-nav">
+            <ul class="pagination">
+
+                <li>
+                    <a th:href="'/pictures?page='+ ${pictures.number == 0 ? 0:pictures.number - 1}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+
+                <li  th:each="i : ${#numbers.sequence(1, pictures.totalPages)}"><a th:href="'/pictures?page='+${i - 1}" th:text="${i}">null</a></li>
+
+                <li>
+                    <a  th:href="'/pictures?page=' + ${pictures.number == pictures.totalPages - 1 ? pictures.totalPages - 1:pictures.number + 1}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div th:replace="fragments/footer :: footer">&copy; 2016 www.bambooslips.net</div>
+    </div>
+</div>
+
+</body>
+</html>

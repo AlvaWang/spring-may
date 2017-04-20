@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.6/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.6/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen"/>
+    <link href="../static/css/core.css"
+          th:href="@{/css/core.css}"
+          rel="stylesheet" media="screen"/>
+    <style>
+        body {
+            width: 900px;
+            margin: 0 auto;
+        }
+        .container {
+            width: 900px;
+        }
+    </style>
+</head>
+
+<body>
+<h1>Default Spring Boot Error Page</h1>
+
+<!--  As we are using Thymeleaf, you might consider using
+      ${#httpServletRequest.requestURL}. But that returns the path
+      to this error page.  Hence we explicitly add the url to the
+      Model in some of the example code. -->
+<p th:if="${url}">
+    <b>Page:</b> <span th:text="${url}">Page URL</span>
+</p>
+
+<p th:if="${timestamp}" id='created'>
+    <b>Occurred:</b> <span th:text="${timestamp}">Timestamp</span>
+</p>
+
+<p th:if="${status}">
+    <b>Response Status:</b> <span th:text="${status}">status-code</span> <span
+        th:if="${error}" th:text="'('+${error}+')'">error ...</span>
+</p>
+
+<!--/* ${ex} is set by ourSimpleMappingExceptionResolver,
+       ${exception} or ${message} are set internally by Spring Boot. */-->
+<div
+        th:if="${ex} or ${exception} or (${message} and ${message.length() != 0})">
+    <b>Cause:</b> <span th:if="${ex}" th:text="${ex}">exception ...</span>
+    <span th:if="${exception}" th:text="${exception}">exception ...</span>
+		<span th:if="${message} and ${message.length() != 0}"
+              th:text="${message}">message ...</span>
+    <!--<blockquote>-->
+    <!--<i>Note: You would never generate a page that displays a Java-->
+    <!--exception to an end-user in a real application</i>-->
+    <!--</blockquote>-->
+</div>
+
+<p
+        th:unless="${ex} or ${exception} or (${message} and ${message.length() != 0})">
+    Cause unknown (no exception details available)</p>
+<p th:if="${trace}" th:text="${trace}"></p>
+
+
+<script src="../static/lib/js/jquery.min.js" th:src="@{/webjars/jquery/2.2.3/jquery.min.js}"></script>
+<script src="../static/lib/js/bootstrap.min.js" th:src="@{/webjars/bootstrap/3.3.6/js/bootstrap.min.js}"></script>
+
+</body>
+
+</html>

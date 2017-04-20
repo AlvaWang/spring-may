@@ -1,0 +1,27 @@
+
+h2 {
+    text-align: center;
+}
+
+.time {
+    float: right;
+}
+
+.thread {
+    font-family: "Microsoft YaHei UI", "Microsoft YaHei";
+}
+
+video {
+    width: 80%;
+    height: auto;
+}
+
+.video-container {
+    display: block;
+    text-align: center;
+    background: #eee;
+}
+
+img {
+    max-width: 1170px;
+}
