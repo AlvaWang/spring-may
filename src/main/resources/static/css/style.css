@@ -115,7 +115,7 @@ nav {
     margin-top: 10px;
 }
 .process_title ul li{
-    min-width: 136px;
+    max-width: 136px;
     width: 15%;
     height: 40px;
     margin-left: 10px;
@@ -133,11 +133,11 @@ nav {
 }
 .title_a{
     background: url("../img/qipao1.png");
-    background-size: cover;
+    background-size: 100% 100%;
 }
 .title_b{
     background: url("../img/qipao2.png");
-    background-size: cover;
+    background-size: 100% 100%;
 }
 .process_circle{
     margin-top: 3px;
@@ -148,7 +148,7 @@ nav {
 }
 .process_circle .circle-one{
     /*margin: 3px;*/
-    width: 19.5%;
+    width: 20%;
     height: 100%;
     float: left;
     /*background: green;*/
@@ -198,7 +198,7 @@ nav {
 }
 .process_content ul .pro_li_one{
     height: 70px;
-    min-width: 130px;
+    max-width: 130px;
     width: 15%;
     /*margin-left: 10px;*/
 }
