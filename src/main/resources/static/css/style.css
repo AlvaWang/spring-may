@@ -264,7 +264,7 @@ nav {
     margin-left: auto;
 }
 .content_blue div ul li{
-    margin-top: 8px;
+    /*margin-top: 8px;*/
     min-width: 100px;
     width: 25%;
     height: 100%;
@@ -278,6 +278,11 @@ nav {
 }
 .content_blue div ul li:hover{
     background: #7aae1a;
+}
+.content_blue div ul li a p{
+    text-align: center;
+    margin-top: 8px;
+    color: white;
 }
 .content_blue div ul li a{
     margin: auto;
