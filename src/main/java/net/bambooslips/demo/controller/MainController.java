@@ -57,12 +57,28 @@ public class MainController {
         return "html-editor";
     }
 
+    @RequestMapping("/login")
+    public String login() {
+        return "login";
+    }
+
+    @RequestMapping("/register")
+    public String register() {
+        return "register";
+    }
+
+    @RequestMapping("/success")
+    public String success() {
+        return "success";
+    }
+
     @ModelAttribute("avatars")
     @RequestMapping("/avatars")
     public Page<Resource> avatars(@RequestParam(defaultValue = PAGE) Integer page,
                                   @RequestParam(defaultValue = PAGE_SIZE) Integer page_size) {
         Pageable pageable = new PageRequest(page, page_size);
         return resourceService.findAll(pageable, ResourceType.AVATAR);
+        //调用数据库查询
     }
 
     @ModelAttribute("pictures")

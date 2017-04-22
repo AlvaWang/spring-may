@@ -15,9 +15,11 @@ import java.util.List;
 @Transactional
 public interface ResourceRepository extends JpaRepository<Resource, Long> {
 
+    //自定义查询，加参数,参数命名u.name = :searchTerm
     @Query(
             "Select r FROM Resource r WHERE LOWER(r.name) LIKE LOWER(CONCAT('%', :searchTerm, '%')) "
     )
+    //带入参数
     public List<Resource> searchByName(@Param("searchTerm") String searchTerm);
 
     Page<Resource> findAllByResourceType(Pageable pageable, ResourceType type);

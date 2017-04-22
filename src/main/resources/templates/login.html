@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ch_CN" class="fp-enabled" style="overflow: hidden; height: 100%;" xmlns:th="http://www.thymeleaf.org">
+<head >
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>中国创新创业大赛 - 军转民分站</title>
+    <link href="../static/lib/css/bootstrap.min.css" th:href="@{/lib/css/bootstrap.min.css}" rel="stylesheet" />
+    <!--<link href="../static/lib/css/jquery.fullPage.min.css" th:href="@{/lib/css/jquery.fullPage.min.css}" rel="stylesheet" />-->
+    <link href="../static/lib/css/font-awesome.min.css" th:href="@{/lib/css/font-awesome.min.css}" rel="stylesheet" />
+    <!--<link rel="stylesheet" href="../static/css/app.css" th:href="@{/css/app.css}" />-->
+    <!--<link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}" />-->
+</head>
+<body>
+<!--访问controller action方法-->
+<form th:action="@{loginAction}" method="post">
+    <div class="header">
+        <h2 class="logo png"></h2>
+    </div>
+    <ul>
+        <li><label>用户名</label><input name="comAccName" type="text" class="text"/></li>
+        <li/>
+        <li><label>密　码</label><input name="comAccPwd" type="password" class="text" /></li>
+        <li/>
+        <li class="submits">
+            <input class="submit" type="submit" value="登录" />
+        </li>
+    </ul>
+</form>
+
+<script src="../static/lib/js/jquery.min.js" th:src="@{/webjars/jquery/2.2.3/jquery.min.js}"></script>
+<script src="../static/lib/js/bootstrap.min.js" th:src="@{/webjars/bootstrap/3.3.6/js/bootstrap.min.js}"></script>
+</body>
+</html>

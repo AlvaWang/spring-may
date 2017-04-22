@@ -324,7 +324,7 @@ span.helper {
     border: 1px solid #d62631;
 }
 .pagination > li > a, .pagination > li > span {
-    color: #d62631;
+    color: #7aae1a;
 }
 .pagination > li > a:focus, .pagination > li > a:hover, .pagination > li > span:focus, .pagination > li > span:hover {
     color: #d62631;

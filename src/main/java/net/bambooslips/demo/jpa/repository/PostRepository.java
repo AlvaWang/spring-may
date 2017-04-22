@@ -18,7 +18,7 @@ import java.util.List;
 @Transactional
 public interface PostRepository extends JpaRepository<Post, Long> {
 
-    // 手动使用 HQL 查询
+    // 手动使用 HQL 查询 Dao接口层及mapper实现层
     @Query(
             "Select p FROM Post p WHERE LOWER(p.title) LIKE LOWER(CONCAT('%', :searchTerm, '%')) "
     )

@@ -14,7 +14,7 @@
     <style>
 
         .my-content {
-            margin-top: 180px;
+            margin-top: 30px;
         }
         h2 {
             font-family: "Microsoft YaHei UI","Microsoft YaHei" ;
@@ -22,8 +22,9 @@
         }
 
         .page-nav {
-            margin: 20px auto;
+            /*margin: 20px auto;*/
             text-align: center;
+            margin: 20px auto 70px;
         }
         .img-container {
             display: flex;
@@ -45,8 +46,9 @@
             margin-top: 5px;
         }
         .media {
+            width: 70%;
+            margin: auto;
             cursor:pointer;
-            margin: 5px;
             padding: 5px;
         }
 
@@ -79,8 +81,25 @@
         <!-- Header -->
         <div th:replace="fragments/header :: header"></div>
 
+        <!--banner部分-->
+        <div class="section section-banner active" style="margin-top: 70px;">
+            <div class="content" style="height: 455px!important;">
+            </div>
+            <div class="content_blue">
+                <div>
+                    <ul>
+                        <li class="click_menu1"><a href="#meg_present"><p>照片展示</p></a></li>
+                        <li class="click_menu2"><a href="#condition"><p>视频展示</p></a></li>
+                        <li class="click_menu3"><a href="#prize_set"><p>优秀项目</p></a></li>
+                        <li class="click_menu4"><a href="#org_institution"><p>专家委员会</p></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
         <div class="container my-content">
-            <h2 th:text="${type.toChinese()}">展示</h2>
+            <!--<h2 th:text="${type.toChinese()}">展示</h2>-->
             <hr/>
             <div class="media" th:each="post : ${posts.content}" >
                 <a th:href="'/threads/'+ ${post.id}" class="content-link">
@@ -113,7 +132,10 @@
                 </li>
             </ul>
         </nav>
-        <div th:replace="fragments/footer :: footer">&copy; 2016 www.bambooslips.net</div>
+
+
+
+        <div th:replace="fragments/footer :: footer"></div>
     </div>
 </div>
 

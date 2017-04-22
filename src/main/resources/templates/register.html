@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ch_CN" class="fp-enabled"
+      style="overflow: hidden; height: 100%;"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head >
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>中国创新创业大赛 - 军转民分站</title>
+    <link href="../static/lib/css/bootstrap.min.css" th:href="@{/lib/css/bootstrap.min.css}" rel="stylesheet" />
+    <!--<link href="../static/lib/css/jquery.fullPage.min.css" th:href="@{/lib/css/jquery.fullPage.min.css}" rel="stylesheet" />-->
+    <link href="../static/lib/css/font-awesome.min.css" th:href="@{/lib/css/font-awesome.min.css}" rel="stylesheet" />
+    <!--<link rel="stylesheet" href="../static/css/app.css" th:href="@{/css/app.css}" />-->
+    <!--<link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}" />-->
+</head>
+<body class="fp-viewing-0" id="body">
+<div id="main">
+    <div>
+    <!--thymeleaf 默认解析是html必须要带结束符否则 不能识别 -->
+        账户名：<input type="text" value="登录名" id="acc_name"/><br/>
+        登录密码：<input type="password" placeholder="请输入登录账号" id="acc_pwd" /><br/>
+        确认密码：<input type="password" placeholder="请输入登录账号" id="acc_again_pwd"/><br/>
+        邮箱：<input type="email" placeholder="请输入联系邮箱/" id="acc_email"/><br/>
+        <input type="text" value="COMPETITION" hidden="hidden" id="acc_type"/>
+        <button type="button" id="register_btn">注册</button>
+    </div>
+
+</div>
+
+<script src="../static/lib/js/jquery.min.js" th:src="@{/webjars/jquery/2.2.3/jquery.min.js}"></script>
+<script src="../static/lib/js/bootstrap.min.js" th:src="@{/webjars/bootstrap/3.3.6/js/bootstrap.min.js}"></script>
+<script src="../static/js/register.js" th:src="@{/js/register.js}"></script>
+
+</body>
+</html>

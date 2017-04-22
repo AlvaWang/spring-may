@@ -9,9 +9,12 @@
     <link rel="stylesheet" href="../static/css/app.css" th:href="@{/css/app.css}" />
     <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}" />
     <style>
-
+        a:focus,a:hover{
+            color: #7aae1a;
+            text-decoration: none!important;
+        }
         .my-content {
-            margin-top: 180px;
+            margin-top: 30px;
         }
         h2 {
             font-family: "Microsoft YaHei UI","Microsoft YaHei" ;
@@ -19,19 +22,69 @@
         }
 
         .page-nav {
-            margin: 20px auto 140px;
+            margin: 20px auto 70px;
             text-align: center;
         }
         .img-container {
             display: flex;
             flex-direction: column;
             text-align: center;
-            margin: 15px;
+            margin: 36px;
             justify-content: flex-end;
+            width: 25%;
+
+        }
+        .img_container_div{
+            /*图片效果*/
+            background: #fff;
+            position:relative;
+            list-style: none;
+            margin:20px 10px;
+            width:100%;
+            text-align: center;
+            line-height: 220px;
+            -webkit-box-shadow: 0 0 2px rgba(0,0,0,.3),0 0 2px rgba(0,0,0,.3);
+            -moz-box-shadow: 0 0 2px rgba(0,0,0,.3),0 0 2px rgba(0,0,0,.3);
+            -o-box-shadow: 0 0 2px rgba(0,0,0,.3),0 0 2px rgba(0,0,0,.3);
+        }
+        .img_container_div:before{
+            position:absolute;
+            bottom:9px;
+            left:14px;
+            content:"";
+            height:80%;
+            width:90%;
+            z-index:-1;
+            background: transparent;
+            -webkit-transform:skew(10deg) rotate(4deg);
+            -moz-transform:skew(10deg) rotate(4deg);
+            -o-transform:skew(10deg) rotate(4deg);
+            -webkit-box-shadow: 0 0 20px rgba(0,0,0,1);
+            -moz-box-shadow: 0 0 20px rgba(0,0,0,1);
+            -o-box-shadow: 0 0 20px rgba(0,0,0,1);
+        }
+        .img_container_div:after{
+            position:absolute;
+            bottom:9px;
+            left:14px;
+            content:"";
+            height:80%;
+            width:90%;
+            z-index:-1;
+            background: transparent;
+            -webkit-transform:skew(-10deg) rotate(-4deg);
+            -moz-transform:skew(-10deg) rotate(-4deg);
+            -o-transform:skew(-10deg) rotate(-4deg);
+            -webkit-box-shadow: 0 0 20px rgba(0,0,0,1);
+            -moz-box-shadow: 0 0 20px rgba(0,0,0,1);
+            -o-box-shadow: 0 0 20px rgba(0,0,0,1);
         }
         .thumb-image {
-            width: 198px;
-            border-radius: 5px;
+            /*width: 198px;*/
+            /*border-radius: 5px;*/
+            height: 195px;
+            width: 95%;
+            margin: 5px;
         }
         section {
             display: flex;
@@ -49,17 +102,37 @@
         <!-- Header -->
         <div th:replace="fragments/header :: header"></div>
 
+        <!--banner部分-->
+        <div class="section section-banner active" style="margin-top: 70px;">
+            <div class="content" style="height: 455px!important;">
+            </div>
+            <div class="content_blue">
+                <div>
+                    <ul>
+                        <li class="click_menu1"><a href="#meg_present"><p>照片展示</p></a></li>
+                        <li class="click_menu2"><a href="#condition"><p>视频展示</p></a></li>
+                        <li class="click_menu3"><a href="#prize_set"><p>优秀项目</p></a></li>
+                        <li class="click_menu4"><a href="#org_institution"><p>专家委员会</p></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!--照片展示部分-->
         <div class="container my-content">
-            <h2>照片展示</h2>
-            <hr/>
+            <!--<h2>照片展示</h2>-->
+            <!--<hr/>-->
             <section>
                 <div th:each="picture : ${pictures.content}" class="img-container"  th:with="urls = ${#strings.arraySplit(picture.url, '/')}">
-                    <a  th:href="${picture.url}"
+                    <div class="img_container_div">
+                        <a  th:href="${picture.url}"
                             class="image-link" data-lightbox="example-set" th:attr="data-title=${picture.content}">
-                        <img class="thumb-image" th:src="${urls[0] == 'files' ? '/files/thumbnails/'+ urls[1] : picture.url}" alt=""/>
-                    </a>
+                            <img class="thumb-image" th:src="${urls[0] == 'files' ? '/files/thumbnails/'+ urls[1] : picture.url}" alt=""/>
+                        </a>
+                    </div>
                     <label th:text="${picture.name}"></label>
                 </div>
+
             </section>
         </div>
         <nav class="page-nav">
@@ -87,6 +160,6 @@
 <script src="../static/lib/js/jquery.min.js" th:src="@{/webjars/jquery/2.2.3/jquery.min.js}"></script>
 <script src="../static/lib/js/bootstrap.min.js" th:src="@{/webjars/bootstrap/3.3.6/js/bootstrap.min.js}"></script>
 <script src="../static/lib/js/lightbox.min.js" th:src="@{/lib/js/lightbox.min.js}"></script>
-
+<script src="../static/js/menu_click.js" th:src="@{/js/menu_click.js}"></script>
 </body>
 </html>
