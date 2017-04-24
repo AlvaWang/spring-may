@@ -69,8 +69,10 @@
             font-family: "Microsoft YaHei"
         }
         .pull-left {
+            background: gray;
         }
         .pull-left img {
+            margin: 10px 20px;
             max-width: 200px;
         }
     </style>
@@ -100,7 +102,7 @@
 
         <div class="container my-content">
             <!--<h2 th:text="${type.toChinese()}">展示</h2>-->
-            <hr/>
+            <!--<hr/>-->
             <div class="media" th:each="post : ${posts.content}" >
                 <a th:href="'/threads/'+ ${post.id}" class="content-link">
                 <div th:if="${post.thumbnail}" class="pull-left" >
@@ -113,6 +115,7 @@
                 </a>
                 <hr style="width: 100%"/>
             </div>
+
         </div>
         <nav class="page-nav">
             <ul class="pagination">

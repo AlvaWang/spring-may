@@ -393,7 +393,8 @@ a .active {
 .thread {
     margin-top: 100px;
     overflow: hidden;
-    margin-bottom: 70px;
+    margin-bottom: 120px;
+    width: 70%;
 }
 .media-body p {
     height: auto;
