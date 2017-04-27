@@ -71,6 +71,19 @@ public class MainController {
     public String success() {
         return "success";
     }
+    @RequestMapping("/entry")
+    public String entry() {
+        return "entry";
+    }
+    @RequestMapping("/registerSuccess")
+    public String registerSuccess() {
+        return "registerSuccess";
+    }
+
+    @RequestMapping("/registerState")
+    public String registerState() {
+        return "registerState";
+    }
 
     @ModelAttribute("avatars")
     @RequestMapping("/avatars")

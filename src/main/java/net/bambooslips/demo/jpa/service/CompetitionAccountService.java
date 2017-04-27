@@ -1,8 +1,11 @@
 package net.bambooslips.demo.jpa.service;
 
+import net.bambooslips.demo.exception.CompetitionAccountNotFoundException;
 import net.bambooslips.demo.jpa.model.CompetitionAccount;
+import net.bambooslips.demo.jpa.model.Post;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -13,5 +16,10 @@ import java.util.List;
 public interface CompetitionAccountService {
 
     List<CompetitionAccount> search(String comAccName, String comAccPwd,String comAccType);
-    CompetitionAccount create(CompetitionAccount competitionAccount);
+    Long create(CompetitionAccount competitionAccount);
+
+    @Transactional(rollbackFor = CompetitionAccountNotFoundException.class)
+    CompetitionAccount update(CompetitionAccount update);
+
+    CompetitionAccount delete(Long id);
 }

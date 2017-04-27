@@ -5,6 +5,7 @@
     <title>中国创新创业大赛 - 军转民分站</title>
     <link href="../static/lib/css/bootstrap.min.css" th:href="@{/lib/css/bootstrap.min.css}" rel="stylesheet" />
     <link href="../static/lib/css/font-awesome.min.css" th:href="@{/lib/css/font-awesome.min.css}" rel="stylesheet" />
+    <link rel="stylesheet" href="../static/css/app.css" th:href="@{/css/app.css}" />
     <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}" />
     <script src="../static/lib/jquery.min.js" th:src="@{/webjars/jquery/2.2.3/jquery.min.js}"></script>
     <script src="../static/lib/bootstrap.min.js" th:src="@{/webjars/bootstrap/3.3.6/js/bootstrap.min.js}"></script>
@@ -14,6 +15,23 @@
     <div id="main">
         <!-- Header -->
         <div th:replace="fragments/header :: header"></div>
+
+        <!--banner部分-->
+        <div class="section section-banner active" style="margin-top: 70px;">
+            <div class="content" style="height: 455px!important;">
+            </div>
+            <div class="content_blue">
+                <div>
+                    <ul>
+                        <li class="click_menu1"><a href="#meg_present"><p>大赛通知</p></a></li>
+                        <li class="click_menu2"><a href="#condition"><p>大赛章程</p></a></li>
+                        <li class="click_menu3"><a href="#prize_set"><p>组织机构</p></a></li>
+                        <li class="click_menu4"><a href="#org_institution"><p>竞赛规则</p></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
         <div class="row thread">
             <div class="col-lg-12">
                 <h1 style="text-align: center;">第二届“创青春”中国青年创新创业大赛</h1>
@@ -69,9 +87,9 @@
                 <p>&nbsp; &nbsp; &nbsp; &nbsp;（6）对参赛项目现状的了解，有清晰的业务规划、战略目标及可执行性。</p>
             </div>
         </div>
-        <div th:replace="fragments/footer :: footer">&copy; 2016 blog.codeleak.pl</div>
+        <div th:replace="fragments/footer :: footer"></div>
     </div>
 </div>
-
+<script src="../../static/js/menu_click.js" th:src="@{/js/menu_click.js}"></script>
 </body>
 </html>

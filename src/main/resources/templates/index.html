@@ -28,14 +28,15 @@
                  style="height:auto; position: relative; touch-action: none; transform: translate3d(0px, 0px, 0px);" >
                 <div class="section section-banner active" style="margin-top: 70px;">
                     <div class="content" style="height: 455px!important;">
+                        <div><a href="#"><p>参赛登录</p></a></div>
                     </div>
                     <div class="content_blue">
                         <div>
                             <ul>
-                                <li><a href="#meg_present"><p>大赛介绍</p></a></li>
-                                <li><a href="#condition"><p>参赛条件</p></a></li>
-                                <li><a href="#prize_set"><p>奖项设置</p></a></li>
-                                <li><a href="#org_institution"><p>组织机构</p></a></li>
+                                <li class="click_menu_index1"><a href="#meg_present"><p>大赛介绍</p></a></li>
+                                <li class="click_menu_index2"><a href="#condition"><p>参赛条件</p></a></li>
+                                <li class="click_menu_index3"><a href="#prize_set"><p>奖项设置</p></a></li>
+                                <li class="click_menu_index4"><a href="#org_institution"><p>组织机构</p></a></li>
                             </ul>
                         </div>
                     </div>
@@ -344,7 +345,7 @@
 <script src="../static/lib/js/jquery.min.js" th:src="@{/webjars/jquery/2.2.3/jquery.min.js}"></script>
 <script src="../static/lib/js/bootstrap.min.js" th:src="@{/webjars/bootstrap/3.3.6/js/bootstrap.min.js}"></script>
 <!--<script src="../static/lib/js/jquery.fullPage.min.js" th:src="@{/lib/js/jquery.fullPage.min.js}" ></script>-->
-
+<script src="../static/js/menu_click.js" th:src="@{/js/menu_click.js}"></script>
 <script>
     $(function () {
         $('#fullpage').fullpage({

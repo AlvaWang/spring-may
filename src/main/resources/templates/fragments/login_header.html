@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <link href="../static/lib/css/bootstrap.min.css" th:href="@{/lib/css/bootstrap.min.css}" rel="stylesheet" />
+        <link href="../static/lib/css/font-awesome.min.css" th:href="@{/lib/css/font-awesome.min.css}" rel="stylesheet" />
+        <link rel="stylesheet" href="../static/css/app.css" th:href="@{/css/app.css}" />
+        <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}" />
+        <script src="../static/lib/jquery.min.js" th:src="@{/webjars/jquery/2.2.3/jquery.min.js}"></script>
+        <script src="../static/lib/bootstrap.min.js" th:href="@{/webjars/bootstrap/3.3.6/js/bootstrap.min.js}"></script>
+    </head>
+    <body>
+        <!-- Navbar -->
+        <!--header单击标题栏跳转到标题页面，出现绿色框在正下方表名该列别选中-->
+        <div class="login_header" th:fragment="login_header" style="background: rgba(0,0,0,0)!important;">
+            <nav id="" class="" style="box-shadow: none;">
+                <div class="">
+                    <div>
+                        <div class="logo" style="">
+                            <a href="/" class="my-logo-a"  >
+                                <img src="../img/logo1.png" alt="" class="logo" style="margin-left: 15%"/>
+                                <!--<span style="margin: 3px 10px;width: 130px;font-size: 16px">中国创新创业大赛 军转民分站</span>-->
+                                <!--<span></span>-->
+                            </a>
+                        </div>
+
+                        <!--<div><span>起迈科技技术有限公司</span><span>技术支持</span></div>-->
+                    </div>
+
+                </div>
+
+            </nav>
+        </div>
+        <script>
+            $(function () {
+                $('.dropdown-toggle').dropdown()
+            });
+        </script>
+    </body>
+</html>

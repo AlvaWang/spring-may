@@ -10,6 +10,7 @@
     </head>
     <body>
         <!-- Navbar -->
+        <!--header单击标题栏跳转到标题页面，出现绿色框在正下方表名该列别选中-->
         <div class="header" th:fragment="header" style="background: rgba(0,0,0,0)!important;">
             <nav id="navbar" class="navbar navbar-collapse collapse" style="box-shadow: none;">
                 <div class="my-logo">
@@ -29,41 +30,43 @@
                             <div class="navigation">
                                 <ul class="nav" style="height:100%;display: inline;min-width: 600px;">
 
-                                    <li>
+                                    <li id="event_profile">
                                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                           aria-expanded="false">赛事概况 <span class="caret"></span></a>
-                                        <ul class="dropdown-menu" role="menu" style="min-width: 80px">
-                                            <li ><a href="/intro/info">大赛通知</a></li>
-                                            <li><a href="/intro/regulation">大赛章程</a></li>
-                                            <li><a href="/intro/org">组织机构</a></li>
-                                            <li><a href="/intro/rule">竞赛规则</a></li>
-                                        </ul>
+                                           aria-expanded="false" >赛事概况 <span class="caret"></span></a>
+                                        <!--<ul class="dropdown-menu" role="menu" style="min-width: 80px">-->
+                                            <!--<li ><a href="/intro/info">大赛通知</a></li>-->
+                                            <!--<li><a href="/intro/regulation">大赛章程</a></li>-->
+                                            <!--<li><a href="/intro/org">组织机构</a></li>-->
+                                            <!--<li><a href="/intro/rule">竞赛规则</a></li>-->
+                                        <!--</ul>-->
                                     </li>
 
-                                    <li>
+                                    <li id="news_center">
                                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                            aria-expanded="false">新闻中心 <span class="caret"></span></a>
-                                        <ul class="dropdown-menu" role="menu" style="min-width: 80px">
-                                            <li><a href="/threads?type=NATIONAL">全国大赛</a></li>
-                                            <li><a href="/threads?type=MAIN">军转民分区</a></li>
-                                            <li><a href="/threads?type=REPORT">赛事报告</a></li>
-                                            <li><a href="/threads?type=OTHER">其他资讯</a></li>
-                                        </ul>
+                                        <!--<ul class="dropdown-menu" role="menu" style="min-width: 80px">-->
+                                            <!--<li><a href="/threads?type=NATIONAL">全国大赛</a></li>-->
+                                            <!--<li><a href="/threads?type=MAIN">军转民分区</a></li>-->
+                                            <!--<li><a href="/threads?type=REPORT">赛事报告</a></li>-->
+                                            <!--<li><a href="/threads?type=OTHER">其他资讯</a></li>-->
+                                        <!--</ul>-->
                                     </li>
 
-                                    <li>
+                                    <li id="review">
                                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                            aria-expanded="false">往期回顾 <span class="caret"></span></a>
-                                        <ul class="dropdown-menu" role="menu" style="min-width: 80px">
-                                            <li><a href="/pictures">照片展示</a></li>
-                                            <li><a href="/threads?type=VIDEO">视频展示</a></li>
-                                            <li><a href="/threads?type=PROJECT">优秀项目</a></li>
-                                            <li><a href="/avatars">专家委员会</a></li>
-                                        </ul>
+                                        <!--<ul class="dropdown-menu" role="menu" style="min-width: 80px">-->
+                                            <!--<li><a href="/pictures">照片展示</a></li>-->
+                                            <!--<li><a href="/threads?type=VIDEO">视频展示</a></li>-->
+                                            <!--<li><a href="/threads?type=PROJECT">优秀项目</a></li>-->
+                                            <!--<li><a href="/avatars">专家委员会</a></li>-->
+                                        <!--</ul>-->
                                     </li>
 
                                     <li><a href="http://www.cxcyds.com/" class="dropdown-toggle">参赛报名</a></li>
-                                    <li style="margin-left: 0;" class="active"><a href="/" class="dropdown-toggle"><div style="float: right;min-width: 80px;text-align: center">首页</div></a></li>
+                                    <li style="margin-left: 0;" class="active"><a href="/" class="dropdown-toggle">
+                                        <div style="float: right;min-width: 80px;text-align: center">首页</div></a>
+                                    </li>
                                 </ul>
                             </div>
                             <div class="login_but">

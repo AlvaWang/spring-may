@@ -16,18 +16,10 @@
     <div th:replace="fragments/login_header :: login_header"></div>
 
     <div class="reg_reg_bac" style="height: calc(100% - 200px)">
-        <div class="reg_reg_div">
-            <div>
-                <div>
-                    <!--thymeleaf 默认解析是html必须要带结束符否则 不能识别 -->
-                    账户名：<input type="text" value="登录名" id="acc_name"/><br/>
-                    登录密码：<input type="password" placeholder="请输入登录账号" id="acc_pwd" /><br/>
-                    确认密码：<input type="password" placeholder="请输入登录账号" id="acc_again_pwd"/><br/>
-                    邮箱：<input type="email" placeholder="请输入联系邮箱/" id="acc_email"/><br/>
-                    <input type="text" value="COMPETITION" hidden="hidden" id="acc_type"/>
-                    <button type="button" id="register_btn">注册</button>
-                </div>
-
+        <div class="entry_entry">
+            <div class="entry_">
+                <div class="entry_div"><a href="#"><p>单位入口</p></a></div>
+                <div  class="entry_div" style="margin-left: 30%"><a href="#"><p>团队入口</p></a></div>
             </div>
         </div>
     </div>

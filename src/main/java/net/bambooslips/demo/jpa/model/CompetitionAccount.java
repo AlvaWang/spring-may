@@ -27,6 +27,9 @@ public class CompetitionAccount extends BaseModel{
     @Column(name = "com_acc_type")
     private String comAccType;
 
+    @Column(name = "com_state")
+    private String comState;
+
 
     public CompetitionAccount(){
 
@@ -44,6 +47,12 @@ public class CompetitionAccount extends BaseModel{
         this.comAccPwd = comAccPwd;
         this.comAccEmail = comAccEmail;
         this.comAccType = comAccType;
+    }
+
+    public  CompetitionAccount update(CompetitionAccount updated) {
+        if(updated.getComState() != null)this.setComState(updated.getComState());
+
+        return this;
     }
 
 //    public Long getComAccId(){
@@ -79,6 +88,13 @@ public class CompetitionAccount extends BaseModel{
     }
     public void setComAccPwd(String comAccPwd){
         this.comAccPwd = comAccPwd;
+    }
+
+    public String getComState(){
+        return comState;
+    }
+    public void setComState(String comState){
+        this.comState = comState;
     }
 
 }

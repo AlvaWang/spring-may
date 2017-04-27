@@ -1,0 +1,222 @@
+a:hover{
+    text-decoration: none!important;
+    color: #7aae1a;
+}
+li{
+    list-style-type: none;
+}
+.login_reg_bac{
+    background: url("../img/dlbj.png");
+    /*background-size: cover;*/
+    background-size: 100% 100%;
+}
+#footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    clear: both;
+    /* margin-bottom: 10px; */
+    background: #12aaf0;
+    height: 130px;
+}
+.row {
+    max-width: 1170px;
+    margin: 0px auto -50px;
+    padding-top: 20px;
+}
+#footer p {
+    margin-bottom: 0;
+    font-family: 幼圆;
+    font-size: 14px !important;
+    color: #fff;
+    line-height: 30px !important;
+    /* float: left; */
+    margin-left: 20px;
+    text-align: center;
+    /* width: 350px; */
+}
+.row>p {
+    font-size: 18px!important;
+    line-height: 50px;
+    text-align: center;
+}
+.login_reg_div{
+    height: 100%;
+    width: 30%;
+    background:url("../img/denglu.png");
+    margin-left: 60%;
+    background-size: 100% 100%;
+    position: absolute;
+    margin-top: -30px;
+}
+.reg_reg_bac{
+    background: url("../img/dlbj2.png");
+    /*background-size: cover;*/
+    background-size: 100% 100%;
+    text-align: center;
+
+}
+.entry_entry{
+    height: 100%;
+    width: 100%;
+    position:relative;
+}
+.reg_reg_div{
+    height: 100%;
+    width: 50%;
+    background: url("../img/denglu-zhuce-zhucechenggong.png");
+    margin-left: 25%;
+    background-size: 100% 100%;
+    position: absolute;
+    margin-top: -30px;
+
+}
+.reg_suc_div{
+    height: 100%;
+    width: 50%;
+    background: url("../img/zhucechenggong.png");
+    margin-left: 25%;
+    background-size: 100% 100%;
+    position: absolute;
+    margin-top: -30px;
+}
+.entry_{
+    width: 60%;
+    height: 91px;
+    /*text-align: center;*/
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+    /*padding-top: calc(17% - 45px);*/
+    min-width: 500px;
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+
+}
+.entry_ div{
+    float: left;
+}
+.entry_div{
+    width: 30%;
+    min-width: 150px;
+    height:91px ;
+    background: url("../img/anbj.png");
+    background-size: 100% 100%;
+    margin-left: 10%;
+    text-align: center;
+}
+.entry_div a p{
+    font-family: 微软雅黑;
+    font-size:30px ;
+    font-weight:bold ;
+    letter-spacing: 5px;
+    text-align: center;
+    padding-top: 15px;
+    color: #fff;
+}
+
+.state_div{
+    width: 490px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+}
+.state_content{
+    margin-top: 10px;
+    background: #fff;
+    height: calc(100% - 90px);
+}
+.state_content p{
+
+}
+.state_btn{
+    margin-top: 10px;
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+}
+.state_btn div{
+    float: left;
+    border-radius: 4px;
+    height: 30px;
+    width: 140px;
+}
+.state_btn  #agree_div{
+    float: left;
+    background: #8fc31f;
+    color: #fff;
+    font-family: 微软雅黑;
+    font-size: 16px;
+    text-align: center;
+}
+.state_btn  #cancel_div{
+    float: right;
+    background: #bcbcbc;
+    color: #3e3e3e;
+    font-family: 微软雅黑;
+    font-size: 16px;
+    text-align: center;
+}
+.state_btn div p {
+    margin-top: 3px;
+}
+.suc_div{
+    height:100%;
+    width: 90%;
+    margin-left: 5.5%;
+}
+.suc_div hr{
+    height:1px;border:none;border-top:1px solid gainsboro;
+    margin: 6%;
+    width: 100%;
+}
+.suc_title{
+    width: 100%;
+    border-bottom: 1px solid gainsboro;
+}
+.suc_title div{
+    width: 110px;
+    height: 36px;
+    background: #8fc31f;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    margin-top: 34px;
+    margin-left: 8%;
+}
+.suc_title p{
+    font-family: 微软雅黑;
+    font-size: 16px;
+    color: #ffffff;
+    padding-top: 8px;
+}
+.suc{
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.suc_content{
+    height: calc(100% - 320px);
+    position:relative;
+}
+.suc_con_div{
+    width: 240px;
+    height: 60px;
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+}
+.suc_con_div div{
+    float: left;
+}
+.suc_login{
+    /*width: 290px;*/
+    height: 30px;
+    border-radius: 4px;
+    background: #3890f3;
+    text-align: center;
+}
+.suc_login p{
+    font-family: 微软雅黑;
+    font-size: 16px;
+    color: #ffffff;
+}

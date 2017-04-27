@@ -52,6 +52,22 @@ public class CompetitionAccountController {
             return new ModelAndView("redirect:login.html");
         }
     }
+    @RequestMapping(value = "loginActionWork",method = RequestMethod.POST,
+            produces = {"text/html;charset=UTF-8;", "application/json", "*/*"})
+    public @ResponseBody
+    ModelAndView loginWorkMethod(@RequestParam(required = false) String comAccName,
+                             @RequestParam(required = false) String comAccPwd,
+                             @RequestParam(required = false) String comAccType){
+        String message = "这个是要传递的数据";
+//        comAccName = "wp";comAccPwd = "123456";
+        comAccType = "EXPERT";
+        List<CompetitionAccount> list = competitionAccountService.search(comAccName,comAccPwd,comAccType);
+        if (list != null && list.size()>0){
+            return new ModelAndView("redirect:success.html="+comAccName);
+        }else {
+            return new ModelAndView("redirect:login.html");
+        }
+    }
 
     /*
     注册账号
@@ -59,13 +75,42 @@ public class CompetitionAccountController {
     @RequestMapping(value = "registerMethod",method = RequestMethod.POST, consumes = "application/x-www-form-urlencoded")
     @ResponseBody
     @ResponseStatus(HttpStatus.CREATED)
-    public CompetitionAccount create(@RequestParam(required = true) String comAccName,
+    public Long create(@RequestParam(required = true) String comAccName,
                        @RequestParam(required = true) String comAccPwd,
                        @RequestParam(required = true) String comAccEmail,
                        @RequestParam(required = true) String comAccType) {
         CompetitionAccount competitionAccount = new CompetitionAccount(comAccName, comAccPwd, comAccEmail,comAccType);
-        CompetitionAccount result =  competitionAccountService.create(competitionAccount);
+        Long result =  competitionAccountService.create(competitionAccount);
+
         return result;
     }
 
+
+    /**
+     * 修改声明
+     * @param id
+     * @param comState
+     * @return
+     */
+    @RequestMapping(value = "/updateState/{id}", method = RequestMethod.PUT, consumes = "application/x-www-form-urlencoded")
+    @ResponseBody
+    public CompetitionAccount updateByForm(@PathVariable Long id, String comState) {
+        CompetitionAccount competitionAccount = new CompetitionAccount();
+        competitionAccount.setId(id);
+        competitionAccount.setComState(comState);
+
+        return competitionAccountService.update(competitionAccount);
+    }
+
+    /**
+     * 删除账号
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.OK)
+    public CompetitionAccount delete(@PathVariable Long id) {
+        return competitionAccountService.delete(id);
+    }
 }

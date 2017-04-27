@@ -1,5 +1,7 @@
 package net.bambooslips.demo.jpa.service.Impl;
 
+import net.bambooslips.demo.exception.CompetitionAccountNotFoundException;
+import net.bambooslips.demo.exception.PostNotFoundException;
 import net.bambooslips.demo.jpa.model.CompetitionAccount;
 import net.bambooslips.demo.jpa.model.Post;
 import net.bambooslips.demo.jpa.repository.CompetitionAccountRepository;
@@ -34,9 +36,45 @@ public class CompetitionAccountServiceImpl implements CompetitionAccountService{
 
     @Transactional
     @Override
-    public CompetitionAccount create(CompetitionAccount competitionAccount) {
+    public Long create(CompetitionAccount competitionAccount) {
         LOG.debug("Creating a new post with information: " + competitionAccount);
-        return competitionAccountRepository.save(competitionAccount);
+        CompetitionAccount result = competitionAccountRepository.save(competitionAccount);
+        if(result != null){
+            return competitionAccount.getId();
+        }
+        return null;
+    }
+
+    @Transactional(rollbackFor = CompetitionAccountNotFoundException.class)
+    @Override
+    public CompetitionAccount update(CompetitionAccount updated) throws CompetitionAccountNotFoundException {
+        LOG.debug("Updating CompetitionAccount with information: " + updated);
+
+        CompetitionAccount competitionAccount = competitionAccountRepository.findOne(updated.getId());
+
+        if (competitionAccount == null) {
+            LOG.debug("No post found with id: " + updated.getId());
+            throw new PostNotFoundException("Post "+updated.getComState()+" not found.");
+        }
+        competitionAccount.update(updated);
+
+        return competitionAccount;
+    }
+
+    @Transactional(rollbackFor = PostNotFoundException.class)
+    @Override
+    public CompetitionAccount delete(Long id) throws CompetitionAccountNotFoundException {
+        LOG.debug("Deleting CompetitionAccount with id: " + id);
+
+        CompetitionAccount deleted = competitionAccountRepository.findOne(id);
+
+        if (deleted == null) {
+            LOG.debug("No CompetitionAccount found with id: " + id);
+            throw new PostNotFoundException("No CompetitionAccount found with id: " + id);
+        }
+
+        competitionAccountRepository.delete(deleted);
+        return deleted;
     }
 
 }
