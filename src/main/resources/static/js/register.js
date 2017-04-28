@@ -35,7 +35,7 @@
             success: function (result) {
                 if (result != null) {
                     // alert(result);
-                    window.location.href = "/registerState?id=" + result + "";
+                    window.location.href = "/registerSuccess?id=" + result + "";
                     // comId = result;
                 }
 

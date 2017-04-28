@@ -36,49 +36,50 @@
         }
         .img_container_div{
             /*图片效果*/
-            background: #fff;
+            background: url("../img/photo-bg.png") center no-repeat;
+            background-size: 100% 100%;
             position:relative;
             list-style: none;
             margin:20px 10px;
             width:100%;
             text-align: center;
             line-height: 220px;
-            -webkit-box-shadow: 0 0 2px rgba(0,0,0,.3),0 0 2px rgba(0,0,0,.3);
-            -moz-box-shadow: 0 0 2px rgba(0,0,0,.3),0 0 2px rgba(0,0,0,.3);
-            -o-box-shadow: 0 0 2px rgba(0,0,0,.3),0 0 2px rgba(0,0,0,.3);
+            /*-webkit-box-shadow: 0 0 2px rgba(0,0,0,.3),0 0 2px rgba(0,0,0,.3);*/
+            /*-moz-box-shadow: 0 0 2px rgba(0,0,0,.3),0 0 2px rgba(0,0,0,.3);*/
+            /*-o-box-shadow: 0 0 2px rgba(0,0,0,.3),0 0 2px rgba(0,0,0,.3);*/
         }
-        .img_container_div:before{
-            position:absolute;
-            bottom:9px;
-            left:14px;
-            content:"";
-            height:80%;
-            width:90%;
-            z-index:-1;
-            background: transparent;
-            -webkit-transform:skew(10deg) rotate(4deg);
-            -moz-transform:skew(10deg) rotate(4deg);
-            -o-transform:skew(10deg) rotate(4deg);
-            -webkit-box-shadow: 0 0 20px rgba(0,0,0,1);
-            -moz-box-shadow: 0 0 20px rgba(0,0,0,1);
-            -o-box-shadow: 0 0 20px rgba(0,0,0,1);
-        }
-        .img_container_div:after{
-            position:absolute;
-            bottom:9px;
-            left:14px;
-            content:"";
-            height:80%;
-            width:90%;
-            z-index:-1;
-            background: transparent;
-            -webkit-transform:skew(-10deg) rotate(-4deg);
-            -moz-transform:skew(-10deg) rotate(-4deg);
-            -o-transform:skew(-10deg) rotate(-4deg);
-            -webkit-box-shadow: 0 0 20px rgba(0,0,0,1);
-            -moz-box-shadow: 0 0 20px rgba(0,0,0,1);
-            -o-box-shadow: 0 0 20px rgba(0,0,0,1);
-        }
+        /*.img_container_div:before{*/
+            /*position:absolute;*/
+            /*bottom:9px;*/
+            /*left:14px;*/
+            /*content:"";*/
+            /*height:80%;*/
+            /*width:90%;*/
+            /*z-index:-1;*/
+            /*background: transparent;*/
+            /*-webkit-transform:skew(10deg) rotate(4deg);*/
+            /*-moz-transform:skew(10deg) rotate(4deg);*/
+            /*-o-transform:skew(10deg) rotate(4deg);*/
+            /*-webkit-box-shadow: 0 0 20px rgba(0,0,0,1);*/
+            /*-moz-box-shadow: 0 0 20px rgba(0,0,0,1);*/
+            /*-o-box-shadow: 0 0 20px rgba(0,0,0,1);*/
+        /*}*/
+        /*.img_container_div:after{*/
+            /*position:absolute;*/
+            /*bottom:9px;*/
+            /*left:14px;*/
+            /*content:"";*/
+            /*height:80%;*/
+            /*width:90%;*/
+            /*z-index:-1;*/
+            /*background: transparent;*/
+            /*-webkit-transform:skew(-10deg) rotate(-4deg);*/
+            /*-moz-transform:skew(-10deg) rotate(-4deg);*/
+            /*-o-transform:skew(-10deg) rotate(-4deg);*/
+            /*-webkit-box-shadow: 0 0 20px rgba(0,0,0,1);*/
+            /*-moz-box-shadow: 0 0 20px rgba(0,0,0,1);*/
+            /*-o-box-shadow: 0 0 20px rgba(0,0,0,1);*/
+        /*}*/
         .thumb-image {
             /*width: 198px;*/
             /*border-radius: 5px;*/
@@ -105,14 +106,15 @@
         <!--banner部分-->
         <div class="section section-banner active" style="margin-top: 70px;">
             <div class="content" style="height: 455px!important;">
+                <div class="index_login_btn"><a href="#"><p>参赛登录</p></a></div>
             </div>
             <div class="content_blue">
                 <div>
                     <ul>
-                        <li class="click_menu1" ><a href="#meg_present"><p>照片展示</p></a></li>
-                        <li class="click_menu2"><a href="#condition"><p>视频展示</p></a></li>
-                        <li class="click_menu3"><a href="#prize_set"><p>优秀项目</p></a></li>
-                        <li class="click_menu4"><a href="#org_institution"><p>专家委员会</p></a></li>
+                        <li class="click_menu1"><a href="/pictures"><p>照片展示</p></a></li>
+                        <li class="click_menu2"><a href="/threads?type=VIDEO"><p>视频展示</p></a></li>
+                        <li class="click_menu3"><a href="/threads?type=PROJECT"><p>优秀项目</p></a></li>
+                        <li class="click_menu4"><a href="/avatars"><p>专家委员会</p></a></li>
                     </ul>
                 </div>
             </div>

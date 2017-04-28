@@ -1,4 +1,7 @@
-
+a:focus,a:hover{
+    color: #7aae1a;
+    text-decoration: none!important;
+}
 .header,.navbar-default {
     border: none;
     /*background: url("../img/banner.jpg")no-repeat;*/
@@ -77,17 +80,27 @@ nav {
     width: 100%;
     height: 100%;
     background: url("../img/banner2.jpg") center no-repeat;
-    background-size: cover!important;
+    background-size: 100% 100%!important;
     z-index: 1;
     /*-moz-background-size:100%;*/
     /*-webkit-background-size:100%;*/
     /*-o-background-size:100%;*/
     /*-ms-background-size:100%;*/
+     position: relative;
 }
- .content div{
-     width: 100px;
+ .content .index_login_btn{
+     width: 10%;
+     max-width: 198px;
+     min-width: 100px;
+     height: 37px;
+     background: #0545ab;
+     opacity: 0.9;
      text-align: center;
      vertical-align: middle;
+     position: absolute;
+     margin-top: 390px;
+     /*left: calc(90%/2);*/
+     left: calc(90%/2 + 0.5%);
  }
  .content div a p{
      font-family: 微软雅黑;
@@ -95,6 +108,8 @@ nav {
      font-weight: bold;
      color: #fff;
      letter-spacing: 5px;
+     text-align: center;
+     margin-top: 5px;
  }
 
 .content_blue{

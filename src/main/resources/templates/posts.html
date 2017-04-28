@@ -69,10 +69,18 @@
         }
         .media-body {
             padding-left: 35px;
-            font-family: "Microsoft YaHei"
+            font-family: "Microsoft YaHei";
+            padding-top: 25px;
         }
         .pull-left {
-            background: gray;
+            background: url("../img/photo-bg.png") center no-repeat;
+            background-size: 100% 100%;
+            position: relative;
+            list-style: none;
+            margin: 20px 10px;
+            width: 210px;
+            text-align: center;
+            line-height: 135px;
         }
         .pull-left img {
             /*margin: 10px 20px;*/
@@ -89,14 +97,25 @@
         <!--banner部分-->
         <div class="section section-banner active" style="margin-top: 70px;">
             <div class="content" style="height: 455px!important;">
+                <div class="index_login_btn"><a href="#"><p>参赛登录</p></a></div>
             </div>
-            <div class="content_blue">
+            <div class="content_blue" id="review_banner">
                 <div>
                     <ul>
-                        <li class="click_menu1"><a href="#meg_present"><p>照片展示</p></a></li>
-                        <li class="click_menu2"><a href="#condition"><p>视频展示</p></a></li>
-                        <li class="click_menu3"><a href="#prize_set"><p>优秀项目</p></a></li>
-                        <li class="click_menu4"><a href="#org_institution"><p>专家委员会</p></a></li>
+                        <li class="click_menu1"><a href="/pictures"><p>照片展示</p></a></li>
+                        <li class="click_menu2"><a href="/threads?type=VIDEO"><p>视频展示</p></a></li>
+                        <li class="click_menu3"><a href="/threads?type=PROJECT"><p>优秀项目</p></a></li>
+                        <li class="click_menu4"><a href="/avatars"><p>专家委员会</p></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="content_blue" id="news_center_banner">
+                <div>
+                    <ul>
+                        <li class="click_menu5"><a href="/threads?type=NATIONAL"><p>全国大赛</p></a></li>
+                        <li class="click_menu6"><a href="/threads?type=MAIN"><p>军转民分区</p></a></li>
+                        <li class="click_menu7"><a href="/threads?type=REPORT"><p>赛事报告</p></a></li>
+                        <li class="click_menu8"><a href="/threads?type=OTHER"><p>其他资讯</p></a></li>
                     </ul>
                 </div>
             </div>
