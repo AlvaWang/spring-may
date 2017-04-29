@@ -19,6 +19,9 @@ public class Contacts implements  Serializable {
     @Column(name = "ue_id")
     private Long ueId;
 
+    @Column(name = "entire_id")
+    private Long entireId;
+
     @Column(name = "contacts_name")
     private String contactsName;
 
@@ -39,17 +42,33 @@ public class Contacts implements  Serializable {
     public Contacts(){
 
     }
+    public Contacts(Long entireId,Long ueId,String contactsName,String contactsJob,String contactsOfficeTel,
+                    String contactsMobileTel,String contactsEmail){
+        this.entireId = entireId;
+        this.ueId = ueId;
+        this.contactsName = contactsName;
+        this.contactsJob = contactsJob;
+        this.contactsOfficeTel = contactsOfficeTel;
+        this.contactsMobileTel = contactsMobileTel;
+        this.contactsEmail = contactsEmail;
 
-//    /**
-//     * 更新联系人
-//     * @param updated
-//     * @return
-//     */
-//    public LegalRepresentative update(LegalRepresentative updated) {
-//        if(updated.getWorkState() != null)this.setWorkState(updated.getWorkState());
-//
-//        return this;
-//    }
+    }
+
+    /**
+     * 更新联系人
+     * @param updated
+     * @return
+     */
+    public Contacts update(Contacts updated) {
+        if(updated.getEntireId() != null)this.setEntireId(updated.getEntireId());
+        if(updated.getUeId() != null)this.setUeId(updated.getUeId());
+        if(updated.getContactsName() != null)this.setContactsName(updated.getContactsName());
+        if(updated.getContactsJob() != null)this.setContactsJob(updated.getContactsJob());
+        if(updated.getContactsOfficeTel() != null)this.setContactsOfficeTel(updated.getContactsOfficeTel());
+        if(updated.getContactsMobileTel() != null)this.setContactsMobileTel(updated.getContactsMobileTel());
+        if(updated.getContactsEmail() != null)this.setContactsEmail(updated.getContactsEmail());
+        return this;
+    }
 
     public Long getContactsId(){
         return contactsId;
@@ -63,7 +82,12 @@ public class Contacts implements  Serializable {
     public void setUeId(Long ueId){
         this.ueId = ueId;
     }
-
+    public Long getEntireId(){
+        return entireId;
+    }
+    public void setEntireId(Long entireId){
+        this.entireId = entireId;
+    }
     public String getContactsName(){
         return contactsName;
     }

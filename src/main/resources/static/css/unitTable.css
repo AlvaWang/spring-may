@@ -1,0 +1,19 @@
+.main_div{
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 45px;
+}
+
+.table_unit{
+    width: 100%;
+}
+.table_unit div{
+    float: left;
+}
+.btn_table{
+    width: 5%;
+}
+.table_unit_content{
+    width: 95%;
+}

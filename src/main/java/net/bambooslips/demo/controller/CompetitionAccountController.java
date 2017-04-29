@@ -47,7 +47,7 @@ public class CompetitionAccountController {
         comAccType = "COMPETITION";
         List<CompetitionAccount> list = competitionAccountService.search(comAccName,comAccPwd,comAccType);
         if (list != null && list.size()>0){
-            return new ModelAndView("redirect:success.html="+comAccName);
+            return new ModelAndView("redirect:success.html?comName="+comAccName);
         }else {
             return new ModelAndView("redirect:login.html");
         }
@@ -63,7 +63,7 @@ public class CompetitionAccountController {
         comAccType = "EXPERT";
         List<CompetitionAccount> list = competitionAccountService.search(comAccName,comAccPwd,comAccType);
         if (list != null && list.size()>0){
-            return new ModelAndView("redirect:success.html="+comAccName);
+            return new ModelAndView("redirect:success.html?comName="+comAccName);
         }else {
             return new ModelAndView("redirect:login.html");
         }

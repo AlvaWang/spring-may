@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ch_CN" xmlns:th="http://www.thymeleaf.org">
+<head >
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>中国创新创业大赛 - 军转民分站</title>
+    <link href="../static/lib/css/bootstrap.min.css" th:href="@{/lib/css/bootstrap.min.css}" rel="stylesheet" />
+    <link href="../static/lib/css/font-awesome.min.css" th:href="@{/lib/css/font-awesome.min.css}" rel="stylesheet" />
+    <link rel="stylesheet" href="../static/lib/css/lightbox.min.css" th:href="@{/lib/css/lightbox.min.css}" />
+    <link rel="stylesheet" href="../static/css/app.css" th:href="@{/css/app.css}" />
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}" />
+</head>
+<body>
+<div id="body">
+    <div id="main" >
+        <div class="main_div">
+            //飘带
+            <div>基本信息div</div>
+
+            <div class="table_unit">
+                <div class="btn_table">
+                    <div id="first_btn"><p>第一步</p></div>
+                    <div id="second_btn"><p>第二步</p></div>
+                    <div id="third_btn"><p>第三步</p></div>
+                </div>
+                <div id="first_table" class="table_unit_content">
+                    <div class="tHeader"></div>
+                    <div class="tContent">
+                        <table>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div id="second_table">
+                    <div class="tHeader"></div>
+                    <div class="tContent">
+                        <table>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div id="third_table">
+                    <div class="tHeader"></div>
+                    <div class="tContent">
+                        <table>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div th:replace="fragments/footer :: footer"></div>
+    </div>
+</div>
+
+<script src="../static/lib/js/jquery.min.js" th:src="@{/webjars/jquery/2.2.3/jquery.min.js}"></script>
+<script src="../static/lib/js/bootstrap.min.js" th:src="@{/webjars/bootstrap/3.3.6/js/bootstrap.min.js}"></script>
+<script src="../static/lib/js/lightbox.min.js" th:src="@{/lib/js/lightbox.min.js}"></script>
+<script src="../static/js/public.js" th:src="@{/js/public.js}"></script>
+<script src="../static/js/unitTable.js" th:src="@{/js/unitTable.js}"></script>
+</body>
+</html>

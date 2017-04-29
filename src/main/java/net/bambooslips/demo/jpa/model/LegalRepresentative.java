@@ -19,6 +19,9 @@ public class LegalRepresentative implements  Serializable {
     @Column(name = "ue_id")
     private Long ueId;
 
+    @Column(name = "entire_id")
+    private Long entireId;
+
     @Column(name = "legal_name")
     private String legalName;
 
@@ -39,17 +42,32 @@ public class LegalRepresentative implements  Serializable {
     public LegalRepresentative(){
 
     }
+    public LegalRepresentative(Long entireId,Long ueId,String legalName,String legalJob,
+                               String legalOfficeTel,String legalMobileTel,String legalEmail){
+        this.entireId = entireId;
+        this.ueId = ueId;
+        this.legalName = legalName;
+        this.legalJob = legalJob;
+        this.legalMobileTel = legalMobileTel;
+        this.legalOfficeTel = legalOfficeTel;
+        this.legalEmail = legalEmail;
 
-//    /**
-//     * 更新法定联系人
-//     * @param updated
-//     * @return
-//     */
-//    public LegalRepresentative update(LegalRepresentative updated) {
-//        if(updated.getWorkState() != null)this.setWorkState(updated.getWorkState());
-//
-//        return this;
-//    }
+    }
+
+    /**
+     * 更新法定联系人
+     * @param updated
+     * @return
+     */
+    public LegalRepresentative update(LegalRepresentative updated) {
+        if(updated.getLegalName() != null)this.setLegalName(updated.getLegalName());
+        if(updated.getLegalJob() != null)this.setLegalJob(updated.getLegalJob());
+        if(updated.getLegalOfficeTel() != null)this.setLegalOfficeTel(updated.getLegalOfficeTel());
+        if(updated.getLegalMobileTel() != null)this.setLegalMobileTel(updated.getLegalMobileTel());
+        if(updated.getLegalEmail() != null)this.setLegalEmail(updated.getLegalEmail());
+
+        return this;
+    }
 
     public Long getLegalId(){
         return legalId;
@@ -62,6 +80,12 @@ public class LegalRepresentative implements  Serializable {
     }
     public void setUeId(Long ueId){
         this.ueId = ueId;
+    }
+    public Long getEntireId(){
+        return entireId;
+    }
+    public void setEntireId(Long entireId){
+        this.entireId = entireId;
     }
 
     public String getLegalName(){

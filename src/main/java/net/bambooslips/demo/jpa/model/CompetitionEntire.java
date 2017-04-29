@@ -16,8 +16,8 @@ public class CompetitionEntire implements  Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long entireId;
 
-    @Column(name = "com_id")
-    private Long comId;
+    @Column(name = "com_name")
+    private String comName;
 
     @Column(name = "entry_type")
     private String entryType;
@@ -25,9 +25,19 @@ public class CompetitionEntire implements  Serializable {
     @Column(name = "work_state")
     private String workState;
 
+    @Column(name = "state")
+    private String state;
+
 
 
     public CompetitionEntire(){
+
+    }
+    public CompetitionEntire(String comName,String entryType,String workState,String state){
+        this.comName = comName;
+        this.entryType = entryType;
+        this.workState = workState;
+        this.state = state;
 
     }
 
@@ -42,17 +52,23 @@ public class CompetitionEntire implements  Serializable {
         return this;
     }
 
+    public CompetitionEntire updateState(CompetitionEntire updated) {
+        if(updated.getState() != null)this.setState(updated.getState());
+
+        return this;
+    }
+
     public Long getEntireId(){
         return entireId;
     }
     public void setEntireId(Long entireId){
         this.entireId = entireId;
     }
-    public Long getComId(){
-        return comId;
+    public String getComName(){
+        return comName;
     }
-    public void setComId(Long comId){
-        this.comId = comId;
+    public void setComName(String comName){
+        this.comName = comName;
     }
 
     public String getEntryType(){
@@ -69,9 +85,11 @@ public class CompetitionEntire implements  Serializable {
        this.workState =workState;
     }
 
-//    @Override
-//    public int compareTo(BaseModel o) {
-//        return this.getComId().compareTo(o.getId());
-//    }
+    public String getState(){
+        return state;
+    }
+    public void setState(String state){
+        this.state =state;
+    }
 }
 

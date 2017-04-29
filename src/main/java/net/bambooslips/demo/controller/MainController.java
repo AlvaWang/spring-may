@@ -85,6 +85,11 @@ public class MainController {
         return "registerState";
     }
 
+    @RequestMapping("/unitTable")
+    public String unitTable() {
+        return "unitTable";
+    }
+
     @ModelAttribute("avatars")
     @RequestMapping("/avatars")
     public Page<Resource> avatars(@RequestParam(defaultValue = PAGE) Integer page,

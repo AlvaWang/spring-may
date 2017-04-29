@@ -7,19 +7,49 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>中国创新创业大赛 - 军转民分站</title>
     <link href="../static/lib/css/bootstrap.min.css" th:href="@{/lib/css/bootstrap.min.css}" rel="stylesheet" />
-    <!--<link href="../static/lib/css/jquery.fullPage.min.css" th:href="@{/lib/css/jquery.fullPage.min.css}" rel="stylesheet" />-->
     <link href="../static/lib/css/font-awesome.min.css" th:href="@{/lib/css/font-awesome.min.css}" rel="stylesheet" />
-    <!--<link rel="stylesheet" href="../static/css/app.css" th:href="@{/css/app.css}" />-->
-    <!--<link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}" />-->
+    <link rel="stylesheet" href="../static/css/login_reg.css" th:href="@{/css/login_reg.css}" />
 </head>
-<body class="fp-viewing-0" id="body">
-<div id="main">
-    <h1>Hello Word!</h1>
+<body class="fp-viewing-0" style="height: 100%">
+<div id="body" style="height: 100%">
+
+    <div th:replace="fragments/login_header :: login_header"></div>
+
+    <div class="reg_reg_bac" style="height: calc(100% - 200px)">
+        <div class="reg_suc_div">
+            <div class="suc_div">
+                <div class="suc_title">
+                    <div><p>我的比赛</p></div>
+                    <!--<hr/>-->
+                </div>
+                <div class="login_suc_div">
+                    <div class="btn_div">
+                        <div id="suc_entry"><p>参赛报名</p></div>
+                        <div class="btn_div_"><p>已报名项目</p></div>
+                        <div class="btn_div_"><p>未提交项目</p></div>
+                    </div>
+
+                </div>
+                <!--<div class="suc suc_login"><p>立即登录</p></div>-->
+            </div>
+        </div>
+
+    </div>
+
+    <div th:replace="fragments/footer :: footer"></div>
+
+
 </div>
 
 <script src="../static/lib/js/jquery.min.js" th:src="@{/webjars/jquery/2.2.3/jquery.min.js}"></script>
 <script src="../static/lib/js/bootstrap.min.js" th:src="@{/webjars/bootstrap/3.3.6/js/bootstrap.min.js}"></script>
-<script src="../static/js/register.js" th:src="@{/js/register.js}"></script>
+<script src="../static/js/public.js" th:src="@{/js/public.js}"></script>
+<script type="application/javascript">
+    var comName = GetQueryString("comName")
+    $("#suc_entry").click(function () {
+        window.location.href = "/entry?comName=" + comName + "";
+    })
+</script>
 
 </body>
 </html>

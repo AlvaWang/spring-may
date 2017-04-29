@@ -18,8 +18,8 @@
     <div class="reg_reg_bac" style="height: calc(100% - 200px)">
         <div class="entry_entry">
             <div class="entry_">
-                <div class="entry_div"><a href="#"><p>单位入口</p></a></div>
-                <div  class="entry_div" style="margin-left: 30%"><a href="#"><p>团队入口</p></a></div>
+                <div class="entry_div" th:value="UNIT"  id="entry_unit"><p>单位入口</p></div>
+                <div  class="entry_div" th:value="TEAM" id="entry_team" style="margin-left: 30%"><p>团队入口</p></div>
             </div>
         </div>
     </div>
@@ -31,7 +31,8 @@
 
 <script src="../static/lib/js/jquery.min.js" th:src="@{/webjars/jquery/2.2.3/jquery.min.js}"></script>
 <script src="../static/lib/js/bootstrap.min.js" th:src="@{/webjars/bootstrap/3.3.6/js/bootstrap.min.js}"></script>
-<script src="../static/js/register.js" th:src="@{/js/register.js}"></script>
+<script src="../static/js/public.js" th:src="@{/js/public.js}"></script>
+<script src="../static/js/entry.js" th:src="@{/js/entry.js}"></script>
 
 </body>
 </html>

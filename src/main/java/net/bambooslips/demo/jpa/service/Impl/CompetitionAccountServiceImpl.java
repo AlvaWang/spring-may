@@ -31,6 +31,9 @@ public class CompetitionAccountServiceImpl implements CompetitionAccountService{
     public List<CompetitionAccount> search(String comAccName, String comAccPwd,String comAccType) {
         LOG.debug("Searching post by title: " + comAccName+","+comAccPwd+","+comAccType);
         List<CompetitionAccount> list = competitionAccountRepository.searchByName(comAccName,comAccPwd,comAccType);
+        if(list!= null){
+//            Long id = CompetitionAccount.getId();
+        }
         return list;
     }
 

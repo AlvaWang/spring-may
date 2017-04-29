@@ -53,17 +53,6 @@ $("#login_work_btn").click(function () {
     $("#login_competition") .hide();
 });
 
-// $(".click_menu2").click(function () {
-//
-//     $("#review_banner") .show();
-//     $("#news_center_banner") .hide();
-// });
-//
-// $(".click_menu3").click(function () {
-//
-//     $("#review_banner") .show();
-//     $("#news_center_banner") .hide();
-// });
 $("#register_btn").click(function () {
     window.location.href="/register";
 });

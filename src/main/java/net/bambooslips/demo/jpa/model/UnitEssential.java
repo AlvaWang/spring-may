@@ -58,17 +58,44 @@ public class UnitEssential implements  Serializable {
     public UnitEssential(){
 
     }
+    public UnitEssential(Long entireId,String ueCompanyName,String ueGoal,
+                         String ueField,double ueRegisterCapital,Long ueWinNum, Long ueStaffNum,
+                         Long ueResearchNum,Long ueDeputyNum,String ueOfficeAddress,
+                         String uePowerType,String ueCorporationSummary){
+        this.entireId = entireId;
+        this.ueCompanyName = ueCompanyName;
+        this.ueGoal = ueGoal;
+        this.ueField = ueField;
+        this.ueRegisterCapital = ueRegisterCapital;
+        this.ueWinNum = ueWinNum;
+        this.ueStaffNum = ueStaffNum;
+        this.ueResearchNum = ueResearchNum;
+        this.ueDeputyNum = ueDeputyNum;
+        this.ueOfficeAddress = ueOfficeAddress;
+        this.uePowerType = uePowerType;
+        this.ueCorporationSummary = ueCorporationSummary;
 
-//    /**
-//     * 更新基本信息
-//     * @param updated
-//     * @return
-//     */
-//    public UnitEssential update(UnitEssential updated) {
-//        if(updated.getComState() != null)this.setComState(updated.getComState());
-//
-//        return this;
-//    }
+    }
+
+    /**
+     * 更新基本信息
+     * @param updated
+     * @return
+     */
+    public UnitEssential update(UnitEssential updated) {
+        if(updated.getUeGoal() != null)this.setUeGoal(updated.getUeGoal());
+        if(updated.getUeField() != null)this.setUeField(updated.getUeField());
+        if(updated.getUeRegisterCapital() != null)this.setUeRegisterCapital(updated.getUeRegisterCapital());
+        if(updated.getUeWinNum() != null)this.setUeWinNum(updated.getUeWinNum());
+        if(updated.getUeStaffNum() != null)this.setUeStaffNum(updated.getUeStaffNum());
+        if(updated.getUeResearchNum() != null)this.setUeResearchNum(updated.getUeResearchNum());
+        if(updated.getUeDeputyNum() != null)this.setUeDeputyNum(updated.getUeDeputyNum());
+        if(updated.getUeOfficeAddress() != null)this.setUeOfficeAddress(updated.getUeOfficeAddress());
+        if(updated.getUePowerType() != null)this.setUePowerType(updated.getUePowerType());
+        if(updated.getUeCorporationSummary() != null)this.setUeCorporationSummary(updated.getUeCorporationSummary());
+
+        return this;
+    }
 
     public Long getUeId(){
         return ueId;

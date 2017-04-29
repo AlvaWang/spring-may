@@ -41,14 +41,14 @@ li{
     text-align: center;
 }
 .login_reg_div{
-    height: 100%;
+    height: calc(100% - 160px);
     width: 40%;
     min-width: 480px;
     background:url("../img/denglu.png");
     margin-left: 50%;
     background-size: 100% 100%;
     position: absolute;
-    margin-top: -30px;
+    margin-top: -38px;
 }
 .reg_reg_bac{
     background: url("../img/dlbj2.png");
@@ -63,23 +63,23 @@ li{
     position:relative;
 }
 .reg_reg_div{
-    height: 100%;
+    height: calc(100% - 160px);
     width: 50%;
     background: url("../img/denglu-zhuce-zhucechenggong.png");
     margin-left: 25%;
     background-size: 100% 100%;
     position: absolute;
-    margin-top: -30px;
+    margin-top: -38px;
 
 }
 .reg_suc_div{
-    height: 100%;
+    height: calc(100% - 160px);
     width: 50%;
     background: url("../img/zhucechenggong.png");
     margin-left: 25%;
     background-size: 100% 100%;
     position: absolute;
-    margin-top: -30px;
+    margin-top: -38px;
 }
 .entry_{
     width: 60%;
@@ -106,7 +106,7 @@ li{
     margin-left: 10%;
     text-align: center;
 }
-.entry_div a p{
+.entry_div  p{
     font-family: 微软雅黑;
     font-size:30px ;
     font-weight:bold ;
@@ -317,4 +317,46 @@ label{
     background: white;
     border-radius: 4px;
 }
+
+.login_suc_div{
+    height: calc(100% - 240px);
+    text-align: center;
+    position: relative;
+}
+.login_suc_div .btn_div{
+    height: 40px;
+    width: 80%;
+    min-width: 320px;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+.login_suc_div .btn_div div{
+    float: left;
+    height: 100%;
+    width:25% ;
+    max-width: 160px;
+    background: #09a5cb;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 4px;
+}
+.login_suc_div .btn_div div p{
+    margin-top: 8px;
+    color: #ffffff;
+    font-family: 微软雅黑;
+    font-size: 16px;
+}
+
+.login_suc_div .btn_div div:hover{
+
+}
+.btn_div_{
+    margin-left: 12.5%;
+}
+
+
 
