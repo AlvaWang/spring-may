@@ -23,7 +23,7 @@ import javax.annotation.Resource;
 @Service
 public class ContactsServiceImpl implements ContactsService{
 
-    private static final Logger LOG = LoggerFactory.getLogger(PostServiceImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ContactsServiceImpl.class);
     @Resource
     private ContactsRepository contactsRepository;
 

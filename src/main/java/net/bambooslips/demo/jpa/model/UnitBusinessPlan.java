@@ -2,6 +2,7 @@ package net.bambooslips.demo.jpa.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created by Administrator on 2017/4/21.
@@ -61,17 +62,49 @@ public class UnitBusinessPlan  implements Serializable {
     public UnitBusinessPlan(){
 
     }
+    public UnitBusinessPlan(Long ueId, Long entireId, String ubusProName, Double ubusProIncomed,String ubusProType,
+                            String ubusLeadInternal,String ubusLeadInternational,String ubusResearchInstitute,
+                            String instituteName,String ubusProPicture,String ubusMajorDescribe,String ubusProMarket,
+                            String ubusModel,String ubusMain){
+        this.ueId = ueId;
+        this.entireId = entireId;
+        this.ubusProName = ubusProName;
+        this.ubusProIncomed = ubusProIncomed;
+        this.ubusProType = ubusProType;
+        this.ubusLeadInternal = ubusLeadInternal;
+        this.ubusLeadInternational = ubusLeadInternational;
+        this.ubusResearchInstitute = ubusResearchInstitute;
+        this.instituteName = instituteName;
+        this.ubusProPicture = ubusProPicture;
+        this.ubusMajorDescribe = ubusMajorDescribe;
+        this.ubusProMarket = ubusProMarket;
+        this.ubusModel = ubusModel;
+        this.ubusMain = ubusMain;
 
-//    /**
-//     * 更新基本信息
-//     * @param updated
-//     * @return
-//     */
-//    public UnitEssential update(UnitEssential updated) {
-//        if(updated.getComState() != null)this.setComState(updated.getComState());
-//
-//        return this;
-//    }
+    }
+
+    /**
+     * 更新基本信息
+     * @param updated
+     * @return
+     */
+    public UnitBusinessPlan update(UnitBusinessPlan updated) {
+        if(updated.getUbusProName() != null)this.setUbusProName(updated.getUbusProName());
+        if(updated.getUbusProIncomed() != null)this.setUbusProIncomed(updated.getUbusProIncomed());
+        if(updated.getUbusProType() != null)this.setUbusProType(updated.getUbusProType());
+        if(updated.getUbusLeadInternal() != null)this.setUbusLeadInternal(updated.getUbusLeadInternal());
+        if(updated.getUbusLeadInternational() != null)this.setUbusLeadInternational(updated.getUbusLeadInternational());
+        if(updated.getUbusResearchInstitute() != null)this.setUbusResearchInstitute(updated.getUbusResearchInstitute());
+        if(updated.getInstituteName() != null)this.setInstituteName(updated.getInstituteName());
+        if(updated.getUbusProPicture() != null)this.setUbusProPicture(updated.getUbusProPicture());
+        if(updated.getUbusMajorDescribe() != null)this.setUbusMajorDescribe(updated.getUbusMajorDescribe());
+        if(updated.getUbusProMarket() != null)this.setUbusProMarket(updated.getUbusProMarket());
+
+        if(updated.getUbusModel() != null)this.setUbusModel(updated.getUbusModel());
+        if(updated.getUbusMain() != null)this.setUbusMain(updated.getInstituteName());
+
+        return this;
+    }
 
     public Long getUbusId(){
         return ubusId;
@@ -133,6 +166,12 @@ public class UnitBusinessPlan  implements Serializable {
     public void setUbusResearchInstitute(String ubusResearchInstitute){
         this.ubusResearchInstitute =ubusResearchInstitute;
     }
+    public String getInstituteName(){
+        return instituteName;
+    }
+    public void setInstituteName(String instituteName){
+        this.instituteName =instituteName;
+    }
 
     public String getUbusProPicture(){
         return ubusProPicture;
@@ -165,13 +204,8 @@ public class UnitBusinessPlan  implements Serializable {
     public String getUbusMain(){
         return ubusMain;
     }
-    public void setUeCorporationSummary(String ubusMain){
+    public void setUbusMain(String ubusMain){
         this.ubusMain = ubusMain;
     }
-
-//    @Override
-//    public int compareTo(BaseModel o) {
-//        return 0;
-//    }
 }
 

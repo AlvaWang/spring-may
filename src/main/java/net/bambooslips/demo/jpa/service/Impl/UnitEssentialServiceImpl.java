@@ -23,7 +23,7 @@ import javax.annotation.Resource;
 @Service
 public class UnitEssentialServiceImpl implements UnitEssentialService{
 
-    private static final Logger LOG = LoggerFactory.getLogger(PostServiceImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(UnitEssentialServiceImpl.class);
     @Resource
     private UnitEssentialRepository unitEssentialRepository;
 

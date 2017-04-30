@@ -1,9 +1,30 @@
 .main_div{
-    width: 70%;
+    width: 80%;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 45px;
+    padding-top: 45px;
+    height: 100%;
+    max-width: 1200px;
 }
+.main_div .streamer{
+    width: 100%;
+    height: 45px;
+}
+.main_div .streamer_jbxx{
+    background: url("../img/kjjr.png");
+    background-size: 100% 100%;
+
+}
+.main_div .streamer_hxtd{
+    background: url("../img/danwei-hxtd.png");
+    background-size: 100% 100%;
+}
+.main_div .streamer_syjhs{
+    background: url("../img/danwei-syjjs.png");
+    background-size: 100% 100%;
+
+}
+
 
 .table_unit{
     width: 100%;
@@ -12,8 +33,47 @@
     float: left;
 }
 .btn_table{
-    width: 5%;
+    width: 4.8%;
 }
 .table_unit_content{
-    width: 95%;
+    width: 90.5%;
+    height: 100%;
+    margin-top: -18px;
 }
+.tContent{
+    width: 100%;
+}
+.t_title{
+    width: 10%;
+}
+.t_middle{
+    width: calc(90% - 30px);
+}
+.t_end{
+    width: 30px;
+}
+.t_content{
+    width: 23%;
+}
+.t_middle div{
+    float: left;
+}
+.conservation_div{
+    margin-top: 95%;
+    height: 30px;
+}
+.conservation_div .conservation{
+    width: 100px;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    background: green;
+    border-radius: 4px;
+    text-align: center;
+}
+.conservation_div .conservation p{
+    padding-top: 5px;
+    color: #ffffff;
+    text-align: center;
+}
+

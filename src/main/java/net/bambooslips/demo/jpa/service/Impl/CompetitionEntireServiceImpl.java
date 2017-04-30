@@ -24,7 +24,7 @@ import java.util.List;
 @Service
 public class CompetitionEntireServiceImpl implements CompetitionEntireService{
 
-    private static final Logger LOG = LoggerFactory.getLogger(PostServiceImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(CompetitionEntireServiceImpl.class);
     @Resource
     private CompetitionEntireRepository competitionEntireRepository;
 

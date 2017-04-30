@@ -8,14 +8,16 @@
     <link rel="stylesheet" href="../static/lib/css/lightbox.min.css" th:href="@{/lib/css/lightbox.min.css}" />
     <link rel="stylesheet" href="../static/css/app.css" th:href="@{/css/app.css}" />
     <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}" />
+    <link rel="stylesheet" href="../static/css/unitTable.css" th:href="@{/css/unitTable.css}" />
 </head>
 <body>
 <div id="body">
     <div id="main" >
         <div class="main_div">
-            //飘带
-            <div>基本信息div</div>
-
+            <!--//飘带-->
+            <div class="streamer streamer_jbxx"></div>
+            <div class="streamer streamer_hxtd"></div>
+            <div class="streamer streamer_syjhs"></div>
             <div class="table_unit">
                 <div class="btn_table">
                     <div id="first_btn"><p>第一步</p></div>
@@ -23,41 +25,667 @@
                     <div id="third_btn"><p>第三步</p></div>
                 </div>
                 <div id="first_table" class="table_unit_content">
-                    <div class="tHeader"></div>
                     <div class="tContent">
                         <table>
                             <tbody>
+                            <tr>
+                                <td class="t_title">企业名称</td>
+                                <td class="t_middle" colspan="5">
+                                    <input type="text" value=""/>
+                                    <div style="float: right;width: 30px;"><p>*</p></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="t_title">参赛目的</td>
+                                <td class="t_middle" colspan="5">
+                                    <input type="checkbox" value="竞争大赛优胜荣誉"/>竞争大赛优胜荣誉
+                                    <input type="checkbox" value="寻求股权融资机会"/>寻求股权融资机会
+                                    <input type="checkbox" value="寻求债权融资机会"/>寻求债权融资机会
+                                    <input type="checkbox" value="寻求学习、体验、广泛交流机会"/>寻求学习、体验、广泛交流机会
+                                    <input type="checkbox" value="寻求政府政策支持"/>寻求政府政策支持
+                                    <input type="checkbox" value="自我宣传展示"/>自我宣传展示
+                                    <input type="checkbox" value="技术转让"/>技术转让
+                                    <input type="checkbox" value="许可使用"/>许可使用
+                                    <input type="checkbox" value="其它"/>其它
+                                    <input type="text"/>
+                                </td>
+                                <!--<td class="t_end"></td>-->
+                            </tr>
+                            <tr>
+                                <td class="t_title">所属行业领域</td>
+                                <td class="t_middle" colspan="5">
+                                    <input type="checkbox" value="先进制造与高端装备制造"/>先进制造与高端装备制造
+                                    <input type="checkbox" value="电子信息"/>电子信息
+                                    <input type="checkbox" value="新材料"/>新材料
+                                    <input type="checkbox" value="光机电一体化"/>光机电一体化
+                                    <input type="checkbox" value="寻求政府政策支持"/>新能源与新动力
+                                    <input type="checkbox" value="新材料"/>生物医药
+                                    <input type="checkbox" value="光机电一体化"/>节能环保
+                                    <input type="checkbox" value="寻求政府政策支持"/>其他
+                                </td>
+                                <!--<td class="t_end"></td>-->
+                            </tr>
+                            <tr>
+                                <td class="t_title">注册资本<br/>万元人民币</td>
+                                <td class=""></td>
+                                <td class="t_title">企业或个人曾获得国家级、省部级技术奖项数</td>
+                                <td colspan="3"></td>
+                                <!--<td class="t_end"></td>-->
+                            </tr>
+                            <tr>
+                                <td class="t_title">员工总数</td>
+                                <td class="t_content"></td>
+                                <td class="t_title">直接从事研发人数</td>
+                                <td class="t_content"></td>
+                                <td class="t_title">副高级以上职称人数</td>
+                                <td class="t_content"></td>
+                                <!--<td class="t_end">*</td>-->
+                            </tr>
+                            <tr>
+                                <td class="t_title">办公地址</td>
+                                <td class="" colspan="3"> </td>
+                                <td class="t_title">邮政编码</td>
+                                <td class="" ></td>
+                                <!--<td class="t_end">*</td>-->
+                            </tr>
+                            <tr>
+                                <td colspan="6">
+                                    <table>
+                                        <tr>
+                                            <td class="t_title"></td>
+                                            <td>姓名</td>
+                                            <td>职称</td>
+                                            <td>办公电话</td>
+                                            <td>移动电话</td>
+                                            <td>电子邮件</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="t_title">法定代表</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <!--<td class="t_end">*</td>-->
+                                        </tr>
+                                        <tr>
+                                            <td class="t_title">联系人</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <!--<td class="t_end">*</td>-->
+                                        </tr>
+                                    </table>
+                                </td>
 
+                                <!--<td class="t_end">*</td>-->
+                            </tr>
+
+                            <tr>
+                                <td class="t_title">企业概要（不超过500字)</td>
+                                <td class="t_middle" colspan="5"></td>
+                                <!--<td class="t_end"></td>-->
+                            </tr>
+                            <tr>
+                                <td class="t_title">核心技术</td>
+                                <td class="t_middle" colspan="5">
+                                    <table>
+                                        <tr>
+                                            <td><input type="checkbox" value="专利"/>专利<br/>(可增加）</td>
+                                            <td>
+                                                <table>
+                                                    <tr>
+                                                        <div><img src="../static/img/zengjia.png" th:src="@{/img/zengjia.png}" alt="" />增加</div>
+                                                        <div><img src="../static/img/bianji.png" th:src="@{/img/bianji.png}" alt="" />编辑</div>
+                                                        <div><img src="../static/img/shanchu.png" th:src="@{/img/shanchu.png}" alt="" />减少</div>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>专利名称</td>
+                                                        <td>专利类型*</td>
+                                                        <td>专利号</td>
+                                                        <td>获得时间选择</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>专利名称</td>
+                                                        <td>专利类型*</td>
+                                                        <td>专利号</td>
+                                                        <td>获得时间选择</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr><td colspan="4">*专利类型：1发明专利  2实用新型专利  3外观设计</td></tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                <input type="checkbox" value="软件著作权"/>软件著作权
+                                                <input type="checkbox" value="专有技术"/>专有技术
+                                                <input type="checkbox" value="药品批文"/>药品批文
+                                                <input type="checkbox" value="医疗器械批文"/>医疗器械批文
+                                                <input type="checkbox" value="创新商业模式"/>创新商业模式
+                                                <input type="checkbox" value="集成电路布图"/>集成电路布图
+                                                <input type="checkbox" value="其他"/>其他
+                                                <input type="text"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                技术来源：
+                                                <input type="checkbox" value="独立知识产权"/>独立知识产权
+                                                <input type="checkbox" value="合作研发"/>合作研发
+                                                <input type="checkbox" value="购买技术"/>购买技术
+                                                <input type="checkbox" value="其他"/>其他
+                                                <input type="checkbox" value="其他"/>其他
+                                                <input type="text"/>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td class="t_end"></td>
+                            </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
-                <div id="second_table">
-                    <div class="tHeader"></div>
+                <div id="second_table"  class="table_unit_content">
                     <div class="tContent">
                         <table>
                             <tbody>
+                            <tr>
+                                <td class="t_title">核心团队成员(可增加)</td>
+                                <td class="t_middle">
+                                    <table>
+                                        <tbody>
+                                        <tr>
+                                            <div><img src="../static/img/zengjia.png" th:src="@{/img/zengjia.png}" alt="" />增加</div>
+                                            <div><img src="../static/img/bianji.png" th:src="@{/img/bianji.png}" alt="" />编辑</div>
+                                            <div><img src="../static/img/shanchu.png" th:src="@{/img/shanchu.png}" alt="" />减少</div>
+                                        </tr>
+                                        <tr>
+                                            <td>姓名</td>
+                                            <td>性别</td>
+                                            <td>年龄</td>
+                                            <td>职位</td>
+                                            <td>最高学历</td>
+                                            <td>留学经历</td>
+                                            <td>入选国家千人计划</td>
+                                            <td>入选时间</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="8">主要工作经历/主要成就</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="8"></td>
+                                        </tr>
 
+                                        <tr>
+                                            <td>姓名</td>
+                                            <td>性别</td>
+                                            <td>年龄</td>
+                                            <td>职位</td>
+                                            <td>最高学历</td>
+                                            <td>留学经历</td>
+                                            <td>入选国家千人计划</td>
+                                            <td>入选时间</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="8">主要工作经历/主要成就</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="8"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
-                <div id="third_table">
-                    <div class="tHeader"></div>
+                <div id="third_table"  class="table_unit_content">
                     <div class="tContent">
                         <table>
                             <tbody>
+                            <tr>
+                                <td class="t_title">主要技术、产品及服务</td>
+                                <td>
+                                    <table>
+                                        <tr>
+                                            <td class="t_title2">参赛项目名称</td>
+                                            <td></td>
+                                            <td>参赛项目已实现收入</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="t_title2">参赛项目是何种/技术/产品/服务</td>
+                                            <td colspan="3">
+                                                <input type="radio" value="新筹开发"/>新筹开发
+                                                <input type="radio" value="储备技术"/>储备技术
+                                                <input type="radio" value="核心技术"/>核心技术
+                                                <input type="radio" value="行业主流技术"/>行业主流技术
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="t_title2">属国内领先水平</td>
+                                            <td>
+                                                <input type="radio" value="是"/>是
+                                                <input type="radio" value="否"/>否
+                                            </td>
+                                            <td>属国际领先水平</td>
+                                            <td>
+                                                <input type="radio" value="是"/>是
+                                                <input type="radio" value="否"/>否
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="t_title2">类似技术研究机构</td>
+                                            <td>
+                                                <input type="radio" value="无"/>有
+                                                <input type="radio" value="无"/>有
+                                            </td>
+                                            <td>机构名称</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="t_title2">参赛项目产品图片</td>
+                                            <td>
+                                                <input type="radio" value="无"/>有
+                                                <input type="radio" value="无"/>有
+                                            </td>
+                                            <td colspan="2">
+                                                <input type="text" value=""/>请附上产品图片
+                                                <div style="float: right">
+                                                    <p>上传</p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="4">
+                                                <input type="text" value="" placeholder="（产品开发、生产策略，行业特点、竞争焦点、主要的技术指标和关键技术说明、主要介绍技术、产品及服务的背景、目前所处发展阶段、与国内外同行业其它公司同类技术、产品及服务的比较，本公司技术、产品及服务的新颖性、先进性和独特性，如拥有的专门技术、版权、配方、品牌、销售网络、许可证、专营权、特许权经营等）"/>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="t_title">产品市场分析</td>
+                                <td>
+                                    <input type="text" value="" placeholder="（市场定位及需求分析，行业历史与前景分析与预测，产品市场概况，市场需求程度，规模及增长趋势，市场定位的合理性，未来市场销售预测，哪些行业的变化对产品利润、利润率影响较大，进入该行业的技术壁垒，贸易壁垒，政策限制，其他方面）"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="t_title">商业模式</td>
+                                <td>
+                                    <input type="text" value="" placeholder="产品的市场营销策略，产品的获利模式）"/>
+                                </td>
 
+                            </tr>
+                            <tr>
+                                <td class="t_title">参赛项目若非主营业务请填写主营业务</td>
+                                <td>
+                                    <input type="text" value="" placeholder="(200-300字）"/>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td class="t_title">历史财务数据</td>
+                                <td>
+                                    <table>
+                                        <tr>
+                                            <td colspan="4">
+                                                注意：以下财务数据是企业整体财务数据            单位：万元人民币，小数点后保留
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="t_title3">项目</td>
+                                            <td>2012年</td>
+                                            <td>2013年</td>
+                                            <td>2014年</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="t_title3">主营业务收入</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="t_title3">主营业务成本</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="t_title3">主营业务利润</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="t_title3">主营业务利润率</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="t_title3">财务费用</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="t_title3">营业利润</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td class="t_title3">营业利润率</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="t_title3">税前利润</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="t_title3">净利润</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="t_title3">固定资产净值</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="t_title3">资产总计</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="t_title3">负债总计</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="t_title3">所有者权益（净资产）</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="t_title">财务预测</td>
+                                <td>
+                                    <table>
+                                        <tbody>
+                                        <tr><td colspan="4">单位：万元人民币，小数点后保留六位</td></tr>
+                                        <tr>
+                                            <td class="t_title3">项目</td>
+                                            <td>2015年</td>
+                                            <td>2016年</td>
+                                            <td>2017年</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="t_title3">主营业务收入</td>
+                                            <td>2015年</td>
+                                            <td>2016年</td>
+                                            <td>2017年</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="t_title3">主营业务成本</td>
+                                            <td>2015年</td>
+                                            <td>2016年</td>
+                                            <td>2017年</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="t_title3">主营业务税金</td>
+                                            <td>2015年</td>
+                                            <td>2016年</td>
+                                            <td>2017年</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="t_title3">主营业务利润</td>
+                                            <td>2015年</td>
+                                            <td>2016年</td>
+                                            <td>2017年</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="t_title3">主营业务利润率</td>
+                                            <td>2015年</td>
+                                            <td>2016年</td>
+                                            <td>2017年</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="t_title3">净利润</td>
+                                            <td>2015年</td>
+                                            <td>2016年</td>
+                                            <td>2017年</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="t_title">融资经历</td>
+                                <td>
+                                    <table>
+                                        <tr>
+                                            <td colspan="4">股权融资
+                                                <input type="radio" value="是"/>是
+                                                <input type="radio" value="否"/>否
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>投资人/投资机构</td>
+                                            <td>融资金额（万元￥）</td>
+                                            <td>所占股权比例</td>
+                                            <td>投资时间</td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td colspan="4">债权融资
+                                                <input type="radio" value="是"/>是
+                                                <input type="radio" value="否"/>否
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>出借方</td>
+                                            <td>贷款金额（万元￥）</td>
+                                            <td>贷款启动时间</td>
+                                            <td>贷款结束时间</td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="t_title">科技金融服务需求
+                                    （可复选项）
+                                </td>
+                                <td>
+                                    <table>
+                                        <tr>
+                                            <td colspan="3">股权融资
+                                                <input type="radio" value="是"/>是
+                                                <input type="radio" value="否"/>否
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>融资金额（万元￥）</td>
+                                            <td>拟出让股权比例</td>
+                                            <td>融资时间</td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>资金使用计划</td>
+                                            <td colspan="2">
+                                                <input type="text" value="" placeholder="（资金使用方向细目。包括固定资产投入、在建工程、研发投入、管理费等）"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3">愿意接受大赛组委会推荐创投机构
+                                                <input type="radio" value="是"/>是
+                                                <input type="radio" value="否"/>否
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td colspan="3">债权融资
+                                                <input type="radio" value="是"/>是
+                                                <input type="radio" value="否"/>否
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>融资金额（万元￥）</td>
+                                            <td>可接受最高年利率%</td>
+                                            <td>融资时间</td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>资金使用计划</td>
+                                            <td colspan="2">
+                                                <input type="text" value="" placeholder="（资金使用方向细目。包括固定资产投入、在建工程、研发投入、管理费等）"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3">愿意接受大赛组委会推荐创投机构
+                                                <input type="radio" value="是"/>是
+                                                <input type="radio" value="否"/>否
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td><input type="checkbox" value="众筹"/>众筹</td>
+                                            <td colspan="2">
+                                                <table>
+                                                    <tr><td><input type="checkbox" value="债权众筹"/>债权众筹</td></tr>
+                                                    <tr><td> <input type="checkbox" value="股权众筹"/>股权众筹</td></tr>
+                                                    <tr><td><input type="checkbox" value="回报众筹"/>回报众筹</td></tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr><td colspan="3"><input type="checkbox" value="并购"/>并购</td></tr>
+                                        <tr><td colspan="3"><input type="checkbox" value="上市股改"/>上市股改</td></tr>
+                                        <tr><td colspan="3"><input type="checkbox" value="融资担保"/>融资担保</td></tr>
+                                        <tr>
+                                            <td><input type="checkbox" value="小额贷款"/>小额贷款</td>
+                                            <td colspan="2">额度<input type="number" value=""/>（万元人民币）</td>
+                                        </tr>
+                                        <tr><td colspan="3"><input type="checkbox" value="企业债券发行"/>企业债券发行</td></tr>
+                                        <tr><td> colspan="3"<input type="checkbox" value="中小企业集合债券发行"/>中小企业集合债券发行</td></tr>
+                                        <tr>
+                                            <td><input type="checkbox" value="技术引进"/>技术引进 </td>
+                                            <td colspan="2">
+                                                <table>
+                                                    <tr>
+                                                        <td> <input type="checkbox" value="国际技术范围"/>国际技术范围</td>
+                                                        <td><input type="text" value="" placeholder="（自行填写）"/></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> <input type="checkbox" value="国内技术范围"/>国内技术范围</td>
+                                                        <td><input type="text" value="" placeholder="（自行填写）"/></td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr><td colspan="3"><input type="checkbox" value="产权转让"/>产权转让</td></tr>
+                                        <tr><td colspan="3"><input type="checkbox" value="金融租赁"/>金融租赁</td></tr>
+                                        <tr><td colspan="3"><input type="checkbox" value="科技保险"/>科技保险</td></tr>
+                                        <tr><td colspan="3"><input type="checkbox" value="资产管理"/>资产管理</td></tr>
+                                        <tr><td colspan="3"><input type="checkbox" value="入住科创园区/孵化器"/>入住科创园区/孵化器</td></tr>
+                                        <tr><td colspan="3"><input type="checkbox" value="政策咨询"/>政策咨询</td></tr>
+                                        <tr><td colspan="3"><input type="checkbox" value="科技咨询"/>科技咨询</td></tr>
+
+                                        <tr>
+                                            <td><input type="checkbox" value="科技咨询"/>中介咨询</td>
+                                            <td colspan="2">
+                                                <table>
+                                                    <tr>
+                                                        <td><input type="checkbox" value="法律"/>法律</td>
+                                                        <td><input type="text" value="" placeholder="（自行填写）"/></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><input type="checkbox" value="财务"/>财务</td>
+                                                        <td><input type="text" value="" placeholder="（自行填写）"/></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><input type="checkbox" value="融资"/>融资</td>
+                                                        <td><input type="text" value="" placeholder="（自行填写）"/></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><input type="checkbox" value="管理"/>管理</td>
+                                                        <td><input type="text" value="" placeholder="（自行填写）"/></td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox" value="其他服务需求"/>其他服务需求</td>
+                                            <td colspan="2"><input type="text" value="" placeholder="（自行填写）"/></td>
+                                        </tr>
+
+                                        <tr><td colspan="3"><input type="checkbox" value="愿意接受专业培训和创业教育学位进修机会"/>愿意接受专业培训和创业教育学位进修机会</td></tr>
+                                        <tr><td colspan="3"><input type="checkbox" value="无"/>无</td></tr>
+                                    </table>
+                                </td>
+                            </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
-
+            <div class="conservation_div">
+                <div class=" conservation " id="jbxx_conservation"><p>保存基本信息</p></div>
+                <div class="conservation " id="hxtd_conservation"><p>保存核心团队成员信息</p></div>
+                <div class="conservation " id="syjhs_conservation"><p>保存商业计划书</p></div>
+            </div>
         </div>
-
-        <div th:replace="fragments/footer :: footer"></div>
     </div>
+    <div th:replace="fragments/table_footer :: table_footer"></div>
 </div>
 
 <script src="../static/lib/js/jquery.min.js" th:src="@{/webjars/jquery/2.2.3/jquery.min.js}"></script>

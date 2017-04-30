@@ -60,17 +60,43 @@ public class CoreTeam implements  Serializable {
         super();
 
     }
+    public CoreTeam(Long ueId,Long teId,Long entireId, String ctName,String ctSex,String ctJob,
+                    String ctHigbestEducation,String ctStudyExperience,String ctMainAchive,
+                    String ctNationalMillennium,Date nationalMilleDate,String ctUniversityBusiness){
+        this.ueId = ueId;
+        this.teId = teId;
+        this.entireId = entireId;
+        this.ctName = ctName;
+        this.ctSex = ctSex;
+        this.ctJob = ctJob;
+        this.ctHigbestEducation = ctHigbestEducation;
+        this.ctStudyExperience = ctStudyExperience;
+        this.ctMainAchive = ctMainAchive;
+        this.ctNationalMillennium = ctNationalMillennium;
+        this.nationalMilleDate = nationalMilleDate;
+        this.ctUniversityBusiness = ctUniversityBusiness;
 
-//    /**
-//     * 更新联系人
-//     * @param updated
-//     * @return
-//     */
-//    public LegalRepresentative update(LegalRepresentative updated) {
-//        if(updated.getWorkState() != null)this.setWorkState(updated.getWorkState());
-//
-//        return this;
-//    }
+    }
+
+
+    /**
+     * 更新核心团队信息
+     * @param updated
+     * @return
+     */
+    public CoreTeam update(CoreTeam updated) {
+        if(updated.getCtName() != null)this.setCtName(updated.getCtName());
+        if(updated.getCtJob() != null)this.setCtJob(updated.getCtJob());
+        if(updated.getCtSex() != null)this.setCtSex(updated.getCtSex());
+        if(updated.getCtHigbestEducation() != null)this.setCtHigbestEducation(updated.getCtHigbestEducation());
+        if(updated.getCtStudyExperience() != null)this.setCtStudyExperience(updated.getCtStudyExperience());
+        if(updated.getCtMainAchive() != null)this.setCtMainAchive(updated.getCtMainAchive());
+        if(updated.getCtNationalMillennium() != null)this.setCtNationalMillennium(updated.getCtNationalMillennium());
+        if(updated.getNationalMilleDate() != null)this.setNationalMilleDate(updated.getNationalMilleDate());
+        if(updated.getCtUniversityBusiness() != null)this.setCtUniversityBusiness(updated.getCtUniversityBusiness());
+
+        return this;
+    }
 
     public Long getCtId(){
         return ctId;

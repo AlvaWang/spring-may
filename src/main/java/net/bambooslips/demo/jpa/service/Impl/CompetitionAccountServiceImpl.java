@@ -22,7 +22,7 @@ import java.util.List;
 @Service
 public class CompetitionAccountServiceImpl implements CompetitionAccountService{
 
-    private static final Logger LOG = LoggerFactory.getLogger(PostServiceImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(CompetitionAccountServiceImpl.class);
     @Resource
     private CompetitionAccountRepository competitionAccountRepository;
 

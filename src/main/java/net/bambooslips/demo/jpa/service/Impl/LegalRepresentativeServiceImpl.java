@@ -23,7 +23,7 @@ import javax.annotation.Resource;
 @Service
 public class LegalRepresentativeServiceImpl implements LegalRepresentativeService{
 
-    private static final Logger LOG = LoggerFactory.getLogger(PostServiceImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(LegalRepresentativeServiceImpl.class);
     @Resource
     private LegalRepresentativeRepository legalRepresentativeRepository;
 
