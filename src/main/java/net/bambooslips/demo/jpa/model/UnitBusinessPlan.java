@@ -27,7 +27,7 @@ public class UnitBusinessPlan  implements Serializable {
     private String ubusProName;
 
     @Column(name = "ubus_pro_incomed")
-    private Double ubusProIncomed;
+    private Long ubusProIncomed;
 
     @Column(name = "ubus_pro_type")
     private String ubusProType;
@@ -62,7 +62,7 @@ public class UnitBusinessPlan  implements Serializable {
     public UnitBusinessPlan(){
 
     }
-    public UnitBusinessPlan(Long ueId, Long entireId, String ubusProName, Double ubusProIncomed,String ubusProType,
+    public UnitBusinessPlan(Long ueId, Long entireId, String ubusProName, Long ubusProIncomed,String ubusProType,
                             String ubusLeadInternal,String ubusLeadInternational,String ubusResearchInstitute,
                             String instituteName,String ubusProPicture,String ubusMajorDescribe,String ubusProMarket,
                             String ubusModel,String ubusMain){
@@ -139,10 +139,10 @@ public class UnitBusinessPlan  implements Serializable {
        this.ubusProType =ubusProType;
     }
 
-    public Double getUbusProIncomed(){
+    public Long getUbusProIncomed(){
         return ubusProIncomed;
     }
-    public void setUbusProIncomed(Double ubusProIncomed){
+    public void setUbusProIncomed(Long ubusProIncomed){
         this.ubusProIncomed = ubusProIncomed;
     }
 

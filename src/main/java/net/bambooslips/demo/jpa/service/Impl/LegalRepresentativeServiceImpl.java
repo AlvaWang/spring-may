@@ -5,6 +5,7 @@ import net.bambooslips.demo.exception.LegalRepresentativeNotFoundException;
 import net.bambooslips.demo.exception.PostNotFoundException;
 import net.bambooslips.demo.jpa.model.CompetitionEntire;
 import net.bambooslips.demo.jpa.model.LegalRepresentative;
+import net.bambooslips.demo.jpa.model.UnitEssential;
 import net.bambooslips.demo.jpa.repository.CompetitionEntireRepository;
 import net.bambooslips.demo.jpa.repository.LegalRepresentativeRepository;
 import net.bambooslips.demo.jpa.service.CompetitionEntireService;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 
 /**
@@ -60,6 +62,19 @@ public class LegalRepresentativeServiceImpl implements LegalRepresentativeServic
         return legalRepresentative;
     }
 
+
+    @Transactional(readOnly = true)
+    @Override
+    public  Long findByEntireId(Long entireId) {
+        LOG.debug("Finding legalRepresentative by id: " + entireId);
+        LegalRepresentative legalRepresentative =  legalRepresentativeRepository.findByEntireId(entireId);
+        if (legalRepresentative !=null){
+            Long legalId = legalRepresentative.getLegalId();
+            return legalId;
+        }else {
+            return null;
+        }
+    }
 
     @Override
     public LegalRepresentative delete(Long id) {

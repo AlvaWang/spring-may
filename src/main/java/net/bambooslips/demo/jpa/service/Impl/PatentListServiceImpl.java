@@ -7,6 +7,7 @@ import net.bambooslips.demo.exception.PostNotFoundException;
 import net.bambooslips.demo.jpa.model.CompetitionAccount;
 import net.bambooslips.demo.jpa.model.Contacts;
 import net.bambooslips.demo.jpa.model.PatentList;
+import net.bambooslips.demo.jpa.model.UnitEssential;
 import net.bambooslips.demo.jpa.repository.ContactsRepository;
 import net.bambooslips.demo.jpa.repository.PatentListRepository;
 import net.bambooslips.demo.jpa.service.ContactsService;
@@ -84,6 +85,19 @@ public class PatentListServiceImpl implements PatentListService{
 
         patentListRepository.delete(deleted);
         return deleted;
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public Long findByPatentId(String patentId) {
+        LOG.debug("Finding patentList by id: " + patentId);
+        PatentList patentList =  patentListRepository.findByPatentId(patentId);
+        if (patentList != null){
+            Long id = patentList.getId();
+            return id;
+        } else {
+            return null;
+        }
     }
 
 

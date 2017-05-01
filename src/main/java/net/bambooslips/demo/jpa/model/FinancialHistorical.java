@@ -25,43 +25,43 @@ public class FinancialHistorical implements  Serializable {
     private Long entireId;
 
     @Column(name = "hfin_income")
-    private Double hfinIncome;
+    private Long hfinIncome;
 
     @Column(name = "hfin_cost")
-    private Double hfinCost;
+    private Long hfinCost;
 
     @Column(name = "hfin_profit")
-    private Double hfinProfit;
+    private Long hfinProfit;
 
     @Column(name = "hfin_profit_rate")
-    private Double hfinProfitRate;
+    private Long hfinProfitRate;
 
     @Column(name = "hfin_expenses")
-    private Double hfinExpenses;
+    private Long hfinExpenses;
 
     @Column(name = "hfin_operating_profit")
-    private Double hfinOperatingProfit;
+    private Long hfinOperatingProfit;
 
     @Column(name = "operating_profit_rate")
-    private Double operatingProfitRate;
+    private Long operatingProfitRate;
 
     @Column(name = "hfin_beforeTax_profit")
-    private Double hfinBeforeTaxProfit;
+    private Long hfinBeforeTaxProfit;
 
     @Column(name = "hfin_net_margin")
-    private Double hfinNetMargin;
+    private Long hfinNetMargin;
 
     @Column(name = "hfin_fixed_netValue")
-    private Double fixedNetValue;
+    private Long fixedNetValue;
 
     @Column(name = "hfin_assets_total")
-    private Double hfinAssetsTotal;
+    private Long hfinAssetsTotal;
 
     @Column(name = "hfin_liabilites_total")
-    private Double hfinLialilitesTotal;
+    private Long hfinLialilitesTotal;
 
     @Column(name = "hfin_net_asset")
-    private Double hfinNetAsset;
+    private Long hfinNetAsset;
 
     @Column(name = "hfin_year")
     private String hfinYear;
@@ -72,10 +72,10 @@ public class FinancialHistorical implements  Serializable {
         super();
 
     }
-    public FinancialHistorical(Long entireId,Long ubusId,double hfinIncome,double hfinCost,double hfinProfit,
-                               double hfinProfitRate,double hfinExpenses,double hfinOperatingProfit,double operatingProfitRate,
-                               double hfinBeforeTaxProfit,double hfinNetMargin,double fixedNetValue,double hfinAssetsTotal,
-                               double hfinLialilitesTotal,double hfinNetAsset,String hfinYear){
+    public FinancialHistorical(Long entireId,Long ubusId,Long hfinIncome,Long hfinCost,Long hfinProfit,
+                               Long hfinProfitRate,Long hfinExpenses,Long hfinOperatingProfit,Long operatingProfitRate,
+                               Long hfinBeforeTaxProfit,Long hfinNetMargin,Long fixedNetValue,Long hfinAssetsTotal,
+                               Long hfinLialilitesTotal,Long hfinNetAsset,String hfinYear){
         this.ubusId = ubusId;
         this.hfinIncome = hfinIncome;
         this.entireId = entireId;
@@ -142,94 +142,94 @@ public class FinancialHistorical implements  Serializable {
         this.entireId = entireId;
     }
 
-    public Double getHfinIncome(){
+    public Long getHfinIncome(){
         return hfinIncome;
     }
-    public void setHfinIncome(Double hfinIncome){
+    public void setHfinIncome(Long hfinIncome){
         this.hfinIncome = hfinIncome;
     }
 
-    public Double getHfinCost(){
+    public Long getHfinCost(){
         return hfinCost;
     }
-    public void setHfinCost(Double hfinCost){
+    public void setHfinCost(Long hfinCost){
        this.hfinCost =hfinCost;
     }
 
-    public Double getHfinProfit(){
+    public Long getHfinProfit(){
         return hfinProfit;
     }
-    public void setHfinProfit(Double hfinProfit){
+    public void setHfinProfit(Long hfinProfit){
         this.hfinProfit = hfinProfit;
     }
 
-    public Double getHfinProfitRate(){
+    public Long getHfinProfitRate(){
         return hfinProfitRate;
     }
-    public void setHfinProfitRate(Double hfinProfitRate){
+    public void setHfinProfitRate(Long hfinProfitRate){
         this.hfinProfitRate =hfinProfitRate;
     }
 
-    public Double getHfinExpenses(){
+    public Long getHfinExpenses(){
         return hfinExpenses;
     }
-    public void setHfinExpenses(Double hfinExpenses){
+    public void setHfinExpenses(Long hfinExpenses){
         this.hfinExpenses = hfinExpenses;
     }
 
-    public Double getHfinOperatingProfit(){
+    public Long getHfinOperatingProfit(){
         return hfinOperatingProfit;
     }
-    public void setHfinOperatingProfit(Double hfinOperatingProfit){
+    public void setHfinOperatingProfit(Long hfinOperatingProfit){
         this.hfinOperatingProfit =hfinOperatingProfit;
     }
 
-    public Double getOperatingProfitRate(){
+    public Long getOperatingProfitRate(){
         return operatingProfitRate;
     }
-    public void setOperatingProfitRate(Double operatingProfitRate){
+    public void setOperatingProfitRate(Long operatingProfitRate){
         this.operatingProfitRate =operatingProfitRate;
     }
 
-    public Double getHfinBeforeTaxProfit(){
+    public Long getHfinBeforeTaxProfit(){
         return hfinBeforeTaxProfit;
     }
-    public void setHfinBeforeTaxProfit(Double hfinBeforeTaxProfit){
+    public void setHfinBeforeTaxProfit(Long hfinBeforeTaxProfit){
         this.hfinBeforeTaxProfit = hfinBeforeTaxProfit;
     }
 
-    public Double getHfinNetMargin(){
+    public Long getHfinNetMargin(){
         return hfinNetMargin;
     }
-    public void setHfinNetMargin(Double hfinNetMargin){
+    public void setHfinNetMargin(Long hfinNetMargin){
         this.hfinNetMargin =hfinNetMargin;
     }
 
-    public Double getFixedNetValue(){
+    public Long getFixedNetValue(){
         return fixedNetValue;
     }
-    public void setFixedNetValue(Double fixedNetValue){
+    public void setFixedNetValue(Long fixedNetValue){
         this.fixedNetValue = fixedNetValue;
     }
 
-    public Double getHfinAssetsTotal(){
+    public Long getHfinAssetsTotal(){
         return hfinAssetsTotal;
     }
-    public void setHfinAssetsTotal(Double hfinAssetsTotal){
+    public void setHfinAssetsTotal(Long hfinAssetsTotal){
         this.hfinAssetsTotal =hfinAssetsTotal;
     }
 
-    public Double getHfinLialilitesTotal(){
+    public Long getHfinLialilitesTotal(){
         return hfinLialilitesTotal;
     }
-    public void setHfinLialilitesTotal(Double hfinLialilitesTotal){
+    public void setHfinLialilitesTotal(Long hfinLialilitesTotal){
         this.hfinLialilitesTotal = hfinLialilitesTotal;
     }
 
-    public Double getHfinNetAsset(){
+    public Long getHfinNetAsset(){
         return hfinNetAsset;
     }
-    public void setHfinNetAsset(Double hfinNetAsset){
+    public void setHfinNetAsset(Long hfinNetAsset){
         this.hfinNetAsset =hfinNetAsset;
     }
 

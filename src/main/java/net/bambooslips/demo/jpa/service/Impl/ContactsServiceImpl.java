@@ -5,6 +5,7 @@ import net.bambooslips.demo.exception.LegalRepresentativeNotFoundException;
 import net.bambooslips.demo.exception.PostNotFoundException;
 import net.bambooslips.demo.jpa.model.Contacts;
 import net.bambooslips.demo.jpa.model.LegalRepresentative;
+import net.bambooslips.demo.jpa.model.UnitEssential;
 import net.bambooslips.demo.jpa.repository.ContactsRepository;
 import net.bambooslips.demo.jpa.repository.LegalRepresentativeRepository;
 import net.bambooslips.demo.jpa.service.ContactsService;
@@ -60,6 +61,18 @@ public class ContactsServiceImpl implements ContactsService{
         return contacts;
     }
 
+    @Transactional(readOnly = true)
+    @Override
+    public Long findByEntireId(Long entireId) {
+        LOG.debug("Finding UnitEssential by id: " + entireId);
+        Contacts contacts =  contactsRepository.findByEntireId(entireId);
+        if (contacts != null){
+            Long ueId = contacts.getContactsId();
+            return ueId;
+        } else {
+            return null;
+        }
+    }
 
     @Override
     public Contacts delete(Long id) {

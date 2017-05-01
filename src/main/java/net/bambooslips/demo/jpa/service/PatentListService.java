@@ -24,4 +24,6 @@ public interface PatentListService {
 
 
     PatentList delete(Long id);
+
+    Long findByPatentId(String patentId);
 }

@@ -23,4 +23,6 @@ public interface ContactsService {
 
 
     Contacts delete(Long id);
+
+    Long findByEntireId(Long entireId);
 }

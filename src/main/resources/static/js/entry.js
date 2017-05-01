@@ -31,7 +31,7 @@ var addEntireUnit = function (condition) {
         success: function (result) {
             if (result != null) {
                 alert(result);
-                // window.location.href = "/registerSuccess?id=" + result + "";
+                window.location.href = "/unitTable?entireId=" + result + "";
                 // comId = result;
             }
 

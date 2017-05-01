@@ -7,6 +7,8 @@ import net.bambooslips.demo.jpa.model.UnitEssential;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * Created by Administrator on 2017/4/21.
  */
@@ -23,4 +25,6 @@ public interface UnitEssentialService {
 
 
     UnitEssential delete(Long id);
+
+    Long findByEntireId(Long entireId);
 }

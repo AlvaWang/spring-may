@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 /**
  * Created by Administrator on 2017/4/21.
- * 历史财务数据
+ * 财务预测
  */
 @Entity
 @Table(name = "financial_forecasting")
@@ -18,6 +18,7 @@ public class FinancialForecasting implements  Serializable {
 
     @Column(name = "ubus_id")
     private Long ubusId;
+
     @Column(name = "tbus_id")
     private Long tbusId;
 

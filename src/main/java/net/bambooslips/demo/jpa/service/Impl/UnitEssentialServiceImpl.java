@@ -4,6 +4,7 @@ import net.bambooslips.demo.exception.CompetitionEntireNotFoundException;
 import net.bambooslips.demo.exception.PostNotFoundException;
 import net.bambooslips.demo.exception.UnitEssentialNotFoundException;
 import net.bambooslips.demo.jpa.model.CompetitionEntire;
+import net.bambooslips.demo.jpa.model.Post;
 import net.bambooslips.demo.jpa.model.UnitEssential;
 import net.bambooslips.demo.jpa.repository.CompetitionEntireRepository;
 import net.bambooslips.demo.jpa.repository.UnitEssentialRepository;
@@ -60,6 +61,18 @@ public class UnitEssentialServiceImpl implements UnitEssentialService{
         return unitEssential;
     }
 
+    @Transactional(readOnly = true)
+    @Override
+    public Long findByEntireId(Long entireId) {
+        LOG.debug("Finding UnitEssential by id: " + entireId);
+        UnitEssential unitEssential =  unitEssentialRepository.findByEntireId(entireId);
+        if (unitEssential != null){
+            Long ueId = unitEssential.getUeId();
+            return ueId;
+        } else {
+            return null;
+        }
+    }
 
     @Override
     public UnitEssential delete(Long id) {

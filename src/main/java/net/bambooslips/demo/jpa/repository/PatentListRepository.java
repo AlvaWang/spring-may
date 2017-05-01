@@ -1,6 +1,7 @@
 package net.bambooslips.demo.jpa.repository;
 
 import net.bambooslips.demo.jpa.model.PatentList;
+import net.bambooslips.demo.jpa.model.UnitEssential;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -17,15 +18,12 @@ public interface PatentListRepository extends JpaRepository<PatentList, Long> {
 
     /**
      * 查询
-     * @param patentId
      * @return
      */
-//    @Modifying//注解实现修改
-
-//    @Query(
-//            "update PatentList set  where patentId = :patentId"
-//    )
-//    PatentList findByPatentId(@Param("patentId") String patentId);
+    @Query(
+            "Select pl FROM PatentList pl WHERE pl.patentId=:patentId "
+    )
+    PatentList findByPatentId(@Param("patentId") String patentId);
 
 
 }

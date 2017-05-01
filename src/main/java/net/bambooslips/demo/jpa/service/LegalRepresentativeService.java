@@ -7,6 +7,8 @@ import net.bambooslips.demo.jpa.model.LegalRepresentative;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * Created by Administrator on 2017/4/21.
  */
@@ -21,6 +23,8 @@ public interface LegalRepresentativeService {
      */
     LegalRepresentative update(LegalRepresentative update);
 
+
+    Long findByEntireId(Long entireId);
 
     LegalRepresentative delete(Long id);
 }

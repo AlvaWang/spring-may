@@ -49,8 +49,14 @@ public class UnitEssential implements  Serializable {
     @Column(name = "ue_office_address")
     private String ueOfficeAddress;
 
+    @Column(name = "ue_post_code")
+    private String uePostCode;
+
     @Column(name = "ue_power_type")
     private String uePowerType;
+
+    @Column(name = "ue_technical_sources")
+    private String ueTechnicalSources;
 
     @Column(name = "ue_corporation_summary")
     private String ueCorporationSummary;
@@ -60,8 +66,8 @@ public class UnitEssential implements  Serializable {
     }
     public UnitEssential(Long entireId,String ueCompanyName,String ueGoal,
                          String ueField,double ueRegisterCapital,Long ueWinNum, Long ueStaffNum,
-                         Long ueResearchNum,Long ueDeputyNum,String ueOfficeAddress,
-                         String uePowerType,String ueCorporationSummary){
+                         Long ueResearchNum,Long ueDeputyNum,String ueOfficeAddress,String uePostCode,
+                         String uePowerType,String ueCorporationSummary,String ueTechnicalSources){
         this.entireId = entireId;
         this.ueCompanyName = ueCompanyName;
         this.ueGoal = ueGoal;
@@ -72,8 +78,10 @@ public class UnitEssential implements  Serializable {
         this.ueResearchNum = ueResearchNum;
         this.ueDeputyNum = ueDeputyNum;
         this.ueOfficeAddress = ueOfficeAddress;
+        this.uePostCode = uePostCode;
         this.uePowerType = uePowerType;
         this.ueCorporationSummary = ueCorporationSummary;
+        this.ueTechnicalSources = ueTechnicalSources;
 
     }
 
@@ -91,7 +99,9 @@ public class UnitEssential implements  Serializable {
         if(updated.getUeResearchNum() != null)this.setUeResearchNum(updated.getUeResearchNum());
         if(updated.getUeDeputyNum() != null)this.setUeDeputyNum(updated.getUeDeputyNum());
         if(updated.getUeOfficeAddress() != null)this.setUeOfficeAddress(updated.getUeOfficeAddress());
+        if(updated.getUePostCode() != null)this.setUePostCode(updated.getUePostCode());
         if(updated.getUePowerType() != null)this.setUePowerType(updated.getUePowerType());
+        if(updated.getUeTechnicalSources() != null)this.setUeTechnicalSources(updated.getUeTechnicalSources());
         if(updated.getUeCorporationSummary() != null)this.setUeCorporationSummary(updated.getUeCorporationSummary());
 
         return this;
@@ -173,11 +183,25 @@ public class UnitEssential implements  Serializable {
         this.ueOfficeAddress = ueOfficeAddress;
     }
 
+    public String getUePostCode(){
+        return uePostCode;
+    }
+    public void setUePostCode(String uePostCode){
+        this.uePostCode = uePostCode;
+    }
+
     public String getUePowerType(){
         return uePowerType;
     }
     public void setUePowerType(String uePowerType){
         this.uePowerType = uePowerType;
+    }
+
+    public String getUeTechnicalSources(){
+        return ueTechnicalSources;
+    }
+    public void setUeTechnicalSources(String ueTechnicalSources){
+        this.ueTechnicalSources = ueTechnicalSources;
     }
 
     public String getUeCorporationSummary(){
@@ -187,9 +211,5 @@ public class UnitEssential implements  Serializable {
         this.ueCorporationSummary = ueCorporationSummary;
     }
 
-//    @Override
-//    public int compareTo(BaseModel o) {
-//        return 0;
-//    }
 }
 

@@ -21,6 +21,8 @@ public interface UnitBusinessPlanService {
      */
     UnitBusinessPlan update(UnitBusinessPlan update);
 
+    Long findByEntireId(Long entireId);
+
 
 //    UnitBusinessPlan delete(Long id);
 }

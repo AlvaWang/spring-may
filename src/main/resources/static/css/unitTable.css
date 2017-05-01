@@ -41,7 +41,13 @@
     margin-top: -18px;
 }
 .tContent{
-    width: 100%;
+    width: 100%!important;
+}
+.tContent table{
+    width: 100%!important;
+}
+.tContent table tbody{
+    width: 100%!important;
 }
 .t_title{
     width: 10%;

@@ -2,6 +2,7 @@ package net.bambooslips.demo.jpa.service.Impl;
 
 import net.bambooslips.demo.exception.PostNotFoundException;
 import net.bambooslips.demo.exception.UnitBusinessPlanNotFoundException;
+import net.bambooslips.demo.jpa.model.Contacts;
 import net.bambooslips.demo.jpa.model.UnitBusinessPlan;
 import net.bambooslips.demo.jpa.repository.UnitBusinessPlanRepository;
 import net.bambooslips.demo.jpa.service.UnitBusinessPlanService;
@@ -54,6 +55,19 @@ public class UnitBusinessPlanServiceImpl implements UnitBusinessPlanService{
         unitBusinessPlan.update(updated);
 
         return unitBusinessPlan;
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public Long findByEntireId(Long entireId) {
+        LOG.debug("Finding UnitEssential by id: " + entireId);
+        UnitBusinessPlan unitBusinessPlan =  unitBusinessPlanRepository.findByEntireId(entireId);
+        if (unitBusinessPlan != null){
+            Long ueId = unitBusinessPlan.getUbusId();
+            return ueId;
+        } else {
+            return null;
+        }
     }
 
 

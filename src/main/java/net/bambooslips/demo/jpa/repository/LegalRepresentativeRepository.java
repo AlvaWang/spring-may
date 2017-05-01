@@ -1,10 +1,12 @@
 package net.bambooslips.demo.jpa.repository;
 
-import net.bambooslips.demo.jpa.model.CompetitionEntire;
 import net.bambooslips.demo.jpa.model.LegalRepresentative;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 /**
  * Created by Administrator on 2017/4/21.
@@ -14,15 +16,11 @@ public interface LegalRepresentativeRepository extends JpaRepository<LegalRepres
 
     /**
      * 查询
-     * @param comAccName
-     * @param comAccPwd
+     * @param entireId
      * @return
      */
-//    @Query(
-//            "Select ca FROM CompetitionAccount ca WHERE ca.comAccName=:comAccName and ca.comAccPwd=:comAccPwd and ca.comAccType=:comAccType"
-//    )
-//    public List<CompetitionAccount> searchByName(@Param("comAccName") String comAccName,
-//                                                 @Param("comAccPwd") String comAccPwd,
-//                                                 @Param("comAccType") String comAccType);
-
+    @Query(
+            "Select lr FROM LegalRepresentative lr WHERE lr.entireId=:entireId"
+    )
+    public LegalRepresentative findByEntireId(@Param("entireId") Long entireId);
 }

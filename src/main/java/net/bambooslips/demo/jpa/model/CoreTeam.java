@@ -32,6 +32,9 @@ public class CoreTeam implements  Serializable {
     @Column(name = "ct_sex")
     private String ctSex;
 
+    @Column(name = "ct_age")
+    private Long ctAge;
+
     @Column(name = "ct_job")
     private String ctJob;
 
@@ -60,14 +63,25 @@ public class CoreTeam implements  Serializable {
         super();
 
     }
-    public CoreTeam(Long ueId,Long teId,Long entireId, String ctName,String ctSex,String ctJob,
-                    String ctHigbestEducation,String ctStudyExperience,String ctMainAchive,
-                    String ctNationalMillennium,Date nationalMilleDate,String ctUniversityBusiness){
+    public CoreTeam(Long ueId,
+                    Long teId,
+                    Long entireId,
+                    String ctName,
+                    String ctSex,
+                    Long ctAge,
+                    String ctJob,
+                    String ctHigbestEducation,
+                    String ctStudyExperience,
+                    String ctMainAchive,
+                    String ctNationalMillennium,
+//                    Date nationalMilleDate,
+                    String ctUniversityBusiness){
         this.ueId = ueId;
         this.teId = teId;
         this.entireId = entireId;
         this.ctName = ctName;
         this.ctSex = ctSex;
+        this.ctAge = ctAge;
         this.ctJob = ctJob;
         this.ctHigbestEducation = ctHigbestEducation;
         this.ctStudyExperience = ctStudyExperience;
@@ -88,6 +102,7 @@ public class CoreTeam implements  Serializable {
         if(updated.getCtName() != null)this.setCtName(updated.getCtName());
         if(updated.getCtJob() != null)this.setCtJob(updated.getCtJob());
         if(updated.getCtSex() != null)this.setCtSex(updated.getCtSex());
+        if(updated.getCtAge() != null)this.setCtAge(updated.getCtAge());
         if(updated.getCtHigbestEducation() != null)this.setCtHigbestEducation(updated.getCtHigbestEducation());
         if(updated.getCtStudyExperience() != null)this.setCtStudyExperience(updated.getCtStudyExperience());
         if(updated.getCtMainAchive() != null)this.setCtMainAchive(updated.getCtMainAchive());
@@ -137,6 +152,13 @@ public class CoreTeam implements  Serializable {
     }
     public void setCtSex(String ctSex){
        this.ctSex =ctSex;
+    }
+
+    public Long getCtAge(){
+        return ctAge;
+    }
+    public void setCtAge(Long ctAge){
+        this.ctAge =ctAge;
     }
 
     public String getCtJob(){
