@@ -2,6 +2,7 @@ package net.bambooslips.demo.jpa.repository;
 
 import net.bambooslips.demo.jpa.model.CompetitionAccount;
 import net.bambooslips.demo.jpa.model.CompetitionEntire;
+import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -13,19 +14,10 @@ import java.util.List;
  * Created by Administrator on 2017/4/21.
  */
 @Transactional
-public interface CompetitionEntireRepository extends JpaRepository<CompetitionEntire, Long> {
+public interface CompetitionEntireRepository extends JpaRepository<CompetitionEntire, Long>{
 
-    /**
-     * 查询
-     * @param comAccName
-     * @param comAccPwd
-     * @return
-     */
-//    @Query(
-//            "Select ca FROM CompetitionAccount ca WHERE ca.comAccName=:comAccName and ca.comAccPwd=:comAccPwd and ca.comAccType=:comAccType"
-//    )
-//    public List<CompetitionAccount> searchByName(@Param("comAccName") String comAccName,
-//                                                 @Param("comAccPwd") String comAccPwd,
-//                                                 @Param("comAccType") String comAccType);
-
+    @Query(
+            "SELECT ce.entireId from CompetitionEntire ce where ce.comName=:comName  "
+    )
+    List<CompetitionEntire> findByComName(@Param("comName") String comName);
 }

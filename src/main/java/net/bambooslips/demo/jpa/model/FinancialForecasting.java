@@ -26,22 +26,22 @@ public class FinancialForecasting implements  Serializable {
     private Long entireId;
 
     @Column(name = "fore_income")
-    private Double foreIncome;
+    private Long foreIncome;
 
     @Column(name = "fore_cost")
-    private Double foreCost;
+    private Long foreCost;
 
     @Column(name = "fore_tax_expense")
-    private Double foreTaxExpense;
+    private Long foreTaxExpense;
 
     @Column(name = "fore_profit")
-    private Double foreProfit;
+    private Long foreProfit;
 
     @Column(name = "fore_profit_rate")
-    private Double foreProfitRate;
+    private Long foreProfitRate;
 
     @Column(name = "fore_net_margin")
-    private Double foreNetMargin;
+    private Long foreNetMargin;
 
     @Column(name = "fore_year")
     private String foreYear;
@@ -52,8 +52,8 @@ public class FinancialForecasting implements  Serializable {
         super();
 
     }
-    public FinancialForecasting(Long entireId, Long ubusId, Long tbusId,double foreIncome, double foreCost, double foreTaxExpense,
-                                double foreProfit, double foreProfitRate, double foreNetMargin, String foreYear){
+    public FinancialForecasting(Long entireId, Long ubusId, Long tbusId,Long foreIncome, Long foreCost, Long foreTaxExpense,
+                                Long foreProfit, Long foreProfitRate, Long foreNetMargin, String foreYear){
         this.ubusId = ubusId;
         this.tbusId = tbusId;
         this.foreIncome = foreIncome;
@@ -110,45 +110,45 @@ public class FinancialForecasting implements  Serializable {
         this.entireId = entireId;
     }
 
-    public Double getForeIncome(){
+    public Long getForeIncome(){
         return foreIncome;
     }
-    public void setForeIncome(Double foreIncome){
+    public void setForeIncome(Long foreIncome){
         this.foreIncome = foreIncome;
     }
 
-    public Double getForeCost(){
+    public Long getForeCost(){
         return foreCost;
     }
-    public void setForeCost(Double foreCost){
+    public void setForeCost(Long foreCost){
        this.foreCost =foreCost;
     }
 
-    public Double getForeTaxExpense(){
+    public Long getForeTaxExpense(){
         return foreTaxExpense;
     }
-    public void setForeTaxExpense(Double foreTaxExpense){
+    public void setForeTaxExpense(Long foreTaxExpense){
         this.foreTaxExpense = foreTaxExpense;
     }
 
-    public Double getForeProfit(){
+    public Long getForeProfit(){
         return foreProfit;
     }
-    public void setForeProfit(Double foreProfit){
+    public void setForeProfit(Long foreProfit){
         this.foreProfit =foreProfit;
     }
 
-    public Double getForeProfitRate(){
+    public Long getForeProfitRate(){
         return foreProfitRate;
     }
-    public void setForeProfitRate(Double foreProfitRate){
+    public void setForeProfitRate(Long foreProfitRate){
         this.foreProfitRate = foreProfitRate;
     }
 
-    public Double getForeNetMargin(){
+    public Long getForeNetMargin(){
         return foreNetMargin;
     }
-    public void setForeNetMargin(Double foreNetMargin){
+    public void setForeNetMargin(Long foreNetMargin){
         this.foreNetMargin =foreNetMargin;
     }
 

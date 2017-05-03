@@ -383,29 +383,29 @@
                                                 </div>
                                             </td>
                                         </tr>
-                                        <tr>
+                                        <tr id="institute">
                                             <td class="t_title2">类似技术研究机构</td>
                                             <td>
                                                 <div id="research_institute">
-                                                    <input type="radio" value="有" name="research"/>有
-                                                    <input type="radio" value="无" name="research"/>无
+                                                    <input type="radio" value="有" name="research" onclick="change_institute_name()" checked="checked"/>有
+                                                        <input type="radio" value="无" name="research"  onclick="change_instituteName()"/>无
                                                 </div>
 
                                             </td>
-                                            <td>机构名称</td>
-                                            <td>
+                                            <td class="instituteName">机构名称</td>
+                                            <td  class="instituteName">
                                                 <input type="text" id="institute_name"/>
                                             </td>
                                         </tr>
-                                        <tr>
+                                        <tr id="picture">
                                             <td class="t_title2">参赛项目产品图片</td>
                                             <td>
                                                 <div id="pro_picture">
-                                                    <input type="radio" value="有" name="picture"/>有
-                                                    <input type="radio" value="无" name="picture"/>无
+                                                    <input type="radio" value="有" name="picture" onclick="change_picture_yes()" checked="checked"/>有
+                                                    <input type="radio" value="无" name="picture" onclick="change_picture_No()"/>无
                                                 </div>
                                             </td>
-                                            <td colspan="2">
+                                            <td colspan="2" class="picture_upload">
                                                 <input type="text" value=""/>请附上产品图片
                                                 <div style="float: right">
                                                     <p>上传</p>
@@ -592,22 +592,22 @@
                             <tr>
                                 <td class="t_title">融资经历</td>
                                 <td>
-                                    <table>
+                                    <table id="equity">
                                         <tr>
                                             <td colspan="4">股权融资
                                                 <div id="isEquity">
-                                                    <input type="radio" value="是" name="equity"/>是
-                                                    <input type="radio" value="否" name="equity"/>否
+                                                    <input type="radio" value="是" name="equity" onclick="change_equity_yes()" checked="checked"/>是
+                                                    <input type="radio" value="否" name="equity" onclick="change_equity_no()"/>否
                                                 </div>
                                             </td>
                                         </tr>
-                                        <tr>
+                                        <tr class="equity_tr">
                                             <td>投资人/投资机构</td>
                                             <td>融资金额（万元￥）</td>
                                             <td>所占股权比例</td>
                                             <td>投资时间</td>
                                         </tr>
-                                        <tr>
+                                        <tr class="equity_tr">
                                             <td><input type="text" id="equity_investor"/></td>
                                             <td><input type="text" id="equity_money"/></td>
                                             <td><input type="text" id="equity_rate"/></td>
@@ -617,18 +617,18 @@
                                         <tr>
                                             <td colspan="4">债权融资
                                                 <div id="isDebt">
-                                                    <input type="radio" value="是" name="debt"/>是
-                                                    <input type="radio" value="否" name="debt"/>否
+                                                    <input type="radio" value="是" name="debt" onclick="change_debt_yes()" checked="checked"/>是
+                                                    <input type="radio" value="否" name="debt" onclick="change_debt_no()"/>否
                                                 </div>
                                             </td>
                                         </tr>
-                                        <tr>
+                                        <tr class="debt_tr">
                                             <td>出借方</td>
                                             <td>贷款金额（万元￥）</td>
                                             <td>贷款启动时间</td>
                                             <td>贷款结束时间</td>
                                         </tr>
-                                        <tr>
+                                        <tr class="debt_tr">
                                             <td><input type="text" id="debt_leader"/></td>
                                             <td><input type="text" id="debt_money"/></td>
                                             <td><input type="text" id="debt_start_time"/></td>
@@ -642,32 +642,32 @@
                                     （可复选项）
                                 </td>
                                 <td>
-                                    <table>
+                                    <table id="technology">
                                         <tr>
                                             <td colspan="3">股权融资
                                                 <div id="df_isEquity">
-                                                    <input type="radio" value="是" name="df_equity"/>是
-                                                    <input type="radio" value="否" name="df_equity"/>否
+                                                    <input type="radio" value="是" name="df_equity" onclick="df_equity_yes()" checked = "checked"/>是
+                                                    <input type="radio" value="否" name="df_equity" onclick="df_equity_no()"/>否
                                                 </div>
                                             </td>
                                         </tr>
-                                        <tr>
+                                        <tr class="df_equity_yes">
                                             <td>融资金额（万元￥）</td>
                                             <td>拟出让股权比例</td>
                                             <td>融资时间</td>
                                         </tr>
-                                        <tr>
+                                        <tr class="df_equity_yes">
                                             <td><input type="text" id="df_equity_money"/></td>
                                             <td><input type="text" id="df_equity_shares"/></td>
                                             <td><input type="text" id="df_equity_date"/></td>
                                         </tr>
-                                        <tr>
+                                        <tr class="df_equity_yes">
                                             <td>资金使用计划</td>
                                             <td colspan="2">
                                                 <input type="text" value="" id="df_equityFund_plan" placeholder="（资金使用方向细目。包括固定资产投入、在建工程、研发投入、管理费等）"/>
                                             </td>
                                         </tr>
-                                        <tr>
+                                        <tr class="df_equity_yes">
                                             <td colspan="3">愿意接受大赛组委会推荐创投机构
                                                 <div id="df_isEquity_recom">
                                                     <input type="radio" value="是" name="equity_recom"/>是
@@ -680,28 +680,28 @@
                                         <tr>
                                             <td colspan="3">债权融资
                                                 <div id="df_isDebt">
-                                                    <input type="radio" value="是" name="df_debt"/>是
-                                                    <input type="radio" value="否" name="df_debt"/>否
+                                                    <input type="radio" value="是" name="df_debt" onclick="df_debt_yes()" checked="checked"/>是
+                                                    <input type="radio" value="否" name="df_debt" onclick="df_debt_no()"/>否
                                                 </div>
                                             </td>
                                         </tr>
-                                        <tr>
+                                        <tr class="df_debt_yes">
                                             <td>融资金额（万元￥）</td>
                                             <td>可接受最高年利率%</td>
                                             <td>融资时间</td>
                                         </tr>
-                                        <tr>
+                                        <tr class="df_debt_yes">
                                             <td><input type="text" id="df_debt_money"/></td>
                                             <td><input type="text" id="df_debt_maxAnnual"/></td>
                                             <td><input type="text" id="df_debt_date"/></td>
                                         </tr>
-                                        <tr>
+                                        <tr class="df_debt_yes">
                                             <td>资金使用计划</td>
                                             <td colspan="2">
-                                                <input type="text" value="" id="df_debtFund_plan" placeholder="（资金使用方向细目。包括固定资产投入、在建工程、研发投入、管理费等）"/>
+                                                <input type="text" id="df_debtFund_plan" placeholder="（资金使用方向细目。包括固定资产投入、在建工程、研发投入、管理费等）"/>
                                             </td>
                                         </tr>
-                                        <tr>
+                                        <tr class="df_debt_yes">
                                             <td colspan="3">愿意接受大赛组委会推荐创投机构
                                                 <div id="df_isDebt_recom">
                                                     <input type="radio" value="是" name="debt_recom"/>是
@@ -711,9 +711,9 @@
                                             </td>
                                         </tr>
 
-                                        <tr>
-                                            <td><input type="radio" value="众筹" id="df_isCrowd_funding"/>众筹</td>
-                                            <td colspan="2">
+                                        <tr id="crowd">
+                                            <td id="choose_crowd"><input type="checkbox" value="众筹" id="df_isCrowd_funding" onclick="change_crowd()"/>众筹</td>
+                                            <td colspan="2" class="crowd_td">
                                                 <table id="crows_fund_type">
                                                     <tr><td><input type="radio" value="债权众筹" name="crowd"/>债权众筹</td></tr>
                                                     <tr><td> <input type="radio" value="股权众筹" name="crowd"/>股权众筹</td></tr>
@@ -721,72 +721,72 @@
                                                 </table>
                                             </td>
                                         </tr>
-                                        <tr><td colspan="3"><input type="radio" value="并购" id="df_isMerge"/>并购</td></tr>
-                                        <tr><td colspan="3"><input type="radio" value="上市股改" id="df_isListed_shareReform"/>上市股改</td></tr>
-                                        <tr><td colspan="3"><input type="radio" value="融资担保" id="df_isFinancing_guarantee"/>融资担保</td></tr>
+                                        <tr><td colspan="3"  id="df_isMerge"><input type="checkbox" value="并购"/>并购</td></tr>
+                                        <tr><td colspan="3" id="df_isListed_shareReform"><input type="checkbox" value="上市股改" />上市股改</td></tr>
+                                        <tr><td colspan="3" id="df_isFinancing_guarantee"><input type="checkbox" value="融资担保" />融资担保</td></tr>
                                         <tr>
-                                            <td><input type="radio" value="小额贷款" id="df_isPetty_loan"/>小额贷款</td>
-                                            <td colspan="2">额度<input type="number" value="" id="petty_loan_money"/>（万元人民币）</td>
+                                            <td id="change_petty"><input type="checkbox" value="小额贷款" id="df_isPetty_loan" onclick="change_petty()"/>小额贷款</td>
+                                            <td colspan="2" class="pettyMoney">额度<input type="number" value="" id="petty_loan_money"/>（万元人民币）</td>
                                         </tr>
-                                        <tr><td colspan="3"><input type="radio" value="企业债券发行" id="df_company_isDebt"/>企业债券发行</td></tr>
-                                        <tr><td colspan="3"> <input type="radio" value="中小企业集合债券发行" id="df_minorEnterprises_isDebt"/>中小企业集合债券发行</td></tr>
+                                        <tr><td colspan="3" id="df_company_isDebt"><input type="checkbox" value="企业债券发行" />企业债券发行</td></tr>
+                                        <tr><td colspan="3" id="df_minorEnterprises_isDebt"> <input type="checkbox" value="中小企业集合债券发行" />中小企业集合债券发行</td></tr>
                                         <tr>
-                                            <td><input type="radio" value="技术引进" id="df_technical_import"/>技术引进 </td>
-                                            <td colspan="2">
+                                            <td id="change_import_technical"><input type="checkbox" value="技术引进" id="df_technical_import" onclick="change_import_technical()"/>技术引进 </td>
+                                            <td colspan="2" id="importTechnical">
                                                 <table  id="technical_import_range">
                                                     <tr>
-                                                        <td> <input type="radio" value="国际技术范围" id="technical_import_international"/>国际技术范围</td>
+                                                        <td id="technical_import_international"> <input type="checkbox" value="国际技术范围" />国际技术范围</td>
                                                         <td><input type="text" value="" placeholder="（自行填写）" id="technical_desc_international"/></td>
                                                     </tr>
                                                     <tr>
-                                                        <td> <input type="radio" value="国内技术范围" id="technical_import_internal"/>国内技术范围</td>
+                                                        <td  id="technical_import_internal"> <input type="checkbox" value="国内技术范围"/>国内技术范围</td>
                                                         <td><input type="text" value="" placeholder="（自行填写）"  id="technical_desc_internal"/></td>
                                                     </tr>
                                                 </table>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><input type="radio" value="技术转让" id="df_technical_transfer"/>技术转让</td>
-                                            <td><input type="text" id="technical_transfer_range"/></td>
+                                            <td id="change_transfer"><input type="checkbox" value="技术转让" id="df_technical_transfer" onclick="change_transfer()"/>技术转让</td>
+                                            <td class="transferTechnical"><input type="text" id="technical_transfer_range"/></td>
                                         </tr>
-                                        <tr><td colspan="3"><input type="radio" value="产权转让" id="df_property_assign"/>产权转让</td></tr>
-                                        <tr><td colspan="3"><input type="radio" value="金融租赁" id="df_finace_lease"/>金融租赁</td></tr>
-                                        <tr><td colspan="3"><input type="radio" value="科技保险" id="df_technology_insurance"/>科技保险</td></tr>
-                                        <tr><td colspan="3"><input type="radio" value="资产管理" id="df_asset_manage"/>资产管理</td></tr>
-                                        <tr><td colspan="3"><input type="radio" value="入住科创园区/孵化器" id="df_branchChong_check"/>入住科创园区/孵化器</td></tr>
-                                        <tr><td colspan="3"><input type="radio" value="政策咨询" id="df_political_consult"/>政策咨询</td></tr>
-                                        <tr><td colspan="3"><input type="radio" value="科技咨询" id="df_technology_consult"/>科技咨询</td></tr>
+                                        <tr><td colspan="3" id="df_property_assign"><input type="checkbox" value="产权转让" />产权转让</td></tr>
+                                        <tr><td colspan="3" id="df_finace_lease"><input type="checkbox" value="金融租赁" />金融租赁</td></tr>
+                                        <tr><td colspan="3" id="df_technology_insurance"><input type="checkbox" value="科技保险" />科技保险</td></tr>
+                                        <tr><td colspan="3" id="df_asset_manage"><input type="checkbox" value="资产管理" />资产管理</td></tr>
+                                        <tr><td colspan="3" id="df_branchChong_check"><input type="checkbox" value="入住科创园区/孵化器" />入住科创园区/孵化器</td></tr>
+                                        <tr><td colspan="3" id="df_political_consult"><input type="checkbox" value="政策咨询" />政策咨询</td></tr>
+                                        <tr><td colspan="3" id="df_technology_consult"><input type="checkbox" value="科技咨询" />科技咨询</td></tr>
 
                                         <tr>
-                                            <td><input type="radio" value="科技咨询" id="df_intermediary_consult"/>中介咨询</td>
-                                            <td colspan="2">
+                                            <td id="change_intermediary"><input type="checkbox" value="中介咨询" id="df_intermediary_consult" onclick="change_intermediary()"/>中介咨询</td>
+                                            <td colspan="2" id="intermediary">
                                                 <table id="intermediary_consult_type">
                                                     <tr>
-                                                        <td><input type="radio" value="法律" id="intermediary_law"/>法律</td>
+                                                        <td  id="intermediary_law"><input type="checkbox" value="法律"/>法律</td>
                                                         <td><input type="text" value="" placeholder="（自行填写）" id="intermediary_law_desc"/></td>
                                                     </tr>
                                                     <tr>
-                                                        <td><input type="radio" value="财务" id="intermediary_finance"/>财务</td>
+                                                        <td id="intermediary_finance"><input type="checkbox" value="财务" />财务</td>
                                                         <td><input type="text" value="" placeholder="（自行填写）" id="intermediary_finance_desc"/></td>
                                                     </tr>
                                                     <tr>
-                                                        <td><input type="radio" value="融资" id="intermediary_Financing"/>融资</td>
+                                                        <td id="intermediary_Financing"><input type="checkbox" value="融资" />融资</td>
                                                         <td><input type="text" value="" placeholder="（自行填写）" id="intermediary_financing_desc"/></td>
                                                     </tr>
                                                     <tr>
-                                                        <td><input type="radio" value="管理" id="intermediary_manage"/>管理</td>
+                                                        <td id="intermediary_manage"><input type="checkbox" value="管理" />管理</td>
                                                         <td><input type="text" value="" placeholder="（自行填写）" id="intermediary_manage_desc"/></td>
                                                     </tr>
                                                 </table>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><input type="radio" value="其他服务需求" id="df_other_service"/>其他服务需求</td>
-                                            <td colspan="2"><input type="text" value="" placeholder="（自行填写）" id="other_service_desc"/></td>
+                                            <td id="change_other"><input type="checkbox" value="其他服务需求" id="df_other_service" onclick="change_other()"/>其他服务需求</td>
+                                            <td colspan="2" id="otherDesc"><input type="text" value="" placeholder="（自行填写）" id="other_service_desc"/></td>
                                         </tr>
 
-                                        <tr><td colspan="3"><input type="radio" value="愿意接受专业培训和创业教育学位进修机会" id="df_accept_train"/>愿意接受专业培训和创业教育学位进修机会</td></tr>
-                                        <tr><td colspan="3"><input type="radio" value="无" id="df_no"/>无</td></tr>
+                                        <tr><td colspan="3"  id="df_accept_train"><input type="checkbox" value="愿意接受专业培训和创业教育学位进修机会"/>愿意接受专业培训和创业教育学位进修机会</td></tr>
+                                        <tr><td colspan="3" id="df_no"><input type="checkbox" value="无" />无</td></tr>
                                     </table>
                                 </td>
                             </tr>
@@ -808,6 +808,6 @@
 <script src="../static/lib/js/lightbox.min.js" th:src="@{/lib/js/lightbox.min.js}"></script>
 <script src="../static/js/public.js" th:src="@{/js/public.js}"></script>
 <script src="../static/js/comeTime.js" th:src="@{/js/comeTime.js}"></script>
-<script src="../static/js/unitTable.js" th:src="@{/js/unitTable.js}"></script>
+<script src="../static/js/unitCreate.js" th:src="@{/js/unitCreate.js}"></script>
 </body>
 </html>

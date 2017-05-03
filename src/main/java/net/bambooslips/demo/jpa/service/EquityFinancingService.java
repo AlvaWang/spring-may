@@ -23,4 +23,6 @@ public interface EquityFinancingService {
 
 
     EquityFinancing delete(Long id);
+
+    Long findByEntireId(Long entireId);
 }

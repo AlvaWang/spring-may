@@ -2,6 +2,7 @@ package net.bambooslips.demo.jpa.service.Impl;
 
 import net.bambooslips.demo.exception.PostNotFoundException;
 import net.bambooslips.demo.exception.UnitBusinessPlanNotFoundException;
+import net.bambooslips.demo.jpa.model.CompetitionEntire;
 import net.bambooslips.demo.jpa.model.Contacts;
 import net.bambooslips.demo.jpa.model.UnitBusinessPlan;
 import net.bambooslips.demo.jpa.repository.UnitBusinessPlanRepository;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 
 /**
@@ -70,6 +72,12 @@ public class UnitBusinessPlanServiceImpl implements UnitBusinessPlanService{
         }
     }
 
+    @Transactional(readOnly = true)
+    @Override
+    public List<UnitBusinessPlan> findEntireProName(Long entireId){
+        List<UnitBusinessPlan> list =unitBusinessPlanRepository.findEntireProName(entireId);
+        return list;
+    }
 
 
 }

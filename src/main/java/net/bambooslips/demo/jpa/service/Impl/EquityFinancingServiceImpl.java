@@ -5,6 +5,7 @@ import net.bambooslips.demo.exception.EquityFinancingNotFoundException;
 import net.bambooslips.demo.exception.PostNotFoundException;
 import net.bambooslips.demo.jpa.model.CoreTeam;
 import net.bambooslips.demo.jpa.model.EquityFinancing;
+import net.bambooslips.demo.jpa.model.UnitBusinessPlan;
 import net.bambooslips.demo.jpa.repository.CoreTeamRepository;
 import net.bambooslips.demo.jpa.repository.EquityFinancingRepository;
 import net.bambooslips.demo.jpa.service.CoreTeamService;
@@ -82,6 +83,20 @@ public class EquityFinancingServiceImpl implements EquityFinancingService{
         equityFinancingRepository.delete(deleted);
         return deleted;
     }
+
+    @Transactional(readOnly = true)
+    @Override
+    public Long findByEntireId(Long entireId) {
+        LOG.debug("Finding UnitEssential by id: " + entireId);
+        EquityFinancing equityFinancing =  equityFinancingRepository.findByEntireId(entireId);
+        if (equityFinancing != null){
+            Long ueId = equityFinancing.getEquityId();
+            return ueId;
+        } else {
+            return null;
+        }
+    }
+
 
 
 }

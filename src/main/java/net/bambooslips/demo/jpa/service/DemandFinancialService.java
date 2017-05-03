@@ -23,4 +23,6 @@ public interface DemandFinancialService {
 
 
     DemandFinancial delete(Long id);
+
+    Long findByEntireId(Long entireId);
 }

@@ -90,6 +90,21 @@ public class MainController {
         return "unitTable";
     }
 
+    @RequestMapping("/project")
+    public String project() {
+        return "project";
+    }
+
+    @RequestMapping("/unitCreate")
+    public String unitCreate() {
+        return "unitCreate";
+    }
+
+    @RequestMapping("/teamCreate")
+    public String teamCreate() {
+        return "teamCreate";
+    }
+
     @ModelAttribute("avatars")
     @RequestMapping("/avatars")
     public Page<Resource> avatars(@RequestParam(defaultValue = PAGE) Integer page,

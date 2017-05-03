@@ -23,4 +23,6 @@ public interface DebtFinancingService {
 
 
     DebtFinancing delete(Long id);
+
+    Long findByEntireId(Long entireId);
 }

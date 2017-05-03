@@ -1,8 +1,11 @@
 package net.bambooslips.demo.jpa.repository;
 
 import net.bambooslips.demo.jpa.model.FinancialHistorical;
+import net.bambooslips.demo.jpa.model.PatentList;
 import net.bambooslips.demo.jpa.model.UnitBusinessPlan;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import javax.transaction.Transactional;
 
@@ -14,15 +17,11 @@ public interface FinancialHistoricalRepository extends JpaRepository<FinancialHi
 
     /**
      * 查询
-     * @param comAccName
-     * @param comAccPwd
      * @return
      */
-//    @Query(
-//            "Select ca FROM CompetitionAccount ca WHERE ca.comAccName=:comAccName and ca.comAccPwd=:comAccPwd and ca.comAccType=:comAccType"
-//    )
-//    public List<CompetitionAccount> searchByName(@Param("comAccName") String comAccName,
-//                                                 @Param("comAccPwd") String comAccPwd,
-//                                                 @Param("comAccType") String comAccType);
+    @Query(
+            "Select count(fh.entireId) FROM FinancialHistorical fh WHERE fh.entireId=:entireId "
+    )
+        int findByEntireId(@Param("entireId") Long entireId);
 
 }

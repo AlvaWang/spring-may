@@ -27,7 +27,7 @@ public class DebtFinancing implements  Serializable {
     private String debtLeader;
 
     @Column(name = "debt_money")
-    private double debtMoney;
+    private Long debtMoney;
 
     @Column(name = "debt_start_time")
     @Temporal(TemporalType.TIMESTAMP)
@@ -44,7 +44,7 @@ public class DebtFinancing implements  Serializable {
 
     }
     public DebtFinancing(Long ubusId, Long entireId,
-                         String debtLeader, double debtMoney,
+                         String debtLeader, Long debtMoney,
                          Date debtStartTime,Date debtEndTime){
         this.ubusId = ubusId;
         this.entireId = entireId;
@@ -96,10 +96,10 @@ public class DebtFinancing implements  Serializable {
         this.debtLeader = debtLeader;
     }
 
-    public double getDebtMoney(){
+    public Long getDebtMoney(){
         return debtMoney;
     }
-    public void setDebtMoney(double debtMoney){
+    public void setDebtMoney(Long debtMoney){
        this.debtMoney =debtMoney;
     }
 
@@ -118,5 +118,6 @@ public class DebtFinancing implements  Serializable {
     public void setDebtEndTime(Date debtEndTime) {
         this.debtEndTime = debtEndTime;
     }
+
 }
 

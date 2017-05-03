@@ -4,6 +4,7 @@ import net.bambooslips.demo.exception.FinancialHistoricalNotFoundException;
 import net.bambooslips.demo.exception.PostNotFoundException;
 import net.bambooslips.demo.exception.UnitBusinessPlanNotFoundException;
 import net.bambooslips.demo.jpa.model.FinancialHistorical;
+import net.bambooslips.demo.jpa.model.PatentList;
 import net.bambooslips.demo.jpa.model.UnitBusinessPlan;
 import net.bambooslips.demo.jpa.repository.FinancialHistoricalRepository;
 import net.bambooslips.demo.jpa.repository.UnitBusinessPlanRepository;
@@ -33,7 +34,7 @@ public class FinancialHistoricalServiceImpl implements FinancialHistoricalServic
         LOG.debug("Creating a new financialHistorical with information: " + financialHistorical);
         FinancialHistorical result = financialHistoricalRepository.save(financialHistorical);
         if(result != null){
-            return financialHistorical.getUbusId();
+            return financialHistorical.getHfinId();
         }
         return null;
     }
@@ -60,6 +61,16 @@ public class FinancialHistoricalServiceImpl implements FinancialHistoricalServic
         return financialHistorical;
     }
 
-
+    @Transactional(readOnly = true)
+    @Override
+    public int findByEntireId(Long entireId) {
+        LOG.debug("Finding patentList by id: " + entireId);
+        int count =  financialHistoricalRepository.findByEntireId(entireId);
+        if (count > 0){
+            return count;
+        } else {
+            return 0;
+        }
+    }
 
 }

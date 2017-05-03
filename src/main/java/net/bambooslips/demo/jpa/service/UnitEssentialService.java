@@ -4,6 +4,7 @@ import net.bambooslips.demo.exception.CompetitionEntireNotFoundException;
 import net.bambooslips.demo.exception.UnitEssentialNotFoundException;
 import net.bambooslips.demo.jpa.model.CompetitionEntire;
 import net.bambooslips.demo.jpa.model.UnitEssential;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,4 +28,6 @@ public interface UnitEssentialService {
     UnitEssential delete(Long id);
 
     Long findByEntireId(Long entireId);
+
+//    Page<UnitEssential> findByComName(String comName);
 }

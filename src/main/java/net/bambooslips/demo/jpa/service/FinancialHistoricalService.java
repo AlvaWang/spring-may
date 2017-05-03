@@ -23,6 +23,7 @@ public interface FinancialHistoricalService {
      */
     FinancialHistorical update(FinancialHistorical update);
 
+    int findByEntireId(Long entireId);
 
 //    UnitBusinessPlan delete(Long id);
 }

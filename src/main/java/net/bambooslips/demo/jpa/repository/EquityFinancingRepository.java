@@ -1,8 +1,11 @@
 package net.bambooslips.demo.jpa.repository;
 
 import net.bambooslips.demo.jpa.model.CoreTeam;
+import net.bambooslips.demo.jpa.model.DebtFinancing;
 import net.bambooslips.demo.jpa.model.EquityFinancing;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import javax.transaction.Transactional;
 
@@ -12,17 +15,9 @@ import javax.transaction.Transactional;
 @Transactional
 public interface EquityFinancingRepository extends JpaRepository<EquityFinancing, Long> {
 
-    /**
-     * 查询
-     * @param comAccName
-     * @param comAccPwd
-     * @return
-     */
-//    @Query(
-//            "Select ca FROM CompetitionAccount ca WHERE ca.comAccName=:comAccName and ca.comAccPwd=:comAccPwd and ca.comAccType=:comAccType"
-//    )
-//    public List<CompetitionAccount> searchByName(@Param("comAccName") String comAccName,
-//                                                 @Param("comAccPwd") String comAccPwd,
-//                                                 @Param("comAccType") String comAccType);
+    @Query(
+            "Select ef FROM EquityFinancing ef WHERE ef.entireId=:entireId"
+    )
+    public EquityFinancing findByEntireId(@Param("entireId") Long entireId);
 
 }

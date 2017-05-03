@@ -7,6 +7,8 @@ import net.bambooslips.demo.jpa.model.UnitBusinessPlan;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * Created by Administrator on 2017/4/21.
  */
@@ -22,6 +24,8 @@ public interface UnitBusinessPlanService {
     UnitBusinessPlan update(UnitBusinessPlan update);
 
     Long findByEntireId(Long entireId);
+
+    List<UnitBusinessPlan> findEntireProName(Long entireId);
 
 
 //    UnitBusinessPlan delete(Long id);

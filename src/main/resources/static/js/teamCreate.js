@@ -6,58 +6,88 @@ $(function () {
     $("#first_table").show();
     $("#second_table").hide();
     $("#third_table").hide();
+    $("#four_table").hide();
 
-    $(".streamer_jbxx").show();
-    $(".streamer_hxtd").hide();
-    $(".streamer_syjhs").hide();
+    $(".streamer_jbxx_team").show();
+    $(".streamer_hxtd_team").hide();
+    $(".streamer_syjhs_team").hide();
+    $(".streamer_kjjr_team").hide();
 
-    $("#jbxx_conservation").show();
-    $("#hxtd_conservation").hide();
-    $("#syjhs_conservation").hide();
 
     $("#patent_table").find("input,div,button,textarea,select").attr("disabled", "disabled");
     $("#patent_table").find("input,div,button,textarea,select").css("background","#dbdbdb")
     $("#patent_table").css("background","#dbdbdb")
+
+    $(".crowd_td,.crowd_td #crows_fund_type,#crows_fund_type tr td input").css("background","#dbdbdb");
+    $(".crowd_td,.crowd_td #crows_fund_type,#crows_fund_type tr td input").attr("disabled","#disabled");
+
+    $(".pettyMoney,.pettyMoney input").attr("disabled", "disabled");
+    $(".pettyMoney,.pettyMoney input").css("background","#dbdbdb")
+
+    $("#importTechnical,#technical_import_range").attr("disabled", "disabled");
+    $("#importTechnical,#technical_import_range").css("background","#dbdbdb")
+    $("#technical_import_range").find("tr td input").attr("disabled", "disabled");
+    $("#technical_import_range").find("tr td input").css("background","#dbdbdb")
+
+    $(".transferTechnical,.transferTechnical input").attr("disabled", "disabled");
+    $(".transferTechnical,.transferTechnical input").css("background","#dbdbdb")
+
+    $("#intermediary,#intermediary_consult_type").attr("disabled", "disabled");
+    $("#intermediary,#intermediary_consult_type").css("background","#dbdbdb")
+    $("#intermediary_consult_type").find("tr td input").attr("disabled", "disabled");
+    $("#intermediary_consult_type").find("tr td input").css("background","#dbdbdb")
+
+    $("#otherDesc,#otherDesc input").attr("disabled", "disabled");
+    $("#otherDesc,#otherDesc input").css("background","#dbdbdb")
 });
 $("#first_btn").click(function () {
     $("#first_table").show();
     $("#second_table").hide();
     $("#third_table").hide();
+    $("#four_table").hide();
 
-    $(".streamer_jbxx").show();
-    $(".streamer_hxtd").hide();
-    $(".streamer_syjhs").hide();
+    $(".streamer_jbxx_team").show();
+    $(".streamer_hxtd_team").hide();
+    $(".streamer_syjhs_team").hide();
+    $(".streamer_kjjr_team").hide();
 
-    $("#jbxx_conservation").show();
-    $("#hxtd_conservation").hide();
-    $("#syjhs_conservation").hide();
 })
 
 $("#second_btn").click(function () {
     $("#second_table").show();
     $("#first_table").hide();
     $("#third_table").hide();
+    $("#four_table").hide();
 
-    $(".streamer_hxtd").show();
-    $(".streamer_jbxx").hide();
-    $(".streamer_syjhs").hide();
+    $(".streamer_hxtd_team").show();
+    $(".streamer_jbxx_team").hide();
+    $(".streamer_kjjr_team").hide();
+    $(".streamer_syjhs_team").hide();
 
-    $("#hxtd_conservation").show();
-    $("#jbxx_conservation").hide();
-    $("#syjhs_conservation").hide();
 })
 $("#third_btn").click(function () {
     $("#third_table").show();
     $("#second_table").hide();
     $("#first_table").hide();
+    $("#four_table").hide();
 
-    $(".streamer_syjhs").show();
-    $(".streamer_jbxx").hide();
-    $(".streamer_hxtd").hide();
+    $(".streamer_syjhs_team").show();
+    $(".streamer_jbxx_team").hide();
+    $(".streamer_hxtd_team").hide();
+    $(".streamer_kjjr_team").hide();
 
-    $("#syjhs_conservation").show();
-    $("#jbxx_conservation").hide();
-    $("#hxtd_conservation").hide();
+})
+$("#four_btn").click(function () {
+    $("#four_table").show();
+    $("#second_table").hide();
+    $("#first_table").hide();
+    $("#third_table").hide();
+
+    $(".streamer_kjjr_team").show();
+    $(".streamer_jbxx_team").hide();
+    $(".streamer_hxtd_team").hide();
+    $(".streamer_syjhs_team").hide();
+
 })
 
 
@@ -74,6 +104,139 @@ var change_patent_table = function () {
     }
 };
 
+var change_institute_name = function () {
+    $("#institute").find(".instituteName,.instituteName input").removeAttr("disabled");
+    $("#institute").find(".instituteName,.instituteName input").css("background","#ffffff");
+
+}
+var change_instituteName = function () {
+    $("#institute").find(".instituteName,.instituteName input").attr("disabled", "disabled");
+    $("#institute").find(".instituteName,.instituteName input").css("background","#dbdbdb");
+}
+
+var change_picture_yes = function () {
+    $("#picture").find(".picture_upload,.picture_upload input,.picture_upload div").removeAttr("disabled");
+    $("#picture").find(".picture_upload,.picture_upload input,.picture_upload div").css("background","#ffffff");
+}
+var change_picture_No = function () {
+    $("#picture").find(".picture_upload,.picture_upload input,.picture_upload div").attr("disabled", "disabled");
+    $("#picture").find(".picture_upload,.picture_upload input,.picture_upload div").css("background","#dbdbdb");
+}
+
+var change_equity_yes = function () {
+    $("#equity").find(".equity_tr,.equity_tr td,.equity_tr td input").removeAttr("disabled");
+    $("#equity").find(".equity_tr,.equity_tr td,.equity_tr td input").css("background","#ffffff");
+}
+var change_equity_no = function () {
+    $("#equity").find(".equity_tr,.equity_tr td,.equity_tr td input").attr("disabled", "disabled");
+    $("#equity").find(".equity_tr,.equity_tr td,.equity_tr td input").css("background","#dbdbdb");
+}
+
+var change_debt_yes = function () {
+    $("#equity").find(".debt_tr,.debt_tr td,.debt_tr td input").removeAttr("disabled");
+    $("#equity").find(".debt_tr,.debt_tr td,.debt_tr td input").css("background","#ffffff");
+}
+var change_debt_no = function () {
+    $("#equity").find(".debt_tr,.debt_tr td,.debt_tr td input").attr("disabled", "disabled");
+    $("#equity").find(".debt_tr,.debt_tr td,.debt_tr td input").css("background","#dbdbdb");
+}
+
+var df_equity_yes = function () {
+    $("#technology").find(".df_equity_yes,.df_equity_yes td,.df_equity_yes td input,.df_equity_yes td div input").removeAttr("disabled");
+    $("#technology").find(".df_equity_yes,.df_equity_yes td,.df_equity_yes td input,.df_equity_yes td div input").css("background","#ffffff");
+}
+var df_equity_no = function () {
+    $("#technology").find(".df_equity_yes,.df_equity_yes td,.df_equity_yes td input,.df_equity_yes td div input").attr("disabled", "disabled");
+    $("#technology").find(".df_equity_yes,.df_equity_yes td,.df_equity_yes td input,.df_equity_yes td div input").css("background","#dbdbdb");
+}
+
+var df_debt_yes = function () {
+    $("#technology").find(".df_debt_yes,.df_debt_yes td,.df_debt_yes td input,.df_debt_yes td div input").removeAttr("disabled");
+    $("#technology").find(".df_debt_yes,.df_debt_yes td,.df_debt_yes td input,.df_debt_yes td div input").css("background","#ffffff");
+}
+var df_debt_no = function () {
+    $("#technology").find(".df_debt_yes,.df_debt_yes td,.df_debt_yes td input,.df_debt_yes td div input").attr("disabled", "disabled");
+    $("#technology").find(".df_debt_yes,.df_debt_yes td,.df_debt_yes td input,.df_debt_yes td div input").css("background","#dbdbdb");
+}
+
+var change_crowd = function () {
+    var change_crowd=$("#choose_crowd input[type='checkbox']").is(':checked');
+    // alert(change_crowd)
+    if(change_crowd == true){
+        $(".crowd_td,.crowd_td #crows_fund_type,#crows_fund_type tr td input").removeAttr("disabled");
+        $(".crowd_td,.crowd_td #crows_fund_type,#crows_fund_type tr td input").css("background","#ffffff")
+    }else {
+        $(".crowd_td,.crowd_td #crows_fund_type,#crows_fund_type tr td input").attr("disabled", "disabled");
+        $(".crowd_td,.crowd_td #crows_fund_type,#crows_fund_type tr td input").css("background","#dbdbdb")
+    }
+};
+var change_petty = function () {
+    var change_petty=$("#change_petty input[type='checkbox']").is(':checked');
+    // alert(change_crowd)
+    if(change_petty == true){
+        $(".pettyMoney,.pettyMoney input").removeAttr("disabled");
+        $(".pettyMoney,.pettyMoney input").css("background","#ffffff")
+    }else {
+        $(".pettyMoney,.pettyMoney input").attr("disabled", "disabled");
+        $(".pettyMoney,.pettyMoney input").css("background","#dbdbdb")
+    }
+};
+
+var change_import_technical = function () {
+    var change_import_technical=$("#change_import_technical input[type='checkbox']").is(':checked');
+    // alert(change_crowd)
+    if(change_import_technical == true){
+        $("#importTechnical,#technical_import_range").removeAttr("disabled");
+        $("#technical_import_range").find("tr td input").removeAttr("disabled");
+        $("#technical_import_range").find("tr td input").css("background","#ffffff")
+        $("#importTechnical,#technical_import_range").css("background","#ffffff")
+    }else {
+        $("#importTechnical,#technical_import_range").attr("disabled", "disabled");
+        $("#importTechnical,#technical_import_range").css("background","#dbdbdb")
+        $("#technical_import_range").find("tr td input").attr("disabled", "disabled");
+        $("#technical_import_range").find("tr td input").css("background","#dbdbdb")
+    }
+};
+
+var change_transfer = function () {
+    var change_transfer=$("#change_transfer input[type='checkbox']").is(':checked');
+    // alert(change_crowd)
+    if(change_transfer == true){
+        $(".transferTechnical,.transferTechnical input").removeAttr("disabled");
+        $(".transferTechnical,.transferTechnical input").css("background","#ffffff")
+    }else {
+        $(".transferTechnical,.transferTechnical input").attr("disabled", "disabled");
+        $(".transferTechnical,.transferTechnical input").css("background","#dbdbdb")
+    }
+};
+
+var change_intermediary = function () {
+    var change_intermediary=$("#change_intermediary input[type='checkbox']").is(':checked');
+    // alert(change_crowd)
+    if(change_intermediary == true){
+        $("#intermediary,#intermediary_consult_type").removeAttr("disabled");
+        $("#intermediary_consult_type").find("tr td input").removeAttr("disabled");
+        $("#intermediary_consult_type").find("tr td input").css("background","#ffffff")
+        $("#intermediary,#intermediary_consult_type").css("background","#ffffff")
+    }else {
+        $("#intermediary,#intermediary_consult_type").attr("disabled", "disabled");
+        $("#intermediary,#intermediary_consult_type").css("background","#dbdbdb")
+        $("#intermediary_consult_type").find("tr td input").attr("disabled", "disabled");
+        $("#intermediary_consult_type").find("tr td input").css("background","#dbdbdb")
+    }
+};
+
+var change_other = function () {
+    var change_other=$("#change_other input[type='checkbox']").is(':checked');
+    // alert(change_crowd)
+    if(change_other == true){
+        $("#otherDesc,#otherDesc input").removeAttr("disabled");
+        $("#otherDesc,#otherDesc input").css("background","#ffffff")
+    }else {
+        $("#otherDesc,#otherDesc input").attr("disabled", "disabled");
+        $("#otherDesc,#otherDesc input").css("background","#dbdbdb")
+    }
+};
 
 var entireId = GetQueryString("entireId");
 // alert(entireId);
@@ -85,10 +248,20 @@ var entireId = GetQueryString("entireId");
 
 $("#jbxx_conservation").click(function () {
     // alert(entireId)
-    getUnitEssentialByEntireId(entireId);
-    getLegalRepresentativeByEntireId(entireId);
-    getContactsByEntireId(entireId);
+    var unitEssencialData = conditionEssential();
+    // alert(data);
+    addUnitEssential(unitEssencialData);
+
+    var legal_data = conditionLegal();
+    // alert(data);
+    addLegalRepresentative(legal_data);
+
+    var contacts_data = conditionContacts();
+    // alert(data);
+    addContacts(contacts_data);
+
     var patent_choose=$("#patent_choose input[type='checkbox']").is(':checked');
+    // alert(patent_choose);
     if(patent_choose == true){
         for(var i=1;i<=patent;i++){
 
@@ -98,12 +271,10 @@ $("#jbxx_conservation").click(function () {
             var patentName = $("#patent_name_"+i).val();
             var patentDate = $("#patent_date_"+i).val();
             if(patentNum == "" || patentType == "" || patentNum ==""
-                || patentDate == ""){
+                || patentDate == ""
+            ){
                 alert("请将专利相关信息补充完整")
             }else {
-                var condition = {
-                    patentId:patentNum
-                }
                 var data = {
                     ueId:null,
                     patentId:patentNum,
@@ -111,10 +282,10 @@ $("#jbxx_conservation").click(function () {
                     teId:null,
                     patentName:patentName,
                     patentType:patentType,
-                    patentDate:patentDate
+                    patentDate:comTime(patentDate)
                 }
-                getPatentListByPatentId(condition,data);
-            }
+                addPatentList(data);
+          }
 
         }
     }
@@ -220,133 +391,6 @@ var conditionEssential=function () {
 };
 
 /**
- * 查询对应作品ID是否被创建基本信息
- */
-var getUnitEssentialByEntireId = function (condition) {
-
-    $.ajax({
-        url: "/getUnitEssentialByEntireId/"+condition,
-        type: 'get',
-        async: true,
-        data: condition,
-        // dataType: 'json',
-        error: function (obj, msg) {
-            alert("服务器异常！")
-        },
-        success: function (result) {
-            // alert(result);
-            if (result != null && result>0) {
-                alert(result+"essential");
-                /**
-                 * 存在ID更新
-                 */
-                var data = updateUnitEssential_data();
-                updateUnitEssential(data,result)
-                // window.location.href = "/registerSuccess?id=" + result + "";
-                // comId = result;
-            }else {
-                var data = conditionEssential();
-                // alert(data);
-                addUnitEssential(data);
-
-            }
-
-        }
-    });
-
-}
-
-var updateUnitEssential_data = function () {
-    var Goal = $("#ue_goal input:radio:checked").val();
-    var ueFiled = $("#ue_filed input:radio:checked").val();
-    var registerCapital = $("#register_capital").val();
-    var staffNum = $("#staff_num").val();
-    var winNum = $("#win_num").val();
-    var researchNum = $("#research_num").val();
-    var deputyNum = $("#deputy_num").val();
-    var officeAddress = $("#office_address").val();
-    var postCode = $("#post_code input:radio:checked").val();
-    var Type = $("#power_type").val();
-    var corporationSummary = $("#corporation_summary").val();
-    var technicalSources = $("#post_code input:radio:checked").val();
-    if(Goal == "其他"){
-        var ueGoal = $("#ueGoal").val();
-        if(Type == "其他"){
-            var powerType = $("#powerType").val();
-            var Essential_data = {
-                entireId:entireId,
-                ueGoal:ueGoal,
-                ueField:ueFiled,
-                ueRegisterCapital:registerCapital,
-                ueWinNum:winNum,
-                ueStaffNum:staffNum,
-                ueResearchNum:researchNum,
-                ueDeputyNum:deputyNum,
-                ueOfficeAddress:officeAddress,
-                uePostCode:postCode,
-                uePowerType:powerType,
-                ueCorporationSummary:corporationSummary,
-                ueTechnicalSources:technicalSources
-            }
-            return Essential_data;
-        }else {
-            var Essential_data = {
-                entireId:entireId,
-                ueGoal:ueGoal,
-                ueField:ueFiled,
-                ueRegisterCapital:registerCapital,
-                ueWinNum:winNum,
-                ueStaffNum:staffNum,
-                ueResearchNum:researchNum,
-                ueDeputyNum:deputyNum,
-                ueOfficeAddress:officeAddress,
-                uePostCode:postCode,
-                uePowerType:Type,
-                ueCorporationSummary:corporationSummary,
-                ueTechnicalSources:technicalSources
-            }
-            return Essential_data;
-        }
-    }else {
-        if(Type == "其他"){
-            var powerType = $("#powerType").val();
-            var Essential_data = {
-                entireId:entireId,
-                ueGoal:Goal,
-                ueField:ueFiled,
-                ueRegisterCapital:registerCapital,
-                ueWinNum:winNum,
-                ueStaffNum:staffNum,
-                ueResearchNum:researchNum,
-                ueDeputyNum:deputyNum,
-                ueOfficeAddress:officeAddress,
-                uePostCode:postCode,
-                uePowerType:powerType,
-                ueCorporationSummary:corporationSummary,
-                ueTechnicalSources:technicalSources
-            }
-            return Essential_data;
-        }else {
-            var Essential_data = {
-                entireId:entireId,
-                ueGoal:Goal,
-                ueField:ueFiled,
-                ueRegisterCapital:registerCapital,
-                ueWinNum:winNum,
-                ueStaffNum:staffNum,
-                ueResearchNum:researchNum,
-                ueDeputyNum:deputyNum,
-                ueOfficeAddress:officeAddress,
-                uePostCode:postCode,
-                uePowerType:Type,
-                ueCorporationSummary:corporationSummary,
-                ueTechnicalSources:technicalSources
-            }
-            return Essential_data;
-        }
-    }
-}
-/**
  * 创建基本信息
  * @param condition
  */
@@ -373,68 +417,7 @@ var addUnitEssential = function (condition) {
 
 }
 
-var updateUnitEssential = function (condition,ueId) {
 
-    $.ajax({
-        url: "/updateEssential/"+ueId,
-        type: 'put',
-        async: true,
-        data: condition,
-        dataType: 'json',
-        error: function (obj, msg) {
-            alert("服务器异常！")
-        },
-        success: function (result) {
-            if (result != null) {
-                // alert(result);
-                // window.location.href = "/registerSuccess?id=" + result + "";
-                // comId = result;
-            }
-
-        }
-    });
-
-}
-
-/**
- * 查询对应作品ID是否被法定代表人
- */
-var getLegalRepresentativeByEntireId = function (condition) {
-
-    $.ajax({
-        url: "/getLegalRepresentativeByEntireId/"+condition,
-        type: 'get',
-        async: true,
-        data: condition,
-        // dataType: 'json',
-        error: function (obj, msg) {
-            alert("服务器异常！")
-        },
-        success: function (result) {
-            // alert(result);
-            if (result != null && result>0) {
-                alert(result+"legal");
-                /**
-                 * 不存在ID创建
-                 */
-                var data = conditionLegal_update();
-                updateLegalRepresentative(data,result);
-                // window.location.href = "/registerSuccess?id=" + result + "";
-                // comId = result;
-            }else {
-                /**
-                 * 存在ID，更新
-                 */
-                var data = conditionLegal();
-                // alert(data);
-                addLegalRepresentative(data);
-
-            }
-
-        }
-    });
-
-}
 
 var conditionLegal = function () {
     var legalName = $("#legal_name").val();
@@ -445,22 +428,6 @@ var conditionLegal = function () {
     var legal_data = {
         entireId:entireId,
         ueId:null,
-        legalName:legalName,
-        legalJob:legalJob,
-        legalOfficeTel:legalOfficeTel,
-        legalMobileTel:legalMobileTel,
-        legalEmail:legalEmail
-    }
-
-    return legal_data;
-}
-var conditionLegal_update = function () {
-    var legalName = $("#legal_name").val();
-    var legalJob = $("#legal_job").val();
-    var legalOfficeTel = $("#legal_office_tel").val();
-    var legalMobileTel = $("#legal_mobile_tel").val();
-    var legalEmail = $("#legal_email").val();
-    var legal_data = {
         legalName:legalName,
         legalJob:legalJob,
         legalOfficeTel:legalOfficeTel,
@@ -491,68 +458,7 @@ var addLegalRepresentative = function (condition) {
         }
     });
 }
-var updateLegalRepresentative = function (condition,legalId) {
 
-    $.ajax({
-        url: "/updateLegalRepresentative/"+legalId,
-        type: 'put',
-        async: true,
-        data: condition,
-        dataType: 'json',
-        error: function (obj, msg) {
-            alert("服务器异常！")
-        },
-        success: function (result) {
-            if (result != null) {
-                // alert(result);
-                // window.location.href = "/registerSuccess?id=" + result + "";
-                // comId = result;
-            }
-
-        }
-    });
-
-}
-
-/**
- * 查询对应作品ID是否有联系人
- */
-var getContactsByEntireId = function (condition) {
-
-    $.ajax({
-        url: "/getContactsByEntireId/"+condition,
-        type: 'get',
-        async: true,
-        data: condition,
-        // dataType: 'json',
-        error: function (obj, msg) {
-            alert("服务器异常！")
-        },
-        success: function (result) {
-            alert(result);
-            if (result != null && result>0) {
-                // alert(result+"contacts");
-                /**
-                 * 不存在ID创建
-                 */
-                var data = conditionContacts_data();
-                updateContacts(data,result)
-                // window.location.href = "/registerSuccess?id=" + result + "";
-                // comId = result;
-            }else {
-                /**
-                 * 存在ID，更新
-                 */
-                var data = conditionContacts();
-                // alert(data);
-                addContacts(data);
-
-            }
-
-        }
-    });
-
-}
 
 var conditionContacts = function () {
     var contactsName = $("#contacts_name").val();
@@ -572,22 +478,7 @@ var conditionContacts = function () {
 
     return contacts_data;
 }
-var conditionContacts_data = function () {
-    var contactsName = $("#contacts_name").val();
-    var contactsJob = $("#contacts_job").val();
-    var contactsOfficeTel = $("#contacts_office_tel").val();
-    var contactsMobileTel = $("#contacts_mobile_tel").val();
-    var contactsEmail = $("#contacts_email").val();
-    var contacts_data = {
-        contactsName:contactsName,
-        contactsOfficeTel:contactsOfficeTel,
-        contactsMobileTel:contactsMobileTel,
-        contactsEmail:contactsEmail,
-        contactsJob:contactsJob
-    }
 
-    return contacts_data;
-}
 var addContacts = function (condition) {
     // alert(condition+"condition")
     $.ajax({
@@ -609,28 +500,7 @@ var addContacts = function (condition) {
         }
     });
 }
-var updateContacts = function (condition,contactsId) {
 
-    $.ajax({
-        url: "/updateContacts/"+contactsId,
-        type: 'put',
-        async: true,
-        data: condition,
-        dataType: 'json',
-        error: function (obj, msg) {
-            alert("服务器异常！")
-        },
-        success: function (result) {
-            if (result != null) {
-                // alert(result);
-                // window.location.href = "/registerSuccess?id=" + result + "";
-                // comId = result;
-            }
-
-        }
-    });
-
-}
 
 
 /**
@@ -656,42 +526,6 @@ var addImg =function () {
     $("#patent_table").append(html_tr);
 };
 
-/**
- 查询专利号看是否增加*/
-var getPatentListByPatentId=function (condition,data) {
-    // alert(condition)
-    $.ajax({
-        url: "/getPatentListByPatentId",
-        type: 'post',
-        async: true,
-        data: condition,
-        // dataType: 'json',
-        error: function (obj, msg) {
-            alert("服务器异常！")
-        },
-        success: function (result) {
-            alert(result);
-            if (result != null && result>0) {
-                alert(result+"patentList");
-                /**
-                 * 存在ID更新
-                 */
-                // var data;
-                // updateUnitEssential(data)
-                // window.location.href = "/registerSuccess?id=" + result + "";
-                // comId = result;
-            }else {
-                /**
-                 * 不存在创建
-                 */
-                // conditionPatent(patentNum);
-                // alert(data);
-                addPatentList(data);
-            }
-
-        }
-    });
-};
 var addPatentList = function (condition) {
     // alert(condition+"condition")
     $.ajax({
@@ -701,7 +535,7 @@ var addPatentList = function (condition) {
         data: condition,
         dataType: 'json',
         error: function (obj, msg) {
-            alert("增加联系人失败！")
+            // alert("增加专利信息失败！")
         },
         success: function (result) {
             if (result != null) {
@@ -826,53 +660,67 @@ var addCoreTeam=function (condition) {
 
 
 $("#syjhs_conservation").click(function () {
-    getUnitBusinessPlanByEntireId(entireId);
-    getFinancialHistoricalByEntireId(entireId);
-    getFinancialForecastingByEntireId(entireId);
-    getEquityEntireId(entireId);
-    getDebtEntireId(entireId);
-    geDemandEntireId(entireId);
-});
+    var plan_data = conditionUnitBusinessPlan();
+    // alert(data);
+    addUnitBusinessPlan(plan_data);
+    conditionHistorical();
+    conditionFore();
+    var isEquity = $("#isEquity input:checked").val();
 
-/**
-* 查询对应作品ID是否被商业计划书
-*/
-var getUnitBusinessPlanByEntireId = function (condition) {
+    if (isEquity == "是"){
 
-    $.ajax({
-        url: "/getUnitBusinessPlanByEntireId/"+condition,
-        type: 'get',
-        async: true,
-        data: condition,
-        // dataType: 'json',
-        error: function (obj, msg) {
-            alert("服务器异常！")
-        },
-        success: function (result) {
-            // alert(result);
-            if (result != null && result>0) {
-                alert(result+"unitBus");
-                /**
-                 * 不存在ID创建
-                 */
-                // var data;
-                // updateUnitEssential(data)
-                // window.location.href = "/registerSuccess?id=" + result + "";
-                // comId = result;
-            }else {
-                /**
-                 * 存在ID，更新
-                 */
-                var data = conditionUnitBusinessPlan();
-                // alert(data);
-                addUnitBusinessPlan(data);
+        var equity_investor = $("#equity_investor").val();
+        var equity_money = $("#equity_money").val();
+        var equity_rate = $("#equity_rate").val();
+        var equity_date = $("#equity_date").val();
+
+        if(equity_investor == "" || equity_money == "" || equity_rate == "" || equity_date =="") {
+            alert("请将股权融资信息补充完整！")
+        } else {
+            var unitEquity_data = {
+                ubusId:null,
+                entireId:entireId,
+                equityInvestor:equity_investor,
+                equityMoney:equity_money,
+                equityRate:equity_rate,
+                equityDate:comTime(equity_date)
 
             }
+            addEquity(unitEquity_data);
+        }
+
+    }
+
+    var isDebt = $("#isDebt input:checked").val();
+    if (isDebt == "是"){
+        var debt_leader = $("#debt_leader").val();
+        var debt_money = $("#debt_money").val();
+        var debt_start_time = $("#debt_start_time").val();
+        var debt_end_time = $("#debt_end_time").val();
+
+        if(debt_leader == "" || debt_money == "" || debt_start_time == "" || debt_end_time == ""){
+            alert("请将债权融资信息补充完整！")
+        } else {
+            var unitDebt_data = {
+                ubusId:null,
+                entireId:entireId,
+                debtLeader:debt_leader,
+                debtMoney:debt_money,
+                debtStartTime:comTime(debt_start_time),
+                debtEndTime:comTime(debt_end_time)
+
+            }
+            addDebt(unitDebt_data);
 
         }
-    });
 
-}
+    }
+
+    conditionDemand();
+
+});
+
+
 
 var conditionUnitBusinessPlan=function () {
     /**
@@ -984,41 +832,6 @@ var conditionHistorical = function () {
 
 };
 
-var getFinancialHistoricalByEntireId = function (data) {
-
-    $.ajax({
-        url: "/getHistoricalByEntireId/"+data,
-        type: 'get',
-        async: true,
-        data: data,
-        // dataType: 'json',
-        error: function (obj, msg) {
-            alert("服务器异常！")
-        },
-        success: function (result) {
-            // alert(result);
-            if (result>0) {
-                alert(result+"historical");
-                /**
-                 * 不存在ID创建
-                 */
-                // var data;
-                // updateUnitEssential(data)
-                // window.location.href = "/registerSuccess?id=" + result + "";
-                // comId = result;
-            }else {
-                /**
-                 * 存在ID，更新
-                 */
-                // alert(data);
-                conditionHistorical()
-
-            }
-
-        }
-    });
-
-}
 var addFinancialHistorical = function (condition) {
     $.ajax({
         url: "/addFinancialHistorical",
@@ -1071,41 +884,6 @@ var conditionFore = function () {
 
 
 };
-var getFinancialForecastingByEntireId = function (data) {
-
-    $.ajax({
-        url: "/getForecastingByEntireId/"+data,
-        type: 'get',
-        async: true,
-        data: data,
-        // dataType: 'json',
-        error: function (obj, msg) {
-            alert("服务器异常！")
-        },
-        success: function (result) {
-            // alert(result);
-            if (result>0) {
-                alert(result+"forecasting");
-                /**
-                 * 不存在ID创建
-                 */
-                // var data;
-                // updateUnitEssential(data)
-                // window.location.href = "/registerSuccess?id=" + result + "";
-                // comId = result;
-            }else {
-                /**
-                 * 存在ID，更新
-                 */
-                // alert(data);
-                conditionFore();
-
-            }
-
-        }
-    });
-
-}
 var addFinancialForecasting = function (condition) {
     $.ajax({
         url: "/addFinancialForecasting",
@@ -1128,64 +906,7 @@ var addFinancialForecasting = function (condition) {
 }
 
 /*********融资经历**/
-var getEquityEntireId = function (condition) {
 
-    $.ajax({
-        url: "/getEquityFinancingByEntireId/"+condition,
-        type: 'get',
-        async: true,
-        data: condition,
-        // dataType: 'json',
-        error: function (obj, msg) {
-            alert("服务器异常！")
-        },
-        success: function (result) {
-            // alert(result);
-            if (result != null && result>0) {
-                alert(result+"equity");
-                /**
-                 * 不存在ID创建
-                 */
-                // var data;
-                // updateUnitEssential(data)
-                // window.location.href = "/registerSuccess?id=" + result + "";
-                // comId = result;
-            }else {
-                /**
-                 * 存在ID，更新
-                 */
-                var data = conditionEquity();
-                // alert(data);
-                addEquity(data);
-
-            }
-
-        }
-    });
-
-}
-
-var conditionEquity=function () {
-    /**
-     * 增加基本信息
-     * @type {any}
-     */
-    var equity_investor = $("#equity_investor").val();
-    var equity_money = $("#equity_money").val();
-    var equity_rate = $("#equity_rate").val();
-    var equity_date = $("#equity_date").val();
-
-    var unitEquity_data = {
-        ubusId:null,
-        entireId:entireId,
-        equityInvestor:equity_investor,
-        equityMoney:equity_money,
-        equityRate:equity_rate,
-        equityDate:comTime(equity_date)
-
-    }
-    return unitEquity_data;
-};
 var addEquity = function (condition) {
     // alert(condition);
     $.ajax({
@@ -1211,64 +932,6 @@ var addEquity = function (condition) {
 
 
 
-var getDebtEntireId = function (condition) {
-
-    $.ajax({
-        url: "/getDebtFinancingByEntireId/"+condition,
-        type: 'get',
-        async: true,
-        data: condition,
-        // dataType: 'json',
-        error: function (obj, msg) {
-            alert("服务器异常！")
-        },
-        success: function (result) {
-            // alert(result);
-            if (result != null && result>0) {
-                alert(result+"equity");
-                /**
-                 * 不存在ID创建
-                 */
-                // var data;
-                // updateUnitEssential(data)
-                // window.location.href = "/registerSuccess?id=" + result + "";
-                // comId = result;
-            }else {
-                /**
-                 * 存在ID，更新
-                 */
-                var data = conditionDebt();
-                // alert(data);
-                addDebt(data);
-
-            }
-
-        }
-    });
-
-}
-
-var conditionDebt=function () {
-    /**
-     * 增加基本信息
-     * @type {any}
-     */
-    var debt_leader = $("#debt_leader").val();
-    var debt_money = $("#debt_money").val();
-    var debt_start_time = $("#debt_start_time").val();
-    var debt_end_time = $("#debt_end_time").val();
-
-    var unitDebt_data = {
-        ubusId:null,
-        entireId:entireId,
-        debtLeader:debt_leader,
-        debtMoney:debt_money,
-        debtStartTime:comTime(debt_start_time),
-        debtEndTime:comTime(debt_end_time)
-
-    }
-    return unitDebt_data;
-};
 var addDebt = function (condition) {
     // alert(condition);
     $.ajax({
@@ -1294,42 +957,6 @@ var addDebt = function (condition) {
 
 
 /****************************************科技金融服务需求*/
-var geDemandEntireId = function (condition) {
-
-    $.ajax({
-        url: "/getDemandByEntireId/"+condition,
-        type: 'get',
-        async: true,
-        data: condition,
-        // dataType: 'json',
-        error: function (obj, msg) {
-            alert("服务器异常！")
-        },
-        success: function (result) {
-            // alert(result);
-            if (result != null && result>0) {
-                alert(result+"demand");
-                /**
-                 * 不存在ID创建
-                 */
-                // var data;
-                // updateUnitEssential(data)
-                // window.location.href = "/registerSuccess?id=" + result + "";
-                // comId = result;
-            }else {
-                /**
-                 * 存在ID，更新
-                 */
-                var data = conditionDemand();
-                // alert(data);
-                addDemand(data);
-
-            }
-
-        }
-    });
-
-}
 
 var conditionDemand=function () {
     /**
@@ -1337,61 +964,221 @@ var conditionDemand=function () {
      * @type {any}
      */
     var df_isEquity = $("#df_isEquity input:checked").val();
-    var df_equity_money = $("#df_equity_money").val();
-    var df_equity_shares = $("#df_equity_shares").val();
-    var df_equity_date = $("#df_equity_date").val();
-    var df_equityFund_plan = $("#df_equityFund_plan").val();
-    var df_isEquity_recom = $("#df_isEquity_recom input:checked").val();
+
+    if(df_isEquity == "是"){
+        var df_equity_money = $("#df_equity_money").val();
+        var df_equity_shares = $("#df_equity_shares").val();
+        var df_equity_date = $("#df_equity_date").val();
+        var df_equityFund_plan = $("#df_equityFund_plan").val();
+        var df_isEquity_recom = $("#df_isEquity_recom input:checked").val();
+    } else {
+        var df_equity_money = null;
+        var df_equity_shares = null;
+        var df_equity_date = "0000-00-00";
+        var df_equityFund_plan = null;
+        var df_isEquity_recom = null;
+    }
     var df_isDebt = $("#df_isDebt input:checked").val();
-    var df_debt_money = $("#df_debt_money").val();
-    var df_debt_maxAnnual = $("#df_debt_maxAnnual").val();
-    var df_debt_date = $("#df_debt_date").val();
-    var df_debtFund_plan = $("#df_debtFund_plan").val();
-    var df_isDebt_recom = $("#df_isDebt_recom input:checked").val();
+    if(df_isDebt == "是"){
+        var df_debt_money = $("#df_debt_money").val();
+        var df_debt_maxAnnual = $("#df_debt_maxAnnual").val();
+        var df_debt_date = $("#df_debt_date").val();
+        var df_debtFund_plan = $("#df_debtFund_plan").val();
+        var df_isDebt_recom = $("#df_isDebt_recom input:checked").val();
+    }else {
+        var df_debt_money = null;
+        var df_debt_maxAnnual = null;
+        var df_debt_date = "0000-00-00";
+        var df_debtFund_plan = null;
+        var df_isDebt_recom = null;
+    }
 
-
-    var df_isCrowd_funding = $("#df_isCrowd_funding  input:checked").val();
+   if( $("#choose_crowd input[type='checkbox']").is(':checked') == true) {
+       var df_isCrowd_funding = "1";
+   }else {
+       var df_isCrowd_funding = "0";
+   }
+   alert(df_isCrowd_funding+"df_isCrowd_funding");
     var crows_fund_type = $("#crows_fund_type tr td input:checked").val();
     // alert(crows_fund_type);
-    var df_isMerge = $("#df_isMerge input:checked").val();
-    var df_isListed_shareReform = $("#df_isListed_shareReform input:checked").val();
-    var df_isFinancing_guarantee = $("#df_isFinancing_guarantee input:checked").val();
-    var df_isPetty_loan = $("#df_isPetty_loan input:checked").val();
+    if( $("#df_isMerge input[type='checkbox']").is(':checked') == true) {
+        var df_isMerge = "1";
+    }else {
+        var df_isMerge = "0";
+    }
+    if( $("#df_isListed_shareReform input[type='checkbox']").is(':checked') == true) {
+        var df_isListed_shareReform = "1";
+    }else {
+        var df_isListed_shareReform = "0";
+    }
+
+    if( $("#df_isFinancing_guarantee input[type='checkbox']").is(':checked') == true) {
+        var df_isFinancing_guarantee = "1";
+    }else {
+        var df_isFinancing_guarantee = "0";
+    }
+
+    if( $("#change_petty input[type='checkbox']").is(':checked') == true) {
+        var df_isPetty_loan = "1";
+    }else {
+        var df_isPetty_loan = "0";
+    }
     var petty_loan_money = $("#petty_loan_money").val();
-    var df_company_isDebt = $("#df_company_isDebt input:checked").val();
 
-    var df_minorEnterprises_isDebt = $("#df_minorEnterprises_isDebt input:checked").val();
-    var df_technical_import = $("#df_technical_import input:checked").val();
-    var technical_import_international = $("#technical_import_international input:checked").val();
-    var technical_desc_international = $("#technical_desc_international").val();
-    var technical_import_internal = $("#technical_import_internal input:checked").val();
-    var technical_desc_internal = $("#technical_desc_internal").val();
-    var df_technical_transfer = $("#df_technical_transfer input:checked").val();
-    var technical_transfer_range = $("#technical_transfer_range").val();
+    if( $("#df_company_isDebt input[type='checkbox']").is(':checked') == true) {
+        var df_company_isDebt = "1";
+    }else {
+        var df_company_isDebt = "0";
+    }
 
-    var df_property_assign = $("#df_property_assign input:checked").val();
-    var df_finace_lease = $("#df_finace_lease input:checked").val();
-    var df_technology_insurance = $("#df_technology_insurance input:checked").val();
-    var df_asset_manage = $("#df_asset_manage input:checked").val();
-    var df_branchChong_check = $("#df_branchChong_check input:checked").val();
-    var df_political_consult = $("#df_political_consult input:checked").val();
-    var df_technology_consult = $("#df_technology_consult input:checked").val();
-    var df_intermediary_consult = $("#df_intermediary_consult input:checked").val();
+    if( $("#df_minorEnterprises_isDebt input[type='checkbox']").is(':checked') == true) {
+        var df_minorEnterprises_isDebt = "1";
+    }else {
+        var df_minorEnterprises_isDebt = "0";
+    }
 
-    var intermediary_law = $("#intermediary_law input:checked").val();
-    var intermediary_law_desc = $("#intermediary_law_desc").val();
-    var intermediary_finance = $("#intermediary_finance input:checked").val();
-    var intermediary_finance_desc = $("#intermediary_finance_desc").val();
-    var intermediary_Financing = $("#intermediary_Financing input:checked").val();
-    var intermediary_financing_desc = $("#intermediary_financing_desc").val();
-    var intermediary_manage = $("#intermediary_manage input:checked").val();
-    var intermediary_manage_desc = $("#intermediary_manage_desc").val();
-    var df_other_service = $("#df_other_service input:checked").val();
+    if( $("#change_import_technical input[type='checkbox']").is(':checked') == true) {
+        var df_technical_import = "1";
+        if( $("#technical_import_international input[type='checkbox']").is(':checked') == true) {
+            var technical_import_international = "国际技术范围";
+            var technical_desc_international = $("#technical_desc_international").val();
+        }else {
+            var technical_import_international = null;
+            var technical_desc_international =null;
+        }
+        if( $("#technical_import_internal input[type='checkbox']").is(':checked') == true) {
+            var technical_import_internal = "国内技术范围";
+            var technical_desc_internal = $("#technical_desc_internal").val();
+        }else {
+            var technical_import_internal = null;
+            var technical_desc_internal = null
+        }
+    }else {
+        var df_technical_import = "0";
+        var technical_import_internal = null;
+        var technical_desc_internal = null;
+        var technical_import_international = null;
+        var technical_desc_international =null;
+    }
 
-    var other_service_desc = $("#other_service_desc").val();
-    var df_accept_train = $("#df_accept_train  input:checked").val();
-    var df_no = $("#df_no  input:checked").val();
-    alert(df_equity_date)
+
+    if( $("#change_transfer input[type='checkbox']").is(':checked') == true) {
+        var df_technical_transfer = "1";
+        var technical_transfer_range = $("#technical_transfer_range").val();
+    }else {
+        var df_technical_transfer = "0";
+        var technical_transfer_range = null;
+    }
+
+
+    if( $("#df_property_assign input[type='checkbox']").is(':checked') == true) {
+        var df_property_assign = "1";
+    }else {
+        var df_property_assign = "0";
+    }
+
+    if( $("#df_finace_lease input[type='checkbox']").is(':checked') == true) {
+        var df_finace_lease = "1";
+    }else {
+        var df_finace_lease = "0";
+    }
+
+    if( $("#df_technology_insurance input[type='checkbox']").is(':checked') == true) {
+        var df_technology_insurance = "1";
+    }else {
+        var df_technology_insurance = "0";
+    }
+
+    if( $("#df_asset_manage input[type='checkbox']").is(':checked') == true) {
+        var df_asset_manage = "1";
+    }else {
+        var df_asset_manage = "0";
+    }
+
+    if( $("#df_branchChong_check input[type='checkbox']").is(':checked') == true) {
+        var df_branchChong_check = "1";
+    }else {
+        var df_branchChong_check = "0";
+    }
+
+    if( $("#df_political_consult input[type='checkbox']").is(':checked') == true) {
+        var df_political_consult = "1";
+    }else {
+        var df_political_consult = "0";
+    }
+
+    if( $("#df_technology_consult input[type='checkbox']").is(':checked') == true) {
+        var df_technology_consult = "1";
+    }else {
+        var df_technology_consult = "0";
+    }
+
+    if( $("#change_intermediary input[type='checkbox']").is(':checked') == true) {
+        var df_intermediary_consult = "1";
+        if( $("#intermediary_law input[type='checkbox']").is(':checked') == true) {
+            var intermediary_law = "1";
+            var intermediary_law_desc = $("#intermediary_law_desc").val();
+        }else {
+            var intermediary_law = "0";
+            var intermediary_law_desc = null
+        }
+        if( $("#intermediary_finance input[type='checkbox']").is(':checked') == true) {
+            var intermediary_finance = "1";
+            var intermediary_finance_desc = $("#intermediary_finance_desc").val();
+        }else {
+            var intermediary_finance = "0";
+            var intermediary_finance_desc = null
+        }
+        if( $("#intermediary_Financing input[type='checkbox']").is(':checked') == true) {
+            var intermediary_Financing = "1";
+            var intermediary_financing_desc = $("#intermediary_financing_desc").val();
+        }else {
+            var intermediary_Financing = "0";
+            var intermediary_financing_desc = null
+        }
+        if( $("#intermediary_manage input[type='checkbox']").is(':checked') == true) {
+            var intermediary_manage = "1";
+            var intermediary_manage_desc = $("#intermediary_manage_desc").val();
+        }else {
+            var intermediary_manage = "0";
+            var intermediary_manage_desc = null
+        }
+    }else {
+        var df_intermediary_consult = "0";
+        var intermediary_law = null;
+        var intermediary_law_desc = null
+        var intermediary_finance = null;
+        var intermediary_finance_desc = null;
+        var intermediary_Financing =null;
+        var intermediary_financing_desc = null
+        var intermediary_manage = null;
+        var intermediary_manage_desc = null
+
+    }
+
+
+    var df_other_service = $("#df_other_service").val();
+    if( $("#change_other input[type='checkbox']").is(':checked') == true) {
+        var df_other_service = "1";
+        var other_service_desc = $("#other_service_desc").val();
+    }else {
+        var df_other_service = "0";
+        var other_service_desc = null
+    }
+
+    var df_accept_train = $("#df_accept_train").val();
+    if( $("#df_accept_train input[type='checkbox']").is(':checked') == true) {
+        var df_accept_train = "1";
+    }else {
+        var df_accept_train = "0";
+    }
+    var df_no = $("#df_no").val();
+    if( $("#df_no input[type='checkbox']").is(':checked') == true) {
+        var df_no = "1";
+    }else {
+        var df_no = "0";
+    }
+    // alert(df_equity_date)
     var unitDemand_data = {
         ubusId:null,
         tbusId:null,
@@ -1447,7 +1234,9 @@ var conditionDemand=function () {
         dfAcceptTrain:df_accept_train,
         dfNo:df_no
     }
-    return unitDemand_data;
+
+    addDemand(unitDemand_data);
+    // return unitDemand_data;
 };
 var addDemand = function (condition) {
     // alert(condition);

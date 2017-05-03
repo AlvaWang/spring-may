@@ -25,77 +25,82 @@ public class DemandFinancial implements  Serializable {
     @Column(name = "entire_id")
     private Long entireId;
 
-    @Column(name = "df_isEquity")
+    @Column(name = "df_is_equity")
     private String dfEquity;
 
     @Column(name = "df_equity_money")
-    private double dfEquityMoney;
+    private Long dfEquityMoney;
 
     @Column(name = "df_equity_shares")
-    private double dfEquityShares;
+    private Long dfEquityShares;
 
     @Column(name = "df_equity_date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dfEquityDate;
 
-    @Column(name = "df_equityFund_plan")
+    @Column(name = "df_equity_fund_plan")
     private String equityFundPlan;
 
-    @Column(name = "df_isEquity_recom")
+    @Column(name = "df_is_equity_recom")
     private String dfEquityRecom;
 
     @Column(name = "df_isDebt")
     private String dfDebt;
 
     @Column(name = "df_debt_money")
-    private double dfDebtMoney;
+    private Long dfDebtMoney;
 
-    @Column(name = "df_debt_maxAnnual")
-    private double debtMaxAnnual;
+    @Column(name = "df_debt_max_annual")
+    private Long debtMaxAnnual;
 
     @Column(name = "df_debt_date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dfDebtDate;
 
-    @Column(name = "df_debtFund_plan")
+    @Column(name = "df_debt_fund_plan")
     private String debtFundPlan;
 
-    @Column(name = "df_isDebt_recom")
+    @Column(name = "df_is_debt_recom")
     private String dfDebtRecom;
 
 
-    @Column(name = "df_isCrowd_funding")
+    @Column(name = "df_is_crowd_funding")
     private String dfCrowdFunding;
 
     @Column(name = "crows_fund_type")
     private String crowsFundType;
-    @Column(name = "df_isMerge")
+    @Column(name = "df_is_merge")
     private String dfMerge;
 
-    @Column(name = "df_isListed_shareReform")
+    @Column(name = "df_is_listed_share_reform")
     private String dfListedShareReform;
-    @Column(name = "df_isFinancing_guarantee")
+    @Column(name = "df_is_financing_guarantee")
     private String dfFinancingGuarantee;
 
-    @Column(name = "df_isPetty_loan")
+    @Column(name = "df_is_petty_loan")
     private String dfPettyLoan;
 
     @Column(name = "petty_loan_money")
-    private double pettyLoanMoney;
+    private Long pettyLoanMoney;
 
-    @Column(name = "df_company_isDebt")
+    @Column(name = "df_company_is_debt")
     private String dfCompanyDebt;
 
-    @Column(name = "df_minorEnterprises_isDebt")
+    @Column(name = "df_minorEnterprises_is_debt")
     private String minorEnterprisesDebt;
     @Column(name = "df_technical_import")
     private String dfTechnicalImport;
 
-    @Column(name = "technical_import_range")
-    private String technicalImportRange;
+    @Column(name = "technical_import_international")
+    private String technicalImportInternational;
 
-    @Column(name = "technical_desc")
-    private String technicalDesc;
+    @Column(name = "technical_desc_international")
+    private String technicalDescInternational;
+    @Column(name = "technical_import_internal")
+
+    private String technicalImportInternal;
+    @Column(name = "technical_desc_internal")
+    private String technicalDescInternatl;
 
     @Column(name = "df_technical_transfer")
     private String dfTechnicalTransfer;
@@ -114,7 +119,7 @@ public class DemandFinancial implements  Serializable {
     @Column(name = "df_asset_manage")
     private String dfAssetManage;
 
-    @Column(name = "df_branchChong_check")
+    @Column(name = "df_branch_chong_check")
     private String branchChongCheck;
 
     @Column(name = "df_political_consult")
@@ -125,11 +130,24 @@ public class DemandFinancial implements  Serializable {
     @Column(name = "df_intermediary_consult")
     private String dfIntermediaryConsult;
 
-    @Column(name = "intermediary_consult_type")
-    private String intermediaryConsultType;
+    @Column(name = "intermediary_law")
+    private String intermediaryLaw;
 
-    @Column(name = "intermediary_consult_desc")
-    private String intermediaryConsultDesc;
+    @Column(name = "intermediary_finance")
+    private String intermediaryFinance;
+    @Column(name = "intermediary_Financing")
+    private String intermediaryFinancing;
+    @Column(name = "intermediary_manage")
+    private String intermediaryManage;
+
+    @Column(name = "intermediary_law_desc")
+    private String intermediaryLawDesc;
+    @Column(name = "intermediary_finance_desc")
+    private String intermediaryFinanceDesc;
+    @Column(name = "intermediary_financing_desc")
+    private String intermediaryFinancingDesc;
+    @Column(name = "intermediary_manage_desc")
+    private String intermediaryManageDesc;
 
     @Column(name = "df_other_service")
     private String dfOtherService;
@@ -149,38 +167,57 @@ public class DemandFinancial implements  Serializable {
         super();
 
     }
-    public DemandFinancial(Long entireId, Long ubusId, Long tbusId, String dfEquity, double dfEquityShares,
-                           double dfEquityMoney, Date dfEquityDate, String equityFundPlan, String dfEquityRecom,
-                           String dfDebt, double dfDebtMoney, double debtMaxAnnual, Date dfDebtDate,
+    public DemandFinancial(Long entireId, Long ubusId, Long tbusId, String dfEquity, Long dfEquityShares,
+                           Long dfEquityMoney, Date dfEquityDate, String equityFundPlan, String dfEquityRecom,
+                           String dfDebt, Long dfDebtMoney, Long debtMaxAnnual, Date dfDebtDate,
                            String debtFundPlan, String dfDebtRecom, String dfCrowdFunding, String crowsFundType,
                            String dfMerge, String dfListedShareReform, String dfFinancingGuarantee, String dfPettyLoan,
-                           double pettyLoanMoney, String dfCompanyDebt, String minorEnterprisesDebt,
-                           String dfTechnicalImport, String technicalImportRange, String technicalDesc,
+                           Long pettyLoanMoney, String dfCompanyDebt, String minorEnterprisesDebt,
+                           String dfTechnicalImport, String technicalImportInternational, String technicalDescInternational,
+                           String technicalImportInternal, String technicalDescInternatl,
                            String dfTechnicalTransfer, String technicalTransferRange, String dfPropertyAssign,
                            String dfFinaceLease, String dfTechnologyInsurance, String dfAssetManage,
                            String branchChongCheck, String dfPoliticalConsult, String dfTechnologyConsult,
-                           String dfIntermediaryConsult, String intermediaryConsultType, String intermediaryConsultDesc,
+                           String dfIntermediaryConsult, String intermediaryLaw, String intermediaryLawDesc,
+                           String intermediaryFinance, String intermediaryFinanceDesc,String intermediaryFinancing, String intermediaryFinancingDesc,
+                           String intermediaryManage, String intermediaryManageDesc,
                            String dfOtherService, String otherServiceDesc, String dfAcceptTrain, String dfNo){
         this.ubusId = ubusId;
         this.entireId = entireId;
         this.tbusId = tbusId;this.dfEquity = dfEquity;this.dfEquityShares = dfEquityShares;this.dfEquityMoney = dfEquityMoney;
-        this.dfEquityDate = dfEquityDate;this.equityFundPlan = equityFundPlan;this.dfEquityRecom = dfEquityRecom;
-        this.dfDebt = dfDebt;this.dfDebtMoney = dfDebtMoney;this.debtMaxAnnual = debtMaxAnnual;this.dfDebtDate = dfDebtDate;
+        if(dfEquityDate == null){
+            this.dfEquityDate = null;
+        }else {
+            this.dfEquityDate = dfEquityDate;
+        }
+        this.equityFundPlan = equityFundPlan;this.dfEquityRecom = dfEquityRecom;
+        this.dfDebt = dfDebt;this.dfDebtMoney = dfDebtMoney;this.debtMaxAnnual = debtMaxAnnual;
+        if(dfDebtDate == null){
+            this.dfDebtDate = null;
+        }else {
+            this.dfDebtDate = dfDebtDate;
+        }
         this.debtFundPlan = debtFundPlan;this.dfDebtRecom = dfDebtRecom;this.dfCrowdFunding = dfCrowdFunding;this.crowsFundType = crowsFundType;
         this.dfMerge = dfMerge;this.dfListedShareReform = dfListedShareReform;this.dfFinancingGuarantee = dfFinancingGuarantee;
         this.dfPettyLoan = dfPettyLoan;this.pettyLoanMoney = pettyLoanMoney;this.dfCompanyDebt = dfCompanyDebt;
         this.minorEnterprisesDebt = minorEnterprisesDebt;
         this.dfTechnicalImport = dfTechnicalImport;
-        this.technicalImportRange = technicalImportRange;
+        this.technicalImportInternational = technicalImportInternational;
 
-        this.technicalDesc = technicalDesc;this.dfTechnicalTransfer = dfTechnicalTransfer;this.technicalTransferRange = technicalTransferRange;
+        this.technicalDescInternational = technicalDescInternational;
+        this.technicalImportInternal = technicalImportInternal;
+
+        this.technicalDescInternatl = technicalDescInternatl;this.dfTechnicalTransfer = dfTechnicalTransfer;this.technicalTransferRange = technicalTransferRange;
         this.dfPropertyAssign = dfPropertyAssign;this.dfFinaceLease = dfFinaceLease;this.dfTechnologyInsurance = dfTechnologyInsurance;
         this.dfAssetManage = dfAssetManage;
         this.branchChongCheck = branchChongCheck;
         this.dfPoliticalConsult = dfPoliticalConsult;
 
         this.dfTechnologyConsult = dfTechnologyConsult;this.dfIntermediaryConsult = dfIntermediaryConsult;
-        this.intermediaryConsultType = intermediaryConsultType;this.intermediaryConsultDesc = intermediaryConsultDesc;
+        this.intermediaryLaw = intermediaryLaw;this.intermediaryLawDesc = intermediaryLawDesc;
+        this.intermediaryFinance = intermediaryFinance;this.intermediaryFinanceDesc = intermediaryFinanceDesc;
+        this.intermediaryFinancing = intermediaryFinancing;this.intermediaryFinancingDesc = intermediaryFinancingDesc;
+        this.intermediaryManage= intermediaryManage;this.intermediaryManageDesc = intermediaryManageDesc;
         this.dfOtherService = dfOtherService;
         this.otherServiceDesc = otherServiceDesc;
         this.dfAcceptTrain = dfAcceptTrain;
@@ -219,8 +256,10 @@ public class DemandFinancial implements  Serializable {
         if(updated.getDfCompanyDebt() != null)this.setDfCompanyDebt(updated.getDfCompanyDebt());
         if(updated.getMinorEnterprisesDebt() != null)this.setMinorEnterprisesDebt(updated.getMinorEnterprisesDebt());
         if(updated.getDfTechnicalImport() != null)this.setDfTechnicalImport(updated.getDfTechnicalImport());
-        if(updated.getTechnicalImportRange() != null)this.setTechnicalImportRange(updated.getTechnicalImportRange());
-        if(updated.getTechnicalDesc() != null)this.setTechnicalDesc(updated.getTechnicalDesc());
+        if(updated.getTechnicalImportInternational() != null)this.setTechnicalImportInternational(updated.getTechnicalImportInternational());
+        if(updated.getTechnicalDescInternational() != null)this.setTechnicalDescInternational(updated.getTechnicalDescInternational());
+        if(updated.getTechnicalImportInternal() != null)this.setTechnicalImportInternal(updated.getTechnicalImportInternal());
+        if(updated.getTechnicalDescInternatl() != null)this.setTechnicalDescInternatl(updated.getTechnicalDescInternatl());
         if(updated.getDfTechnicalTransfer() != null)this.setDfTechnicalTransfer(updated.getDfTechnicalTransfer());
         if(updated.getTechnicalTransferRange() != null)this.setTechnicalTransferRange(updated.getTechnicalTransferRange());
         if(updated.getDfPropertyAssign() != null)this.setDfPropertyAssign(updated.getDfPropertyAssign());
@@ -231,8 +270,10 @@ public class DemandFinancial implements  Serializable {
         if(updated.getDfPoliticalConsult() != null)this.setDfPoliticalConsult(updated.getDfPoliticalConsult());
         if(updated.getDfTechnologyConsult() != null)this.setDfTechnologyConsult(updated.getDfTechnologyConsult());
         if(updated.getDfIntermediaryConsult() != null)this.setDfIntermediaryConsult(updated.getDfIntermediaryConsult());
-        if(updated.getIntermediaryConsultType() != null)this.setIntermediaryConsultType(updated.getIntermediaryConsultType());
-        if(updated.getIntermediaryConsultDesc() != null)this.setIntermediaryConsultDesc(updated.getIntermediaryConsultDesc());
+        if(updated.getIntermediaryLaw() != null)this.setIntermediaryLaw(updated.getIntermediaryLaw());
+        if(updated.getIntermediaryFinance() != null)this.setIntermediaryFinance(updated.getIntermediaryFinance());
+        if(updated.getIntermediaryFinancing() != null)this.setIntermediaryFinancing(updated.getIntermediaryFinancing());
+        if(updated.getIntermediaryManage() != null)this.setIntermediaryManage(updated.getIntermediaryManage());
         if(updated.getDfOtherService() != null)this.setDfOtherService(updated.getDfOtherService());
         if(updated.getOtherServiceDesc() != null)this.setOtherServiceDesc(updated.getOtherServiceDesc());
         if(updated.getDfAcceptTrain() != null)this.setDfAcceptTrain(updated.getDfAcceptTrain());
@@ -273,16 +314,16 @@ public class DemandFinancial implements  Serializable {
         this.dfEquity = dfEquity;
     }
 
-    public double getDfEquityMoney(){
+    public Long getDfEquityMoney(){
         return dfEquityMoney;
     }
-    public void setDfEquityMoney(double dfEquityMoney){
+    public void setDfEquityMoney(Long dfEquityMoney){
        this.dfEquityMoney =dfEquityMoney;
     }
-    public double getDfEquityShares(){
+    public Long getDfEquityShares(){
         return dfEquityShares;
     }
-    public void setDfEquityShares(double dfEquityShares){
+    public void setDfEquityShares(Long dfEquityShares){
         this.dfEquityShares =dfEquityShares;
     }
     public Date getDfEquityDate() {
@@ -312,16 +353,16 @@ public class DemandFinancial implements  Serializable {
         this.dfDebt = dfDebt;
     }
 
-    public double getDfDebtMoney(){
+    public Long getDfDebtMoney(){
         return dfDebtMoney;
     }
-    public void setDfDebtMoney(double dfDebtMoney){
+    public void setDfDebtMoney(Long dfDebtMoney){
         this.dfDebtMoney =dfDebtMoney;
     }
-    public double getDebtMaxAnnual(){
+    public Long getDebtMaxAnnual(){
         return debtMaxAnnual;
     }
-    public void setDebtMaxAnnual(double debtMaxAnnual){
+    public void setDebtMaxAnnual(Long debtMaxAnnual){
         this.debtMaxAnnual =debtMaxAnnual;
     }
     public Date getDfDebtDate() {
@@ -365,7 +406,7 @@ public class DemandFinancial implements  Serializable {
     public String getDfListedShareReform(){
         return dfListedShareReform;
     }
-    public void setDfListedShareReform(String ddfListedShareReformfDebtRecom){
+    public void setDfListedShareReform(String dfListedShareReform){
         this.dfListedShareReform = dfListedShareReform;
     }
     public String getDfFinancingGuarantee(){
@@ -380,10 +421,10 @@ public class DemandFinancial implements  Serializable {
     public void setDfPettyLoan(String dfPettyLoan){
         this.dfPettyLoan = dfPettyLoan;
     }
-    public double getPettyLoanMoney(){
+    public Long getPettyLoanMoney(){
         return pettyLoanMoney;
     }
-    public void setPettyLoanMoney(double pettyLoanMoney){
+    public void setPettyLoanMoney(Long pettyLoanMoney){
         this.pettyLoanMoney = pettyLoanMoney;
     }
     public String getDfCompanyDebt(){
@@ -407,17 +448,30 @@ public class DemandFinancial implements  Serializable {
 
 
 
-    public String getTechnicalImportRange(){
-        return technicalImportRange;
+    public String getTechnicalImportInternational(){
+        return technicalImportInternational;
     }
-    public void setTechnicalImportRange(String technicalImportRange){
-        this.technicalImportRange = technicalImportRange;
+    public void setTechnicalImportInternational(String technicalImportInternational){
+        this.technicalImportInternational = technicalImportInternational;
     }
-    public String getTechnicalDesc(){
-        return technicalDesc;
+    public String getTechnicalDescInternational(){
+        return technicalDescInternational;
     }
-    public void setTechnicalDesc(String technicalDesc){
-        this.technicalDesc = technicalDesc;
+    public void setTechnicalDescInternational(String technicalDescInternational){
+        this.technicalDescInternational = technicalDescInternational;
+    }
+
+    public String getTechnicalImportInternal(){
+        return technicalImportInternal;
+    }
+    public void setTechnicalImportInternal(String technicalImportInternal){
+        this.technicalImportInternal = technicalImportInternal;
+    }
+    public String getTechnicalDescInternatl(){
+        return technicalDescInternatl;
+    }
+    public void setTechnicalDescInternatl(String technicalDescInternatl){
+        this.technicalDescInternatl = technicalDescInternatl;
     }
     public String getDfTechnicalTransfer(){
         return dfTechnicalTransfer;
@@ -484,17 +538,54 @@ public class DemandFinancial implements  Serializable {
     public void setDfIntermediaryConsult(String dfIntermediaryConsult){
         this.dfIntermediaryConsult = dfIntermediaryConsult;
     }
-    public String getIntermediaryConsultType(){
-        return intermediaryConsultType;
+    public String getIntermediaryLaw(){
+        return intermediaryLaw;
     }
-    public void setIntermediaryConsultType(String intermediaryConsultType){
-        this.intermediaryConsultType = intermediaryConsultType;
+    public void setIntermediaryLaw(String intermediaryLaw){
+        this.intermediaryLaw = intermediaryLaw;
     }
-    public String getIntermediaryConsultDesc(){
-        return intermediaryConsultDesc;
+    public String getIntermediaryFinance(){
+        return intermediaryFinance;
     }
-    public void setIntermediaryConsultDesc(String intermediaryConsultDesc){
-        this.intermediaryConsultDesc = intermediaryConsultDesc;
+    public void setIntermediaryFinance(String intermediaryFinance){
+        this.intermediaryFinance = intermediaryFinance;
+    }
+    public String getIntermediaryFinancing(){
+        return intermediaryFinancing;
+    }
+    public void setIntermediaryFinancing(String intermediaryFinancing){
+        this.intermediaryFinancing = intermediaryFinancing;
+    }
+    public String getIntermediaryManage(){
+        return intermediaryManage;
+    }
+    public void setIntermediaryManage(String intermediaryManage){
+        this.intermediaryManage = intermediaryManage;
+    }
+
+    public String getIntermediaryLawDesc(){
+        return intermediaryLawDesc;
+    }
+    public void setIntermediaryLawDesc(String intermediaryLawDesc){
+        this.intermediaryLawDesc = intermediaryLawDesc;
+    }
+    public String getIntermediaryFinanceDesc(){
+        return intermediaryFinanceDesc;
+    }
+    public void setIntermediaryFinanceDesc(String intermediaryFinanceDesc){
+        this.intermediaryFinanceDesc = intermediaryFinanceDesc;
+    }
+    public String getIntermediaryFinancingDesc(){
+        return intermediaryFinancingDesc;
+    }
+    public void setIntermediaryFinancingDesc(String intermediaryFinancingDesc){
+        this.intermediaryFinancingDesc = intermediaryFinancingDesc;
+    }
+    public String getIntermediaryManageDesc(){
+        return intermediaryManageDesc;
+    }
+    public void setIntermediaryManageDesc(String intermediaryManageDesc){
+        this.intermediaryManageDesc = intermediaryManageDesc;
     }
     public String getDfOtherService(){
         return dfOtherService;

@@ -1,5 +1,6 @@
 package net.bambooslips.demo.controller;
 
+import com.alibaba.fastjson.JSON;
 import net.bambooslips.demo.exception.UnitEssentialNotFoundException;
 import net.bambooslips.demo.jpa.model.*;
 import net.bambooslips.demo.jpa.service.*;
@@ -41,6 +42,80 @@ public class UnitEssentialController {
     private FinancialHistoricalService financialHistoricalService ;
     @Autowired
     private FinancialForecastingService financialForecastingService ;
+    @Autowired
+    private EquityFinancingService equityFinancingService ;
+    @Autowired
+    private DebtFinancingService debtFinancingService ;
+    @Autowired
+    private DemandFinancialService demandFinancialService ;
+    @Autowired
+    private CompetitionEntireService competitionEntireService;
+
+
+    /**
+     * 查寻entire_id列表
+     * @param comName
+     * @return
+     */
+    @RequestMapping(value = "getEntireListByComName/{comName}", method = RequestMethod.GET)
+    @ResponseBody
+    public String getEntireListByComName(@PathVariable String comName) {
+        String result;
+        BaseResult baseResult = null;
+        List<CompetitionEntire> list = competitionEntireService.findAllEntireList(comName);
+        if (list != null && list.size()>0){
+            BootStrapTableResult tableResult = new BootStrapTableResult<CompetitionEntire>(list);
+            baseResult = new BaseResult(true, "");
+            baseResult.setData(tableResult);
+            result = JSON.toJSONString(baseResult);
+            return result;
+        }else {
+            baseResult = new BaseResult(true, "没有查询到相关信息！");
+            result = JSON.toJSONString(baseResult);
+            return result;
+        }
+    }
+    /**
+     * 查询项目名称
+     */
+    @RequestMapping(value = "getEntireProNameByEntireId/{entireId}", method = RequestMethod.GET)
+    @ResponseBody
+    public String getEntireProNameByEntireId(@PathVariable Long entireId) {
+        String result;
+        BaseResult baseResult = null;
+        List<UnitBusinessPlan> list = unitBusinessPlanService.findEntireProName(entireId);
+        if (list != null && list.size()>0){
+            BootStrapTableResult tableResult = new BootStrapTableResult<UnitBusinessPlan>(list);
+            baseResult = new BaseResult(true, "");
+            baseResult.setData(tableResult);
+            result = JSON.toJSONString(baseResult);
+            return result;
+        }else {
+            baseResult = new BaseResult(true, "没有查询到相关信息！");
+            result = JSON.toJSONString(baseResult);
+            return result;
+        }
+    }
+
+//    @RequestMapping(value = "getEntireProNameByEntireId_team/{entireId}", method = RequestMethod.GET)
+//    @ResponseBody
+//    public String getEntireProNameByEntireId_team(@PathVariable Long entireId) {
+//        String result;
+//        BaseResult baseResult = null;
+//        List<> list = unitBusinessPlanService.findEntireProName(entireId);
+//        if (list != null && list.size()>0){
+//            BootStrapTableResult tableResult = new BootStrapTableResult<UnitBusinessPlan>(list);
+//            baseResult = new BaseResult(true, "");
+//            baseResult.setData(tableResult);
+//            result = JSON.toJSONString(baseResult);
+//            return result;
+//        }else {
+//            baseResult = new BaseResult(true, "没有查询到相关信息！");
+//            result = JSON.toJSONString(baseResult);
+//            return result;
+//        }
+//    }
+
     /**
      * 查看对应作品的基本信息录入表是否插入
      * @param entireId
@@ -125,6 +200,81 @@ public class UnitEssentialController {
     }
 
     /**
+     * 查看历史财务数据
+     * @param entireId
+     * @return
+     */
+    @RequestMapping(value = "getHistoricalByEntireId/{entireId}", method = RequestMethod.GET)
+    @ResponseBody
+    public int getHistoricalByEntireId(@PathVariable Long entireId) {
+        int result = financialHistoricalService.findByEntireId(entireId);
+        if (result >0){
+            return result;
+        }else {
+            return 0;
+        }
+    }
+    /**
+     * 查看财务数据
+     * @param entireId
+     * @return
+     */
+    @RequestMapping(value = "getForecastingByEntireId/{entireId}", method = RequestMethod.GET)
+    @ResponseBody
+    public int getForecastingByEntireId(@PathVariable Long entireId) {
+        int result = financialForecastingService.findByEntireId(entireId);
+        if (result >0){
+            return result;
+        }else {
+            return 0;
+        }
+    }
+    /**
+     * 查看是否已填写融资信息
+     * @param entireId
+     * @return
+     */
+    @RequestMapping(value = "getEquityFinancingByEntireId/{entireId}", method = RequestMethod.GET)
+    @ResponseBody
+    public Long getEquityFinancingByEntireId(@PathVariable Long entireId) {
+        Long result = equityFinancingService.findByEntireId(entireId);
+        if (result != null && result>0){
+            return result;
+        }else {
+            return null;
+        }
+    }
+    /**
+     * 查看是否已填写债权融资信息
+     * @param entireId
+     * @return
+     */
+    @RequestMapping(value = "getDebtFinancingByEntireId/{entireId}", method = RequestMethod.GET)
+    @ResponseBody
+    public Long getDebtFinancingByEntireId(@PathVariable Long entireId) {
+        Long result = debtFinancingService.findByEntireId(entireId);
+        if (result != null && result>0){
+            return result;
+        }else {
+            return null;
+        }
+    }
+    /**
+     * 查看是否已填写科技金融服务需求
+     * @param entireId
+     * @return
+     */
+    @RequestMapping(value = "getDemandByEntireId/{entireId}", method = RequestMethod.GET)
+    @ResponseBody
+    public Long getDemandByEntireId(@PathVariable Long entireId) {
+        Long result = demandFinancialService.findByEntireId(entireId);
+        if (result != null && result>0){
+            return result;
+        }else {
+            return null;
+        }
+    }
+    /**
      * 新增基本信息
      * @param entireId
      * @param ueCompanyName
@@ -143,20 +293,20 @@ public class UnitEssentialController {
     @RequestMapping(value = "addUnitEssential",method = RequestMethod.POST, consumes = "application/x-www-form-urlencoded")
     @ResponseBody
     @ResponseStatus(HttpStatus.CREATED)
-    public Long create(@RequestParam(required = true) Long entireId,
-                       @RequestParam(required = true) String ueCompanyName,
-                       @RequestParam(required = true) String ueGoal,
-                       @RequestParam(required = true) String ueField,
-                       @RequestParam(required = true) double ueRegisterCapital,
-                       @RequestParam(required = true) Long ueWinNum,
-                       @RequestParam(required = true) Long ueStaffNum,
-                       @RequestParam(required = true) Long ueResearchNum,
-                       @RequestParam(required = true) Long ueDeputyNum,
-                       @RequestParam(required = true) String ueOfficeAddress,
-                       @RequestParam(required = true) String uePostCode,
-                       @RequestParam(required = true) String uePowerType,
-                       @RequestParam(required = true) String ueCorporationSummary,
-                       @RequestParam(required = true) String ueTechnicalSources) {
+    public Long create(@RequestParam(required = false) Long entireId,
+                       @RequestParam(required = false) String ueCompanyName,
+                       @RequestParam(required = false) String ueGoal,
+                       @RequestParam(required = false) String ueField,
+                       @RequestParam(required = false) Long ueRegisterCapital,
+                       @RequestParam(required = false) Long ueWinNum,
+                       @RequestParam(required = false) Long ueStaffNum,
+                       @RequestParam(required = false) Long ueResearchNum,
+                       @RequestParam(required = false) Long ueDeputyNum,
+                       @RequestParam(required = false) String ueOfficeAddress,
+                       @RequestParam(required = false) String uePostCode,
+                       @RequestParam(required = false) String uePowerType,
+                       @RequestParam(required = false) String ueCorporationSummary,
+                       @RequestParam(required = false) String ueTechnicalSources) {
         UnitEssential unitEssential = new UnitEssential(entireId, ueCompanyName, ueGoal,ueField,ueRegisterCapital,
                 ueWinNum,ueStaffNum,ueResearchNum,ueDeputyNum,ueOfficeAddress,uePostCode,uePowerType,ueCorporationSummary,ueTechnicalSources);
 
@@ -171,13 +321,13 @@ public class UnitEssentialController {
     @RequestMapping(value = "addLegalRepresentative",method = RequestMethod.POST, consumes = "application/x-www-form-urlencoded")
     @ResponseBody
     @ResponseStatus(HttpStatus.CREATED)
-    public Long create(@RequestParam(required = true) Long ueId,
-                       @RequestParam(required = true) Long entireId,
-                       @RequestParam(required = true) String legalName,
-                       @RequestParam(required = true) String legalJob,
-                       @RequestParam(required = true) String legalOfficeTel,
-                       @RequestParam(required = true) String legalMobileTel,
-                       @RequestParam(required = true) String legalEmail) {
+    public Long create(@RequestParam(required = false) Long ueId,
+                       @RequestParam(required = false) Long entireId,
+                       @RequestParam(required = false) String legalName,
+                       @RequestParam(required = false) String legalJob,
+                       @RequestParam(required = false) String legalOfficeTel,
+                       @RequestParam(required = false) String legalMobileTel,
+                       @RequestParam(required = false) String legalEmail) {
         LegalRepresentative legalRepresentative = new LegalRepresentative(entireId, ueId, legalName,legalJob,legalOfficeTel, legalMobileTel,legalEmail);
 
         Long result =  legalRepresentativeService.create(legalRepresentative);
@@ -190,13 +340,13 @@ public class UnitEssentialController {
     @RequestMapping(value = "addContacts",method = RequestMethod.POST, consumes = "application/x-www-form-urlencoded")
     @ResponseBody
     @ResponseStatus(HttpStatus.CREATED)
-    public Long addContacts(@RequestParam(required = true) Long ueId,
-                       @RequestParam(required = true) Long entireId,
-                       @RequestParam(required = true) String contactsName,
-                       @RequestParam(required = true) String contactsJob,
-                       @RequestParam(required = true) String contactsOfficeTel,
-                       @RequestParam(required = true) String contactsMobileTel,
-                       @RequestParam(required = true) String contactsEmail) {
+    public Long addContacts(@RequestParam(required = false) Long ueId,
+                       @RequestParam(required = false) Long entireId,
+                       @RequestParam(required = false) String contactsName,
+                       @RequestParam(required = false) String contactsJob,
+                       @RequestParam(required = false) String contactsOfficeTel,
+                       @RequestParam(required = false) String contactsMobileTel,
+                       @RequestParam(required = false) String contactsEmail) {
         Contacts contacts = new Contacts(entireId, ueId, contactsName,
                 contactsJob,contactsOfficeTel, contactsMobileTel,contactsEmail);
 
@@ -217,15 +367,13 @@ public class UnitEssentialController {
                               @RequestParam(required = false) Long teId,
                             @RequestParam(required = false) String patentName,
                             @RequestParam(required = false) String patentType,
-//                            @RequestParam(required = false) String patentDate,
-                            @RequestParam(required = false) String patentVerification) throws ParseException {
+                            @RequestParam(required = false) Date patentDate,
+                            @RequestParam(required = false) String patentVerification){
 
 //        Date date = timeF.parse(patentDate);
 
         PatentList patentList = new PatentList(patentId,entireId, ueId, teId,
-                patentName,patentType,
-//                date,
-                patentVerification);
+                patentName,patentType, patentDate, patentVerification);
 
         Long result =  patentListService.create(patentList);
 
@@ -249,15 +397,14 @@ public class UnitEssentialController {
                             @RequestParam(required = false) String ctStudyExperience,
                             @RequestParam(required = false) String ctMainAchive,
                             @RequestParam(required = false) String ctNationalMillennium,
-//                            @RequestParam(required = false) String nationalMilleDate,
-                            @RequestParam(required = false) String ctUniversityBusiness) throws ParseException {
+                            @RequestParam(required = false) Date nationalMilleDate,
+                            @RequestParam(required = false) String ctUniversityBusiness){
 
 //        Date date = timeF.parse(patentDate);
 
         CoreTeam coreTeam = new CoreTeam(ueId,teId, entireId,ctName,ctSex,ctAge,ctJob,
                 ctHigbestEducation,ctStudyExperience,ctMainAchive,ctNationalMillennium,
-//                nationalMilleDate,
-                ctUniversityBusiness);
+                nationalMilleDate, ctUniversityBusiness);
 
         Long result =  coreTeamService.create(coreTeam);
 
@@ -267,20 +414,20 @@ public class UnitEssentialController {
     @RequestMapping(value = "addUnitBusinessPlan",method = RequestMethod.POST, consumes = "application/x-www-form-urlencoded")
     @ResponseBody
     @ResponseStatus(HttpStatus.CREATED)
-    public Long addUnitBusinessPlan(@RequestParam(required = true) Long ueId,
-                       @RequestParam(required = true) Long entireId,
-                       @RequestParam(required = true) String ubusProName,
-                       @RequestParam(required = true) Long ubusProIncomed,
-                       @RequestParam(required = true) String ubusProType,
-                       @RequestParam(required = true) String ubusLeadInternal,
-                       @RequestParam(required = true) String ubusLeadInternational,
-                       @RequestParam(required = true) String ubusResearchInstitute,
-                       @RequestParam(required = true) String instituteName,
-                       @RequestParam(required = true) String ubusProPicture,
-                       @RequestParam(required = true) String ubusMajorDescribe,
-                       @RequestParam(required = true) String ubusProMarket,
-                       @RequestParam(required = true) String ubusModel,
-                       @RequestParam(required = true) String ubusMain) {
+    public Long addUnitBusinessPlan(@RequestParam(required = false) Long ueId,
+                       @RequestParam(required = false) Long entireId,
+                       @RequestParam(required = false) String ubusProName,
+                       @RequestParam(required = false) Long ubusProIncomed,
+                       @RequestParam(required = false) String ubusProType,
+                       @RequestParam(required = false) String ubusLeadInternal,
+                       @RequestParam(required = false) String ubusLeadInternational,
+                       @RequestParam(required = false) String ubusResearchInstitute,
+                       @RequestParam(required = false) String instituteName,
+                       @RequestParam(required = false) String ubusProPicture,
+                       @RequestParam(required = false) String ubusMajorDescribe,
+                       @RequestParam(required = false) String ubusProMarket,
+                       @RequestParam(required = false) String ubusModel,
+                       @RequestParam(required = false) String ubusMain) {
         UnitBusinessPlan unitBusinessPlan = new UnitBusinessPlan(ueId, entireId, ubusProName,ubusProIncomed,ubusProType,
                 ubusLeadInternal,ubusLeadInternational,ubusResearchInstitute,instituteName,ubusProPicture,ubusMajorDescribe,ubusProMarket,ubusModel,ubusMain);
 
@@ -292,22 +439,22 @@ public class UnitEssentialController {
     @RequestMapping(value = "addFinancialHistorical",method = RequestMethod.POST, consumes = "application/x-www-form-urlencoded")
     @ResponseBody
     @ResponseStatus(HttpStatus.CREATED)
-    public Long addFinancialHistorical(@RequestParam(required = true) Long ubusId,
-                                    @RequestParam(required = true) Long entireId,
-                                    @RequestParam(required = true) Long hfinIncome,
-                                    @RequestParam(required = true) Long hfinCost,
-                                    @RequestParam(required = true) Long hfinProfit,
-                                    @RequestParam(required = true) Long hfinBeforeTaxProfit,
-                                    @RequestParam(required = true) Long hfinExpenses,
-                                    @RequestParam(required = true) Long hfinProfitRate,
-                                    @RequestParam(required = true) Long hfinOperatingProfit,
-                                    @RequestParam(required = true) Long operatingProfitRate,
-                                    @RequestParam(required = true) Long hfinNetMargin,
-                                    @RequestParam(required = true) Long fixedNetValue,
-                                    @RequestParam(required = true) Long hfinAssetsTotal,
-                                       @RequestParam(required = true) Long hfinLialilitesTotal,
-                                       @RequestParam(required = true) Long hfinNetAsset,
-                                    @RequestParam(required = true) String hfinYear) {
+    public Long addFinancialHistorical(@RequestParam(required = false) Long ubusId,
+                                    @RequestParam(required = false) Long entireId,
+                                    @RequestParam(required = false) Long hfinIncome,
+                                    @RequestParam(required = false) Long hfinCost,
+                                    @RequestParam(required = false) Long hfinProfit,
+                                    @RequestParam(required = false) Long hfinBeforeTaxProfit,
+                                    @RequestParam(required = false) Long hfinExpenses,
+                                    @RequestParam(required = false) Long hfinProfitRate,
+                                    @RequestParam(required = false) Long hfinOperatingProfit,
+                                    @RequestParam(required = false) Long operatingProfitRate,
+                                    @RequestParam(required = false) Long hfinNetMargin,
+                                    @RequestParam(required = false) Long fixedNetValue,
+                                    @RequestParam(required = false) Long hfinAssetsTotal,
+                                       @RequestParam(required = false) Long hfinLialilitesTotal,
+                                       @RequestParam(required = false) Long hfinNetAsset,
+                                    @RequestParam(required = false) String hfinYear) {
         FinancialHistorical financialHistorical = new FinancialHistorical(entireId, ubusId, hfinIncome,hfinCost,hfinProfit, hfinProfitRate,hfinExpenses,hfinOperatingProfit,operatingProfitRate,
                 hfinBeforeTaxProfit,hfinNetMargin,fixedNetValue,hfinAssetsTotal,hfinLialilitesTotal,hfinNetAsset,hfinYear);
 
@@ -319,16 +466,16 @@ public class UnitEssentialController {
     @RequestMapping(value = "addFinancialForecasting",method = RequestMethod.POST, consumes = "application/x-www-form-urlencoded")
     @ResponseBody
     @ResponseStatus(HttpStatus.CREATED)
-    public Long addFinancialForecasting(@RequestParam(required = true) Long ubusId,
-                                       @RequestParam(required = true) Long entireId,
-                                       @RequestParam(required = true) Long tbusId,
-                                       @RequestParam(required = true) Long foreIncome,
-                                       @RequestParam(required = true) Long foreCost,
-                                       @RequestParam(required = true) Long foreTaxExpense,
-                                       @RequestParam(required = true) Long foreProfit,
-                                       @RequestParam(required = true) Long foreProfitRate,
-                                       @RequestParam(required = true) Long foreNetMargin,
-                                       @RequestParam(required = true) String foreYear) {
+    public Long addFinancialForecasting(@RequestParam(required = false) Long ubusId,
+                                       @RequestParam(required = false) Long entireId,
+                                       @RequestParam(required = false) Long tbusId,
+                                       @RequestParam(required = false) Long foreIncome,
+                                       @RequestParam(required = false) Long foreCost,
+                                       @RequestParam(required = false) Long foreTaxExpense,
+                                       @RequestParam(required = false) Long foreProfit,
+                                       @RequestParam(required = false) Long foreProfitRate,
+                                       @RequestParam(required = false) Long foreNetMargin,
+                                       @RequestParam(required = false) String foreYear) {
         FinancialForecasting financialForecasting = new FinancialForecasting(entireId, ubusId, tbusId,foreIncome,
                 foreCost, foreTaxExpense,foreProfit,foreProfitRate,foreNetMargin, foreYear);
 
@@ -336,15 +483,125 @@ public class UnitEssentialController {
 
         return result;
     }
+
+    /**
+     * 增加融资信息
+     */
+    @RequestMapping(value = "addEquityFinancing",method = RequestMethod.POST, consumes = "application/x-www-form-urlencoded")
+    @ResponseBody
+    @ResponseStatus(HttpStatus.CREATED)
+    public Long addEquityFinancing(@RequestParam(required = false) Long ubusId,
+                       @RequestParam(required = false) Long entireId,
+                       @RequestParam(required = false) String equityInvestor,
+                       @RequestParam(required = false) Long equityMoney,
+                       @RequestParam(required = false) Long equityRate,
+                       @RequestParam(required = false) Date equityDate) {
+        EquityFinancing equityFinancing = new EquityFinancing(ubusId, entireId, equityInvestor,equityMoney,equityRate,equityDate);
+        Long result =  equityFinancingService.create(equityFinancing);
+
+        return result;
+    }
+
+    @RequestMapping(value = "addDebtFinancing",method = RequestMethod.POST, consumes = "application/x-www-form-urlencoded")
+    @ResponseBody
+    @ResponseStatus(HttpStatus.CREATED)
+    public Long addDebtFinancing(@RequestParam(required = false) Long ubusId,
+                       @RequestParam(required = false) Long entireId,
+                       @RequestParam(required = false) String debtLeader,
+                       @RequestParam(required = false) Long debtMoney,
+                       @RequestParam(required = false) Date debtStartTime,
+                       @RequestParam(required = false) Date debtEndTime) {
+        DebtFinancing debtFinancing = new DebtFinancing(ubusId, entireId, debtLeader,debtMoney,debtStartTime, debtEndTime);
+
+        Long result =  debtFinancingService.create(debtFinancing);
+
+        return result;
+    }
+
+    /**
+     * 增加科技金融服务需求信息
+     */
+
+    @RequestMapping(value = "addDemandFinancial",method = RequestMethod.POST, consumes = "application/x-www-form-urlencoded")
+    @ResponseBody
+    @ResponseStatus(HttpStatus.CREATED)
+    public Long addDemandFinancial(@RequestParam(required = false) Long entireId,
+                                   @RequestParam(required = false) Long ubusId,
+                                   @RequestParam(required = false) Long tbusId,
+                       @RequestParam(required = false) String dfEquity,
+                       @RequestParam(required = false) Long dfEquityShares,
+                       @RequestParam(required = false) Long dfEquityMoney,
+                       @RequestParam(required = false) Date dfEquityDate,
+                       @RequestParam(required = false) String equityFundPlan,
+                                   @RequestParam(required = false) String dfEquityRecom,
+
+                                   @RequestParam(required = false) String dfDebt,
+                                   @RequestParam(required = false) Long dfDebtMoney,
+                                   @RequestParam(required = false) Long debtMaxAnnual,
+                                   @RequestParam(required = false) Date dfDebtDate,
+                                   @RequestParam(required = false) String debtFundPlan,
+                                   @RequestParam(required = false) String dfDebtRecom,
+                       @RequestParam(required = false) String dfCrowdFunding,
+                       @RequestParam(required = false) String crowsFundType,
+                       @RequestParam(required = false) String dfMerge,
+                       @RequestParam(required = false ) String dfListedShareReform,
+                       @RequestParam(required = false) String dfFinancingGuarantee,
+                       @RequestParam(required = false) String dfPettyLoan,
+                       @RequestParam(required = false) Long pettyLoanMoney,
+                       @RequestParam(required = false) String dfCompanyDebt,
+                                   @RequestParam(required = false) String minorEnterprisesDebt,
+
+                                   @RequestParam(required = false) String dfTechnicalImport,
+                                   @RequestParam(required = false) String  technicalImportInternational,
+                                   @RequestParam(required = false) String technicalDescInternational,
+                                   @RequestParam(required = false) String technicalImportInternal,
+                                   @RequestParam(required = false) String technicalDescInternal,
+                                   @RequestParam(required = false) String dfTechnicalTransfer,
+                                   @RequestParam(required = false) String technicalTransferRange,
+                                   @RequestParam(required = false) String dfPropertyAssign,
+                                   @RequestParam(required = false) String dfFinaceLease,
+                                   @RequestParam(required = false) String dfTechnologyInsurance,
+                                   @RequestParam(required = false) String dfAssetManage,
+                                   @RequestParam(required = false) String branchChongCheck,
+                                   @RequestParam(required = false) String dfPoliticalConsult,
+                                   @RequestParam(required = false) String dfTechnologyConsult,
+
+                                   @RequestParam(required = false) String dfIntermediaryConsult,
+                                   @RequestParam(required = false) String  intermediaryLaw,
+                                   @RequestParam(required = false) String intermediaryLawDesc,
+                                   @RequestParam(required = false) String intermediaryFinance,
+                                   @RequestParam(required = false) String intermediaryFinanceDesc,
+                                   @RequestParam(required = false) String intermediaryFinancing,
+                                   @RequestParam(required = false) String intermediaryFinancingDesc,
+                                   @RequestParam(required = false) String intermediaryManage,
+                                   @RequestParam(required = false) String intermediaryManageDesc,
+                                   @RequestParam(required = false) String dfOtherService,
+                                   @RequestParam(required = false) String otherServiceDesc,
+                                   @RequestParam(required = false) String dfAcceptTrain,
+                                   @RequestParam(required = false) String dfNo) {
+
+        DemandFinancial demandFinancial = new DemandFinancial(entireId, ubusId, tbusId,dfEquity,dfEquityShares,dfEquityMoney,
+                dfEquityDate,equityFundPlan,dfEquityRecom,dfDebt,dfDebtMoney,debtMaxAnnual,dfDebtDate,debtFundPlan,dfDebtRecom,dfCrowdFunding,crowsFundType,
+                dfMerge,dfListedShareReform,dfFinancingGuarantee,dfPettyLoan,pettyLoanMoney,dfCompanyDebt,minorEnterprisesDebt,dfTechnicalImport,
+                technicalImportInternational,technicalDescInternational,technicalImportInternal,technicalDescInternal,dfTechnicalTransfer,
+                technicalTransferRange,dfPropertyAssign,dfFinaceLease,dfTechnologyInsurance,dfAssetManage,branchChongCheck,dfPoliticalConsult,
+                dfTechnologyConsult,dfIntermediaryConsult,intermediaryLaw,intermediaryLawDesc,intermediaryFinance,intermediaryFinanceDesc,intermediaryFinancing,
+                intermediaryFinancingDesc,intermediaryManage,intermediaryManageDesc,dfOtherService,otherServiceDesc,dfAcceptTrain,dfNo);
+
+        Long result =  demandFinancialService.create(demandFinancial);
+
+        return result;
+    }
+
     /**
      * 修改基本信息
      * @return
      */
     @RequestMapping(value = "/updateEssential/{ueId}", method = RequestMethod.PUT, consumes = "application/x-www-form-urlencoded")
     @ResponseBody
-    public UnitEssential updateByForm(@PathVariable Long ueId, String ueGoal,String ueField,double ueRegisterCapital,
+    public UnitEssential updateByForm(@PathVariable Long ueId, String ueGoal,String ueField,Long ueRegisterCapital,
                                       Long ueWinNum,Long ueStaffNum,Long ueResearhNum,Long ueDeputyNum,
-                                      String ueOfficeAddress,String uePowerType,String ueCorporationSummary) {
+                                      String ueOfficeAddress,String uePostCode,String uePowerType,String ueCorporationSummary,String technicalSources ) {
         UnitEssential unitEssential = new UnitEssential();
         unitEssential.setUeId(ueId);
         unitEssential.setUeGoal(ueGoal);
@@ -356,10 +613,52 @@ public class UnitEssentialController {
         unitEssential.setUeResearchNum(ueResearhNum);
         unitEssential.setUeDeputyNum(ueDeputyNum);
         unitEssential.setUeOfficeAddress(ueOfficeAddress);
+        unitEssential.setUePostCode(uePostCode);
         unitEssential.setUePowerType(uePowerType);
         unitEssential.setUeCorporationSummary(ueCorporationSummary);
+        unitEssential.setUeTechnicalSources(technicalSources);
 
         return unitEssentialService.update(unitEssential);
+    }
+
+    /**
+     * 修改法定代表人
+     * @return
+     */
+    @RequestMapping(value = "/updateLegalRepresentative/{legalId}", method = RequestMethod.PUT, consumes = "application/x-www-form-urlencoded")
+    @ResponseBody
+    public LegalRepresentative updateLegalRepresentative(@PathVariable Long legalId, String legalName,
+                                                   String legalJob,String legalMobileTel, String legalOfficeTel,String legalEmail ) {
+        LegalRepresentative legalRepresentative = new LegalRepresentative();
+        legalRepresentative.setLegalId(legalId);
+        legalRepresentative.setLegalName(legalName);
+
+        legalRepresentative.setLegalJob(legalJob);
+        legalRepresentative.setLegalMobileTel(legalMobileTel);
+        legalRepresentative.setLegalOfficeTel(legalOfficeTel);
+        legalRepresentative.setLegalEmail(legalEmail);
+
+        return legalRepresentativeService.update(legalRepresentative);
+    }
+
+    /**
+     * 修改联系人
+     * @return
+     */
+    @RequestMapping(value = "/updateContacts/{contactsId}", method = RequestMethod.PUT, consumes = "application/x-www-form-urlencoded")
+    @ResponseBody
+    public Contacts updateContacts(@PathVariable Long contactsId, String contactsName,
+                                                         String contactsJob,String contactsOfficeTel, String contactsMobileTel,String contactsEmail ) {
+        Contacts contacts = new Contacts();
+        contacts.setContactsId(contactsId);
+        contacts.setContactsName(contactsName);
+
+        contacts.setContactsJob(contactsJob);
+        contacts.setContactsOfficeTel(contactsOfficeTel);
+        contacts.setContactsMobileTel(contactsMobileTel);
+        contacts.setContactsEmail(contactsEmail);
+
+        return contactsService.update(contacts);
     }
 
 

@@ -26,7 +26,7 @@
                     <div class="btn_div">
                         <div id="suc_entry"><p>参赛报名</p></div>
                         <div class="btn_div_"><p>已报名项目</p></div>
-                        <div class="btn_div_"><p>未提交项目</p></div>
+                        <div class="btn_div_ btn_div_keep"><p>未提交项目</p></div>
                     </div>
 
                 </div>
@@ -48,6 +48,9 @@
     var comName = GetQueryString("comName")
     $("#suc_entry").click(function () {
         window.location.href = "/entry?comName=" + comName + "";
+    })
+    $(".btn_div_keep").click(function () {
+        window.location.href = "/project?comName=" + comName + "";
     })
 </script>
 

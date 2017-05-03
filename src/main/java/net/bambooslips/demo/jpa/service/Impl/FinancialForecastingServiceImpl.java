@@ -56,6 +56,16 @@ public class FinancialForecastingServiceImpl implements FinancialForecastingServ
         return financialForecasting;
     }
 
-
+    @Transactional(readOnly = true)
+    @Override
+    public int findByEntireId(Long entireId) {
+        LOG.debug("Finding patentList by id: " + entireId);
+        int count =  financialForecastingRepository.findByEntireId(entireId);
+        if (count > 0){
+            return count;
+        } else {
+            return 0;
+        }
+    }
 
 }

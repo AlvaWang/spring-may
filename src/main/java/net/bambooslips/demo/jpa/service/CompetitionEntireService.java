@@ -3,6 +3,7 @@ package net.bambooslips.demo.jpa.service;
 import net.bambooslips.demo.exception.CompetitionAccountNotFoundException;
 import net.bambooslips.demo.exception.CompetitionEntireNotFoundException;
 import net.bambooslips.demo.jpa.model.CompetitionEntire;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,4 +31,8 @@ public interface CompetitionEntireService {
     CompetitionEntire updateState(CompetitionEntire update);
 
     CompetitionEntire delete(Long id);
+
+    List<CompetitionEntire> findAllEntireList(String comName);
+
+//    Page<CompetitionEntire> findByComName(String comName);
 }

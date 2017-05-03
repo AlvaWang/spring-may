@@ -1,5 +1,6 @@
 package net.bambooslips.demo.jpa.repository;
 
+import net.bambooslips.demo.jpa.model.CompetitionEntire;
 import net.bambooslips.demo.jpa.model.Contacts;
 import net.bambooslips.demo.jpa.model.CoreTeam;
 import net.bambooslips.demo.jpa.model.UnitBusinessPlan;
@@ -8,6 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 /**
  * Created by Administrator on 2017/4/21.
@@ -20,4 +22,8 @@ public interface UnitBusinessPlanRepository extends JpaRepository<UnitBusinessPl
     )
     public UnitBusinessPlan findByEntireId(@Param("entireId") Long entireId);
 
+    @Query(
+            "Select ubp.ubusProName FROM UnitBusinessPlan ubp WHERE ubp.entireId=:entireId"
+    )
+    List<UnitBusinessPlan> findEntireProName(@Param("entireId") Long entireId);
 }

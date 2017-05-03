@@ -5,12 +5,15 @@ import net.bambooslips.demo.exception.CompetitionEntireNotFoundException;
 import net.bambooslips.demo.exception.PostNotFoundException;
 import net.bambooslips.demo.jpa.model.CompetitionAccount;
 import net.bambooslips.demo.jpa.model.CompetitionEntire;
+import net.bambooslips.demo.jpa.model.UnitEssential;
 import net.bambooslips.demo.jpa.repository.CompetitionAccountRepository;
 import net.bambooslips.demo.jpa.repository.CompetitionEntireRepository;
+import net.bambooslips.demo.jpa.repository.UnitEssentialRepository;
 import net.bambooslips.demo.jpa.service.CompetitionAccountService;
 import net.bambooslips.demo.jpa.service.CompetitionEntireService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -85,6 +88,12 @@ public class CompetitionEntireServiceImpl implements CompetitionEntireService{
     @Override
     public CompetitionEntire delete(Long id) {
         return null;
+    }
+
+    @Override
+    public List<CompetitionEntire> findAllEntireList(String comName) {
+        List<CompetitionEntire> list =competitionEntireRepository.findByComName(comName);
+        return list;
     }
 
 }

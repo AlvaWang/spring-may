@@ -4,6 +4,7 @@ import net.bambooslips.demo.exception.CoreTeamNotFoundException;
 import net.bambooslips.demo.exception.DebtFinancingNotFoundException;
 import net.bambooslips.demo.exception.PostNotFoundException;
 import net.bambooslips.demo.jpa.model.CoreTeam;
+import net.bambooslips.demo.jpa.model.DebtFinancing;
 import net.bambooslips.demo.jpa.model.DemandFinancial;
 import net.bambooslips.demo.jpa.repository.CoreTeamRepository;
 import net.bambooslips.demo.jpa.repository.DemandFinancialRepository;
@@ -83,5 +84,17 @@ public class DemandFinancialServiceImpl implements DemandFinancialService{
         return deleted;
     }
 
+    @Transactional(readOnly = true)
+    @Override
+    public Long findByEntireId(Long entireId) {
+        LOG.debug("Finding demandFinancial by id: " + entireId);
+        DemandFinancial demandFinancial =  demandFinancialRepository.findByEntireId(entireId);
+        if (demandFinancial != null){
+            Long ueId = demandFinancial.getDfId();
+            return ueId;
+        } else {
+            return null;
+        }
+    }
 
 }

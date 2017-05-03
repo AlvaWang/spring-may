@@ -6,7 +6,7 @@ import java.util.Date;
 
 /**
  * Created by Administrator on 2017/4/21.
- * e专利
+ * 股权融资
  */
 @Entity
 @Table(name = "equity_financing")
@@ -27,7 +27,10 @@ public class EquityFinancing implements  Serializable {
     private String equityInvestor;
 
     @Column(name = "equity_money")
-    private double equityMoney;
+    private Long equityMoney;
+
+    @Column(name = "equity_rate")
+    private Long equityRate;
 
     @Column(name = "equity_date")
     @Temporal(TemporalType.TIMESTAMP)
@@ -41,12 +44,13 @@ public class EquityFinancing implements  Serializable {
 
     }
     public EquityFinancing(Long ubusId,Long entireId,
-                           String equityInvestor,double equityMoney,
+                           String equityInvestor,Long equityMoney,Long equityRate,
                            Date equityDate){
         this.ubusId = ubusId;
         this.entireId = entireId;
         this.equityInvestor = equityInvestor;
         this.equityMoney = equityMoney;
+        this.equityRate = equityRate;
         this.equityDate = equityDate;
 
     }
@@ -60,6 +64,7 @@ public class EquityFinancing implements  Serializable {
     public EquityFinancing update(EquityFinancing updated) {
         if(updated.getEquityInvestor() != null)this.setEquityInvestor(updated.getEquityInvestor());
         if(updated.getEquityMoney() <= 0)this.setEquityMoney(updated.getEquityMoney());
+        if(updated.getEquityRate() <= 0)this.setEquityRate(updated.getEquityRate());
         if(updated.getEquityDate() != null)this.setEquityDate(updated.getEquityDate());
 
         return this;
@@ -92,11 +97,18 @@ public class EquityFinancing implements  Serializable {
         this.equityInvestor = equityInvestor;
     }
 
-    public double getEquityMoney(){
+    public Long getEquityMoney(){
         return equityMoney;
     }
-    public void setEquityMoney(double equityMoney){
+    public void setEquityMoney(Long equityMoney){
        this.equityMoney =equityMoney;
+    }
+
+    public Long getEquityRate(){
+        return equityRate;
+    }
+    public void setEquityRate(Long equityRate){
+        this.equityRate =equityRate;
     }
 
     public Date getEquityDate() {

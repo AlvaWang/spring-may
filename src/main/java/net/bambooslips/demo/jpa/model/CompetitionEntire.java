@@ -28,6 +28,12 @@ public class CompetitionEntire implements  Serializable {
     @Column(name = "state")
     private String state;
 
+    @Column(name = "ubus_pro_name")
+    private String ubusProName;
+
+
+
+
 
 
     public CompetitionEntire(){
@@ -91,5 +97,13 @@ public class CompetitionEntire implements  Serializable {
     public void setState(String state){
         this.state =state;
     }
+
+    public String getUbusProName(){
+        return ubusProName;
+    }
+    public void setUbusProName(String ubusProName){
+        this.ubusProName = ubusProName;
+    }
+
 }
 

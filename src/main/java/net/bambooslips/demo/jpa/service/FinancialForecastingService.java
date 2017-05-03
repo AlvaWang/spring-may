@@ -20,6 +20,8 @@ public interface FinancialForecastingService {
      */
     FinancialForecasting update(FinancialForecasting update);
 
+    int findByEntireId(Long entireId);
+
 
 //    UnitBusinessPlan delete(Long id);
 }

@@ -32,7 +32,7 @@ public class UnitEssential implements  Serializable {
     private String ueField;
 
     @Column(name = "ue_register_capital")
-    private Double ueRegisterCapital;
+    private Long ueRegisterCapital;
 
     @Column(name = "ue_win_num")
     private Long ueWinNum;
@@ -65,7 +65,7 @@ public class UnitEssential implements  Serializable {
 
     }
     public UnitEssential(Long entireId,String ueCompanyName,String ueGoal,
-                         String ueField,double ueRegisterCapital,Long ueWinNum, Long ueStaffNum,
+                         String ueField,Long ueRegisterCapital,Long ueWinNum, Long ueStaffNum,
                          Long ueResearchNum,Long ueDeputyNum,String ueOfficeAddress,String uePostCode,
                          String uePowerType,String ueCorporationSummary,String ueTechnicalSources){
         this.entireId = entireId;
@@ -141,10 +141,10 @@ public class UnitEssential implements  Serializable {
         this.ueField = ueField;
     }
 
-    public Double getUeRegisterCapital(){
+    public Long getUeRegisterCapital(){
         return ueRegisterCapital;
     }
-    public void setUeRegisterCapital(Double ueRegisterCapital){
+    public void setUeRegisterCapital(Long ueRegisterCapital){
         this.ueRegisterCapital = ueRegisterCapital;
     }
 

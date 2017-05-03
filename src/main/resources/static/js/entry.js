@@ -30,8 +30,8 @@ var addEntireUnit = function (condition) {
         },
         success: function (result) {
             if (result != null) {
-                alert(result);
-                window.location.href = "/unitTable?entireId=" + result + "";
+                // alert(result);
+                window.location.href = "/unitCreate?entireId=" + result + "";
                 // comId = result;
             }
 
@@ -68,8 +68,8 @@ var addEntireTeam = function (condition) {
         },
         success: function (result) {
             if (result != null) {
-                alert(result);
-                // window.location.href = "/registerSuccess?id=" + result + "";
+                // alert(result);
+                window.location.href = "/teamCreate?entireId=" + result + "";
                 // comId = result;
             }
 

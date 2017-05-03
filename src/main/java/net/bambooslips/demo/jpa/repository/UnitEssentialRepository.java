@@ -1,6 +1,7 @@
 package net.bambooslips.demo.jpa.repository;
 
 import net.bambooslips.demo.jpa.model.UnitEssential;
+import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -22,5 +23,6 @@ public interface UnitEssentialRepository extends JpaRepository<UnitEssential, Lo
             "Select ue FROM UnitEssential ue WHERE ue.entireId=:entireId "
     )
     UnitEssential findByEntireId(@Param("entireId") Long entireId);
+
 
 }

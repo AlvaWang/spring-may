@@ -1,3 +1,6 @@
+input{
+    /*width: 100px;*/
+}
 .main_div{
     width: 80%;
     margin-left: auto;
@@ -10,21 +13,38 @@
     width: 100%;
     height: 45px;
 }
-.main_div .streamer_jbxx{
-    background: url("../img/kjjr.png");
+.project{
+    width: 91%;
+    /*height:calc(100% - 215px) ;*/
+    margin-top: -18px;
+    background: #ecf7fd;
+    margin-left: auto;
+    margin-right: auto;
+}
+.main_div .streamer_jbxx,.streamer_jbxx_team{
+    background: url("../img/danwei-jbxx.png");
     background-size: 100% 100%;
 
 }
-.main_div .streamer_hxtd{
+.main_div .streamer_hxtd,.streamer_hxtd_team{
     background: url("../img/danwei-hxtd.png");
     background-size: 100% 100%;
 }
-.main_div .streamer_syjhs{
+.main_div .streamer_syjhs,.streamer_syjhs_team{
     background: url("../img/danwei-syjjs.png");
     background-size: 100% 100%;
 
 }
+.main_div .streamer_yyxm{
+    background: url("../img/yyxm.png");
+    background-size: 100% 100%;
 
+}
+.main_div .streamer_kjjr_team{
+    background: url("../img/kjjr.png");
+    background-size: 100% 100%;
+
+}
 
 .table_unit{
     width: 100%;
@@ -40,8 +60,14 @@
     height: 100%;
     margin-top: -18px;
 }
+.table_team_content{
+    width: 90.5%;
+    height: 100%;
+    margin-top: -18px;
+}
 .tContent{
     width: 100%!important;
+    position: relative;
 }
 .tContent table{
     width: 100%!important;
@@ -64,22 +90,41 @@
 .t_middle div{
     float: left;
 }
-.conservation_div{
-    margin-top: 95%;
-    height: 30px;
-}
-.conservation_div .conservation{
+/*.conservation_div{*/
+    /*margin-top: 95%;*/
+    /*height: 30px;*/
+/*}*/
+
+ .conservation{
     width: 100px;
-    height: 100%;
-    margin-left: auto;
-    margin-right: auto;
+    height: 30px;
     background: green;
     border-radius: 4px;
-    text-align: center;
+     margin: 30px calc(50% - 50px);
+     text-align: center;
 }
-.conservation_div .conservation p{
+.conservation p{
     padding-top: 5px;
     color: #ffffff;
     text-align: center;
 }
 
+#title_project div{
+    float: left;
+}
+.project_btn{
+    width: 70px;
+    height: 30px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+#unit_list{
+    background: #7aae1a;
+}
+#team_list{
+    background: #7aae1a;
+}
+#add_project{
+    background: #12aaf0;
+}

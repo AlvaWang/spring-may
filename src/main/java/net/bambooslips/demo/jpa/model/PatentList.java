@@ -50,7 +50,7 @@ public class PatentList implements  Serializable {
 
     }
     public PatentList(String patentId,Long entireId,Long ueId,Long teId,String patentName,String patentType,
-//                      Date patentDate,
+                      Date patentDate,
                       String patentVerification){
         this.patentId = patentId;
         this.ueId = ueId;
@@ -58,7 +58,7 @@ public class PatentList implements  Serializable {
         this.teId = teId;
         this.patentName = patentName;
         this.patentType = patentType;
-//        this.patentDate = patentDate;
+        this.patentDate = patentDate;
         this.patentVerification = patentVerification;
 
     }
