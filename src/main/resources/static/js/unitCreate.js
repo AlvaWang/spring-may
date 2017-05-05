@@ -240,48 +240,192 @@ var entireId = GetQueryString("entireId");
 
 $("#jbxx_conservation").click(function () {
     // alert(entireId)
-    var unitEssencialData = conditionEssential();
-    // alert(data);
-    addUnitEssential(unitEssencialData);
+    if($("#company_name").val() == "" ||
+        $("#ue_goal input:checked").val() == "" ||   $("#ue_filed input:checked").val() == ""
+         || $("#register_capital").val() == "" ||
+        $("#win_num").val() == "" || $("#staff_num").val() == ""
+        || $("#research_num").val() == "" || $("#deputy_num").val() == "" ||
+        $("#office_address").val() == ""
+        || $("#power_type").val() == "" || $("#corporation_summary").val() == "" ||
+        $("#te_address").val() == "" || $("#te_postalcode").val() == "" ||
+        $("#post_code input:checkbox:checked").val() == "" || $("#technical_sources input:checkbox:checked") == ""){
 
-    var legal_data = conditionLegal();
-    // alert(data);
-    addLegalRepresentative(legal_data);
-
-    var contacts_data = conditionContacts();
-    // alert(data);
-    addContacts(contacts_data);
-
-    var patent_choose=$("#patent_choose input[type='checkbox']").is(':checked');
-    // alert(patent_choose);
-    if(patent_choose == true){
-        for(var i=1;i<=patent;i++){
-
-            var patentNum = $("#patent_num_"+i).val();
-            var patentType =$("#patent_type_"+i).val();
-            // alert(patentType);
-            var patentName = $("#patent_name_"+i).val();
-            var patentDate = $("#patent_date_"+i).val();
-            if(patentNum == "" || patentType == "" || patentNum ==""
-                || patentDate == ""
-            ){
-                alert("请将专利相关信息补充完整")
+        alert("请将基本信息填写完整！")
+    }else {
+        if($("#legal_name").val() =="" || $("#legal_job").val() =="" || $("#legal_office_tel").val() =="" ||
+            $("#legal_mobile_tel").val() =="" || $("#legal_email").val() =="" ){
+            alert("请将法定代表人信息填写完整")
+        }else {
+            if($("#contacts_name").val() =="" || $("#contacts_job").val() =="" || $("#contacts_office_tel").val() =="" ||
+                $("#contacts_mobile_tel").val() =="" || $("#contacts_email").val() =="" ){
+                alert("请将联系人信息填写完整")
             }else {
-                var data = {
-                    ueId:null,
-                    patentId:patentNum,
-                    entireId:entireId,
-                    teId:null,
-                    patentName:patentName,
-                    patentType:patentType,
-                    patentDate:comTime(patentDate)
-                }
-                addPatentList(data);
-          }
+                var patent_choose=$("#patent_choose input[type='checkbox']").is(':checked');
+                // alert(patent_choose);
+                if(patent_choose == true){
+                    for(var i=1;i<=patent;i++){
 
+                        var patentNum = $("#patent_num_"+i).val();
+                        var patentType =$("#patent_type_"+i).val();
+                        // alert(patentType);
+                        var patentName = $("#patent_name_"+i).val();
+                        var patentDate = $("#patent_date_"+i).val();
+                        if(patentNum == "" || patentType == "" || patentNum ==""
+                            || patentDate == ""
+                        ){
+                            alert("请将专利相关信息补充完整")
+                        }else {
+                            var data = {
+                                ueId:null,
+                                patentId:patentNum,
+                                entireId:entireId,
+                                teId:null,
+                                patentName:patentName,
+                                patentType:patentType,
+                                patentDate:comTime(patentDate)
+                            }
+                            addPatentList(data);
+                            getUnitEssentialByEntireId(entireId,i);
+                            getLegalRepresentativeByEntireId(entireId,i);
+                            getContactsByEntireId(entireId,i);
+                            $(this).unbind('click');
+                            $(this).css("background","gray");
+                            $(this).find("p").html("已保存");
+                        }
+
+                    }
+                }else {
+                    var unitEssencialData = conditionEssential();
+                    // alert(data);
+                    addUnitEssential(unitEssencialData);
+                    var legal_data = conditionLegal();
+                    // alert(data);
+                    addLegalRepresentative(legal_data);
+                    var contacts_data = conditionContacts();
+                    // alert(data);
+                    addContacts(contacts_data);
+
+                    $(this).unbind('click');
+                    $(this).css("background","gray");
+                    $(this).find("p").html("已保存");
+                }
+            }
         }
     }
+
 });
+/**
+ * 查询对应作品ID是否被创建基本信息
+ */
+var getUnitEssentialByEntireId = function (condition,i) {
+
+    $.ajax({
+        url: "/getUnitEssentialByEntireId/"+condition,
+        type: 'get',
+        async: true,
+        data: condition,
+        // dataType: 'json',
+        error: function (obj, msg) {
+            alert("服务器异常！")
+        },
+        success: function (result) {
+            // alert(result);
+            if (result != null && result>0) {
+
+            }else {
+
+                if(i == patent){
+                    var data = conditionEssential();
+                    // alert(data);
+                    addUnitEssential(data);
+                }
+            }
+
+        }
+    });
+
+}
+/**
+ * 查询对应作品ID是否被法定代表人
+ */
+var getLegalRepresentativeByEntireId = function (condition,i) {
+
+    $.ajax({
+        url: "/getLegalRepresentativeByEntireId/"+condition,
+        type: 'get',
+        async: true,
+        data: condition,
+        // dataType: 'json',
+        error: function (obj, msg) {
+            alert("服务器异常！")
+        },
+        success: function (result) {
+            // alert(result);
+            if (result != null && result>0) {
+                if(i == patent){
+                    /**
+                     * 存在ID，更新
+                     */
+                    var data = conditionLegal();
+                    // alert(data);
+                    addLegalRepresentative(data);
+                }
+            }else {
+
+                if(i == patent){
+                    /**
+                     * 存在ID，更新
+                     */
+                    var data = conditionLegal();
+                    // alert(data);
+                    addLegalRepresentative(data);
+                }
+
+
+            }
+
+        }
+    });
+
+}
+var getContactsByEntireId = function (condition,i) {
+
+    $.ajax({
+        url: "/getContactsByEntireId/"+condition,
+        type: 'get',
+        async: true,
+        data: condition,
+        // dataType: 'json',
+        error: function (obj, msg) {
+            alert("服务器异常！")
+        },
+        success: function (result) {
+            alert(result);
+            if (result != null && result>0) {
+                if(i == patent){
+                    /**
+                     * 存在ID，更新
+                     */
+                    var data = conditionContacts();
+                    // alert(data);
+                    addContacts(data);
+                }
+            }else {
+                if(i == patent){
+                    /**
+                     * 存在ID，更新
+                     */
+                    var data = conditionContacts();
+                    // alert(data);
+                    addContacts(data);
+                }
+            }
+
+        }
+    });
+
+}
+
 var conditionEssential=function () {
     /**
      * 增加基本信息
@@ -849,12 +993,12 @@ var addFinancialHistorical = function (condition) {
 
 var conditionFore = function () {
     for(var i=5;i<=7;i++){
-        var fore_income=$("fore_income_"+i).val();
-        var fore_cost=$("fore_cost_"+i).val();
-        var tax_expense=$("tax_expense_"+i).val();
-        var fore_profit=$("fore_profit_"+i).val();
-        var profit_rate=$("profit_rate_"+i).val();
-        var net_margin=$("net_margin_"+i).val();
+        var fore_income=$("#fore_income_"+i).val();
+        var fore_cost=$("#fore_cost_"+i).val();
+        var tax_expense=$("#tax_expense_"+i).val();
+        var fore_profit=$("#fore_profit_"+i).val();
+        var profit_rate=$("#profit_rate_"+i).val();
+        var net_margin=$("#net_margin_"+i).val();
         var fore_year = "201"+i
         var condition = {
             ubusId:null,

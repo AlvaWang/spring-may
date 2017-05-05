@@ -67,6 +67,17 @@ public class FinancialForecasting implements  Serializable {
 
     }
 
+    public FinancialForecasting(Long entireId,Long tbusId,Long foreIncome, Long foreCost, Long foreProfit, Long foreNetMargin, String foreYear){
+        this.tbusId = tbusId;
+        this.foreIncome = foreIncome;
+        this.entireId = entireId;
+        this.foreCost = foreCost;
+        this.foreProfit = foreProfit;
+        this.foreNetMargin = foreNetMargin;
+        this.foreYear = foreYear;
+
+    }
+
 
     /**
      * 更新核心团队信息
