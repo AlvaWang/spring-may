@@ -21,10 +21,35 @@
             <div class="streamer streamer_kjjr_team"></div>
             <div class="table_unit">
                 <div class="btn_table">
-                    <div id="first_btn"><p>第一步</p></div>
-                    <div id="second_btn"><p>第二步</p></div>
-                    <div id="third_btn"><p>第三步</p></div>
-                    <div id="four_btn"><p>第四步</p></div>
+                    <div id="first_btn">
+                        <ul>
+                            <li><p>第</p></li>
+                            <li><p>一</p></li>
+                            <li><p>步</p></li>
+                        </ul>
+                        <!--<p>第一步</p>-->
+                    </div>
+                    <div id="second_btn">
+                        <ul>
+                            <li><p>第</p></li>
+                            <li><p>二</p></li>
+                            <li><p>步</p></li>
+                        </ul>
+                    </div>
+                    <div id="third_btn">
+                        <ul>
+                        <li><p>第</p></li>
+                        <li><p>三</p></li>
+                        <li><p>步</p></li>
+                        </ul>
+                    </div>
+                    <div id="four_btn">
+                        <ul>
+                            <li><p>第</p></li>
+                            <li><p>四</p></li>
+                            <li><p>步</p></li>
+                        </ul>
+                    </div>
                 </div>
                 <div id="first_table" class="table_team_content">
                     <div class="tContent">
@@ -99,21 +124,21 @@
                                 <td colspan="3"><input type="text" id="admin_area_province"/>省
                                     <input type="text" id="admin_area_city"/>市</td>
                             </tr>
-                            <tr>
+                            <tr class="date_input">
                                 <td class="t_title">团队成立时间</td>
-                                <td>
+                                <td class="date_input_td">
                                     <input type="number" id="team_year"/>年
                                     <input type="number" id="team_month"/>月
                                     <input type="number" id="team_day"/>日
                                 </td>
                                 <td class="t_title">拟成立公司时间</td>
-                                <td>
+                                <td class="date_input_td">
                                     <input type="number" id="company_year"/>年
                                     <input type="number" id="company_month"/>月
                                     <input type="number" id="company_day"/>日
                                 </td>
                             </tr>
-                            <tr>
+                            <tr class="address_input">
                                 <td class="t_title">通讯地址</td>
                                 <td><input type="text" id="te_address"/></td>
                                 <td class="t_title">邮政编码</td>
@@ -121,27 +146,25 @@
                             </tr>
                             <tr>
                                 <td class="t_title">团队负责人</td>
-                                <td colspan="3">
+                                <td colspan="3" class="t_middle  t_team">
                                     <table>
                                         <tr>
-                                            <td>姓名</td><td><input type="text" id="res_name"/></td>
-                                            <td>职位</td><td><input type="text" id="res_job"/></td>
-
-
+                                            <td class="t_table_title">姓名</td><td><input type="text" id="res_name"/></td>
+                                            <td class="t_table_title">职位</td><td><input type="text" id="res_job"/></td>
                                         </tr>
                                         <tr>
-                                            <td>证件类型（身份证/护照)</td>
+                                            <td class="t_table_title">证件类型（身份证/护照)</td>
                                             <td><div>
                                                 <select id="res_document_type"><option>身份证</option><option>护照</option></select>
                                             </div></td>
-                                            <td>证件号码</td><td><input type="text" id="document_num"/></td>
+                                            <td class="t_table_title">证件号码</td><td><input type="text" id="document_num"/></td>
 
                                         </tr>
                                         <tr>
-                                            <td>办公电话</td><td><input type="tel" id="res_office_tel"/></td><td>手机</td><td><input type="tel" id="res_mobile_tel"/></td>
+                                            <td class="t_table_title">办公电话</td><td><input type="tel" id="res_office_tel"/></td><td>手机</td><td><input type="tel" id="res_mobile_tel"/></td>
                                         </tr>
                                         <tr>
-                                            <td>电子邮件</td><td colspan="3"><input type="text" id="res_email"/></td>
+                                            <td class="t_table_title">电子邮件</td><td colspan="3"><input type="text" id="res_email"/></td>
                                         </tr>
                                     </table>
                                 </td>
@@ -155,10 +178,12 @@
                                             <td id="patent_choose"><input type="checkbox" value="专利" onclick="change_patent_table()" />专利<br/>(可增加）</td>
                                             <td id="patent_table">
                                                 <table>
-                                                    <tr>
-                                                        <div><img src="../static/img/zengjia.png" th:src="@{/img/zengjia.png}" alt="" id="add_img" onclick="addImg(++patent,num=num+2)"/>增加</div>
-                                                        <!--<div><img src="../static/img/bianji.png" th:src="@{/img/bianji.png}" alt="" />编辑</div>-->
-                                                        <div><img src="../static/img/shanchu.png" th:src="@{/img/shanchu.png}" alt="" id="reduce_img" onclick="reduceImg(num=num-2)"/>减少</div>
+                                                    <tr class="img_tr">
+                                                        <td colspan="5">
+                                                            <div><img src="../static/img/zengjia.png" th:src="@{/img/zengjia.png}" alt="" id="add_img" onclick="addImg(++patent,num=num+2)"/>增加</div>
+                                                            <!--<div><img src="../static/img/bianji.png" th:src="@{/img/bianji.png}" alt="" />编辑</div>-->
+                                                            <div><img src="../static/img/shanchu.png" th:src="@{/img/shanchu.png}" alt="" id="reduce_img" onclick="reduceImg(num=num-2)"/>减少</div>
+                                                        </td>
                                                     </tr>
                                                     <tr id="patent_1">
                                                         <td>专利名称</td>
@@ -201,20 +226,19 @@
                                                         <td><input type="text" id="patent_date_2"/></td>
                                                         <td><input type="text" id="patent_verification_2"/></td>
                                                     </tr>
-                                                    <tr><td colspan="5"><div class="conservation" id="add_patent_btn" style="width: 100px;background: #7aae1a!important;">保存</div></td></tr>
                                                 </table>
                                             </td>
                                         </tr>
-                                        <tr>
+                                        <tr class="">
                                             <td colspan="2">
                                                 <div id="post_code">
-                                                    <input type="checkbox" value="软件著作权"/>软件著作权
-                                                    <input type="checkbox" value="专有技术"/>专有技术
-                                                    <input type="checkbox" value="药品批文"/>药品批文
-                                                    <input type="checkbox" value="医疗器械批文"/>医疗器械批文
-                                                    <input type="checkbox" value="创新商业模式"/>创新商业模式
-                                                    <input type="checkbox" value="集成电路布图"/>集成电路布图
-                                                    <input type="checkbox" value="其他"/>其他
+                                                    <input type="radio" value="软件著作权"/>软件著作权
+                                                    <input type="radio" value="专有技术"/>专有技术
+                                                    <input type="radio" value="药品批文"/>药品批文
+                                                    <input type="radio" value="医疗器械批文"/>医疗器械批文
+                                                    <input type="radio" value="创新商业模式"/>创新商业模式
+                                                    <input type="radio" value="集成电路布图"/>集成电路布图
+                                                    <input type="radio" value="其他"/>其他
                                                     <input type="text" id="powerType"/>
                                                 </div>
                                             </td>
@@ -223,10 +247,10 @@
                                             <td colspan="2">
                                                 <div id="technical_sources">
                                                     技术来源：
-                                                    <input type="checkbox" value="独立知识产权"/>独立知识产权
-                                                    <input type="checkbox" value="合作研发"/>合作研发
-                                                    <input type="checkbox" value="购买技术"/>购买技术
-                                                    <input type="checkbox" value="其他"/>其他
+                                                    <input type="radio" value="独立知识产权"/>独立知识产权
+                                                    <input type="radio" value="合作研发"/>合作研发
+                                                    <input type="radio" value="购买技术"/>购买技术
+                                                    <input type="radio" value="其他"/>其他
                                                     <!--<input type="checkbox" value="其他"/>其他-->
                                                     <!--<input type="text"/>-->
                                                 </div>
@@ -260,7 +284,6 @@
                 </div>
                 <div id="second_table"  class="table_team_content">
                     <table class="tContent">
-                        <table>
                             <tbody>
                             <tr>
                                 <td class="t_title">核心团队成员(可增加)</td>
@@ -476,7 +499,6 @@
                         </table>
                         <p>大学生创业：是指高等院校在读或毕业未超过二年的大学生、研究生、博士生组成的团队。</p>
                         <div class="conservation " id="hxtd_conservation_team"><p>保存</p></div>
-                </table>
                 </div>
                 <div id="third_table"  class="table_team_content">
                     <div class="tContent">
@@ -519,13 +541,13 @@
                                                 </div>
                                             </td>
                                         </tr>
-                                        <tr>
+                                        <tr class="maturity_input">
                                             <td class="t_title2">技术成熟度（参照GB/T22900-2009和附件）</td>
-                                            <td><input type="text" id="tbus_technology_maturity"/></td>
+                                            <td class="maturity1"><input type="text" id="tbus_technology_maturity"/></td>
                                             <td class="t_title2">制造成熟度</td>
-                                            <td><input type="text" id="tbus_manufactur_matutity"/></td>
+                                            <td class="maturity2"><input type="text" id="tbus_manufactur_matutity"/></td>
                                             <td class="t_title2">市场成熟度</td>
-                                            <td><input type="text" id="tbusMarketMatutity"/></td>
+                                            <td class="maturity2"><input type="text" id="tbusMarketMatutity"/></td>
                                         </tr>
                                         <tr>
                                             <td class="t_title2">参赛项目是行业主流技术</td>
@@ -537,14 +559,14 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="t_title2">属国内领先水平</td>
+                                            <td class="t_title2" >属国内领先水平</td>
                                             <td colspan="2">
                                                 <div id="tbus_is_lead_internal">
                                                     <input type="radio" value="是" name="internal"/>是
                                                     <input type="radio" value="否" name="internal"/>否
                                                 </div>
                                             </td>
-                                            <td>属国际领先水平</td>
+                                            <td style="width: 180px;">属国际领先水平</td>
                                             <td colspan="2">
                                                 <div id="tbus_is_lead_international">
                                                     <input type="radio" value="是" name="international"/>是
@@ -561,7 +583,7 @@
                                                 </div>
 
                                             </td>
-                                            <td class="instituteName">机构名称</td>
+                                            <td style="width: 80px;">机构名称</td>
                                             <td  class="instituteName" colspan="3">
                                                 <input type="text" id="institute_name"/>
                                             </td>
@@ -726,7 +748,8 @@
                                 <td>
                                     <table id="technology">
                                         <tr>
-                                            <td colspan="3">股权融资
+                                            <td colspan="3" class="choose_div">
+                                                <div><p>股权融资</p></div>
                                                 <div id="df_isEquity">
                                                     <input type="radio" value="是" name="df_equity" onclick="df_equity_yes()" checked = "checked"/>是
                                                     <input type="radio" value="否" name="df_equity" onclick="df_equity_no()"/>否
@@ -738,7 +761,7 @@
                                             <td>拟出让股权比例</td>
                                             <td>融资时间</td>
                                         </tr>
-                                        <tr class="df_equity_yes">
+                                        <tr class="df_equity_yes df_yes">
                                             <td><input type="text" id="df_equity_money"/></td>
                                             <td><input type="text" id="df_equity_shares"/></td>
                                             <td><input type="text" id="df_equity_date"/></td>
@@ -750,7 +773,8 @@
                                             </td>
                                         </tr>
                                         <tr class="df_equity_yes">
-                                            <td colspan="3">愿意接受大赛组委会推荐创投机构
+                                            <td colspan="3"  class="choose_div">
+                                                <div><p>愿意接受大赛组委会推荐创投机构</p></div>
                                                 <div id="df_isEquity_recom">
                                                     <input type="radio" value="是" name="equity_recom"/>是
                                                     <input type="radio" value="否" name="equity_recom"/>否
@@ -760,7 +784,8 @@
 
 
                                         <tr>
-                                            <td colspan="3">债权融资
+                                            <td colspan="3"  class="choose_div">
+                                                <div><p>债权融资</p></div>
                                                 <div id="df_isDebt">
                                                     <input type="radio" value="是" name="df_debt" onclick="df_debt_yes()" checked="checked"/>是
                                                     <input type="radio" value="否" name="df_debt" onclick="df_debt_no()"/>否
@@ -772,7 +797,7 @@
                                             <td>可接受最高年利率%</td>
                                             <td>融资时间</td>
                                         </tr>
-                                        <tr class="df_debt_yes">
+                                        <tr class="df_debt_yes df_yes">
                                             <td><input type="text" id="df_debt_money"/></td>
                                             <td><input type="text" id="df_debt_maxAnnual"/></td>
                                             <td><input type="text" id="df_debt_date"/></td>
@@ -784,12 +809,12 @@
                                             </td>
                                         </tr>
                                         <tr class="df_debt_yes">
-                                            <td colspan="3">愿意接受大赛组委会推荐创投机构
+                                            <td colspan="3"  class="choose_div">
+                                                <div><p>愿意接受大赛组委会推荐创投机构</p></div>
                                                 <div id="df_isDebt_recom">
                                                     <input type="radio" value="是" name="debt_recom"/>是
                                                     <input type="radio" value="否" name="debt_recom"/>否
                                                 </div>
-
                                             </td>
                                         </tr>
 
@@ -827,7 +852,7 @@
                                         </tr>
                                         <tr>
                                             <td id="change_transfer"><input type="checkbox" value="技术转让" id="df_technical_transfer" onclick="change_transfer()"/>技术转让</td>
-                                            <td class="transferTechnical"><input type="text" id="technical_transfer_range"/></td>
+                                            <td class="transferTechnical">技术范围<input type="text" id="technical_transfer_range"/></td>
                                         </tr>
                                         <tr><td colspan="3" id="df_branchChong_check"><input type="checkbox" value="入住科创园区/孵化器" />入住科创园区/孵化器</td></tr>
                                         <tr><td colspan="3" id="df_political_consult"><input type="checkbox" value="政策咨询" />政策咨询</td></tr>
@@ -868,7 +893,11 @@
                             </tr>
                             </tbody>
                         </table>
-                        <div class="conservation " id="kjjr_conservation_team"><p>保存</p></div>
+                        <div>
+                            <div class="conservation " id="kjjr_conservation_team"><p>保存</p></div>
+                            <div class="conservation " id="submit_competition"><p>提交报名</p></div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -876,6 +905,17 @@
     </div>
 
     <div th:replace="fragments/table_footer :: table_footer"></div>
+</div>
+<div id="lightboxOverlay" class="lightboxOverlay" style="width: 100%; height: 100%; display: block;"></div>
+<div class="pop lightbox" id="submit_pop" hidden="hidden">
+    <div><div><p>提交报名信息</p></div></div>
+    <div>
+        <p>请确认报名信息无误！如无误，请点击提交，提交后报名信息不可更改！</p>
+        <div>
+            <div><p>提交</p></div>
+            <div><p>取消</p></div>
+        </div>
+    </div>
 </div>
 
 <script src="../static/lib/js/jquery.min.js" th:src="@{/webjars/jquery/2.2.3/jquery.min.js}"></script>

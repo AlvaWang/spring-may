@@ -3,6 +3,9 @@
  */
 
 $(function () {
+    $("#first_btn").css("background","#8fc320");
+    $("#first_btn").find("p").css("color","#ffffff");
+
     $("#first_table").show();
     $("#second_table").hide();
     $("#third_table").hide();
@@ -15,20 +18,20 @@ $(function () {
     $("#hxtd_conservation").hide();
     $("#syjhs_conservation").hide();
 
-    $("#patent_table").find("input,div,button,textarea,select").attr("disabled", "disabled");
-    $("#patent_table").find("input,div,button,textarea,select").css("background","#dbdbdb")
+    $("#patent_table").find("tr,td,input,div,button,textarea,select").attr("disabled", "disabled");
+    $("#patent_table").find("tr,td,input,div,button,textarea,select").css("background","#dbdbdb")
     $("#patent_table").css("background","#dbdbdb")
 
-    $(".crowd_td,.crowd_td #crows_fund_type,#crows_fund_type tr td input").css("background","#dbdbdb");
-    $(".crowd_td,.crowd_td #crows_fund_type,#crows_fund_type tr td input").attr("disabled","#disabled");
+    $(".crowd_td,.crowd_td #crows_fund_type,#crows_fund_type tr td input,#crows_fund_type tr,#crows_fund_type td").attr("disabled", "disabled");
+    $(".crowd_td,.crowd_td #crows_fund_type,#crows_fund_type tr td input,#crows_fund_type tr,#crows_fund_type td").css("background","#dbdbdb")
 
     $(".pettyMoney,.pettyMoney input").attr("disabled", "disabled");
     $(".pettyMoney,.pettyMoney input").css("background","#dbdbdb")
 
     $("#importTechnical,#technical_import_range").attr("disabled", "disabled");
     $("#importTechnical,#technical_import_range").css("background","#dbdbdb")
-    $("#technical_import_range").find("tr td input").attr("disabled", "disabled");
-    $("#technical_import_range").find("tr td input").css("background","#dbdbdb")
+    $("#technical_import_range").find("tr, td ,input").attr("disabled", "disabled");
+    $("#technical_import_range").find("tr ,td ,input").css("background","#dbdbdb")
 
     $(".transferTechnical,.transferTechnical input").attr("disabled", "disabled");
     $(".transferTechnical,.transferTechnical input").css("background","#dbdbdb")
@@ -37,11 +40,19 @@ $(function () {
     $("#intermediary,#intermediary_consult_type").css("background","#dbdbdb")
     $("#intermediary_consult_type").find("tr td input").attr("disabled", "disabled");
     $("#intermediary_consult_type").find("tr td input").css("background","#dbdbdb")
+    $("#intermediary").find("tr td").css("background","#dbdbdb")
 
     $("#otherDesc,#otherDesc input").attr("disabled", "disabled");
     $("#otherDesc,#otherDesc input").css("background","#dbdbdb")
 });
 $("#first_btn").click(function () {
+    $(this).css("background","#8fc320");
+    $(this).find("p").css("color","#ffffff");
+    $("#second_btn").css("background","#ffffff");
+    $("#second_btn").find("p").css("color","#a8daf3");
+    $("#third_btn").css("background","#ffffff");
+    $("#third_btn").find("p").css("color","#a8daf3");
+
     $("#first_table").show();
     $("#second_table").hide();
     $("#third_table").hide();
@@ -56,6 +67,14 @@ $("#first_btn").click(function () {
 })
 
 $("#second_btn").click(function () {
+    $(this).css("background","#8fc320");
+    $(this).find("p").css("color","#ffffff");
+    $("#first_btn").css("background","#ffffff");
+    $("#first_btn").find("p").css("color","#a8daf3");
+    $("#third_btn").css("background","#ffffff");
+    $("#third_btn").find("p").css("color","#a8daf3");
+
+
     $("#second_table").show();
     $("#first_table").hide();
     $("#third_table").hide();
@@ -69,6 +88,14 @@ $("#second_btn").click(function () {
     $("#syjhs_conservation").hide();
 })
 $("#third_btn").click(function () {
+    $(this).css("background","#8fc320");
+    $(this).find("p").css("color","#ffffff");
+    $("#first_btn").css("background","#ffffff");
+    $("#first_btn").find("p").css("color","#a8daf3");
+    $("#second_btn").css("background","#ffffff");
+    $("#second_btn").find("p").css("color","#a8daf3");
+
+
     $("#third_table").show();
     $("#second_table").hide();
     $("#first_table").hide();
@@ -86,12 +113,14 @@ $("#third_btn").click(function () {
 var change_patent_table = function () {
     var patent_choose=$("#patent_choose input[type='checkbox']").is(':checked');
     if(patent_choose == true){
-        $("#patent_table").find("input,div,button,textarea,select").removeAttr("disabled");
-        $("#patent_table").find("input,div,button,textarea,select").css("background","#ffffff")
-        $("#patent_table").css("background","#ffffff")
+        $("#patent_table").find("tr,td,input,div,button,textarea,select").removeAttr("disabled");
+        $("#patent_table").find("tr,td").css("background","#ecf7fd");
+        $("#patent_table").find(".img_tr td,div").css("background","#a8daf3");
+        $("#patent_table").find("input,textarea,select").css("background","#ffffff");
+        $("#patent_table").css("background","#ecf7fd")
     }else {
-        $("#patent_table").find("input,div,button,textarea,select").attr("disabled", "disabled");
-        $("#patent_table").find("input,div,button,textarea,select").css("background","#dbdbdb")
+        $("#patent_table").find("tr,td,input,div,button,textarea,select").attr("disabled", "disabled");
+        $("#patent_table").find("tr,td,input,div,button,textarea,select").css("background","#dbdbdb")
         $("#patent_table").css("background","#dbdbdb")
     }
 };
@@ -155,11 +184,12 @@ var change_crowd = function () {
     var change_crowd=$("#choose_crowd input[type='checkbox']").is(':checked');
     // alert(change_crowd)
     if(change_crowd == true){
-        $(".crowd_td,.crowd_td #crows_fund_type,#crows_fund_type tr td input").removeAttr("disabled");
-        $(".crowd_td,.crowd_td #crows_fund_type,#crows_fund_type tr td input").css("background","#ffffff")
+        $(".crowd_td,.crowd_td #crows_fund_type,#crows_fund_type tr td input,#crows_fund_type tr,#crows_fund_type td").removeAttr("disabled");
+        $(".crowd_td,.crowd_td #crows_fund_type,#crows_fund_type tr,#crows_fund_type td").css("background","#ecf7fd")
+        $("#crows_fund_type tr td input").css("background","#fff")
     }else {
-        $(".crowd_td,.crowd_td #crows_fund_type,#crows_fund_type tr td input").attr("disabled", "disabled");
-        $(".crowd_td,.crowd_td #crows_fund_type,#crows_fund_type tr td input").css("background","#dbdbdb")
+        $(".crowd_td,.crowd_td #crows_fund_type,#crows_fund_type tr td input,#crows_fund_type tr,#crows_fund_type td").attr("disabled", "disabled");
+        $(".crowd_td,.crowd_td #crows_fund_type,#crows_fund_type tr td input,#crows_fund_type tr,#crows_fund_type td").css("background","#dbdbdb")
     }
 };
 var change_petty = function () {
@@ -167,7 +197,8 @@ var change_petty = function () {
     // alert(change_crowd)
     if(change_petty == true){
         $(".pettyMoney,.pettyMoney input").removeAttr("disabled");
-        $(".pettyMoney,.pettyMoney input").css("background","#ffffff")
+        $(".pettyMoney input").css("background","#ffffff")
+        $(".pettyMoney").css("background","#ecf7fd")
     }else {
         $(".pettyMoney,.pettyMoney input").attr("disabled", "disabled");
         $(".pettyMoney,.pettyMoney input").css("background","#dbdbdb")
@@ -181,12 +212,13 @@ var change_import_technical = function () {
         $("#importTechnical,#technical_import_range").removeAttr("disabled");
         $("#technical_import_range").find("tr td input").removeAttr("disabled");
         $("#technical_import_range").find("tr td input").css("background","#ffffff")
-        $("#importTechnical,#technical_import_range").css("background","#ffffff")
+        $("#importTechnical,#technical_import_range,#technical_import_international,#technical_import_internal").css("background","#ecf7fd")
+        $("#technical_import_range").find("tr,td").css("background","#ecf7fd")
     }else {
         $("#importTechnical,#technical_import_range").attr("disabled", "disabled");
         $("#importTechnical,#technical_import_range").css("background","#dbdbdb")
-        $("#technical_import_range").find("tr td input").attr("disabled", "disabled");
-        $("#technical_import_range").find("tr td input").css("background","#dbdbdb")
+        $("#technical_import_range").find("tr, td ,input").attr("disabled", "disabled");
+        $("#technical_import_range").find("tr ,td ,input").css("background","#dbdbdb")
     }
 };
 
@@ -210,11 +242,13 @@ var change_intermediary = function () {
         $("#intermediary_consult_type").find("tr td input").removeAttr("disabled");
         $("#intermediary_consult_type").find("tr td input").css("background","#ffffff")
         $("#intermediary,#intermediary_consult_type").css("background","#ffffff")
+        $("#intermediary").find("tr td").css("background","#ecf7fd")
     }else {
         $("#intermediary,#intermediary_consult_type").attr("disabled", "disabled");
         $("#intermediary,#intermediary_consult_type").css("background","#dbdbdb")
         $("#intermediary_consult_type").find("tr td input").attr("disabled", "disabled");
         $("#intermediary_consult_type").find("tr td input").css("background","#dbdbdb")
+        $("#intermediary").find("tr td").css("background","#dbdbdb")
     }
 };
 

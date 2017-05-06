@@ -20,9 +20,28 @@
             <div class="streamer streamer_syjhs"></div>
             <div class="table_unit">
                 <div class="btn_table">
-                    <div id="first_btn"><p>第一步</p></div>
-                    <div id="second_btn"><p>第二步</p></div>
-                    <div id="third_btn"><p>第三步</p></div>
+                    <div id="first_btn">
+                        <ul>
+                            <li><p>第</p></li>
+                            <li><p>一</p></li>
+                            <li><p>步</p></li>
+                        </ul>
+                        <!--<p>第一步</p>-->
+                    </div>
+                    <div id="second_btn">
+                        <ul>
+                            <li><p>第</p></li>
+                            <li><p>二</p></li>
+                            <li><p>步</p></li>
+                        </ul>
+                    </div>
+                    <div id="third_btn">
+                        <ul>
+                            <li><p>第</p></li>
+                            <li><p>三</p></li>
+                            <li><p>步</p></li>
+                        </ul>
+                    </div>
                 </div>
                 <div id="first_table" class="table_unit_content">
                     <div class="tContent">
@@ -77,7 +96,7 @@
                                     <input type="number" id="register_capital"/>
                                 </td>
                                 <td class="t_title">企业或个人曾获得国家级、省部级技术奖项数</td>
-                                <td colspan="3">
+                                <td colspan="3" style="width: 200px;">
                                     <input type="number" id="win_num"/>
                                 </td>
                                 <!--<td class="t_end"></td>-->
@@ -119,7 +138,7 @@
                                             <td>移动电话</td>
                                             <td>电子邮件</td>
                                         </tr>
-                                        <tr>
+                                        <tr class="person_input">
                                             <td class="t_title">法定代表人</td>
                                             <td>
                                                 <input type="text" id="legal_name"/>
@@ -130,7 +149,7 @@
                                             <td><input type="text" id="legal_email"/></td>
                                             <!--<td class="t_end">*</td>-->
                                         </tr>
-                                        <tr>
+                                        <tr class="person_input">
                                             <td class="t_title">联系人</td>
                                             <td>
                                                 <input type="text" id="contacts_name"/>
@@ -164,10 +183,12 @@
                                             <td id="patent_choose"><input type="checkbox" value="专利" onclick="change_patent_table()" />专利<br/>(可增加）</td>
                                             <td id="patent_table">
                                                 <table>
-                                                    <tr>
-                                                        <div><img src="../static/img/zengjia.png" th:src="@{/img/zengjia.png}" alt="" id="add_img" onclick="addImg(++patent,num=num+2)"/>增加</div>
-                                                        <!--<div><img src="../static/img/bianji.png" th:src="@{/img/bianji.png}" alt="" />编辑</div>-->
-                                                        <div><img src="../static/img/shanchu.png" th:src="@{/img/shanchu.png}" alt="" id="reduce_img" onclick="reduceImg(num=num-2)"/>减少</div>
+                                                    <tr class="img_tr">
+                                                        <td colspan="4">
+                                                            <div><img src="../static/img/zengjia.png" th:src="@{/img/zengjia.png}" alt="" id="add_img" onclick="addImg(++patent,num=num+2)"/>增加</div>
+                                                            <!--<div><img src="../static/img/bianji.png" th:src="@{/img/bianji.png}" alt="" />编辑</div>-->
+                                                            <div><img src="../static/img/shanchu.png" th:src="@{/img/shanchu.png}" alt="" id="reduce_img" onclick="reduceImg(num=num-2)"/>减少</div>
+                                                        </td>
                                                     </tr>
                                                     <tr id="patent_1">
                                                         <td>专利名称</td>
@@ -232,7 +253,7 @@
                                                     <input type="checkbox" value="合作研发"/>合作研发
                                                     <input type="checkbox" value="购买技术"/>购买技术
                                                     <input type="checkbox" value="其他"/>其他
-                                                    <input type="checkbox" value="其他"/>其他
+                                                    <!--<input type="checkbox" value="其他"/>其他-->
                                                     <!--<input type="text"/>-->
                                                 </div>
 
@@ -644,7 +665,8 @@
                                 <td>
                                     <table id="technology">
                                         <tr>
-                                            <td colspan="3">股权融资
+                                            <td colspan="3"  class="choose_div">
+                                                <div><p>股权融资</p></div>
                                                 <div id="df_isEquity">
                                                     <input type="radio" value="是" name="df_equity" onclick="df_equity_yes()" checked = "checked"/>是
                                                     <input type="radio" value="否" name="df_equity" onclick="df_equity_no()"/>否
@@ -668,7 +690,8 @@
                                             </td>
                                         </tr>
                                         <tr class="df_equity_yes">
-                                            <td colspan="3">愿意接受大赛组委会推荐创投机构
+                                            <td colspan="3"  class="choose_div">
+                                                <div><p>愿意接受大赛组委会推荐创投机构</p></div>
                                                 <div id="df_isEquity_recom">
                                                     <input type="radio" value="是" name="equity_recom"/>是
                                                     <input type="radio" value="否" name="equity_recom"/>否
@@ -678,7 +701,8 @@
 
 
                                         <tr>
-                                            <td colspan="3">债权融资
+                                            <td colspan="3" class="choose_div">
+                                                <div><p>债权融资</p></div>
                                                 <div id="df_isDebt">
                                                     <input type="radio" value="是" name="df_debt" onclick="df_debt_yes()" checked="checked"/>是
                                                     <input type="radio" value="否" name="df_debt" onclick="df_debt_no()"/>否
@@ -701,8 +725,9 @@
                                                 <input type="text" id="df_debtFund_plan" placeholder="（资金使用方向细目。包括固定资产投入、在建工程、研发投入、管理费等）"/>
                                             </td>
                                         </tr>
-                                        <tr class="df_debt_yes">
-                                            <td colspan="3">愿意接受大赛组委会推荐创投机构
+                                        <tr class="df_debt_yes" >
+                                            <td colspan="3" class="choose_div">
+                                                <div><p>愿意接受大赛组委会推荐创投机构</p></div>
                                                 <div id="df_isDebt_recom">
                                                     <input type="radio" value="是" name="debt_recom"/>是
                                                     <input type="radio" value="否" name="debt_recom"/>否
