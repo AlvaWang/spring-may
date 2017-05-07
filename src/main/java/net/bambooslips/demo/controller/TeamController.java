@@ -130,32 +130,21 @@ public class TeamController {
                        @RequestParam(required = false) String tePowerType,
                        @RequestParam(required = false) String teTechnicalSource,
                        @RequestParam(required = false) String teProOutline,
-                       @RequestParam(required = false) String teKeyWord
+                       @RequestParam(required = false) String teKeyWord,
+                       @RequestParam(required = false) String status
                        ) {
-        try {
-            TeamEssential teamEssential = new TeamEssential(entireId, teamName, teProName,teCompatitionGoal,teIndustryFild,
-                    teProStage,teAdminStrativeArea,teamFundTime,companyFundTime,teAddress,tePostalcode,tePowerType,teTechnicalSource,teProOutline,teKeyWord);
+        TeamEssential teamEssential = new TeamEssential(entireId, teamName, teProName,teCompatitionGoal,teIndustryFild,
+                teProStage,teAdminStrativeArea,teamFundTime,companyFundTime,teAddress,tePostalcode,tePowerType,teTechnicalSource,teProOutline,teKeyWord,status);
 
-            Long result =  teamEssentialService.create(teamEssential);
-
-            return result;
-        }catch (Exception e){
-            teamFundTime = null;
-            companyFundTime = null;
-            TeamEssential teamEssential = new TeamEssential(entireId, teamName, teProName,teCompatitionGoal,teIndustryFild,
-                    teProStage,teAdminStrativeArea,teamFundTime,companyFundTime,teAddress,tePostalcode,tePowerType,teTechnicalSource,teProOutline,teKeyWord);
-
-            Long result =  teamEssentialService.create(teamEssential);
-
-            return result;
-        }
+        Long result =  teamEssentialService.create(teamEssential);
+        return result;
 
     }
 
     @RequestMapping(value = "addTeamBusinessPlan",method = RequestMethod.POST, consumes = "application/x-www-form-urlencoded")
     @ResponseBody
     @ResponseStatus(HttpStatus.CREATED)
-    public Long addUnitBusinessPlan(@RequestParam(required = false) Long teId,
+    public Long addTeamBusinessPlan(@RequestParam(required = false) Long teId,
                        @RequestParam(required = false) Long entireId,
                        @RequestParam(required = false) String tbusProName,
                        @RequestParam(required = false) Long tbusProIncomed,
@@ -174,11 +163,12 @@ public class TeamController {
                                     @RequestParam(required = false) String tbusProPicture,
                                     @RequestParam(required = false) String tbusMarketAnalysis,
                                     @RequestParam(required = false) String tbusModel,
-                                    @RequestParam(required = false) String tbusDevelopmentPlan
+                                    @RequestParam(required = false) String tbusDevelopmentPlan,
+                                    @RequestParam(required = false) String status
                                     ) {
         TeamBusinessPlan teamBusinessPlan = new TeamBusinessPlan(teId, entireId, tbusProName,tbusProIncomed,tbusNewChips,tbusHive,tbusProCore,
                 tbusMajorDesc,tbusTechnologyMaturity,tbusManufacturMatutity,tbusMarketMatutity,tbusIndustryMain,tbusLeadInternal,tbusLeadInternational,tbusResearchInstitute,
-                instituteName,tbusProPicture,tbusMarketAnalysis,tbusModel,tbusDevelopmentPlan);
+                instituteName,tbusProPicture,tbusMarketAnalysis,tbusModel,tbusDevelopmentPlan,status);
 
         Long result =  teamBusinessPlanService.create(teamBusinessPlan);
 

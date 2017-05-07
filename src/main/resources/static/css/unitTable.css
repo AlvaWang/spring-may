@@ -185,7 +185,7 @@ input{
     height: 100%;
 }
 .t_middle table tr td input,.address_input td input,.maturity_input input,#pro_name,#pro_incomed,
-.df_yes td input,#df_debtFund_plan,#technical_desc_international,
+.df_yes td input,#technical_desc_international,
 #technical_desc_internal,#intermediary_law_desc,#intermediary_finance_desc,
 #intermediary_financing_desc,#intermediary_manage_desc,#other_service_desc,
 .person_input td input,.t_content input,#office_address,#power_type,#win_num,#register_capital{
@@ -233,4 +233,26 @@ div#post_code input,#technical_sources input ,#te_compatition_goal input,
 }
 .person_input .t_title{
     width: 120px!important;
+}
+.submit_div{
+    width: 300px;
+    height: 30px;
+    /*background: #8fc320;*/
+    /*border-radius: 4px;*/
+    margin: 30px calc(50% - 150px);
+    text-align: center;
+}
+.submit_div div{
+    float: left;
+    width: 100px;
+    height: 30px;
+    background: #8fc320;
+    border-radius: 4px;
+    /*margin: 30px calc(50% - 50px);*/
+    text-align: center;
+}
+.submit_div div p{
+    color: #ffffff;
+    text-align: center;
+    margin-top: 5px;
 }

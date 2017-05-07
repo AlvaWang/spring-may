@@ -27,4 +27,15 @@ public interface CompetitionAccountRepository extends JpaRepository<CompetitionA
                                                  @Param("comAccPwd") String comAccPwd,
                                                  @Param("comAccType") String comAccType);
 
+    /**
+     * 查询
+     * @param comAccName
+     * @param comAccName
+     * @return
+     */
+    @Query(
+            "Select ca FROM CompetitionAccount ca WHERE ca.comAccName=:comAccName "
+    )
+    public List<CompetitionAccount> searchByComName(@Param("comAccName") String comAccName);
+
 }

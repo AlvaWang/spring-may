@@ -22,4 +22,6 @@ public interface CompetitionAccountService {
     CompetitionAccount update(CompetitionAccount update);
 
     CompetitionAccount delete(Long id);
+
+    List<CompetitionAccount> searchByComName(String comAccName);
 }

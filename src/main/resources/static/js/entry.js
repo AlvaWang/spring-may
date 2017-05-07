@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 2017/4/29.
  */
-
+var comName = GetQueryString("comName");
 $("#entry_unit").click(function () {
     var comName = GetQueryString("comName");
     // alert(comName);
@@ -69,7 +69,8 @@ var addEntireTeam = function (condition) {
         success: function (result) {
             if (result != null) {
                 // alert(result);
-                window.location.href = "/teamCreate?entireId=" + result + "";
+                // location.href = 'a.asp?d_id=' + d + '&d_name=' + name;
+                window.location.href = "/teamCreate?entireId=" + result+"&comName="+comName;
                 // comId = result;
             }
 

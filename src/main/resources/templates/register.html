@@ -23,54 +23,57 @@
                     <!--<hr/>-->
                 </div>
                 <div class="register_ul">
-                    <table style="margin-left: 40px;">
-                        <tr>
-                            <td>
-                                <div>
-                                    <label>账户名:</label><input type="text" placeholder="" id="acc_name"/>
-                                </div>
-                                <!--<p style="color:#f16792;">*</p>-->
-                            </td>
-                            <td><span style="color: #f16792">*</span>*******</td>
-                        </tr>
-                        <tr style="height: 20px;"></tr>
+                    <form th:action="@{registerMethod}" method="post"  target="hidden_frame">
+                        <table style="margin-left: 40px;">
+                            <tr>
+                                <td>
+                                    <div>
+                                        <label>账户名:</label><input type="text" placeholder="" id="acc_name" name="comAccName"/>
+                                    </div>
+                                    <!--<p style="color:#f16792;">*</p>-->
+                                </td>
+                                <td class="res_word"><span style="color: #f16792">*</span>用户名由数字、大写字母、小写字母组成，长度不能超过20</td>
+                            </tr>
+                            <tr style="height: 20px;"></tr>
 
-                        <tr class="login_mar">
-                            <td>
-                                <div>
-                                    <label>登录密码:</label><input type="password" placeholder="" id="acc_pwd" />
-                                </div>
-                            </td>
-                            <td></td>
-                        </tr>
-                        <tr  style="height: 20px;"></tr>
-                        <tr class="login_mar">
-                            <td>
-                                <div>
-                                    <label>确认密码:</label><input type="password" placeholder="" id="acc_again_pwd"/>
-                                </div>
-                            </td>
-                           <td></td>
-                        </tr>
-                        <tr  style="height: 20px;"></tr>
-                        <tr class="login_mar">
-                            <td>
-                                <div>
-                                    <label>邮箱:</label><input type="email" id="acc_email"/>
-                                </div>
-                            </td>
-                            <td></td>
-                        </tr>
-                        <tr  style="height: 20px;"></tr>
-                        <tr><td><input type="text" value="COMPETITION" hidden="hidden" id="acc_type"/></td></tr>
-                        <tr class="submits login_mar" id="register_btn">
-                            <td>
-                                <div>
-                                    <input class="button" type="button" value="立即注册"/>
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
+                            <tr class="login_mar">
+                                <td>
+                                    <div>
+                                        <label>登录密码:</label><input type="password" placeholder="" id="acc_pwd"  name="comAccPwd"/>
+                                    </div>
+                                </td>
+                                <td class="res_word"><span style="color: #f16792">*</span>密码由数字、大写字母、小写字母组成，长度不能超过20</td>
+                            </tr>
+                            <tr  style="height: 20px;"></tr>
+                            <tr class="login_mar">
+                                <td>
+                                    <div>
+                                        <label>确认密码:</label><input type="password" placeholder="" id="acc_again_pwd" name="accAgainPwd"/>
+                                    </div>
+                                </td>
+                                <td  class="res_word"><span id="sure_pwd" style="color: #f16792">*</span>和登录密码保持一致</td>
+                            </tr>
+                            <tr  style="height: 20px;"></tr>
+                            <tr class="login_mar">
+                                <td>
+                                    <div>
+                                        <label>邮箱:</label><input type="email" id="acc_email" name="comAccEmail"/>
+                                    </div>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr  style="height: 20px;"></tr>
+                            <tr><td><input type="text" value="COMPETITION" hidden="hidden" id="acc_type" name="comAccType"/></td></tr>
+                            <tr class="submits login_mar" id="register_btn">
+                                <td>
+                                    <div>
+                                        <input class="submits" type="submit" value="立即注册"/>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                    <iframe name='hidden_frame' id="hidden_frame" style='display: none'></iframe>
                 </div>
 
             </div>

@@ -83,5 +83,17 @@ public class CoreTeamServiceImpl implements CoreTeamService{
         return deleted;
     }
 
+    @Transactional(readOnly = true)
+    @Override
+    public int findByEntireId(Long entireId) {
+        LOG.debug("Finding patentList by id: " + entireId);
+        int count =  coreTeamRepository.findByEntireId(entireId);
+        if (count > 0){
+            return count;
+        } else {
+            return 0;
+        }
+    }
+
 
 }

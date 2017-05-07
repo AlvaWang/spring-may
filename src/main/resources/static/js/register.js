@@ -2,45 +2,33 @@
  * Created by Administrator on 2017/4/22.
  */
 
-    $("#register_btn").click(function () {
-        var comAccName = $("#acc_name").val()
-        var accPwd = $("#acc_pwd").val();
-        var accPwd_again = $("#acc_again_pwd").val();
-        var comAccEmail = $("#acc_email").val();
-        var comAccType = $("#acc_type").val();
-        var comAccPwd;
-        if (accPwd = accPwd_again) {
-            comAccPwd = accPwd;
-            var condition = {
-                comAccName: comAccName,
-                comAccPwd: comAccPwd,
-                comAccEmail: comAccEmail,
-                comAccType: comAccType
+$('#hidden_frame').load(function(){
+    var text=$(this).contents().find("body").text();
+    // 根据后台返回值处理结果
+
+    var result=$.parseJSON(text);
+    // alert(result.success);
+    console.log(result);
+    if(result != null) {
+        if (result.success == false){
+            if (result.data == "acc_null"){
+                alert("注册信息未填写完整，请补充！");
             }
-            registerCondition(condition);
+            if(result.data == "acc_exist"){
+                alert("该账号已存在，请更换用户名！");
+            }
+            if(result.data == "acc_found_fail"){
+                alert("用户创建失败！")
+            }
+            if(result.data == "acc_pwd_notSame"){
+                alert("两次密码不一致，请确认")
+            }
+        }else {
+            window.location.href = "/registerSuccess?id=" + result.data + "";
         }
-
-    });
-    var registerCondition = function (condition) {
-
-        $.ajax({
-            url: "/registerMethod",
-            type: 'post',
-            async: true,
-            data: condition,
-            dataType: 'json',
-            error: function (obj, msg) {
-                alert("服务器异常！")
-            },
-            success: function (result) {
-                if (result != null) {
-                    // alert(result);
-                    window.location.href = "/registerSuccess?id=" + result + "";
-                    // comId = result;
-                }
-
-            }
-        });
     }
+});
 
-
+$(".suc_login").click(function () {
+    window.location.href = "/login";
+});

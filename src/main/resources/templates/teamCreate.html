@@ -290,7 +290,7 @@
                                 <td class="t_middle">
                                     <table id="core_team_table">
                                         <tbody>
-                                        <tr>
+                                        <tr class="img_tr">
                                             <td colspan="9">
                                                 <div><img src="../static/img/zengjia.png" th:src="@{/img/zengjia.png}" alt="" onclick="addCoreTeamImg(++team,core=core+5)"/>增加</div>
                                                 <!--<div><img src="../static/img/bianji.png" th:src="@{/img/bianji.png}" alt="" />编辑</div>-->
@@ -337,8 +337,8 @@
                                             <td colspan="9">
                                                 <table id="append_education_1">
                                                     <tr><td colspan="">教育经历（可增加）</td></tr>
-                                                    <tr>
-                                                        <td colspan="3">
+                                                    <tr class="img_tr">
+                                                        <td colspan="3" >
                                                             <div><img src="../static/img/zengjia.png" th:src="@{/img/zengjia.png}" alt="" id="addEducationImg3"/>增加</div>
                                                             <!--<div><img src="../static/img/bianji.png" th:src="@{/img/bianji.png}" alt="" />编辑</div>-->
                                                             <div><img src="../static/img/shanchu.png" th:src="@{/img/shanchu.png}" alt="" onclick="reduceEducationImg3(1)"/>减少</div>
@@ -402,8 +402,8 @@
                                             <td colspan="9">
                                                 <table id="append_education_2">
                                                     <tr><td colspan="3">教育经历（可增加）</td></tr>
-                                                    <tr>
-                                                        <td colspan="3">
+                                                    <tr class="img_tr">
+                                                        <td colspan="3" >
                                                             <div><img src="../static/img/zengjia.png" th:src="@{/img/zengjia.png}" alt="" id="addEducationImg8"/>增加</div>
                                                             <!--<div><img src="../static/img/bianji.png" th:src="@{/img/bianji.png}" alt="" />编辑</div>-->
                                                             <div><img src="../static/img/shanchu.png" th:src="@{/img/shanchu.png}" alt="" onclick="reduceEducationImg3(2)"/>减少</div>
@@ -467,7 +467,7 @@
                                             <td colspan="9">
                                                 <table id="append_education_3">
                                                     <tr><td colspan="3">教育经历（可增加）</td></tr>
-                                                    <tr>
+                                                    <tr class="img_tr">
                                                         <td colspan="3">
                                                             <div><img src="../static/img/zengjia.png" th:src="@{/img/zengjia.png}" alt="" id="addEducationImg13"/>增加</div>
                                                             <!--<div><img src="../static/img/bianji.png" th:src="@{/img/bianji.png}" alt="" />编辑</div>-->
@@ -735,6 +735,7 @@
                             </tbody>
                         </table>
                         <div class="conservation " id="syjhs_conservation_team"><p>保存</p></div>
+
                     </div>
                 </div>
                 <div id="four_table" class="table_team_content">
@@ -751,8 +752,8 @@
                                             <td colspan="3" class="choose_div">
                                                 <div><p>股权融资</p></div>
                                                 <div id="df_isEquity">
-                                                    <input type="radio" value="是" name="df_equity" onclick="df_equity_yes()" checked = "checked"/>是
-                                                    <input type="radio" value="否" name="df_equity" onclick="df_equity_no()"/>否
+                                                    <input type="radio" value="是" name="df_equity" onclick="df_equity_yes()"/>是
+                                                    <input type="radio" value="否" name="df_equity" onclick="df_equity_no()"  checked = "checked"/>否
                                                 </div>
                                             </td>
                                         </tr>
@@ -769,7 +770,7 @@
                                         <tr class="df_equity_yes">
                                             <td>资金使用计划</td>
                                             <td colspan="2">
-                                                <input type="text" value="" id="df_equityFund_plan" placeholder="（资金使用方向细目。包括固定资产投入、在建工程、研发投入、管理费等）"/>
+                                                <textarea type="text" value="" id="df_equityFund_plan" placeholder="（资金使用方向细目。包括固定资产投入、在建工程、研发投入、管理费等）"></textarea>
                                             </td>
                                         </tr>
                                         <tr class="df_equity_yes">
@@ -787,8 +788,8 @@
                                             <td colspan="3"  class="choose_div">
                                                 <div><p>债权融资</p></div>
                                                 <div id="df_isDebt">
-                                                    <input type="radio" value="是" name="df_debt" onclick="df_debt_yes()" checked="checked"/>是
-                                                    <input type="radio" value="否" name="df_debt" onclick="df_debt_no()"/>否
+                                                    <input type="radio" value="是" name="df_debt" onclick="df_debt_yes()" />是
+                                                    <input type="radio" value="否" name="df_debt" onclick="df_debt_no()" checked="checked"/>否
                                                 </div>
                                             </td>
                                         </tr>
@@ -805,7 +806,7 @@
                                         <tr class="df_debt_yes">
                                             <td>资金使用计划</td>
                                             <td colspan="2">
-                                                <input type="text" id="df_debtFund_plan" placeholder="（资金使用方向细目。包括固定资产投入、在建工程、研发投入、管理费等）"/>
+                                                <textarea type="text" id="df_debtFund_plan" placeholder="（资金使用方向细目。包括固定资产投入、在建工程、研发投入、管理费等）"></textarea>
                                             </td>
                                         </tr>
                                         <tr class="df_debt_yes">
@@ -893,9 +894,9 @@
                             </tr>
                             </tbody>
                         </table>
-                        <div>
-                            <div class="conservation " id="kjjr_conservation_team"><p>保存</p></div>
-                            <div class="conservation " id="submit_competition"><p>提交报名</p></div>
+                        <div class="submit_div">
+                            <div id="kjjr_conservation_team"><p>保存</p></div>
+                            <div id="submit_competition" style="margin-left: 100px;"><p>提交报名</p></div>
                         </div>
 
                     </div>

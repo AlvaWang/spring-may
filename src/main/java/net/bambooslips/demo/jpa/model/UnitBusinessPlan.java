@@ -59,13 +59,16 @@ public class UnitBusinessPlan  implements Serializable {
     @Column(name = "ubus_main")
     private String ubusMain;
 
+    @Column(name = "status")
+    private String status;
+
     public UnitBusinessPlan(){
 
     }
     public UnitBusinessPlan(Long ueId, Long entireId, String ubusProName, Long ubusProIncomed,String ubusProType,
                             String ubusLeadInternal,String ubusLeadInternational,String ubusResearchInstitute,
                             String instituteName,String ubusProPicture,String ubusMajorDescribe,String ubusProMarket,
-                            String ubusModel,String ubusMain){
+                            String ubusModel,String ubusMain,String status){
         this.ueId = ueId;
         this.entireId = entireId;
         this.ubusProName = ubusProName;
@@ -80,7 +83,7 @@ public class UnitBusinessPlan  implements Serializable {
         this.ubusProMarket = ubusProMarket;
         this.ubusModel = ubusModel;
         this.ubusMain = ubusMain;
-
+        this.status = status;
     }
 
     /**
@@ -102,6 +105,7 @@ public class UnitBusinessPlan  implements Serializable {
 
         if(updated.getUbusModel() != null)this.setUbusModel(updated.getUbusModel());
         if(updated.getUbusMain() != null)this.setUbusMain(updated.getInstituteName());
+        if(updated.getStatus() != null)this.setStatus(updated.getStatus());
 
         return this;
     }
@@ -206,6 +210,13 @@ public class UnitBusinessPlan  implements Serializable {
     }
     public void setUbusMain(String ubusMain){
         this.ubusMain = ubusMain;
+    }
+
+    public String getStatus(){
+        return status;
+    }
+    public void setStatus(String status){
+        this.status = status;
     }
 }
 

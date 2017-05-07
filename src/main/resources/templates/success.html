@@ -45,7 +45,7 @@
 <script src="../static/lib/js/bootstrap.min.js" th:src="@{/webjars/bootstrap/3.3.6/js/bootstrap.min.js}"></script>
 <script src="../static/js/public.js" th:src="@{/js/public.js}"></script>
 <script type="application/javascript">
-    var comName = GetQueryString("comName")
+    var comName = GetQueryString("comName");
     $("#suc_entry").click(function () {
         window.location.href = "/entry?comName=" + comName + "";
     })

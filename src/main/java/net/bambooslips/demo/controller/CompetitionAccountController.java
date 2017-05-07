@@ -1,5 +1,6 @@
 package net.bambooslips.demo.controller;
 
+import com.alibaba.fastjson.JSON;
 import net.bambooslips.demo.jpa.model.CompetitionAccount;
 import net.bambooslips.demo.jpa.model.Post;
 import net.bambooslips.demo.jpa.model.PostType;
@@ -16,7 +17,9 @@ import org.springframework.web.servlet.view.RedirectView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2017/4/21.
@@ -41,16 +44,19 @@ public class CompetitionAccountController {
     public @ResponseBody
     ModelAndView loginMethod(@RequestParam(required = false) String comAccName,
                                          @RequestParam(required = false) String comAccPwd,
-                                         @RequestParam(required = false) String comAccType){
+                                         @RequestParam(required = false) String comAccType) {
         String message = "这个是要传递的数据";
 //        comAccName = "wp";comAccPwd = "123456";
         comAccType = "COMPETITION";
-        List<CompetitionAccount> list = competitionAccountService.search(comAccName,comAccPwd,comAccType);
-        if (list != null && list.size()>0){
-            return new ModelAndView("redirect:success.html?comName="+comAccName);
-        }else {
+
+        List<CompetitionAccount> list = competitionAccountService.search(comAccName, comAccPwd, comAccType);
+        if (list != null && list.size() > 0) {
+            return new ModelAndView("redirect:success.html?comName=" + comAccName);
+        } else {
             return new ModelAndView("redirect:login.html");
         }
+
+
     }
     @RequestMapping(value = "loginActionWork",method = RequestMethod.POST,
             produces = {"text/html;charset=UTF-8;", "application/json", "*/*"})
@@ -75,14 +81,49 @@ public class CompetitionAccountController {
     @RequestMapping(value = "registerMethod",method = RequestMethod.POST, consumes = "application/x-www-form-urlencoded")
     @ResponseBody
     @ResponseStatus(HttpStatus.CREATED)
-    public Long create(@RequestParam(required = true) String comAccName,
+    public String create(@RequestParam(required = true) String comAccName,
                        @RequestParam(required = true) String comAccPwd,
                        @RequestParam(required = true) String comAccEmail,
+                       @RequestParam(required = false) String accAgainPwd,
                        @RequestParam(required = true) String comAccType) {
-        CompetitionAccount competitionAccount = new CompetitionAccount(comAccName, comAccPwd, comAccEmail,comAccType);
-        Long result =  competitionAccountService.create(competitionAccount);
+        String result;
+        BaseResult baseResult = null;
+        if(comAccName == "" || comAccPwd == "" ||comAccType == ""||comAccEmail == "" || accAgainPwd ==""){
+            baseResult = new BaseResult(false, "信息未填写完全");
+            baseResult.setData("acc_null");
+            result = JSON.toJSONString(baseResult);
+            return result;
+        }else {
+            List<CompetitionAccount> list = competitionAccountService.searchByComName(comAccName);
+            if(list != null && list.size()>0) {
+                baseResult = new BaseResult(false, "该账号已存在");
+                baseResult.setData("acc_exist");
+                result = JSON.toJSONString(baseResult);
+                return result;
+            }else {
+                if (comAccPwd.equals(accAgainPwd)){
+                    CompetitionAccount competitionAccount = new CompetitionAccount(comAccName, comAccPwd, comAccEmail,comAccType);
+                    Long comId =  competitionAccountService.create(competitionAccount);
+                    if (comId != null){
+                        baseResult = new BaseResult(true, "");
+                        baseResult.setData(comId);
+                        result = JSON.toJSONString(baseResult);
+                        return result;
+                    }else {
+                        baseResult = new BaseResult(false, "创建账户失败");
+                        baseResult.setData("acc_found_fail");
+                        result = JSON.toJSONString(baseResult);
+                        return result;
+                    }
 
-        return result;
+                }else {
+                    baseResult = new BaseResult(false, "两次密码不匹配");
+                    baseResult.setData("acc_pwd_notSame");
+                    result = JSON.toJSONString(baseResult);
+                    return result;
+                }
+            }
+        }
     }
 
 

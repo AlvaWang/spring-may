@@ -61,13 +61,16 @@ public class UnitEssential implements  Serializable {
     @Column(name = "ue_corporation_summary")
     private String ueCorporationSummary;
 
+    @Column(name = "status")
+    private String status;
+
     public UnitEssential(){
 
     }
     public UnitEssential(Long entireId,String ueCompanyName,String ueGoal,
                          String ueField,Long ueRegisterCapital,Long ueWinNum, Long ueStaffNum,
                          Long ueResearchNum,Long ueDeputyNum,String ueOfficeAddress,String uePostCode,
-                         String uePowerType,String ueCorporationSummary,String ueTechnicalSources){
+                         String uePowerType,String ueCorporationSummary,String ueTechnicalSources,String status){
         this.entireId = entireId;
         this.ueCompanyName = ueCompanyName;
         this.ueGoal = ueGoal;
@@ -82,7 +85,7 @@ public class UnitEssential implements  Serializable {
         this.uePowerType = uePowerType;
         this.ueCorporationSummary = ueCorporationSummary;
         this.ueTechnicalSources = ueTechnicalSources;
-
+        this.status = status;
     }
 
     /**
@@ -103,6 +106,7 @@ public class UnitEssential implements  Serializable {
         if(updated.getUePowerType() != null)this.setUePowerType(updated.getUePowerType());
         if(updated.getUeTechnicalSources() != null)this.setUeTechnicalSources(updated.getUeTechnicalSources());
         if(updated.getUeCorporationSummary() != null)this.setUeCorporationSummary(updated.getUeCorporationSummary());
+        if(updated.getStatus() != null)this.setStatus(updated.getStatus());
 
         return this;
     }
@@ -211,5 +215,11 @@ public class UnitEssential implements  Serializable {
         this.ueCorporationSummary = ueCorporationSummary;
     }
 
+    public String getStatus(){
+        return status;
+    }
+    public void setStatus(String status){
+        this.status = status;
+    }
 }
 

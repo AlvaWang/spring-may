@@ -52,6 +52,12 @@ $(function () {
 
     $("#reason2,#reason2 td,#reason2 td input").removeAttr("disabled");
     $("#reason2,#reason2 td,#reason2 td input").css("background","#ffffff");
+
+    $("#technology").find(".df_debt_yes,.df_debt_yes td,.df_debt_yes td input,.df_debt_yes td div input,#df_debtFund_plan").attr("disabled", "disabled");
+    $("#technology").find(".df_debt_yes,.df_debt_yes td,.df_debt_yes td input,.df_debt_yes td div input,#df_debtFund_plan").css("background","#dbdbdb");
+    $("#technology").find(".df_equity_yes,.df_equity_yes td,.df_equity_yes td input,.df_equity_yes td div input,#df_equityFund_plan").attr("disabled", "disabled");
+    $("#technology").find(".df_equity_yes,.df_equity_yes td,.df_equity_yes td input,.df_equity_yes td div input,#df_equityFund_plan").css("background","#dbdbdb");
+
 });
 $("#first_btn").click(function () {
     $("#first_table").show();
@@ -76,66 +82,15 @@ $("#first_btn").click(function () {
 })
 
 $("#second_btn").click(function () {
-    $(this).css("background","#8fc320");
-    $(this).find("p").css("color","#ffffff");
-    $("#first_btn").css("background","#ffffff");
-    $("#first_btn").find("p").css("color","#a8daf3");
-    $("#third_btn").css("background","#ffffff");
-    $("#third_btn").find("p").css("color","#a8daf3");
-    $("#four_btn").css("background","#ffffff");
-    $("#four_btn").find("p").css("color","#a8daf3");
-
-    $("#second_table").show();
-    $("#first_table").hide();
-    $("#third_table").hide();
-    $("#four_table").hide();
-
-    $(".streamer_hxtd_team").show();
-    $(".streamer_jbxx_team").hide();
-    $(".streamer_kjjr_team").hide();
-    $(".streamer_syjhs_team").hide();
-
-})
+    getTeamEssentialByEntireId(entireId,"second");
+});
 $("#third_btn").click(function () {
-    $(this).css("background","#8fc320");
-    $(this).find("p").css("color","#ffffff");
-    $("#first_btn").css("background","#ffffff");
-    $("#first_btn").find("p").css("color","#a8daf3");
-    $("#second_btn").css("background","#ffffff");
-    $("#second_btn").find("p").css("color","#a8daf3");
-    $("#four_btn").css("background","#ffffff");
-    $("#four_btn").find("p").css("color","#a8daf3");
-
-    $("#third_table").show();
-    $("#second_table").hide();
-    $("#first_table").hide();
-    $("#four_table").hide();
-
-    $(".streamer_syjhs_team").show();
-    $(".streamer_jbxx_team").hide();
-    $(".streamer_hxtd_team").hide();
-    $(".streamer_kjjr_team").hide();
+    getCoreTeamByEntireId(entireId,"third");
 
 })
 $("#four_btn").click(function () {
-    $(this).css("background","#8fc320");
-    $(this).find("p").css("color","#ffffff");
-    $("#first_btn").css("background","#ffffff");
-    $("#first_btn").find("p").css("color","#a8daf3");
-    $("#second_btn").css("background","#ffffff");
-    $("#second_btn").find("p").css("color","#a8daf3");
-    $("#third_btn").css("background","#ffffff");
-    $("#third_btn").find("p").css("color","#a8daf3");
+    getTeamBusinessPlanByEntireId(entireId,"four");
 
-    $("#four_table").show();
-    $("#second_table").hide();
-    $("#first_table").hide();
-    $("#third_table").hide();
-
-    $(".streamer_kjjr_team").show();
-    $(".streamer_jbxx_team").hide();
-    $(".streamer_hxtd_team").hide();
-    $(".streamer_syjhs_team").hide();
 
 })
 
@@ -197,21 +152,23 @@ var change_litigation2_No = function () {
 
 
 var df_equity_yes = function () {
-    $("#technology").find(".df_equity_yes,.df_equity_yes td,.df_equity_yes td input,.df_equity_yes td div input").removeAttr("disabled");
-    $("#technology").find(".df_equity_yes,.df_equity_yes td,.df_equity_yes td input,.df_equity_yes td div input").css("background","#ffffff");
+    $("#technology").find(".df_equity_yes,.df_equity_yes td,.df_equity_yes td input,.df_equity_yes td div input,#df_equityFund_plan").removeAttr("disabled");
+    $("#technology").find(".df_equity_yes td input,.df_equity_yes td div input,#df_equityFund_plan").css("background","#ffffff");
+    $("#technology").find(".df_equity_yes,.df_equity_yes td").css("background","#ecf7fd");
 }
 var df_equity_no = function () {
-    $("#technology").find(".df_equity_yes,.df_equity_yes td,.df_equity_yes td input,.df_equity_yes td div input").attr("disabled", "disabled");
-    $("#technology").find(".df_equity_yes,.df_equity_yes td,.df_equity_yes td input,.df_equity_yes td div input").css("background","#dbdbdb");
+    $("#technology").find(".df_equity_yes,.df_equity_yes td,.df_equity_yes td input,.df_equity_yes td div input,#df_equityFund_plan").attr("disabled", "disabled");
+    $("#technology").find(".df_equity_yes,.df_equity_yes td,.df_equity_yes td input,.df_equity_yes td div input,#df_equityFund_plan").css("background","#dbdbdb");
 }
 
 var df_debt_yes = function () {
-    $("#technology").find(".df_debt_yes,.df_debt_yes td,.df_debt_yes td input,.df_debt_yes td div input").removeAttr("disabled");
-    $("#technology").find(".df_debt_yes,.df_debt_yes td,.df_debt_yes td input,.df_debt_yes td div input").css("background","#ffffff");
+    $("#technology").find(".df_debt_yes,.df_debt_yes td,.df_debt_yes td input,.df_debt_yes td div input,#df_debtFund_plan").removeAttr("disabled");
+    $("#technology").find(".df_debt_yes td input,.df_debt_yes td div input,#df_debtFund_plan").css("background","#ffffff");
+    $("#technology").find(".df_debt_yes,.df_debt_yes td").css("background","#ecf7fd");
 }
 var df_debt_no = function () {
-    $("#technology").find(".df_debt_yes,.df_debt_yes td,.df_debt_yes td input,.df_debt_yes td div input").attr("disabled", "disabled");
-    $("#technology").find(".df_debt_yes,.df_debt_yes td,.df_debt_yes td input,.df_debt_yes td div input").css("background","#dbdbdb");
+    $("#technology").find(".df_debt_yes,.df_debt_yes td,.df_debt_yes td input,.df_debt_yes td div input,#df_debtFund_plan").attr("disabled", "disabled");
+    $("#technology").find(".df_debt_yes,.df_debt_yes td,.df_debt_yes td input,.df_debt_yes td div input,#df_debtFund_plan").css("background","#dbdbdb");
 }
 
 var change_crowd = function () {
@@ -299,6 +256,7 @@ var change_other = function () {
 };
 
 var entireId = GetQueryString("entireId");
+var comName = GetQueryString("comName");
 // alert(entireId);
 
 /***********************************************************************************************************************
@@ -388,7 +346,97 @@ $("#jbxx_conservation_team").bind('click',function () {
 
     }
 });
+var getCoreTeamByEntireId = function (condition,i) {
 
+    $.ajax({
+        url: "/getCoreTeamByEntireId/"+condition,
+        type: 'get',
+        async: true,
+        data: condition,
+        // dataType: 'json',
+        error: function (obj, msg) {
+            alert("服务器异常！")
+        },
+        success: function (result) {
+            // alert(result);
+            if (result != null && result>0) {
+                // alert(result+"teamEssensial");
+                if(i == "third"){
+                    $("#third_btn").css("background","#8fc320");
+                    $("#third_btn").find("p").css("color","#ffffff");
+                    $("#first_btn").css("background","#ffffff");
+                    $("#first_btn").find("p").css("color","#a8daf3");
+                    $("#second_btn").css("background","#ffffff");
+                    $("#second_btn").find("p").css("color","#a8daf3");
+                    $("#four_btn").css("background","#ffffff");
+                    $("#four_btn").find("p").css("color","#a8daf3");
+
+                    $("#third_table").show();
+                    $("#second_table").hide();
+                    $("#first_table").hide();
+                    $("#four_table").hide();
+
+                    $(".streamer_syjhs_team").show();
+                    $(".streamer_jbxx_team").hide();
+                    $(".streamer_hxtd_team").hide();
+                    $(".streamer_kjjr_team").hide();
+
+                }
+            }else {
+                if(i == "third"){
+                    alert("团队报名第二步：核心团队成员信息还未完成填写，请先填写！");
+                }
+            }
+
+        }
+    });
+
+}
+var getTeamBusinessPlanByEntireId = function (condition,i) {
+
+    $.ajax({
+        url: "/getTeamBusinessPlanByEntireId/"+condition,
+        type: 'get',
+        async: true,
+        data: condition,
+        // dataType: 'json',
+        error: function (obj, msg) {
+            alert("服务器异常！")
+        },
+        success: function (result) {
+            // alert(result);
+            if (result != null && result>0) {
+                // alert(result+"teamEssensial");
+                if(i == "four"){
+                    $("#four_btn").css("background","#8fc320");
+                    $("#four_btn").find("p").css("color","#ffffff");
+                    $("#first_btn").css("background","#ffffff");
+                    $("#first_btn").find("p").css("color","#a8daf3");
+                    $("#second_btn").css("background","#ffffff");
+                    $("#second_btn").find("p").css("color","#a8daf3");
+                    $("#third_btn").css("background","#ffffff");
+                    $("#third_btn").find("p").css("color","#a8daf3");
+
+                    $("#four_table").show();
+                    $("#second_table").hide();
+                    $("#first_table").hide();
+                    $("#third_table").hide();
+
+                    $(".streamer_kjjr_team").show();
+                    $(".streamer_jbxx_team").hide();
+                    $(".streamer_hxtd_team").hide();
+                    $(".streamer_syjhs_team").hide();
+                }
+            }else {
+                if(i == "four"){
+                    alert("团队报名第三步：商业计划书还未完成填写，请先填写！");
+                }
+            }
+
+        }
+    });
+
+}
 var getTeamEssentialByEntireId = function (condition,i) {
 
     $.ajax({
@@ -409,11 +457,35 @@ var getTeamEssentialByEntireId = function (condition,i) {
                     // alert(data);
                     addTeamEssential(teamEssencialData);
                 }
+                if(i == "second"){
+                    $(this).css("background","#8fc320");
+                    $(this).find("p").css("color","#ffffff");
+                    $("#first_btn").css("background","#ffffff");
+                    $("#first_btn").find("p").css("color","#a8daf3");
+                    $("#third_btn").css("background","#ffffff");
+                    $("#third_btn").find("p").css("color","#a8daf3");
+                    $("#four_btn").css("background","#ffffff");
+                    $("#four_btn").find("p").css("color","#a8daf3");
+
+                    $("#second_table").show();
+                    $("#first_table").hide();
+                    $("#third_table").hide();
+                    $("#four_table").hide();
+
+                    $(".streamer_hxtd_team").show();
+                    $(".streamer_jbxx_team").hide();
+                    $(".streamer_kjjr_team").hide();
+                    $(".streamer_syjhs_team").hide();
+
+                }
             }else {
                 if(i == patent){
                     var teamEssencialData = conditionEssential();
                     // alert(data);
                     addTeamEssential(teamEssencialData);
+                }
+                if(i == "second"){
+                    alert("团队报名第一步：基本信息填写还未完成填写，请先填写！");
                 }
             }
 
@@ -750,7 +822,7 @@ var reduceImg = function () {
     var team=3;
     var core=15;
 var edu = 1;
-   var addCoreTeamImg= function () {
+ var addCoreTeamImg= function () {
         var html_tr =
             "<tr id='core_"+(core-4)+"'><td>姓名</td><td>性别</td> <td>年龄</td><td>职位</td>" +
                 "<td>最高学历</td> <td>留学经历</td> <td>入选国家千人计划</td><td>入选时间</td><td>大学生创业</td>"+
@@ -780,7 +852,7 @@ var edu = 1;
                 "<td  colspan='9'>" +
                 "<table id='append_education_"+team+"'>" +
                     "<tr><td colspan='3'>教育经历可增加</td></tr>" +
-                    "<tr>" +
+                    "<tr class='img_tr'>" +
                         "<td colspan='3'>" +
                         "<div><img src=\"img/zengjia.png\"  id='addEducationImg"+(core-2)+"'/>增加</div>"+
                         "<div><img src=\"img/shanchu.png\"  id='reduceEducationImg"+(core-2)+"'/>减少</div>"+
@@ -1090,15 +1162,19 @@ var reduceLitigationImg = function () {
 
 $("#syjhs_conservation_team").click(function () {
 
-    var plan_data = conditionTeamBusinessPlan();
-    // alert(data);
-    addTeamBusinessPlan(plan_data);
-    conditionFore();
-    conditionTeamRisk();
 
-    $(this).unbind('click');
-    $(this).css("background","#dbdbdb");
-    $(this).find("p").html("已保存");
+    if($("#pro_name").val()==""){
+        alert("请输入参赛项目名称！")
+    }else {
+        var plan_data = conditionTeamBusinessPlan();
+        // alert(data);
+        addTeamBusinessPlan(plan_data);
+        conditionFore();
+        conditionTeamRisk();
+        $(this).unbind('click');
+        $(this).css("background","#dbdbdb");
+        $(this).find("p").html("已保存");
+    }
 });
 
 
@@ -1310,14 +1386,14 @@ var conditionDemand=function () {
         var df_equity_money = $("#df_equity_money").val();
         var df_equity_shares = $("#df_equity_shares").val();
         var df_equity_date = $("#df_equity_date").val();
-        var df_equityFund_plan = $("#df_equityFund_plan").val();
+        var df_equityFund_plan = $("#df_equityFund_plan").text();
         var df_isEquity_recom = $("#df_isEquity_recom input:checked").val();
     var df_isDebt = $("#df_isDebt input:checked").val();
 
         var df_debt_money = $("#df_debt_money").val();
         var df_debt_maxAnnual = $("#df_debt_maxAnnual").val();
         var df_debt_date = $("#df_debt_date").val();
-        var df_debtFund_plan = $("#df_debtFund_plan").val();
+        var df_debtFund_plan = $("#df_debtFund_plan").text();
         var df_isDebt_recom = $("#df_isDebt_recom input:checked").val();
 
    if( $("#choose_crowd input[type='checkbox']").is(':checked') == true) {
@@ -1325,7 +1401,7 @@ var conditionDemand=function () {
    }else {
        var df_isCrowd_funding = "0";
    }
-   alert(df_isCrowd_funding+"df_isCrowd_funding");
+   // alert(df_isCrowd_funding+"df_isCrowd_funding");
     var crows_fund_type = $("#crows_fund_type tr td input:checked").val();
     // alert(crows_fund_type);
     if( $("#df_isMerge input[type='checkbox']").is(':checked') == true) {
@@ -1343,6 +1419,7 @@ var conditionDemand=function () {
     if( $("#change_petty input[type='checkbox']").is(':checked') == true) {
         var df_isPetty_loan = "1";
         var petty_loan_money = $("#petty_loan_money").val();
+
     }else {
         var df_isPetty_loan = "0";
         var petty_loan_money = null;
@@ -1666,7 +1743,7 @@ var conditionDemand=function () {
 var addDemand = function (condition) {
     // alert(condition);
     $.ajax({
-        url: "/addDemandFinancial",
+        url: "/",
         type: 'post',
         async: true,
         data: condition,
@@ -1689,8 +1766,6 @@ var addDemand = function (condition) {
 
 }
 
-$("#submit_competition").click(function () {
-    $("#lightboxOverlay").show();
-    $("#submit_pop").show();
-    $("#body").css("overflow-y","hidden");
-})
+$("#submit_competition").bind('click',function () {
+
+});

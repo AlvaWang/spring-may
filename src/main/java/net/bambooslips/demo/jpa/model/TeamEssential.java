@@ -67,13 +67,16 @@ public class TeamEssential implements  Serializable {
     @Column(name = "te_key_word")
     private String teKeyWord;
 
+    @Column(name = "status")
+    private String status;
+
     public TeamEssential(){
 
     }
     public TeamEssential(Long entireId, String teamName, String teProName,
                          String teCompatitionGoal, String teIndustryFild, String teProStage, String teAdminStrativeArea,
                          Date teamFundTime, Date companyFundTime, String teAddress, String tePostalcode,
-                         String tePowerType, String teTechnicalSource, String teProOutline,String teKeyWord){
+                         String tePowerType, String teTechnicalSource, String teProOutline,String teKeyWord,String status){
         this.entireId = entireId;
         this.teamName = teamName;
         this.teProName = teProName;
@@ -89,6 +92,7 @@ public class TeamEssential implements  Serializable {
         this.teTechnicalSource = teTechnicalSource;
         this.teProOutline = teProOutline;
         this.teKeyWord = teKeyWord;
+        this.status = status;
 
     }
 
@@ -112,6 +116,7 @@ public class TeamEssential implements  Serializable {
         if(updated.getTeTechnicalSource() != null)this.setTeTechnicalSource(updated.getTeTechnicalSource());
         if(updated.getTeProOutline() != null)this.setTeProOutline(updated.getTeProOutline());
         if(updated.getTeKeyWord() != null)this.setTeKeyWord(updated.getTeKeyWord());
+        if(updated.getStatus() != null)this.setStatus(updated.getStatus());
 
         return this;
     }
@@ -227,5 +232,11 @@ public class TeamEssential implements  Serializable {
         this.teKeyWord = teKeyWord;
     }
 
+    public String getStatus(){
+        return status;
+    }
+    public void setStatus(String status){
+        this.status = status;
+    }
 }
 

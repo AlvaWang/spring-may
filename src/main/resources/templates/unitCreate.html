@@ -234,13 +234,13 @@
                                         <tr>
                                             <td colspan="2">
                                                 <div id="post_code">
-                                                    <input type="checkbox" value="软件著作权"/>软件著作权
-                                                    <input type="checkbox" value="专有技术"/>专有技术
-                                                    <input type="checkbox" value="药品批文"/>药品批文
-                                                    <input type="checkbox" value="医疗器械批文"/>医疗器械批文
-                                                    <input type="checkbox" value="创新商业模式"/>创新商业模式
-                                                    <input type="checkbox" value="集成电路布图"/>集成电路布图
-                                                    <input type="checkbox" value="其他"/>其他
+                                                    <input type="radio" value="软件著作权"/>软件著作权
+                                                    <input type="radio" value="专有技术"/>专有技术
+                                                    <input type="radio" value="药品批文"/>药品批文
+                                                    <input type="radio" value="医疗器械批文"/>医疗器械批文
+                                                    <input type="radio" value="创新商业模式"/>创新商业模式
+                                                    <input type="radio" value="集成电路布图"/>集成电路布图
+                                                    <input type="radio" value="其他"/>其他
                                                     <input type="text" id="powerType"/>
                                                 </div>
                                             </td>
@@ -249,10 +249,10 @@
                                             <td colspan="2">
                                                 <div id="technical_sources">
                                                     技术来源：
-                                                    <input type="checkbox" value="独立知识产权"/>独立知识产权
-                                                    <input type="checkbox" value="合作研发"/>合作研发
-                                                    <input type="checkbox" value="购买技术"/>购买技术
-                                                    <input type="checkbox" value="其他"/>其他
+                                                    <input type="radio" value="独立知识产权"/>独立知识产权
+                                                    <input type="radio" value="合作研发"/>合作研发
+                                                    <input type="radio" value="购买技术"/>购买技术
+                                                    <input type="radio" value="其他"/>其他
                                                     <!--<input type="checkbox" value="其他"/>其他-->
                                                     <!--<input type="text"/>-->
                                                 </div>
@@ -277,10 +277,12 @@
                                 <td class="t_middle">
                                     <table id="core_team_table">
                                         <tbody>
-                                        <tr>
-                                            <div><img src="../static/img/zengjia.png" th:src="@{/img/zengjia.png}" alt="" onclick="addCoreTeamImg(++team,core=core+4)"/>增加</div>
-                                            <!--<div><img src="../static/img/bianji.png" th:src="@{/img/bianji.png}" alt="" />编辑</div>-->
-                                            <div><img src="../static/img/shanchu.png" th:src="@{/img/shanchu.png}" alt="" onclick="reduceCoreImg(core = core-4)"/>减少</div>
+                                        <tr class="img_tr">
+                                            <td colspan="8">
+                                                <div><img src="../static/img/zengjia.png" th:src="@{/img/zengjia.png}" alt="" onclick="addCoreTeamImg(++team,core=core+4)"/>增加</div>
+                                                <!--<div><img src="../static/img/bianji.png" th:src="@{/img/bianji.png}" alt="" />编辑</div>-->
+                                                <div><img src="../static/img/shanchu.png" th:src="@{/img/shanchu.png}" alt="" onclick="reduceCoreImg(core = core-4)"/>减少</div>
+                                            </td>
                                         </tr>
                                         <tr id="core_1">
                                             <td>姓名</td>
@@ -300,13 +302,17 @@
                                             </select></td>
                                             <td><input type="text" id="core_age_1"/></td>
                                             <td><input type="text" id="core_job_1"/></td>
-                                            <td><input type="text" id="core_education_1"/></td>
+                                            <td>  <select id="core_education_1">
+                                                <option value="学士">学士</option>
+                                                <option value="硕士">硕士</option>
+                                                <option value="博士">博士</option>
+                                            </select></td>
                                             <td><input type="text" id="core_experience_1"/></td>
-                                            <td><select id="core_millennium_1">
+                                            <td><select id="core_millennium_1" onclick="change_millen(1)">
                                                 <option value="是">是</option>
                                                 <option value="否">否</option>
                                             </select></td>
-                                            <td><input type="text" id="core_millennium_date_1"/></td>
+                                            <td  id="millennium_date_1"><input type="text" id="core_millennium_date_1"/></td>
                                         </tr>
                                         <tr id="core_3">
                                             <td colspan="8">主要工作经历/主要成就</td>
@@ -338,15 +344,19 @@
                                             </td>
                                             <td><input type="text" id="core_age_2"/></td>
                                             <td><input type="text" id="core_job_2"/></td>
-                                            <td><input type="text" id="core_education_2"/></td>
+                                            <td>  <select id="core_education_2">
+                                                <option value="学士">学士</option>
+                                                <option value="硕士">硕士</option>
+                                                <option value="博士">博士</option>
+                                            </select></td>
                                             <td><input type="text" id="core_experience_2"/></td>
                                             <td>
-                                                <select id="core_millennium_2">
+                                                <select id="core_millennium_2" onclick="change_millen(2)">
                                                     <option value="是">是</option>
                                                     <option value="否">否</option>
                                                 </select>
                                             </td>
-                                            <td><input type="text" id="core_millennium_date_2"/></td>
+                                            <td  id="millennium_date_2"><input type="text" id="core_millennium_date_2"/></td>
                                         </tr>
                                         <tr id="core_7">
                                             <td colspan="8">主要工作经历/主要成就</td>
@@ -617,8 +627,8 @@
                                         <tr>
                                             <td colspan="4">股权融资
                                                 <div id="isEquity">
-                                                    <input type="radio" value="是" name="equity" onclick="change_equity_yes()" checked="checked"/>是
-                                                    <input type="radio" value="否" name="equity" onclick="change_equity_no()"/>否
+                                                    <input type="radio" value="是" name="equity" onclick="change_equity_yes()"/>是
+                                                    <input type="radio" value="否" name="equity" onclick="change_equity_no()"  checked="checked"/>否
                                                 </div>
                                             </td>
                                         </tr>
@@ -638,8 +648,8 @@
                                         <tr>
                                             <td colspan="4">债权融资
                                                 <div id="isDebt">
-                                                    <input type="radio" value="是" name="debt" onclick="change_debt_yes()" checked="checked"/>是
-                                                    <input type="radio" value="否" name="debt" onclick="change_debt_no()"/>否
+                                                    <input type="radio" value="是" name="debt" onclick="change_debt_yes()" />是
+                                                    <input type="radio" value="否" name="debt" onclick="change_debt_no()" checked="checked"/>否
                                                 </div>
                                             </td>
                                         </tr>
@@ -668,8 +678,8 @@
                                             <td colspan="3"  class="choose_div">
                                                 <div><p>股权融资</p></div>
                                                 <div id="df_isEquity">
-                                                    <input type="radio" value="是" name="df_equity" onclick="df_equity_yes()" checked = "checked"/>是
-                                                    <input type="radio" value="否" name="df_equity" onclick="df_equity_no()"/>否
+                                                    <input type="radio" value="是" name="df_equity" onclick="df_equity_yes()" />是
+                                                    <input type="radio" value="否" name="df_equity" onclick="df_equity_no()" checked = "checked"/>否
                                                 </div>
                                             </td>
                                         </tr>
@@ -686,7 +696,7 @@
                                         <tr class="df_equity_yes">
                                             <td>资金使用计划</td>
                                             <td colspan="2">
-                                                <input type="text" value="" id="df_equityFund_plan" placeholder="（资金使用方向细目。包括固定资产投入、在建工程、研发投入、管理费等）"/>
+                                                <textarea type="text" value="" id="df_equityFund_plan" placeholder="（资金使用方向细目。包括固定资产投入、在建工程、研发投入、管理费等）"></textarea>
                                             </td>
                                         </tr>
                                         <tr class="df_equity_yes">
@@ -704,8 +714,8 @@
                                             <td colspan="3" class="choose_div">
                                                 <div><p>债权融资</p></div>
                                                 <div id="df_isDebt">
-                                                    <input type="radio" value="是" name="df_debt" onclick="df_debt_yes()" checked="checked"/>是
-                                                    <input type="radio" value="否" name="df_debt" onclick="df_debt_no()"/>否
+                                                    <input type="radio" value="是" name="df_debt" onclick="df_debt_yes()"/>是
+                                                    <input type="radio" value="否" name="df_debt" onclick="df_debt_no()"  checked="checked"/>否
                                                 </div>
                                             </td>
                                         </tr>
@@ -722,7 +732,7 @@
                                         <tr class="df_debt_yes">
                                             <td>资金使用计划</td>
                                             <td colspan="2">
-                                                <input type="text" id="df_debtFund_plan" placeholder="（资金使用方向细目。包括固定资产投入、在建工程、研发投入、管理费等）"/>
+                                                <textarea type="text" id="df_debtFund_plan" placeholder="（资金使用方向细目。包括固定资产投入、在建工程、研发投入、管理费等）"></textarea>
                                             </td>
                                         </tr>
                                         <tr class="df_debt_yes" >

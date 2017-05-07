@@ -274,6 +274,22 @@ public class UnitEssentialController {
             return null;
         }
     }
+
+    /**
+     * 查看历史财务数据
+     * @param entireId
+     * @return
+     */
+    @RequestMapping(value = "getCoreTeamByEntireId/{entireId}", method = RequestMethod.GET)
+    @ResponseBody
+    public int getCoreTeamByEntireId(@PathVariable Long entireId) {
+        int result = coreTeamService.findByEntireId(entireId);
+        if (result >0){
+            return result;
+        }else {
+            return 0;
+        }
+    }
     /**
      * 新增基本信息
      * @param entireId
@@ -306,9 +322,10 @@ public class UnitEssentialController {
                        @RequestParam(required = false) String uePostCode,
                        @RequestParam(required = false) String uePowerType,
                        @RequestParam(required = false) String ueCorporationSummary,
-                       @RequestParam(required = false) String ueTechnicalSources) {
+                       @RequestParam(required = false) String ueTechnicalSources,
+                       @RequestParam(required = false) String status) {
         UnitEssential unitEssential = new UnitEssential(entireId, ueCompanyName, ueGoal,ueField,ueRegisterCapital,
-                ueWinNum,ueStaffNum,ueResearchNum,ueDeputyNum,ueOfficeAddress,uePostCode,uePowerType,ueCorporationSummary,ueTechnicalSources);
+                ueWinNum,ueStaffNum,ueResearchNum,ueDeputyNum,ueOfficeAddress,uePostCode,uePowerType,ueCorporationSummary,ueTechnicalSources,status);
 
         Long result =  unitEssentialService.create(unitEssential);
 
@@ -427,9 +444,10 @@ public class UnitEssentialController {
                        @RequestParam(required = false) String ubusMajorDescribe,
                        @RequestParam(required = false) String ubusProMarket,
                        @RequestParam(required = false) String ubusModel,
-                       @RequestParam(required = false) String ubusMain) {
+                       @RequestParam(required = false) String ubusMain,
+                                    @RequestParam(required = false) String status) {
         UnitBusinessPlan unitBusinessPlan = new UnitBusinessPlan(ueId, entireId, ubusProName,ubusProIncomed,ubusProType,
-                ubusLeadInternal,ubusLeadInternational,ubusResearchInstitute,instituteName,ubusProPicture,ubusMajorDescribe,ubusProMarket,ubusModel,ubusMain);
+                ubusLeadInternal,ubusLeadInternational,ubusResearchInstitute,instituteName,ubusProPicture,ubusMajorDescribe,ubusProMarket,ubusModel,ubusMain,status);
 
         Long result =  unitBusinessPlanService.create(unitBusinessPlan);
 

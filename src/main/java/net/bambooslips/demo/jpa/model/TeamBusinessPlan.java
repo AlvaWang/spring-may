@@ -73,6 +73,9 @@ public class TeamBusinessPlan implements Serializable {
     @Column(name = "tbus_development_plan")
     private String tbusDevelopmentPlan;
 
+    @Column(name = "status")
+    private String status;
+
     public TeamBusinessPlan(){
 
     }
@@ -80,7 +83,7 @@ public class TeamBusinessPlan implements Serializable {
                             String tbusHive, String tbusProCore, String tbusMajorDesc,
                             String tbusTechnologyMaturity, String tbusManufacturMatutity, String tbusMarketMatutity, String tbusIndustryMain,
                             String tbusLeadInternal, String tbusLeadInternational,String tbusResearchInstitute,String instituteName,String tbusProPicture,String tbusMarketAnalysis,
-                            String tbusModel,String tbusDevelopmentPlan){
+                            String tbusModel,String tbusDevelopmentPlan,String status){
         this.teId = teId;
         this.entireId = entireId;
         this.tbusProName = tbusProName;
@@ -101,6 +104,7 @@ public class TeamBusinessPlan implements Serializable {
         this.tbusMarketAnalysis = tbusMarketAnalysis;
         this.tbusModel = tbusModel;
         this.tbusDevelopmentPlan = tbusDevelopmentPlan;
+        this.status = status;
 
     }
 
@@ -129,7 +133,7 @@ public class TeamBusinessPlan implements Serializable {
         if(updated.getTbusMarketAnalysis() != null)this.setTbusMarketAnalysis(updated.getTbusMarketAnalysis());
         if(updated.getTbusModel() != null)this.setTbusModel(updated.getTbusModel());
         if(updated.getTbusDevelopmentPlan() != null)this.setTbusDevelopmentPlan(updated.getTbusDevelopmentPlan());
-
+        if(updated.getStatus() != null)this.setStatus(updated.getStatus());
 
         return this;
     }
@@ -274,6 +278,13 @@ public class TeamBusinessPlan implements Serializable {
     }
     public void setTbusDevelopmentPlan(String tbusDevelopmentPlan){
         this.tbusDevelopmentPlan = tbusDevelopmentPlan;
+    }
+
+    public String getStatus(){
+        return status;
+    }
+    public void setStatus(String status){
+        this.status = status;
     }
 }
 

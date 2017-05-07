@@ -80,4 +80,15 @@ public class CompetitionAccountServiceImpl implements CompetitionAccountService{
         return deleted;
     }
 
+    @Transactional(readOnly = true)
+    @Override
+    public List<CompetitionAccount> searchByComName(String comAccName) {
+        LOG.debug("Searching post by title: " + comAccName);
+        List<CompetitionAccount> list = competitionAccountRepository.searchByComName(comAccName);
+        if(list!= null){
+//            Long id = CompetitionAccount.getId();
+        }
+        return list;
+    }
+
 }
