@@ -119,6 +119,11 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+			<dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>springloaded</artifactId>
+                <version>1.2.1.RELEASE</version>
+            </dependency>
         </plugins>
     </build>
 </project>
