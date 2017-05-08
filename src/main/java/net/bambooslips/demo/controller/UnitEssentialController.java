@@ -680,4 +680,43 @@ public class UnitEssentialController {
     }
 
 
+    @RequestMapping(value = "/updateBusinessPlan/{ubusId}",method = RequestMethod.POST, consumes = "application/x-www-form-urlencoded")
+    @ResponseBody
+    @ResponseStatus(HttpStatus.CREATED)
+    public UnitBusinessPlan updateBusinessPlan(@RequestParam(required = false) Long ubusId,
+                                    @RequestParam(required = false) String ubusProName,
+                                    @RequestParam(required = false) Long ubusProIncomed,
+                                    @RequestParam(required = false) String ubusProType,
+                                    @RequestParam(required = false) String ubusLeadInternal,
+                                    @RequestParam(required = false) String ubusLeadInternational,
+                                    @RequestParam(required = false) String ubusResearchInstitute,
+                                    @RequestParam(required = false) String instituteName,
+                                    @RequestParam(required = false) String ubusProPicture,
+                                    @RequestParam(required = false) String ubusMajorDescribe,
+                                    @RequestParam(required = false) String ubusProMarket,
+                                    @RequestParam(required = false) String ubusModel,
+                                    @RequestParam(required = false) String ubusMain,
+                                    @RequestParam(required = false) String status) {
+        UnitBusinessPlan unitBusinessPlan = new UnitBusinessPlan();
+        unitBusinessPlan.setUbusProName(ubusProName);
+        unitBusinessPlan.setUbusProIncomed(ubusProIncomed);
+
+        unitBusinessPlan.setUbusProType(ubusProType);
+        unitBusinessPlan.setUbusLeadInternal(ubusLeadInternal);
+        unitBusinessPlan.setUbusLeadInternational(ubusLeadInternational);
+        unitBusinessPlan.setInstituteName(instituteName);
+
+        unitBusinessPlan.setUbusResearchInstitute(ubusResearchInstitute);
+        unitBusinessPlan.setUbusProPicture(ubusProPicture);
+        unitBusinessPlan.setUbusMajorDescribe(ubusMajorDescribe);
+        unitBusinessPlan.setUbusProMarket(ubusProMarket);
+        unitBusinessPlan.setUbusModel(ubusModel);
+        unitBusinessPlan.setUbusMain(ubusMain);
+        unitBusinessPlan.setStatus(status);
+
+
+        return unitBusinessPlanService.update(unitBusinessPlan);
+    }
+
+
 }
