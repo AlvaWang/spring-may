@@ -4,6 +4,7 @@ import net.bambooslips.demo.jpa.model.CoreTeam;
 import net.bambooslips.demo.jpa.model.DebtFinancing;
 import net.bambooslips.demo.jpa.model.EquityFinancing;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
@@ -19,5 +20,9 @@ public interface EquityFinancingRepository extends JpaRepository<EquityFinancing
             "Select ef FROM EquityFinancing ef WHERE ef.entireId=:entireId"
     )
     public EquityFinancing findByEntireId(@Param("entireId") Long entireId);
+
+    @Modifying
+    @Query("delete from EquityFinancing ef where ef.entireId in (:entireId)")
+    public void deleteByEntireId(@Param("entireId")Long entireId);
 
 }

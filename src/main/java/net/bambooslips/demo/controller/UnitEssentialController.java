@@ -680,24 +680,13 @@ public class UnitEssentialController {
     }
 
 
-    @RequestMapping(value = "/updateBusinessPlan/{ubusId}",method = RequestMethod.POST, consumes = "application/x-www-form-urlencoded")
+    @RequestMapping(value = "/updateBusinessPlan/{ubusId}",method = RequestMethod.PUT, consumes = "application/x-www-form-urlencoded")
     @ResponseBody
-    @ResponseStatus(HttpStatus.CREATED)
-    public UnitBusinessPlan updateBusinessPlan(@RequestParam(required = false) Long ubusId,
-                                    @RequestParam(required = false) String ubusProName,
-                                    @RequestParam(required = false) Long ubusProIncomed,
-                                    @RequestParam(required = false) String ubusProType,
-                                    @RequestParam(required = false) String ubusLeadInternal,
-                                    @RequestParam(required = false) String ubusLeadInternational,
-                                    @RequestParam(required = false) String ubusResearchInstitute,
-                                    @RequestParam(required = false) String instituteName,
-                                    @RequestParam(required = false) String ubusProPicture,
-                                    @RequestParam(required = false) String ubusMajorDescribe,
-                                    @RequestParam(required = false) String ubusProMarket,
-                                    @RequestParam(required = false) String ubusModel,
-                                    @RequestParam(required = false) String ubusMain,
-                                    @RequestParam(required = false) String status) {
+    public UnitBusinessPlan updateBusinessPlan(@PathVariable Long ubusId, String ubusProName, Long ubusProIncomed, String ubusProType, String ubusLeadInternal,
+                                     String ubusLeadInternational, String ubusResearchInstitute, String instituteName, String ubusProPicture, String ubusMajorDescribe,
+                                     String ubusProMarket, String ubusModel, String ubusMain, String status) {
         UnitBusinessPlan unitBusinessPlan = new UnitBusinessPlan();
+        unitBusinessPlan.setUbusId(ubusId);
         unitBusinessPlan.setUbusProName(ubusProName);
         unitBusinessPlan.setUbusProIncomed(ubusProIncomed);
 
@@ -718,5 +707,97 @@ public class UnitEssentialController {
         return unitBusinessPlanService.update(unitBusinessPlan);
     }
 
+    /**
+     * 增加科技金融服务需求信息
+     */
+
+    @RequestMapping(value = "/updateDemandFinancial/{dfId}",method = RequestMethod.PUT, consumes = "application/x-www-form-urlencoded")
+    @ResponseBody
+    public DemandFinancial updateDemandFinancial( @PathVariable Long dfId, String dfEquity, Long dfEquityShares,
+                                    Long dfEquityMoney, Date dfEquityDate, String equityFundPlan, String dfEquityRecom,
+                                       String dfDebt, Long dfDebtMoney, Long debtMaxAnnual, Date dfDebtDate, String debtFundPlan, String dfDebtRecom, String dfCrowdFunding,
+                                    String crowsFundType, String dfMerge, String dfListedShareReform, String dfFinancingGuarantee, String dfPettyLoan,
+                                   Long pettyLoanMoney, String dfCompanyDebt, String minorEnterprisesDebt,
+                                       String dfTechnicalImport, String  technicalImportInternational, String technicalDescInternational, String technicalImportInternal,
+                                    String technicalDescInternal, String dfTechnicalTransfer, String technicalTransferRange, String dfPropertyAssign, String dfFinaceLease,
+                                   String dfTechnologyInsurance, String dfAssetManage, String branchChongCheck, String dfPoliticalConsult,
+                                  String dfTechnologyConsult, String dfIntermediaryConsult, String  intermediaryLaw, String intermediaryLawDesc,
+                                   String intermediaryFinance, String intermediaryFinanceDesc, String intermediaryFinancing, String intermediaryFinancingDesc,
+                                    String intermediaryManage, String intermediaryManageDesc, String dfOtherService, String otherServiceDesc, String dfAcceptTrain,
+                                  String dfNo) {
+        DemandFinancial demandFinancial = new DemandFinancial();
+        demandFinancial.setDfId(dfId);
+        demandFinancial.setDfEquity(dfEquity);
+        demandFinancial.setDfEquityMoney(dfEquityMoney);
+
+        demandFinancial.setDfEquityShares(dfEquityShares);
+        demandFinancial.setDfEquityDate(dfEquityDate);
+        demandFinancial.setEquityFundPlan(equityFundPlan);
+        demandFinancial.setDfEquityRecom(dfEquityRecom);
+
+        demandFinancial.setDfDebt(dfDebt);
+        demandFinancial.setDfDebtMoney(dfDebtMoney);
+
+        demandFinancial.setDebtMaxAnnual(debtMaxAnnual);
+        demandFinancial.setDfDebtDate(dfDebtDate);
+        demandFinancial.setDebtFundPlan(debtFundPlan);
+        demandFinancial.setDfDebtRecom(dfEquityRecom);
+
+        demandFinancial.setDfCrowdFunding(dfCrowdFunding);
+        demandFinancial.setCrowsFundType(crowsFundType);
+        demandFinancial.setDfMerge(dfMerge);
+        demandFinancial.setDfListedShareReform(dfListedShareReform);
+        demandFinancial.setDfFinancingGuarantee(dfFinancingGuarantee);
+        demandFinancial.setDfPettyLoan(dfPettyLoan);
+        demandFinancial.setPettyLoanMoney(pettyLoanMoney);
+
+        demandFinancial.setDfCompanyDebt(dfCompanyDebt);
+        demandFinancial.setMinorEnterprisesDebt(minorEnterprisesDebt);
+        demandFinancial.setDfTechnicalImport(dfTechnicalImport);
+        demandFinancial.setTechnicalImportInternational(technicalImportInternational);
+        demandFinancial.setTechnicalDescInternational(technicalDescInternational);
+        demandFinancial.setTechnicalImportInternal(technicalImportInternal);
+        demandFinancial.setTechnicalDescInternatl(technicalDescInternal);
+        demandFinancial.setDfTechnicalTransfer(dfTechnicalTransfer);
+
+        demandFinancial.setTechnicalTransferRange(technicalTransferRange);
+        demandFinancial.setDfPropertyAssign(dfPropertyAssign);
+        demandFinancial.setDfFinaceLease(dfFinaceLease);
+        demandFinancial.setDfTechnologyInsurance(dfTechnologyInsurance);
+        demandFinancial.setDfAssetManage(dfAssetManage);
+        demandFinancial.setBranchChongCheck(branchChongCheck);
+        demandFinancial.setDfPoliticalConsult(dfPoliticalConsult);
+        demandFinancial.setDfTechnologyConsult(dfTechnologyConsult);
+
+        demandFinancial.setDfIntermediaryConsult(dfIntermediaryConsult);
+        demandFinancial.setIntermediaryLaw(intermediaryLaw);
+        demandFinancial.setIntermediaryLawDesc(intermediaryLawDesc);
+        demandFinancial.setIntermediaryFinance(intermediaryFinance);
+        demandFinancial.setIntermediaryFinanceDesc(intermediaryFinanceDesc);
+        demandFinancial.setIntermediaryFinancing(intermediaryFinancing);
+        demandFinancial.setIntermediaryFinancingDesc(intermediaryFinancingDesc);
+        demandFinancial.setIntermediaryManage(intermediaryManage);
+        demandFinancial.setIntermediaryManageDesc(intermediaryManageDesc);
+        demandFinancial.setDfOtherService(dfOtherService);
+        demandFinancial.setOtherServiceDesc(otherServiceDesc);
+        demandFinancial.setDfAcceptTrain(dfAcceptTrain);
+        demandFinancial.setDfNo(dfNo);
+
+        return demandFinancialService.update(demandFinancial);
+    }
+
+    @RequestMapping(value = "/deleteEquityByEntireId/{entireId}", method = RequestMethod.DELETE)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.OK)
+    public EquityFinancing deleteEquityByEntireId(@PathVariable Long entireId) {
+        return equityFinancingService.delete(entireId);
+    }
+
+    @RequestMapping(value = "/deleteDebtByEntireId/{dfId}", method = RequestMethod.DELETE)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.OK)
+    public DebtFinancing deleteDebtByEntireId(@PathVariable Long dfId) {
+        return debtFinancingService.delete(dfId);
+    }
 
 }

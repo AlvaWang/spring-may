@@ -1,15 +1,10 @@
 package net.bambooslips.demo.jpa.service.Impl;
 
 import net.bambooslips.demo.exception.DebtFinancingNotFoundException;
-import net.bambooslips.demo.exception.EquityFinancingNotFoundException;
 import net.bambooslips.demo.exception.PostNotFoundException;
 import net.bambooslips.demo.jpa.model.DebtFinancing;
-import net.bambooslips.demo.jpa.model.EquityFinancing;
-import net.bambooslips.demo.jpa.model.UnitBusinessPlan;
 import net.bambooslips.demo.jpa.repository.DebtFinancingRepository;
-import net.bambooslips.demo.jpa.repository.EquityFinancingRepository;
 import net.bambooslips.demo.jpa.service.DebtFinancingService;
-import net.bambooslips.demo.jpa.service.EquityFinancingService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -79,8 +74,7 @@ public class DebtFinancingServiceImpl implements DebtFinancingService{
             LOG.debug("No CompetitionAccount found with id: " + id);
             throw new PostNotFoundException("No CompetitionAccount found with id: " + id);
         }
-
-        debtFinancingRepository.delete(deleted);
+        debtFinancingRepository.delete(id);
         return deleted;
     }
 

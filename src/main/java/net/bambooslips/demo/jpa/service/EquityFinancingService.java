@@ -22,7 +22,7 @@ public interface EquityFinancingService {
     EquityFinancing update(EquityFinancing update);
 
 
-    EquityFinancing delete(Long id);
+    EquityFinancing delete(Long entireId);
 
     Long findByEntireId(Long entireId);
 }

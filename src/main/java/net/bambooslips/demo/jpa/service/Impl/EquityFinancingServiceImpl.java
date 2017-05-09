@@ -64,24 +64,27 @@ public class EquityFinancingServiceImpl implements EquityFinancingService{
 
     /**
      * 删除融资信息
-     * @param id
+     * @param entireId
      * @return
      * @throws EquityFinancingNotFoundException
      */
     @Transactional(rollbackFor = EquityFinancingNotFoundException.class)
     @Override
-    public EquityFinancing delete(Long id) throws EquityFinancingNotFoundException {
-        LOG.debug("Deleting EquityFinancing with id: " + id);
+    public EquityFinancing delete(Long entireId) throws EquityFinancingNotFoundException {
+        LOG.debug("Deleting EquityFinancing with id: " + entireId);
 
-        EquityFinancing deleted = equityFinancingRepository.findOne(id);
+        EquityFinancing deleted = equityFinancingRepository.findByEntireId(entireId);
 
         if (deleted == null) {
-            LOG.debug("No CompetitionAccount found with id: " + id);
-            throw new PostNotFoundException("No CompetitionAccount found with id: " + id);
+            LOG.debug("No CompetitionAccount found with id: " + entireId);
+            throw new EquityFinancingNotFoundException("No CompetitionAccount found with id: " + entireId);
+        }else {
+            Long efId = deleted.getEquityId();
+            equityFinancingRepository.delete(efId);
+
+            return deleted;
         }
 
-        equityFinancingRepository.delete(deleted);
-        return deleted;
     }
 
     @Transactional(readOnly = true)
