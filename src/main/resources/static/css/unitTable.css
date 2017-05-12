@@ -38,6 +38,11 @@ input{
 
 }
 .main_div .streamer_yyxm{
+    background: url("../img/wtjxm.png");
+    background-size: 100% 100%;
+
+}
+.main_div .streamer_ytjxm{
     background: url("../img/yyxm.png");
     background-size: 100% 100%;
 

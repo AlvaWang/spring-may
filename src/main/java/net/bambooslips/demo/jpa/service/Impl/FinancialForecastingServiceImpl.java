@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 
 /**
@@ -58,13 +59,13 @@ public class FinancialForecastingServiceImpl implements FinancialForecastingServ
 
     @Transactional(readOnly = true)
     @Override
-    public int findByEntireId(Long entireId) {
+    public  List<FinancialForecasting>  findByEntireId(Long entireId) {
         LOG.debug("Finding patentList by id: " + entireId);
-        int count =  financialForecastingRepository.findByEntireId(entireId);
-        if (count > 0){
-            return count;
+        List<FinancialForecasting> list =  financialForecastingRepository.findByEntireId(entireId);
+        if (list != null && list.size()>0){
+            return list;
         } else {
-            return 0;
+            return null;
         }
     }
 

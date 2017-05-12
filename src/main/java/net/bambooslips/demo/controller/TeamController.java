@@ -43,6 +43,24 @@ public class TeamController {
     @Autowired
     private CompetitionEntireService competitionEntireService;
 
+    @RequestMapping(value = "getEntireProNameByEntireId_team/{entireId}", method = RequestMethod.GET)
+    @ResponseBody
+    public String getEntireProNameByEntireId_team(@PathVariable Long entireId) {
+        String result;
+        BaseResult baseResult = null;
+        List<TeamBusinessPlan> list = teamBusinessPlanService.findEntireProName(entireId);
+        if (list != null && list.size()>0){
+            BootStrapTableResult tableResult = new BootStrapTableResult<TeamBusinessPlan>(list);
+            baseResult = new BaseResult(true, "");
+            baseResult.setData(tableResult);
+            result = JSON.toJSONString(baseResult);
+            return result;
+        }else {
+            baseResult = new BaseResult(true, "没有查询到相关信息！");
+            result = JSON.toJSONString(baseResult);
+            return result;
+        }
+    }
 
     /**
      * 查询项目名称
@@ -104,9 +122,9 @@ public class TeamController {
      */
     @RequestMapping(value = "getTeamBusinessPlanByEntireId/{entireId}", method = RequestMethod.GET)
     @ResponseBody
-    public Long getTeamBusinessPlanByEntireId(@PathVariable Long entireId) {
-        Long result = teamBusinessPlanService.findByEntireId(entireId);
-        if (result != null && result>0){
+    public String getTeamBusinessPlanByEntireId(@PathVariable Long entireId) {
+        String result = teamBusinessPlanService.findByEntireId(entireId);
+        if (result != null && result.length()>0){
             return result;
         }else {
             return null;
@@ -233,12 +251,46 @@ public class TeamController {
      */
     @RequestMapping(value = "/updateTeamEssential/{teId}", method = RequestMethod.PUT, consumes = "application/x-www-form-urlencoded")
     @ResponseBody
-    public TeamBusinessPlan updateTeamEssential(@PathVariable Long teId, String tbusProName,Long tbusProIncomed,String tbusNewChips,
-                                      String tbusHive,String tbusProCore,String tbusMajorDesc,String tbusTechnologyMaturity,
-                                      String tbusManufacturMatutity,String tbusMarketMatutity,String tbusIndustryMain,String tbusLeadInternal,String tbusLeadInternational,
-                                             String tbusResearchInstitute,String instituteName,String tbusProPicture,String tbusMarketAnalysis,String tbusModel,String tbusDevelopmentPlan ) {
+    public TeamEssential updateTeamEssential(@PathVariable Long teId, String teamName,String teProName,String teCompatitionGoal,
+                                      String teIndustryFild,String teProStage,String teAdminStrativeArea,Date teamFundTime,
+                                      Date companyFundTime,String teAddress,String tePostalcode,String tePowerType,String teTechnicalSource,
+                                             String teProOutline,String teKeyWord,String status) {
+        TeamEssential teamEssential = new TeamEssential();
+        teamEssential.setTeId(teId);
+        teamEssential.setTeamName(teamName);
+
+        teamEssential.setTeProName(teProName);
+        teamEssential.setTeCompatitionGoal(teCompatitionGoal);
+        teamEssential.setTeIndustryFild(teIndustryFild);
+        teamEssential.setTeProStage(teProStage);
+        teamEssential.setTeAdminStrativeArea(teAdminStrativeArea);
+        teamEssential.setTeamFundTime(teamFundTime);
+        teamEssential.setCompanyFundTime(companyFundTime);
+        teamEssential.setTeAddress(teAddress);
+        teamEssential.setTePostalcode(tePostalcode);
+        teamEssential.setTePowerType(tePowerType);
+        teamEssential.setTeTechnicalSource(teTechnicalSource);
+
+        teamEssential.setTeProOutline(teProOutline);
+        teamEssential.setTeKeyWord(teKeyWord);
+        teamEssential.setStatus(status);
+
+        return teamEssentialService.update(teamEssential);
+    }
+
+
+    /**
+     * 修改商业计划书
+     * @return
+     */
+    @RequestMapping(value = "/updateTeamBusinessPlan/{tbusId}", method = RequestMethod.PUT, consumes = "application/x-www-form-urlencoded")
+    @ResponseBody
+    public TeamBusinessPlan updateTeamBusinessPlan(@PathVariable Long tbusId , String tbusProName,Long tbusProIncomed,String tbusNewChips,
+                                                String tbusHive,String tbusProCore,String tbusMajorDesc,String tbusTechnologyMaturity,
+                                                String tbusManufacturMatutity,String tbusMarketMatutity,String tbusIndustryMain,String tbusLeadInternal,String tbusLeadInternational,
+                                                String tbusResearchInstitute,String instituteName,String tbusProPicture,String tbusMarketAnalysis,String tbusModel,String tbusDevelopmentPlan,String status ) {
         TeamBusinessPlan teamBusinessPlan = new TeamBusinessPlan();
-        teamBusinessPlan.setTeId(teId);
+        teamBusinessPlan.setTbusId(tbusId);
         teamBusinessPlan.setTbusProName(tbusProName);
 
         teamBusinessPlan.setTbusProIncomed(tbusProIncomed);
@@ -259,8 +311,19 @@ public class TeamController {
         teamBusinessPlan.setTbusMarketAnalysis(tbusMarketAnalysis);
         teamBusinessPlan.setTbusModel(tbusModel);
         teamBusinessPlan.setTbusDevelopmentPlan(tbusDevelopmentPlan);
+        teamBusinessPlan.setStatus(status);
 
-        return teamBusinessPlan.update(teamBusinessPlan);
+        return teamBusinessPlanService.update(teamBusinessPlan);
+    }
+
+
+
+
+    @RequestMapping(value = "/deleteRiskByEntireId/{entireId}", method = RequestMethod.DELETE)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.OK)
+    public List<EconomicRiskCounter> deleteRiskByEntireId(@PathVariable Long entireId) {
+        return economicRiskCounterService.delete(entireId);
     }
 
 }

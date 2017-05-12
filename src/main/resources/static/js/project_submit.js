@@ -21,7 +21,7 @@ $("#team_list").click(function () {
 
 var getEntireList = function (comName,type) {
     var condition_keep = {
-        workState:"KEEP"
+        workState:"SUBMIT"
     };
     $.ajax({
         url: "/getEntireListByComName/"+comName,

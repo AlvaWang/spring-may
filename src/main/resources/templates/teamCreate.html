@@ -550,7 +550,7 @@
                                             <td class="maturity2"><input type="text" id="tbusMarketMatutity"/></td>
                                         </tr>
                                         <tr>
-                                            <td class="t_title2">参赛项目是行业主流技术</td>
+                                            <td class="t_title2">参赛项目是否是行业主流技术</td>
                                             <td colspan="5">
                                                 <div id="tbus_industry_main">
                                                     <input type="radio" value="是" name="industry"/>是
@@ -605,7 +605,7 @@
                                         </tr>
                                         <tr>
                                             <td colspan="6">
-                                                <textarea type="text" value="" id="major_describe" placeholder="（产品开发、生产策略，行业特点、竞争焦点、主要的技术指标和关键技术说明、主要介绍技术、产品及服务的背景、目前所处发展阶段、与国内外同行业其它公司同类技术、产品及服务的比较，本公司技术、产品及服务的新颖性、先进性和独特性，如拥有的专门技术、版权、配方、品牌、销售网络、许可证、专营权、特许权经营等）"></textarea>
+                                                <textarea type="text" id="major_describe" placeholder="（产品开发、生产策略，行业特点、竞争焦点、主要的技术指标和关键技术说明、主要介绍技术、产品及服务的背景、目前所处发展阶段、与国内外同行业其它公司同类技术、产品及服务的比较，本公司技术、产品及服务的新颖性、先进性和独特性，如拥有的专门技术、版权、配方、品牌、销售网络、许可证、专营权、特许权经营等）"></textarea>
                                             </td>
                                         </tr>
                                     </table>
@@ -614,20 +614,20 @@
                             <tr>
                                 <td class="t_title">产品市场分析</td>
                                 <td>
-                                    <textarea type="text" value="" id="pro_market" placeholder="（市场定位及需求分析，行业历史与前景分析与预测，产品市场概况，市场需求程度，规模及增长趋势，市场定位的合理性，未来市场销售预测，哪些行业的变化对产品利润、利润率影响较大，进入该行业的技术壁垒，贸易壁垒，政策限制，其他方面）"></textarea>
+                                    <textarea type="text" id="pro_market" placeholder="（市场定位及需求分析，行业历史与前景分析与预测，产品市场概况，市场需求程度，规模及增长趋势，市场定位的合理性，未来市场销售预测，哪些行业的变化对产品利润、利润率影响较大，进入该行业的技术壁垒，贸易壁垒，政策限制，其他方面）"></textarea>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="t_title">商业模式</td>
                                 <td>
-                                    <textarea type="text" value="" id="bus_model" placeholder="产品的市场营销策略，产品的获利模式）"></textarea>
+                                    <textarea type="text" id="bus_model" placeholder="产品的市场营销策略，产品的获利模式）"></textarea>
                                 </td>
 
                             </tr>
                             <tr>
                                 <td class="t_title">业务拓展计划</td>
                                 <td>
-                                    <textarea type="text" value="" id="tbus_development_plan" placeholder="(在建立销售网络、销售渠道、设立代理商、分销商方面的策略；在广告促销方面的策略；在产品销售价格方面的策略；在建立良好销售队伍方面的策略；如何保证销售策略具体实施的有效性；对销售队伍采取什么样的激励机制)"></textarea>
+                                    <textarea type="text" id="tbus_development_plan" placeholder="(在建立销售网络、销售渠道、设立代理商、分销商方面的策略；在广告促销方面的策略；在产品销售价格方面的策略；在建立良好销售队伍方面的策略；如何保证销售策略具体实施的有效性；对销售队伍采取什么样的激励机制)"></textarea>
                                 </td>
 
                             </tr>
@@ -675,8 +675,8 @@
                                                                <!--<div><img src="../static/img/bianji.png" th:src="@{/img/bianji.png}" alt="" />编辑</div>-->
                                                                <div><img src="../static/img/shanchu.png" th:src="@{/img/shanchu.png}" alt="" id="reduceLitigationImg" onclick="reduceLitigationImg(liti = liti-2)"/>减少</div>
                                                            </tr>
-                                                           <tr id="liti_1"  class="reason3"><td>诉讼内容</td><td><input type="text" id="litigation_content_3"/></td></tr>
-                                                           <tr id="liti_2"  class="reason3"><td>诉讼原因</td><td><input type="text" id="litigation_reason_3"/></td></tr>
+                                                           <tr id="liti_1"  class="reason3"><td>诉讼内容</td><td><input type="text" id="litigation_content_3" name="litigation_other"/></td></tr>
+                                                           <tr id="liti_2"  class="reason3"><td>诉讼原因</td><td><input type="text" id="litigation_reason_3" name="litigation_other"/></td></tr>
                                                        </table>
                                                        </td>
                                                    </tr>
@@ -704,29 +704,29 @@
                                         </tr>
                                         <tr>
                                             <td class="t_title3">主营业务收入</td>
-                                            <td><input type="number" id="fore_income_5"/></td>
-                                            <td><input type="number" id="fore_income_6"/></td>
-                                            <td><input type="number" id="fore_income_7"/></td>
+                                            <td><input type="number" id="fore_income_5" name="fore"/></td>
+                                            <td><input type="number" id="fore_income_6"  name="fore"/></td>
+                                            <td><input type="number" id="fore_income_7" name="fore"/></td>
                                         </tr>
                                         <tr>
                                             <td class="t_title3">主营业务成本</td>
-                                            <td><input type="number" id="fore_cost_5"/></td>
-                                            <td><input type="number" id="fore_cost_6"/></td>
-                                            <td><input type="number" id="fore_cost_7"/></td>
+                                            <td><input type="number" id="fore_cost_5" name="fore"/></td>
+                                            <td><input type="number" id="fore_cost_6" name="fore"/></td>
+                                            <td><input type="number" id="fore_cost_7" name="fore"/></td>
                                         </tr>
 
                                         <tr>
                                             <td class="t_title3">主营业务利润</td>
-                                            <td><input type="number" id="fore_profit_5"/></td>
-                                            <td><input type="number" id="fore_profit_6"/></td>
-                                            <td><input type="number" id="fore_profit_7"/></td>
+                                            <td><input type="number" id="fore_profit_5" name="fore"/></td>
+                                            <td><input type="number" id="fore_profit_6" name="fore"/></td>
+                                            <td><input type="number" id="fore_profit_7" name="fore"/></td>
                                         </tr>
 
                                         <tr>
                                             <td class="t_title3">净利润</td>
-                                            <td><input type="number" id="net_margin_5"/></td>
-                                            <td><input type="number" id="net_margin_6"/></td>
-                                            <td><input type="number" id="net_margin_7"/></td>
+                                            <td><input type="number" id="net_margin_5" name="fore"/></td>
+                                            <td><input type="number" id="net_margin_6" name="fore"/></td>
+                                            <td><input type="number" id="net_margin_7" name="fore"/></td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -734,7 +734,11 @@
                             </tr>
                             </tbody>
                         </table>
-                        <div class="conservation " id="syjhs_conservation_team"><p>保存</p></div>
+                        <!--<div class="conservation " id=""><p>保存</p></div>-->
+                        <div class="submit_div">
+                            <div id="syjhs_conservation_team"><p>保存</p></div>
+                            <div id="submit_competition_syjhs" style="margin-left: 100px;"><p>提交商业计划书</p></div>
+                        </div>
 
                     </div>
                 </div>
@@ -777,7 +781,7 @@
                                             <td colspan="3"  class="choose_div">
                                                 <div><p>愿意接受大赛组委会推荐创投机构</p></div>
                                                 <div id="df_isEquity_recom">
-                                                    <input type="radio" value="是" name="equity_recom"/>是
+                                                    <input type="radio" value="是" name="equity_recom" checked="checked"/>是
                                                     <input type="radio" value="否" name="equity_recom"/>否
                                                 </div>
                                             </td>
@@ -813,7 +817,7 @@
                                             <td colspan="3"  class="choose_div">
                                                 <div><p>愿意接受大赛组委会推荐创投机构</p></div>
                                                 <div id="df_isDebt_recom">
-                                                    <input type="radio" value="是" name="debt_recom"/>是
+                                                    <input type="radio" value="是" name="debt_recom" checked="checked"/>是
                                                     <input type="radio" value="否" name="debt_recom"/>否
                                                 </div>
                                             </td>
@@ -823,7 +827,7 @@
                                             <td id="choose_crowd"><input type="checkbox" value="众筹" id="df_isCrowd_funding" onclick="change_crowd()"/>众筹</td>
                                             <td colspan="2" class="crowd_td">
                                                 <table id="crows_fund_type">
-                                                    <tr><td><input type="radio" value="债权众筹" name="crowd"/>债权众筹</td></tr>
+                                                    <tr><td><input type="radio" value="债权众筹" name="crowd" checked="checked"/>债权众筹</td></tr>
                                                     <tr><td> <input type="radio" value="股权众筹" name="crowd"/>股权众筹</td></tr>
                                                     <tr><td><input type="radio" value="回报众筹" name="crowd"/>回报众筹</td></tr>
                                                 </table>
@@ -896,9 +900,8 @@
                         </table>
                         <div class="submit_div">
                             <div id="kjjr_conservation_team"><p>保存</p></div>
-                            <div id="submit_competition" style="margin-left: 100px;"><p>提交报名</p></div>
+                            <div id="submit_competition_kjjr" style="margin-left: 100px;"><p>提交报名</p></div>
                         </div>
-
                     </div>
                 </div>
             </div>

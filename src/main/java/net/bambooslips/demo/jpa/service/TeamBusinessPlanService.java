@@ -23,7 +23,7 @@ public interface TeamBusinessPlanService {
      */
     TeamBusinessPlan update(TeamBusinessPlan update);
 
-    Long findByEntireId(Long entireId);
+    String findByEntireId(Long entireId);
 
     List<TeamBusinessPlan> findEntireProName(Long entireId);
 

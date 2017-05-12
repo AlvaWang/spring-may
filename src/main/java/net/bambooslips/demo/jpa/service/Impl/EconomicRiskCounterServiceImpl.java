@@ -1,8 +1,10 @@
 package net.bambooslips.demo.jpa.service.Impl;
 
 import net.bambooslips.demo.exception.EconomicRiskCounterNotFoundException;
+import net.bambooslips.demo.exception.EquityFinancingNotFoundException;
 import net.bambooslips.demo.exception.PostNotFoundException;
 import net.bambooslips.demo.jpa.model.EconomicRiskCounter;
+import net.bambooslips.demo.jpa.model.EquityFinancing;
 import net.bambooslips.demo.jpa.repository.EconomicRiskCounterRepository;
 import net.bambooslips.demo.jpa.service.EconomicRiskCounterService;
 import org.slf4j.Logger;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 
 /**
@@ -58,32 +61,38 @@ public class EconomicRiskCounterServiceImpl implements EconomicRiskCounterServic
     }
 
 
-    @Transactional(readOnly = true)
+//    @Transactional(readOnly = true)
+//    @Override
+//    public Long findByEntireId(Long entireId) {
+//        LOG.debug("Finding UnitEssential by id: " + entireId);
+//        List<EconomicRiskCounter> economicRiskCounter =  economicRiskCounterRepository.findByEntireId(entireId);
+//        if (economicRiskCounter != null){
+//            Long econoId = economicRiskCounter.getEconoId();
+//            return econoId;
+//        } else {
+//            return null;
+//        }
+//    }
+
+
+
     @Override
-    public Long findByEntireId(Long entireId) {
-        LOG.debug("Finding UnitEssential by id: " + entireId);
-        EconomicRiskCounter economicRiskCounter =  economicRiskCounterRepository.findByEntireId(entireId);
-        if (economicRiskCounter != null){
-            Long econoId = economicRiskCounter.getEconoId();
-            return econoId;
-        } else {
-            return null;
-        }
-    }
-    @Override
-    public EconomicRiskCounter delete(Long id) {
+    public List<EconomicRiskCounter> delete(Long id) {
 
         LOG.debug("Deleting EconomicRiskCounter with id: " + id);
 
-        EconomicRiskCounter deleted = economicRiskCounterRepository.findOne(id);
+
+        List<EconomicRiskCounter> deleted = economicRiskCounterRepository.findByEntireId(id);
 
         if (deleted == null) {
-            LOG.debug("No CompetitionAccount found with id: " + id);
-            throw new EconomicRiskCounterNotFoundException("No CompetitionAccount found with id: " + id);
+            LOG.debug("No EconomicRiskCounter found with id: " + id);
+            throw new EconomicRiskCounterNotFoundException("No EconomicRiskCounter found with id: " + id);
+        }else {
+            economicRiskCounterRepository.deleteByEntireId(id);
+
+            return deleted;
         }
 
-        economicRiskCounterRepository.delete(deleted);
-        return deleted;
     }
 
 

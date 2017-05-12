@@ -32,7 +32,9 @@ public interface CompetitionEntireService {
 
     CompetitionEntire delete(Long id);
 
-    List<CompetitionEntire> findAllEntireList(String comName);
+    List<CompetitionEntire> findAllEntireList(String comName,String workState);
+
+    String findByEntireId(Long entireId);
 
 //    Page<CompetitionEntire> findByComName(String comName);
 }

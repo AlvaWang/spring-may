@@ -59,10 +59,10 @@ public class UnitEssentialController {
      */
     @RequestMapping(value = "getEntireListByComName/{comName}", method = RequestMethod.GET)
     @ResponseBody
-    public String getEntireListByComName(@PathVariable String comName) {
+    public String getEntireListByComName(@PathVariable String comName,String workState) {
         String result;
         BaseResult baseResult = null;
-        List<CompetitionEntire> list = competitionEntireService.findAllEntireList(comName);
+        List<CompetitionEntire> list = competitionEntireService.findAllEntireList(comName,workState);
         if (list != null && list.size()>0){
             BootStrapTableResult tableResult = new BootStrapTableResult<CompetitionEntire>(list);
             baseResult = new BaseResult(true, "");
@@ -97,24 +97,17 @@ public class UnitEssentialController {
         }
     }
 
-//    @RequestMapping(value = "getEntireProNameByEntireId_team/{entireId}", method = RequestMethod.GET)
-//    @ResponseBody
-//    public String getEntireProNameByEntireId_team(@PathVariable Long entireId) {
-//        String result;
-//        BaseResult baseResult = null;
-//        List<> list = unitBusinessPlanService.findEntireProName(entireId);
-//        if (list != null && list.size()>0){
-//            BootStrapTableResult tableResult = new BootStrapTableResult<UnitBusinessPlan>(list);
-//            baseResult = new BaseResult(true, "");
-//            baseResult.setData(tableResult);
-//            result = JSON.toJSONString(baseResult);
-//            return result;
-//        }else {
-//            baseResult = new BaseResult(true, "没有查询到相关信息！");
-//            result = JSON.toJSONString(baseResult);
-//            return result;
-//        }
-//    }
+
+    @RequestMapping(value = "getEntireWorkStateById/{entireId}", method = RequestMethod.GET)
+    @ResponseBody
+    public String getEntireWorkStateById(@PathVariable Long entireId) {
+        String result = competitionEntireService.findByEntireId(entireId);
+        if (result != null && result.length()>0){
+            return result;
+        }else {
+            return null;
+        }
+    }
 
     /**
      * 查看对应作品的基本信息录入表是否插入
@@ -206,12 +199,21 @@ public class UnitEssentialController {
      */
     @RequestMapping(value = "getHistoricalByEntireId/{entireId}", method = RequestMethod.GET)
     @ResponseBody
-    public int getHistoricalByEntireId(@PathVariable Long entireId) {
-        int result = financialHistoricalService.findByEntireId(entireId);
-        if (result >0){
+    public String getHistoricalByEntireId(@PathVariable Long entireId) {
+        String result;
+        BaseResult baseResult = null;
+        List<FinancialHistorical> list = financialHistoricalService.findByEntireId(entireId);
+        if (list != null && list.size()>0){
+            BootStrapTableResult tableResult = new BootStrapTableResult<FinancialHistorical>(list);
+            baseResult = new BaseResult(true, "");
+            baseResult.setData(tableResult);
+            result = JSON.toJSONString(baseResult);
+
             return result;
         }else {
-            return 0;
+            baseResult = new BaseResult(true,"查询信息为空");
+            result = JSON.toJSONString(baseResult);
+            return result;
         }
     }
     /**
@@ -221,12 +223,21 @@ public class UnitEssentialController {
      */
     @RequestMapping(value = "getForecastingByEntireId/{entireId}", method = RequestMethod.GET)
     @ResponseBody
-    public int getForecastingByEntireId(@PathVariable Long entireId) {
-        int result = financialForecastingService.findByEntireId(entireId);
-        if (result >0){
-            return result;
+    public String  getForecastingByEntireId(@PathVariable Long entireId) {
+        String result;
+        BaseResult baseResult = null;
+        List<FinancialForecasting>  list = financialForecastingService.findByEntireId(entireId);
+        if (list != null && list.size()>0){
+            BootStrapTableResult tableResult = new BootStrapTableResult<FinancialForecasting>(list);
+            baseResult = new BaseResult(true, "");
+            baseResult.setData(tableResult);
+            result = JSON.toJSONString(baseResult);
+
+           return result;
         }else {
-            return 0;
+            baseResult = new BaseResult(true,"查询信息为空");
+            result = JSON.toJSONString(baseResult);
+            return result;
         }
     }
     /**
@@ -708,7 +719,7 @@ public class UnitEssentialController {
     }
 
     /**
-     * 增加科技金融服务需求信息
+     * gengxin科技金融服务需求信息
      */
 
     @RequestMapping(value = "/updateDemandFinancial/{dfId}",method = RequestMethod.PUT, consumes = "application/x-www-form-urlencoded")
@@ -784,6 +795,109 @@ public class UnitEssentialController {
         demandFinancial.setDfNo(dfNo);
 
         return demandFinancialService.update(demandFinancial);
+    }
+
+
+    @RequestMapping(value = "/updateFinancialHistorical/{hfinId}",method = RequestMethod.PUT, consumes = "application/x-www-form-urlencoded")
+    @ResponseBody
+    public FinancialHistorical updateFinancialHistorical(@PathVariable Long hfinId, Long hfinIncome, Long hfinCost, Long hfinProfit, Long hfinProfitRate,
+                                                         Long hfinExpenses, Long hfinOperatingProfit, Long operatingProfitRate, Long hfinBeforeTaxProfit,
+                                                         Long hfinNetMargin, Long fixedNetValue, Long hfinAssetsTotal, Long hfinLialilitesTotal, Long hfinNetAsset,String hfinYear) {
+        FinancialHistorical financialHistorical = new FinancialHistorical();
+        financialHistorical.setHfinId(hfinId);
+        financialHistorical.setHfinIncome(hfinIncome);
+        financialHistorical.setHfinCost(hfinCost);
+
+        financialHistorical.setHfinProfit(hfinProfit);
+        financialHistorical.setHfinProfitRate(hfinProfitRate);
+        financialHistorical.setHfinExpenses(hfinExpenses);
+        financialHistorical.setHfinOperatingProfit(hfinOperatingProfit);
+
+        financialHistorical.setOperatingProfitRate(operatingProfitRate);
+        financialHistorical.setHfinBeforeTaxProfit(hfinBeforeTaxProfit);
+        financialHistorical.setHfinNetMargin(hfinNetMargin);
+        financialHistorical.setFixedNetValue(fixedNetValue);
+        financialHistorical.setHfinAssetsTotal(hfinAssetsTotal);
+        financialHistorical.setHfinLialilitesTotal(hfinLialilitesTotal);
+        financialHistorical.setHfinNetAsset(hfinNetAsset);
+        financialHistorical.setHfinYear(hfinYear);
+
+
+        return financialHistoricalService.update(financialHistorical);
+    }
+
+
+
+    @RequestMapping(value = "/updateFinancialForecasting/{foreId}",method = RequestMethod.PUT, consumes = "application/x-www-form-urlencoded")
+    @ResponseBody
+    public FinancialForecasting updateFinancialForecasting(@PathVariable Long foreId, Long foreIncome, Long foreCost, Long foreTaxExpense, Long foreProfit,
+                                                         Long foreProfitRate, Long foreNetMargin,String foreYear) {
+        FinancialForecasting financialForecasting = new FinancialForecasting();
+        financialForecasting.setForeId(foreId);
+        financialForecasting.setForeCost(foreCost);
+        financialForecasting.setForeIncome(foreIncome);
+
+        financialForecasting.setForeTaxExpense(foreTaxExpense);
+        financialForecasting.setForeProfit(foreProfit);
+        financialForecasting.setForeProfitRate(foreProfitRate);
+        financialForecasting.setForeNetMargin(foreNetMargin);
+
+        financialForecasting.setForeYear(foreYear);
+
+
+        return financialForecastingService.update(financialForecasting);
+    }
+    /**
+     * 股权融资信息
+     * @return
+     */
+    @RequestMapping(value = "/updateEquity/{equityId}", method = RequestMethod.PUT, consumes = "application/x-www-form-urlencoded")
+    @ResponseBody
+    public EquityFinancing updateEquity(@PathVariable Long equityId, String equityInvestor,
+                                                         Long equityMoney,Long equityRate, Date equityDate) {
+        EquityFinancing equityFinancing = new EquityFinancing();
+        equityFinancing.setEquityId(equityId);
+        equityFinancing.setEquityInvestor(equityInvestor);
+
+        equityFinancing.setEquityMoney(equityMoney);
+        equityFinancing.setEquityRate(equityRate);
+        equityFinancing.setEquityDate(equityDate);
+
+        return equityFinancingService.update(equityFinancing);
+    }
+
+
+    /**
+     * 股权融资信息
+     * @return
+     */
+    @RequestMapping(value = "/updateDebt/{debtId}", method = RequestMethod.PUT, consumes = "application/x-www-form-urlencoded")
+    @ResponseBody
+    public DebtFinancing updateDebt(@PathVariable Long debtId, String debtLeader,
+                                        Long debtMoney,Date debtStartTime, Date debtEndTime) {
+        DebtFinancing debtFinancing = new DebtFinancing();
+        debtFinancing.setDebtId(debtId);
+        debtFinancing.setDebtLeader(debtLeader);
+
+        debtFinancing.setDebtMoney(debtMoney);
+        debtFinancing.setDebtStartTime(debtStartTime);
+        debtFinancing.setDebtEndTime(debtEndTime);
+
+        return debtFinancingService.update(debtFinancing);
+    }
+
+    /**
+     * 股权作品状态
+     * @return
+     */
+    @RequestMapping(value = "/updateEntireWorkState/{entireId}", method = RequestMethod.PUT, consumes = "application/x-www-form-urlencoded")
+    @ResponseBody
+    public CompetitionEntire updateEntireWorkState(@PathVariable Long entireId, String workState) {
+        CompetitionEntire competitionEntire = new CompetitionEntire();
+        competitionEntire.setEntireId(entireId);
+        competitionEntire.setWorkState(workState);
+
+        return competitionEntireService.updateWorkState(competitionEntire);
     }
 
     @RequestMapping(value = "/deleteEquityByEntireId/{entireId}", method = RequestMethod.DELETE)

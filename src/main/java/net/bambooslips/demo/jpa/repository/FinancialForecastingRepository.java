@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 /**
  * Created by Administrator on 2017/4/21.
@@ -19,8 +20,8 @@ public interface FinancialForecastingRepository extends JpaRepository<FinancialF
      * @return
      */
     @Query(
-            "Select count(ff.entireId) FROM FinancialForecasting ff WHERE ff.entireId=:entireId "
+            "Select ff.foreId,ff.foreYear FROM FinancialForecasting ff WHERE ff.entireId=:entireId "
     )
-    int findByEntireId(@Param("entireId") Long entireId);
+    List<FinancialForecasting> findByEntireId(@Param("entireId") Long entireId);
 
 }

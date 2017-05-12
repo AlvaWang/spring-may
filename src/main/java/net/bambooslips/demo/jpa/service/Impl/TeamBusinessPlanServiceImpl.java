@@ -63,11 +63,11 @@ public class TeamBusinessPlanServiceImpl implements TeamBusinessPlanService{
 
     @Transactional(readOnly = true)
     @Override
-    public Long findByEntireId(Long entireId) {
+    public String findByEntireId(Long entireId) {
         LOG.debug("Finding UnitEssential by id: " + entireId);
         TeamBusinessPlan teamBusinessPlan =  teamBusinessPlanRepository.findByEntireId(entireId);
         if (teamBusinessPlan != null){
-            Long tbusId = teamBusinessPlan.getTbusId();
+            String tbusId = teamBusinessPlan.getStatus();
             return tbusId;
         } else {
             return null;

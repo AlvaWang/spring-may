@@ -95,6 +95,11 @@ public class MainController {
         return "project";
     }
 
+    @RequestMapping("/projectSubmit")
+    public String projectSubmit() {
+        return "project_submit";
+    }
+
     @RequestMapping("/unitCreate")
     public String unitCreate() {
         return "unitCreate";

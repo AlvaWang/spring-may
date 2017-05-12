@@ -6,6 +6,8 @@ import net.bambooslips.demo.jpa.model.FinancialHistorical;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * Created by Administrator on 2017/4/21.
  */
@@ -20,7 +22,7 @@ public interface FinancialForecastingService {
      */
     FinancialForecasting update(FinancialForecasting update);
 
-    int findByEntireId(Long entireId);
+    List<FinancialForecasting> findByEntireId(Long entireId);
 
 
 //    UnitBusinessPlan delete(Long id);

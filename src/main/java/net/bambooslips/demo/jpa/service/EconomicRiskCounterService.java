@@ -7,6 +7,8 @@ import net.bambooslips.demo.jpa.model.TeamEssential;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * Created by Administrator on 2017/4/21.
  */
@@ -22,9 +24,9 @@ public interface EconomicRiskCounterService {
     EconomicRiskCounter update(EconomicRiskCounter update);
 
 
-    EconomicRiskCounter delete(Long id);
+    List<EconomicRiskCounter> delete(Long id);
 
-    Long findByEntireId(Long entireId);
+//    Long findByEntireId(Long entireId);
 
 //    Page<UnitEssential> findByComName(String comName);
 }

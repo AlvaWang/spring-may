@@ -997,15 +997,10 @@ var getFinancialHistoricalByEntireId = function (data) {
         },
         success: function (result) {
             // alert(result);
-            if (result>0) {
-                alert(result+"historical");
-                /**
-                 * 不存在ID创建
-                 */
-                // var data;
-                // updateUnitEssential(data)
-                // window.location.href = "/registerSuccess?id=" + result + "";
-                // comId = result;
+            console.log(result);
+            if (result != null && result.data.length>0) {
+
+
             }else {
                 /**
                  * 存在ID，更新
@@ -1471,3 +1466,4 @@ var addDemand = function (condition) {
     });
 
 }
+

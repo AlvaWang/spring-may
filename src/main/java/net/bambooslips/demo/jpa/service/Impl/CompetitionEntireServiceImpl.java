@@ -91,9 +91,22 @@ public class CompetitionEntireServiceImpl implements CompetitionEntireService{
     }
 
     @Override
-    public List<CompetitionEntire> findAllEntireList(String comName) {
-        List<CompetitionEntire> list =competitionEntireRepository.findByComName(comName);
+    public List<CompetitionEntire> findAllEntireList(String comName,String workState) {
+        List<CompetitionEntire> list =competitionEntireRepository.findByComName(comName,workState);
         return list;
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public String findByEntireId(Long entireId) {
+        LOG.debug("Finding UnitEssential by id: " + entireId);
+        CompetitionEntire competitionEntire =  competitionEntireRepository.findByEntireId(entireId);
+        if (competitionEntire != null){
+            String tbusId = competitionEntire.getWorkState();
+            return tbusId;
+        } else {
+            return null;
+        }
     }
 
 }
