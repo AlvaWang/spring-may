@@ -101,5 +101,14 @@ public class EquityFinancingServiceImpl implements EquityFinancingService{
     }
 
 
+    @Transactional(readOnly = true)
+    @Override
+    public EquityFinancing findListByEntireId(Long entireId) {
+        LOG.debug("Finding UnitEssential by id: " + entireId);
+        EquityFinancing equityFinancing =  equityFinancingRepository.findByEntireId(entireId);
+       return equityFinancing;
+    }
+
+
 
 }

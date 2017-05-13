@@ -27,5 +27,7 @@ public interface FinancialHistoricalService {
 
     List<FinancialHistorical> findByEntireId(Long entireId);
 
+    List<FinancialHistorical> findListByEntireId(Long entireId);
+
 //    UnitBusinessPlan delete(Long id);
 }

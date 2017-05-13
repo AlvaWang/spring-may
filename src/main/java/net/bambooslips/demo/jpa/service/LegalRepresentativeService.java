@@ -27,4 +27,6 @@ public interface LegalRepresentativeService {
     Long findByEntireId(Long entireId);
 
     LegalRepresentative delete(Long id);
+
+    LegalRepresentative findListByEntireId(Long entireId);
 }

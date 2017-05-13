@@ -29,5 +29,7 @@ public interface UnitEssentialService {
 
     Long findByEntireId(Long entireId);
 
+    UnitEssential findListByEntireId(Long entireId);
+
 //    Page<UnitEssential> findByComName(String comName);
 }

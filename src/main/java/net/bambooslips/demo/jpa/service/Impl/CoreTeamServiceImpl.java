@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 
 /**
@@ -93,6 +94,14 @@ public class CoreTeamServiceImpl implements CoreTeamService{
         } else {
             return 0;
         }
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public List<CoreTeam> findListByEntireId(Long entireId) {
+        LOG.debug("Finding patentList by id: " + entireId);
+        List<CoreTeam> list =  coreTeamRepository.findListByEntireId(entireId);
+        return list;
     }
 
 

@@ -24,4 +24,9 @@ public interface FinancialForecastingRepository extends JpaRepository<FinancialF
     )
     List<FinancialForecasting> findByEntireId(@Param("entireId") Long entireId);
 
+    @Query(
+            "Select ff FROM FinancialForecasting ff WHERE ff.entireId=:entireId "
+    )
+    List<FinancialForecasting> findListByEntireId(@Param("entireId") Long entireId);
+
 }

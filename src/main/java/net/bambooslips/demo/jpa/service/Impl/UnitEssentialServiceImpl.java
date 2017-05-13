@@ -76,6 +76,14 @@ public class UnitEssentialServiceImpl implements UnitEssentialService{
         }
     }
 
+    @Transactional(readOnly = true)
+    @Override
+    public UnitEssential findListByEntireId(Long entireId) {
+        LOG.debug("Finding UnitEssential by id: " + entireId);
+        UnitEssential unitEssential =  unitEssentialRepository.findByEntireId(entireId);
+       return  unitEssential;
+    }
+
     @Override
     public UnitEssential delete(Long id) {
         return null;

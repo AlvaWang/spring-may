@@ -464,60 +464,223 @@ $("#jbxx_conservation").click(function () {
         || $("#research_num").val() == "" || $("#deputy_num").val() == "" ||
         $("#office_address").val() == ""
         || $("#power_type").val() == "" || $("#corporation_summary").text() == "" ||
-        $("#te_address").val() == "" || $("#te_postalcode").val() == "" ||
-        $("#post_code input:checked").val() == "" || $("#technical_sources input:checked") == ""){
+        $("#post_code input:checked").val() == "" || $("#technical_sources input:checked").val() == ""){
 
         alert("请将基本信息填写完整！")
-    }else {
-        // if($("#corporation_summary").text().length>500){
-        //     alert("企业概要输入文字不得超过五百字，请更改！")
-        // }else {
-        //
-        // }
-        if($("#legal_name").val() =="" || $("#legal_job").val() =="" || $("#legal_office_tel").val() =="" ||
-            $("#legal_mobile_tel").val() =="" || $("#legal_email").val() =="" ){
-            alert("请将法定代表人信息填写完整")
-        }else {
-            if($("#contacts_name").val() =="" || $("#contacts_job").val() =="" || $("#contacts_office_tel").val() =="" ||
-                $("#contacts_mobile_tel").val() =="" || $("#contacts_email").val() =="" ){
-                alert("请将联系人信息填写完整")
+    }
+    else {
+        if($("#ue_goal input:checked").val() == "其他"){
+            if($("#ueGoal").val() == ""){
+                alert("请填写参赛目的")
             }else {
-                var patent_choose=$("#patent_choose input[type='checkbox']").is(':checked');
-                // alert(patent_choose);
-                if(patent_choose == true){
-                    for(var i=1;i<=patent;i++){
-
-                        var patentNum = $("#patent_num_"+i).val();
-                        var patentType =$("#patent_type_"+i).val();
-                        // alert(patentType);
-                        var patentName = $("#patent_name_"+i).val();
-                        var patentDate = $("#patent_date_"+i).val();
-                        if(patentNum == "" || patentType == "" || patentNum ==""
-                            || patentDate == ""
-                        ){
-                            alert("请将专利相关信息补充完整")
-                        }else {
-                            var data = {
-                                ueId:null,
-                                patentId:patentNum,
-                                entireId:entireId,
-                                teId:null,
-                                patentName:patentName,
-                                patentType:patentType,
-                                patentDate:comTime(patentDate)
-                            }
-                            addPatentList(data);
-                            getUnitEssentialByEntireId(entireId,i);
-                            // getLegalRepresentativeByEntireId(entireId,i);
-                            // getContactsByEntireId(entireId,i);
-
+                if( $("#post_code input:checked").val()  == "其他"){
+                    if($("#powerType").val() == ""){
+                        alert("请填写其他核心技术内容")
+                    }else {
+                        if($("#legal_name").val() =="" || $("#legal_job").val() =="" || $("#legal_office_tel").val() =="" ||
+                            $("#legal_mobile_tel").val() =="" || $("#legal_email").val() =="" ){
+                            alert("请将法定代表人信息填写完整")
                         }
+                        else {
+                            if($("#contacts_name").val() =="" || $("#contacts_job").val() =="" || $("#contacts_office_tel").val() =="" ||
+                                $("#contacts_mobile_tel").val() =="" || $("#contacts_email").val() =="" ){
+                                alert("请将联系人信息填写完整")
+                            }else {
+                                var patent_choose=$("#patent_choose input[type='checkbox']").is(':checked');
+                                // alert(patent_choose);
+                                if(patent_choose == true){
+                                    for(var i=1;i<=patent;i++){
 
+                                        var patentNum = $("#patent_num_"+i).val();
+                                        var patentType =$("#patent_type_"+i).val();
+                                        // alert(patentType);
+                                        var patentName = $("#patent_name_"+i).val();
+                                        var patentDate = $("#patent_date_"+i).val();
+                                        if(patentNum == "" || patentType == "" || patentNum ==""
+                                            || patentDate == ""
+                                        ){
+                                            alert("请将专利相关信息补充完整")
+                                        }else {
+                                            var data = {
+                                                ueId:null,
+                                                patentId:patentNum,
+                                                entireId:entireId,
+                                                teId:null,
+                                                patentName:patentName,
+                                                patentType:patentType,
+                                                patentDate:comTime(patentDate)
+                                            }
+                                            addPatentList(data);
+                                            getUnitEssentialByEntireId(entireId,i);
+                                            // getLegalRepresentativeByEntireId(entireId,i);
+                                            // getContactsByEntireId(entireId,i);
+
+                                        }
+
+                                    }
+                                }else {
+                                    var unitEssencialData = conditionEssential();
+                                    // alert(data);
+                                    addUnitEssential(unitEssencialData);
+                                }
+                            }
+                        }
                     }
+                }
+                else {
+                    if($("#legal_name").val() =="" || $("#legal_job").val() =="" || $("#legal_office_tel").val() =="" ||
+                        $("#legal_mobile_tel").val() =="" || $("#legal_email").val() =="" ){
+                        alert("请将法定代表人信息填写完整")
+                    }
+                    else {
+                        if($("#contacts_name").val() =="" || $("#contacts_job").val() =="" || $("#contacts_office_tel").val() =="" ||
+                            $("#contacts_mobile_tel").val() =="" || $("#contacts_email").val() =="" ){
+                            alert("请将联系人信息填写完整")
+                        }else {
+                            var patent_choose=$("#patent_choose input[type='checkbox']").is(':checked');
+                            // alert(patent_choose);
+                            if(patent_choose == true){
+                                for(var i=1;i<=patent;i++){
+
+                                    var patentNum = $("#patent_num_"+i).val();
+                                    var patentType =$("#patent_type_"+i).val();
+                                    // alert(patentType);
+                                    var patentName = $("#patent_name_"+i).val();
+                                    var patentDate = $("#patent_date_"+i).val();
+                                    if(patentNum == "" || patentType == "" || patentNum ==""
+                                        || patentDate == ""
+                                    ){
+                                        alert("请将专利相关信息补充完整")
+                                    }else {
+                                        var data = {
+                                            ueId:null,
+                                            patentId:patentNum,
+                                            entireId:entireId,
+                                            teId:null,
+                                            patentName:patentName,
+                                            patentType:patentType,
+                                            patentDate:comTime(patentDate)
+                                        }
+                                        addPatentList(data);
+                                        getUnitEssentialByEntireId(entireId,i);
+                                        // getLegalRepresentativeByEntireId(entireId,i);
+                                        // getContactsByEntireId(entireId,i);
+
+                                    }
+
+                                }
+                            }else {
+                                var unitEssencialData = conditionEssential();
+                                // alert(data);
+                                addUnitEssential(unitEssencialData);
+                            }
+                        }
+                    }
+                }
+            }
+        }else {
+            if( $("#post_code input:checked").val()  == "其他"){
+                if($("#powerType").val() == ""){
+                    alert("请填写其他核心技术内容")
                 }else {
-                    var unitEssencialData = conditionEssential();
-                    // alert(data);
-                    addUnitEssential(unitEssencialData);
+                    if($("#legal_name").val() =="" || $("#legal_job").val() =="" || $("#legal_office_tel").val() =="" ||
+                        $("#legal_mobile_tel").val() =="" || $("#legal_email").val() =="" ){
+                        alert("请将法定代表人信息填写完整")
+                    }
+                    else {
+                        if($("#contacts_name").val() =="" || $("#contacts_job").val() =="" || $("#contacts_office_tel").val() =="" ||
+                            $("#contacts_mobile_tel").val() =="" || $("#contacts_email").val() =="" ){
+                            alert("请将联系人信息填写完整")
+                        }else {
+                            var patent_choose=$("#patent_choose input[type='checkbox']").is(':checked');
+                            // alert(patent_choose);
+                            if(patent_choose == true){
+                                for(var i=1;i<=patent;i++){
+
+                                    var patentNum = $("#patent_num_"+i).val();
+                                    var patentType =$("#patent_type_"+i).val();
+                                    // alert(patentType);
+                                    var patentName = $("#patent_name_"+i).val();
+                                    var patentDate = $("#patent_date_"+i).val();
+                                    if(patentNum == "" || patentType == "" || patentNum ==""
+                                        || patentDate == ""
+                                    ){
+                                        alert("请将专利相关信息补充完整")
+                                    }else {
+                                        var data = {
+                                            ueId:null,
+                                            patentId:patentNum,
+                                            entireId:entireId,
+                                            teId:null,
+                                            patentName:patentName,
+                                            patentType:patentType,
+                                            patentDate:comTime(patentDate)
+                                        }
+                                        addPatentList(data);
+                                        getUnitEssentialByEntireId(entireId,i);
+                                        // getLegalRepresentativeByEntireId(entireId,i);
+                                        // getContactsByEntireId(entireId,i);
+
+                                    }
+
+                                }
+                            }else {
+                                var unitEssencialData = conditionEssential();
+                                // alert(data);
+                                addUnitEssential(unitEssencialData);
+                            }
+                        }
+                    }
+                }
+            }
+            else {
+                if($("#legal_name").val() =="" || $("#legal_job").val() =="" || $("#legal_office_tel").val() =="" ||
+                    $("#legal_mobile_tel").val() =="" || $("#legal_email").val() =="" ){
+                    alert("请将法定代表人信息填写完整")
+                }
+                else {
+                    if($("#contacts_name").val() =="" || $("#contacts_job").val() =="" || $("#contacts_office_tel").val() =="" ||
+                        $("#contacts_mobile_tel").val() =="" || $("#contacts_email").val() =="" ){
+                        alert("请将联系人信息填写完整")
+                    }else {
+                        var patent_choose=$("#patent_choose input[type='checkbox']").is(':checked');
+                        // alert(patent_choose);
+                        if(patent_choose == true){
+                            for(var i=1;i<=patent;i++){
+
+                                var patentNum = $("#patent_num_"+i).val();
+                                var patentType =$("#patent_type_"+i).val();
+                                // alert(patentType);
+                                var patentName = $("#patent_name_"+i).val();
+                                var patentDate = $("#patent_date_"+i).val();
+                                if(patentNum == "" || patentType == "" || patentNum ==""
+                                    || patentDate == ""
+                                ){
+                                    alert("请将专利相关信息补充完整")
+                                }else {
+                                    var data = {
+                                        ueId:null,
+                                        patentId:patentNum,
+                                        entireId:entireId,
+                                        teId:null,
+                                        patentName:patentName,
+                                        patentType:patentType,
+                                        patentDate:comTime(patentDate)
+                                    }
+                                    addPatentList(data);
+                                    getUnitEssentialByEntireId(entireId,i);
+                                    // getLegalRepresentativeByEntireId(entireId,i);
+                                    // getContactsByEntireId(entireId,i);
+
+                                }
+
+                            }
+                        }else {
+                            var unitEssencialData = conditionEssential();
+                            // alert(data);
+                            addUnitEssential(unitEssencialData);
+                        }
+                    }
                 }
             }
         }

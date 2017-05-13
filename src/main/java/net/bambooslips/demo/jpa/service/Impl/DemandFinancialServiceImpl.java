@@ -97,4 +97,13 @@ public class DemandFinancialServiceImpl implements DemandFinancialService{
         }
     }
 
+
+
+    @Transactional(readOnly = true)
+    @Override
+    public DemandFinancial findListByEntireId(Long entireId) {
+        LOG.debug("Finding demandFinancial by id: " + entireId);
+        DemandFinancial demandFinancial =  demandFinancialRepository.findByEntireId(entireId);
+        return demandFinancial;
+    }
 }

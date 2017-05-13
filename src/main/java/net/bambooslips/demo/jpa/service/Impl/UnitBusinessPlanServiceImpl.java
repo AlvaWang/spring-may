@@ -79,5 +79,12 @@ public class UnitBusinessPlanServiceImpl implements UnitBusinessPlanService{
         return list;
     }
 
+    @Transactional(readOnly = true)
+    @Override
+    public UnitBusinessPlan findListByEntireId(Long entireId) {
+        LOG.debug("Finding UnitEssential by id: " + entireId);
+        UnitBusinessPlan unitBusinessPlan =  unitBusinessPlanRepository.findByEntireId(entireId);
+        return unitBusinessPlan;
+    }
 
 }

@@ -76,6 +76,14 @@ public class LegalRepresentativeServiceImpl implements LegalRepresentativeServic
         }
     }
 
+    @Transactional(readOnly = true)
+    @Override
+    public  LegalRepresentative findListByEntireId(Long entireId) {
+        LOG.debug("Finding legalRepresentative by id: " + entireId);
+        LegalRepresentative legalRepresentative =  legalRepresentativeRepository.findByEntireId(entireId);
+        return legalRepresentative;
+    }
+
     @Override
     public LegalRepresentative delete(Long id) {
         return null;

@@ -3,6 +3,7 @@ package net.bambooslips.demo.jpa.service;
 import net.bambooslips.demo.exception.DebtFinancingNotFoundException;
 import net.bambooslips.demo.exception.EquityFinancingNotFoundException;
 import net.bambooslips.demo.jpa.model.DebtFinancing;
+import net.bambooslips.demo.jpa.model.DemandFinancial;
 import net.bambooslips.demo.jpa.model.EquityFinancing;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,4 +26,6 @@ public interface DebtFinancingService {
     DebtFinancing delete(Long id);
 
     Long findByEntireId(Long entireId);
+
+    DebtFinancing findListByEntireId(Long entireId);
 }

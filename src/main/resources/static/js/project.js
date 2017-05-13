@@ -71,6 +71,10 @@ var getEntireProName_unit = function (condition) {
                     var html_ul = "<li id='unit_list_"+condition+"'>"+resultData[i]+"</li>";//id是entireId
                     // alert(html_ul);
                     $("#unit_project_list ul").append(html_ul);
+
+                    $("#unit_list_"+condition).bind('click',function () {
+                        window.location.href = "/unitTable?entireId=" + condition + "";
+                    })
                 }
             }
 
@@ -99,6 +103,10 @@ var getEntireProName_team = function (condition) {
                     var html_ul = "<li id='team_list_"+condition+"'>"+resultData[i]+"</li>";
                     // alert(html_ul);
                     $("#team_project_list ul").append(html_ul);
+
+                    $("#team_list_"+condition).bind('click',function () {
+                        // window.location.href = "/unitCreate?entireId=" + result + "";
+                    })
                 }
             }
         }

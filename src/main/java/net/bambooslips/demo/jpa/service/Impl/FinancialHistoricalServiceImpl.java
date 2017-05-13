@@ -74,4 +74,12 @@ public class FinancialHistoricalServiceImpl implements FinancialHistoricalServic
         }
     }
 
+    @Transactional(readOnly = true)
+    @Override
+    public  List<FinancialHistorical> findListByEntireId(Long entireId) {
+        LOG.debug("Finding patentList by id: " + entireId);
+        List<FinancialHistorical> list =  financialHistoricalRepository.findListByEntireId(entireId);
+       return list;
+    }
+
 }

@@ -74,6 +74,17 @@ public class ContactsServiceImpl implements ContactsService{
         }
     }
 
+
+
+    @Transactional(readOnly = true)
+    @Override
+    public Contacts findListByEntireId(Long entireId) {
+        LOG.debug("Finding UnitEssential by id: " + entireId);
+        Contacts contacts =  contactsRepository.findByEntireId(entireId);
+       return contacts;
+    }
+
+
     @Override
     public Contacts delete(Long id) {
         return null;

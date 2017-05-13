@@ -92,6 +92,14 @@ public class DebtFinancingServiceImpl implements DebtFinancingService{
         }
     }
 
+    @Transactional(readOnly = true)
+    @Override
+    public DebtFinancing findListByEntireId(Long entireId) {
+        LOG.debug("Finding UnitEssential by id: " + entireId);
+        DebtFinancing debtFinancing =  debtFinancingRepository.findByEntireId(entireId);
+        return debtFinancing;
+    }
+
 
 
 

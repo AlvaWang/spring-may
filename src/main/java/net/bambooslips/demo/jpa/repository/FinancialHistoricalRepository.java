@@ -25,4 +25,9 @@ public interface FinancialHistoricalRepository extends JpaRepository<FinancialHi
     )
     List<FinancialHistorical> findByEntireId(@Param("entireId") Long entireId);
 
+    @Query(
+            "Select fh FROM FinancialHistorical fh WHERE fh.entireId=:entireId "
+    )
+    List<FinancialHistorical> findListByEntireId(@Param("entireId") Long entireId);
+
 }

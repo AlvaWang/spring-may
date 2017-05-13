@@ -24,6 +24,8 @@ public interface FinancialForecastingService {
 
     List<FinancialForecasting> findByEntireId(Long entireId);
 
+    List<FinancialForecasting> findListByEntireId(Long entireId);
+
 
 //    UnitBusinessPlan delete(Long id);
 }

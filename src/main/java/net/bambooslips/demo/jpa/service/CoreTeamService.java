@@ -7,6 +7,8 @@ import net.bambooslips.demo.jpa.model.PatentList;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * Created by Administrator on 2017/4/21.
  */
@@ -25,4 +27,6 @@ public interface CoreTeamService {
     CoreTeam delete(Long id);
 
     int findByEntireId(Long entireId);
+
+    List<CoreTeam> findListByEntireId(Long entireId);
 }
