@@ -27,6 +27,8 @@ public interface TeamBusinessPlanService {
 
     List<TeamBusinessPlan> findEntireProName(Long entireId);
 
+    TeamBusinessPlan findListByEntireId(Long entireId);
+
 
 //    UnitBusinessPlan delete(Long id);
 }

@@ -4,6 +4,7 @@ import net.bambooslips.demo.exception.EducationExperionceNotFoundException;
 import net.bambooslips.demo.exception.PostNotFoundException;
 import net.bambooslips.demo.exception.TeamEssentialNotFoundException;
 import net.bambooslips.demo.jpa.model.CompetitionAccount;
+import net.bambooslips.demo.jpa.model.EconomicRiskCounter;
 import net.bambooslips.demo.jpa.model.EducationExperionce;
 import net.bambooslips.demo.jpa.model.TeamEssential;
 import net.bambooslips.demo.jpa.repository.EducationExperionceRepository;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 
 /**
@@ -53,6 +55,18 @@ public class EducationExperionceServiceImpl implements EducationExperionceServic
 
         educationExperionceRepository.delete(deleted);
         return deleted;
+    }
+
+    @Override
+    public List<EducationExperionce> findListByEntireId(Long ctId) {
+
+        LOG.debug("Deleting EconomicRiskCounter with id: " + ctId);
+
+
+        List<EducationExperionce> list = educationExperionceRepository.findListByEntireId(ctId);
+
+        return list;
+
     }
 
 

@@ -25,4 +25,6 @@ public interface TeamResponsiblePersonService {
     TeamResponsiblePerson delete(Long id);
 
     Long findByEntireId(Long entireId);
+
+    TeamResponsiblePerson findListByEntireId(Long entireId);
 }

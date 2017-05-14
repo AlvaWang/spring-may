@@ -73,6 +73,15 @@ public class TeamEssentialServiceImpl implements TeamEssentialService{
         }
     }
 
+
+    @Transactional(readOnly = true)
+    @Override
+    public TeamEssential findListByEntireId(Long entireId) {
+        LOG.debug("Finding teamEssential by id: " + entireId);
+        TeamEssential teamEssential=  teamEssentialRepository.findByEntireId(entireId);
+        return teamEssential;
+    }
+
     @Override
     public TeamEssential delete(Long id) {
         return null;

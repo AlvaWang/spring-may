@@ -55,6 +55,7 @@
                     <div class="tContent">
                         <table>
                             <tbody>
+                            <tr hidden="hidden"><td><input type="text" id="teId"/></td></tr>
                             <tr>
                                 <td class="t_title">团队名称</td>
                                 <td class="t_middle" colspan="3">
@@ -99,7 +100,7 @@
                                         <input type="radio" name="field" value="新能源与新动力"/>新能源与新动力
                                         <input type="radio"  name="field" value="生物医药"/>生物医药
                                         <input type="radio" name="field" value="节能环保"/>节能环保
-                                        <input type="radio"  name="field" value="其他"/>其他
+                                        <input type="radio"  name="field" value="其它"/>其它
                                     </div>
 
                                 </td>
@@ -148,6 +149,7 @@
                                 <td class="t_title">团队负责人</td>
                                 <td colspan="3" class="t_middle  t_team">
                                     <table>
+                                        <tr hidden="hidden"><td><input type="text" id="teamId"/></td></tr>
                                         <tr>
                                             <td class="t_table_title">姓名</td><td><input type="text" id="res_name"/></td>
                                             <td class="t_table_title">职位</td><td><input type="text" id="res_job"/></td>
@@ -185,60 +187,20 @@
                                                             <div><img src="../static/img/shanchu.png" th:src="@{/img/shanchu.png}" alt="" id="reduce_img" onclick="reduceImg(num=num-2)"/>减少</div>
                                                         </td>
                                                     </tr>
-                                                    <tr id="patent_1">
-                                                        <td>专利名称</td>
-                                                        <td>专利类型*</td>
-                                                        <td>专利号</td>
-                                                        <td>获得时间选择</td>
-                                                        <td>核验</td>
-                                                    </tr>
-                                                    <tr id="patent_2">
-                                                        <td><input type="text" id="patent_name_1"/></td>
-                                                        <td>
-                                                            <!--<input type="text" id="patent_type_1"/>-->
-                                                            <select id="patent_type_1">
-                                                                <option value="1">发明专利</option>
-                                                                <option value="2">实用新型专利</option>
-                                                                <option value="3">外观设计</option>
-                                                            </select>
-                                                        </td>
-                                                        <td><input type="text" id="patent_num_1"/></td>
-                                                        <td><input type="text" id="patent_date_1"/></td>
-                                                        <td><input type="text" id="patent_verification_1"/></td>
-                                                    </tr>
-                                                    <tr id="patent_3">
-                                                        <td>专利名称</td>
-                                                        <td>专利类型*</td>
-                                                        <td>专利号</td>
-                                                        <td>获得时间选择</td>
-                                                        <td>核验</td>
-                                                    </tr>
-                                                    <tr id="patent_4">
-                                                        <td><input type="text" id="patent_name_2"/></td>
-                                                        <td>
-                                                            <select id="patent_type_2">
-                                                            <option value="1">发明专利</option>
-                                                            <option value="2">实用新型专利</option>
-                                                            <option value="3">外观设计</option>
-                                                        </select>
-                                                        </td>
-                                                        <td><input type="text" id="patent_num_2"/></td>
-                                                        <td><input type="text" id="patent_date_2"/></td>
-                                                        <td><input type="text" id="patent_verification_2"/></td>
-                                                    </tr>
+
                                                 </table>
                                             </td>
                                         </tr>
                                         <tr class="">
                                             <td colspan="2">
                                                 <div id="post_code">
-                                                    <input type="radio" value="软件著作权"/>软件著作权
-                                                    <input type="radio" value="专有技术"/>专有技术
-                                                    <input type="radio" value="药品批文"/>药品批文
-                                                    <input type="radio" value="医疗器械批文"/>医疗器械批文
-                                                    <input type="radio" value="创新商业模式"/>创新商业模式
-                                                    <input type="radio" value="集成电路布图"/>集成电路布图
-                                                    <input type="radio" value="其他"/>其他
+                                                    <input type="radio" value="软件著作权" name="code"/>软件著作权
+                                                    <input type="radio" value="专有技术"  name="code"/>专有技术
+                                                    <input type="radio" value="药品批文"  name="code"/>药品批文
+                                                    <input type="radio" value="医疗器械批文"  name="code"/>医疗器械批文
+                                                    <input type="radio" value="创新商业模式"  name="code"/>创新商业模式
+                                                    <input type="radio" value="集成电路布图"  name="code"/>集成电路布图
+                                                    <input type="radio" value="其它"  name="code"/>其它
                                                     <input type="text" id="powerType"/>
                                                 </div>
                                             </td>
@@ -247,10 +209,10 @@
                                             <td colspan="2">
                                                 <div id="technical_sources">
                                                     技术来源：
-                                                    <input type="radio" value="独立知识产权"/>独立知识产权
-                                                    <input type="radio" value="合作研发"/>合作研发
-                                                    <input type="radio" value="购买技术"/>购买技术
-                                                    <input type="radio" value="其他"/>其他
+                                                    <input type="radio" value="独立知识产权" name="source"/>独立知识产权
+                                                    <input type="radio" value="合作研发" name="source"/>合作研发
+                                                    <input type="radio" value="购买技术" name="source"/>购买技术
+                                                    <input type="radio" value="其它" name="source"/>其它
                                                     <!--<input type="checkbox" value="其他"/>其他-->
                                                     <!--<input type="text"/>-->
                                                 </div>
@@ -298,199 +260,7 @@
                                             </td>
 
                                         </tr>
-                                        <tr id="core_1">
-                                            <td>姓名</td>
-                                            <td>性别</td>
-                                            <td>年龄</td>
-                                            <td>职位</td>
-                                            <td>最高学历</td>
-                                            <td>留学经历</td>
-                                            <td>入选国家千人计划</td>
-                                            <td>入选时间</td>
-                                            <td>大学生创业</td>
-                                        </tr>
-                                        <tr id="core_2">
-                                            <td><input type="text" id="core_name_1"/></td>
-                                            <td><select id="core_sex_1">
-                                                <option value="男">男</option>
-                                                <option value="女">女</option>
-                                            </select></td>
-                                            <td><input type="number" id="core_age_1"/></td>
-                                            <td><input type="text" id="core_job_1"/></td>
-                                            <td>
-                                                <select id="core_education_1">
-                                                <option value="学士">学士</option>
-                                                <option value="硕士">硕士</option>
-                                                <option value="博士">博士</option>
-                                                </select>
-                                            </td>
-                                            <td><input type="text" id="core_experience_1"/></td>
-                                            <td><select id="core_millennium_1" onclick="change_millen(1)">
-                                                <option value="是">是</option>
-                                                <option value="否">否</option>
-                                            </select></td>
-                                            <td  id="millennium_date_1"><input type="text" id="core_millennium_date_1"/></td>
-                                            <td><select id="ct_university_business_1"><option value="是">是</option>
-                                                <option value="否">否</option></select></td>
-                                        </tr>
-                                        <tr id="core_3">
-                                            <td colspan="9">
-                                                <table id="append_education_1">
-                                                    <tr><td colspan="">教育经历（可增加）</td></tr>
-                                                    <tr class="img_tr">
-                                                        <td colspan="3" >
-                                                            <div><img src="../static/img/zengjia.png" th:src="@{/img/zengjia.png}" alt="" id="addEducationImg3"/>增加</div>
-                                                            <!--<div><img src="../static/img/bianji.png" th:src="@{/img/bianji.png}" alt="" />编辑</div>-->
-                                                            <div><img src="../static/img/shanchu.png" th:src="@{/img/shanchu.png}" alt="" onclick="reduceEducationImg3(1)"/>减少</div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr><td>学历</td><td>毕业院校</td><td>专业</td></tr>
-                                                    <tr  id="education_3_1_1">
-                                                        <td><input type="text" id="edu_background_3_1_1"/></td>
-                                                        <td><input type="text" id="edu_graduate_school_3_1_1"/>
-                                                        </td><td><input type="text" id="edu_major_3_1_1"/></td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-                                        </tr>
-                                        <tr id="core_4">
-                                            <td colspan="9">主要工作经历/主要成就</td>
-                                        </tr>
-                                        <tr id="core_5">
-                                            <td colspan="9">
-                                                <textarea id="main_achive_1"></textarea>
-                                            </td>
-                                        </tr>
 
-
-                                        <tr id="core_6">
-                                            <td>姓名</td>
-                                            <td>性别</td>
-                                            <td>年龄</td>
-                                            <td>职位</td>
-                                            <td>最高学历</td>
-                                            <td>留学经历</td>
-                                            <td>入选国家千人计划</td>
-                                            <td>入选时间</td>
-                                            <td>大学生创业</td>
-                                        </tr>
-                                        <tr id="core_7">
-                                            <td><input type="text" id="core_name_2"/></td>
-                                            <td><select id="core_sex_1" >
-                                                <option value="男">男</option>
-                                                <option value="女">女</option>
-                                            </select></td>
-                                            <td><input type="number" id="core_age_2"/></td>
-                                            <td><input type="text" id="core_job_2"/></td>
-                                            <td>
-                                                <select id="core_education_2">
-                                                    <option value="学士">学士</option>
-                                                    <option value="硕士">硕士</option>
-                                                    <option value="博士">博士</option>
-                                                </select>
-                                            </td>
-                                            <td><input type="text" id="core_experience_2"/></td>
-                                            <td><select id="core_millennium_2" onclick="change_millen(2)">
-                                                <option value="是">是</option>
-                                                <option value="否">否</option>
-                                            </select></td>
-                                            <td id="millennium_date_2"><input type="text" id="core_millennium_date_2"/></td>
-                                            <td><select id="ct_university_business_2"><option value="是">是</option>
-                                                <option value="否">否</option></select></td>
-                                        </tr>
-                                        <tr id="core_8">
-                                            <td colspan="9">
-                                                <table id="append_education_2">
-                                                    <tr><td colspan="3">教育经历（可增加）</td></tr>
-                                                    <tr class="img_tr">
-                                                        <td colspan="3" >
-                                                            <div><img src="../static/img/zengjia.png" th:src="@{/img/zengjia.png}" alt="" id="addEducationImg8"/>增加</div>
-                                                            <!--<div><img src="../static/img/bianji.png" th:src="@{/img/bianji.png}" alt="" />编辑</div>-->
-                                                            <div><img src="../static/img/shanchu.png" th:src="@{/img/shanchu.png}" alt="" onclick="reduceEducationImg3(2)"/>减少</div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr><td>学历</td><td>毕业院校</td><td>专业</td></tr>
-                                                    <tr id="education_8_2_1">
-                                                        <td><input type="text" id="edu_background_8_2_1"/></td>
-                                                        <td><input type="text" id="edu_graduate_school_8_2_1"/></td>
-                                                        <td><input type="text" id="edu_major_8_2_1"/></td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-                                        </tr>
-                                        <tr id="core_9">
-                                            <td colspan="9">主要工作经历/主要成就</td>
-                                        </tr>
-                                        <tr id="core_10">
-                                            <td colspan="9">
-                                                <textarea id="main_achive_2"></textarea>
-                                            </td>
-                                        </tr>
-
-
-                                        <tr id="core_11">
-                                            <td>姓名</td>
-                                            <td>性别</td>
-                                            <td>年龄</td>
-                                            <td>职位</td>
-                                            <td>最高学历</td>
-                                            <td>留学经历</td>
-                                            <td>入选国家千人计划</td>
-                                            <td>入选时间</td>
-                                            <td>大学生创业</td>
-                                        </tr>
-                                        <tr id="core_12">
-                                            <td><input type="text" id="core_name_3"/></td>
-                                            <td><select id="core_sex_1">
-                                                <option value="男">男</option>
-                                                <option value="女">女</option>
-                                            </select></td>
-                                            <td><input type="number" id="core_age_3"/></td>
-                                            <td><input type="text" id="core_job_3"/></td>
-                                            <td>
-                                                <select id="core_education_3">
-                                                    <option value="学士">学士</option>
-                                                    <option value="硕士">硕士</option>
-                                                    <option value="博士">博士</option>
-                                                </select>
-                                            </td>
-                                            <td><input type="text" id="core_experience_3"/></td>
-                                            <td><select id="core_millennium_1" onclick="change_millen(3)">
-                                                <option value="是">是</option>
-                                                <option value="否">否</option>
-                                            </select></td>
-                                            <td id="millennium_date_3"><input type="text" id="core_millennium_date_3"/></td>
-                                            <td><select id="ct_university_business_1"><option value="是">是</option>
-                                                <option value="否">否</option></select></td>
-                                        </tr>
-                                        <tr id="core_13">
-                                            <td colspan="9">
-                                                <table id="append_education_3">
-                                                    <tr><td colspan="3">教育经历（可增加）</td></tr>
-                                                    <tr class="img_tr">
-                                                        <td colspan="3">
-                                                            <div><img src="../static/img/zengjia.png" th:src="@{/img/zengjia.png}" alt="" id="addEducationImg13"/>增加</div>
-                                                            <!--<div><img src="../static/img/bianji.png" th:src="@{/img/bianji.png}" alt="" />编辑</div>-->
-                                                            <div><img src="../static/img/shanchu.png" th:src="@{/img/shanchu.png}" alt="" onclick="reduceEducationImg3(3)"/>减少</div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr><td>学历</td><td>毕业院校</td><td>专业</td></tr>
-                                                    <tr id="education_13_3_1">
-                                                        <td><input type="text" id="edu_background_13_3_1"/></td>
-                                                        <td><input type="text" id="edu_graduate_school_13_3_1"/></td>
-                                                        <td><input type="text" id="edu_major_13_3_1"/></td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-                                        </tr>
-                                        <tr id="core_14">
-                                            <td colspan="9">主要工作经历/主要成就</td>
-                                        </tr>
-                                        <tr id="core_15">
-                                            <td colspan="9">
-                                                <textarea id="main_achive_3"></textarea>
-                                            </td>
-                                        </tr>
                                         </tbody>
                                     </table>
                                 </td>
@@ -927,6 +697,6 @@
 <script src="../static/lib/js/lightbox.min.js" th:src="@{/lib/js/lightbox.min.js}"></script>
 <script src="../static/js/public.js" th:src="@{/js/public.js}"></script>
 <script src="../static/js/comeTime.js" th:src="@{/js/comeTime.js}"></script>
-<script src="../static/js/teamCreate.js" th:src="@{/js/teamCreate.js}"></script>
+<script src="../static/js/teamTable.js" th:src="@{/js/teamTable.js}"></script>
 </body>
 </html>

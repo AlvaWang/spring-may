@@ -900,6 +900,53 @@ public class UnitEssentialController {
         return competitionEntireService.updateWorkState(competitionEntire);
     }
 
+    /**
+     * 修改专利信息
+     * @return
+     */
+    @RequestMapping(value = "/updatePatentList/{id}", method = RequestMethod.PUT, consumes = "application/x-www-form-urlencoded")
+    @ResponseBody
+    public PatentList updatePatentList(@PathVariable Long id, String patentId,
+                                   String patentName,String patentType, Date patentDate,String patentVerification) {
+        PatentList patentList = new PatentList();
+        patentList.setId(id);
+        patentList.setPatentName(patentName);
+
+        patentList.setPatentType(patentType);
+        patentList.setPatentDate(patentDate);
+        patentList.setPatentId(patentId);
+        patentList.setPatentVerification(patentVerification);
+
+        return patentListService.update(patentList);
+    }
+
+    /**
+     * 修改专利信息
+     * @return
+     */
+    @RequestMapping(value = "/updateCoreTeam/{ctId}", method = RequestMethod.PUT, consumes = "application/x-www-form-urlencoded")
+    @ResponseBody
+    public CoreTeam updateCoreTeam(@PathVariable Long ctId, String ctName,
+                                       String ctSex,Long ctAge, String ctJob,String ctHigbestEducation,String ctStudyExperience,String ctMainAchive,
+                                     String ctNationalMillennium, Date nationalMilleDate,String ctUniversityBusiness) {
+        CoreTeam coreTeam = new CoreTeam();
+        coreTeam.setCtId(ctId);
+        coreTeam.setCtName(ctName);
+
+        coreTeam.setCtJob(ctJob);
+        coreTeam.setCtSex(ctSex);
+        coreTeam.setCtAge(ctAge);
+        coreTeam.setCtHigbestEducation(ctHigbestEducation);
+
+        coreTeam.setCtStudyExperience(ctStudyExperience);
+        coreTeam.setCtMainAchive(ctMainAchive);
+        coreTeam.setCtNationalMillennium(ctNationalMillennium);
+        coreTeam.setNationalMilleDate(nationalMilleDate);
+        coreTeam.setCtUniversityBusiness(ctUniversityBusiness);
+
+        return coreTeamService.update(coreTeam);
+    }
+
     @RequestMapping(value = "/deleteEquityByEntireId/{entireId}", method = RequestMethod.DELETE)
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
@@ -912,6 +959,13 @@ public class UnitEssentialController {
     @ResponseStatus(HttpStatus.OK)
     public DebtFinancing deleteDebtByEntireId(@PathVariable Long dfId) {
         return debtFinancingService.delete(dfId);
+    }
+
+    @RequestMapping(value = "/deletePatentById/{id}", method = RequestMethod.DELETE)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.OK)
+    public PatentList deletePatentById(@PathVariable Long id) {
+        return patentListService.delete(id);
     }
 
 }

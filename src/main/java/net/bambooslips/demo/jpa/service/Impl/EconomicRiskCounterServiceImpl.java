@@ -77,6 +77,19 @@ public class EconomicRiskCounterServiceImpl implements EconomicRiskCounterServic
 
 
     @Override
+    public List<EconomicRiskCounter> findListByEntireId(Long id) {
+
+        LOG.debug("Deleting EconomicRiskCounter with id: " + id);
+
+
+        List<EconomicRiskCounter> deleted = economicRiskCounterRepository.findByEntireId(id);
+
+        return deleted;
+
+    }
+
+
+    @Override
     public List<EconomicRiskCounter> delete(Long id) {
 
         LOG.debug("Deleting EconomicRiskCounter with id: " + id);

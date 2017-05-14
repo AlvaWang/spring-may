@@ -188,9 +188,9 @@
                                                 <table>
                                                     <tr class="img_tr">
                                                         <td colspan="4">
-                                                            <div><img src="../static/img/zengjia.png" th:src="@{/img/zengjia.png}" alt="" id="add_img" onclick="addImg(++patent,num=num+2)"/>增加</div>
+                                                            <div><img src="../static/img/zengjia.png" th:src="@{/img/zengjia.png}" alt="" id="add_img" onclick="addImg(++patent,num=num+3)"/>增加</div>
                                                             <!--<div><img src="../static/img/bianji.png" th:src="@{/img/bianji.png}" alt="" />编辑</div>-->
-                                                            <div><img src="../static/img/shanchu.png" th:src="@{/img/shanchu.png}" alt="" id="reduce_img" onclick="reduceImg(num=num-2)"/>减少</div>
+                                                            <div><img src="../static/img/shanchu.png" th:src="@{/img/shanchu.png}" alt="" id="reduce_img" onclick="reduceImg(num=num-3)"/>减少</div>
                                                         </td>
                                                     </tr>
 
@@ -245,98 +245,19 @@
                                         <tbody>
                                         <tr class="img_tr">
                                             <td colspan="8">
-                                                <div><img src="../static/img/zengjia.png" th:src="@{/img/zengjia.png}" alt="" onclick="addCoreTeamImg(++team,core=core+4)" />增加<input hidden="hidden" id="addTeam"/></div>
+                                                <div><img src="../static/img/zengjia.png" th:src="@{/img/zengjia.png}" alt="" onclick="addCoreTeamImg(++team,core=core+5)" />增加</div>
                                                 <!--<div><img src="../static/img/bianji.png" th:src="@{/img/bianji.png}" alt="" />编辑</div>-->
-                                                <div><img src="../static/img/shanchu.png" th:src="@{/img/shanchu.png}" alt="" onclick="reduceCoreImg(core = core-4)"/>减少<input hidden="hidden" id="reduceTeam"/></div>
+                                                <div><img src="../static/img/shanchu.png" th:src="@{/img/shanchu.png}" alt="" onclick="reduceCoreImg(core = core-5)"/>减少</div>
                                             </td>
                                         </tr>
-                                        <!--<tr id="core_1">-->
-                                            <!--<td>姓名</td>-->
-                                            <!--<td>性别</td>-->
-                                            <!--<td>年龄</td>-->
-                                            <!--<td>职位</td>-->
-                                            <!--<td>最高学历</td>-->
-                                            <!--<td>留学经历</td>-->
-                                            <!--<td>入选国家千人计划</td>-->
-                                            <!--<td>入选时间</td>-->
-                                        <!--</tr>-->
-                                        <!--<tr id="core_2">-->
-                                            <!--<td><input type="text" id="core_name_1"/></td>-->
-                                            <!--<td><select id="core_sex_1">-->
-                                                <!--<option value="男">男</option>-->
-                                                <!--<option value="女">女</option>-->
-                                            <!--</select></td>-->
-                                            <!--<td><input type="text" id="core_age_1"/></td>-->
-                                            <!--<td><input type="text" id="core_job_1"/></td>-->
-                                            <!--<td>  <select id="core_education_1">-->
-                                                <!--<option value="学士">学士</option>-->
-                                                <!--<option value="硕士">硕士</option>-->
-                                                <!--<option value="博士">博士</option>-->
-                                            <!--</select></td>-->
-                                            <!--<td><input type="text" id="core_experience_1"/></td>-->
-                                            <!--<td><select id="core_millennium_1" onclick="change_millen(1)">-->
-                                                <!--<option value="是">是</option>-->
-                                                <!--<option value="否">否</option>-->
-                                            <!--</select></td>-->
-                                            <!--<td  id="millennium_date_1"><input type="text" id="core_millennium_date_1"/></td>-->
-                                        <!--</tr>-->
-                                        <!--<tr id="core_3">-->
-                                            <!--<td colspan="8">主要工作经历/主要成就</td>-->
-                                        <!--</tr>-->
-                                        <!--<tr id="core_4">-->
-                                            <!--<td colspan="8">-->
-                                                <!--<textarea id="main_achive_1"></textarea>-->
-                                            <!--</td>-->
-                                        <!--</tr>-->
 
-
-                                        <!--<tr id="core_5" >-->
-                                            <!--<td>姓名</td>-->
-                                            <!--<td>性别</td>-->
-                                            <!--<td>年龄</td>-->
-                                            <!--<td>职位</td>-->
-                                            <!--<td>最高学历</td>-->
-                                            <!--<td>留学经历</td>-->
-                                            <!--<td>入选国家千人计划</td>-->
-                                            <!--<td>入选时间</td>-->
-                                        <!--</tr>-->
-                                        <!--<tr id="core_6">-->
-                                            <!--<td><input type="text" id="core_name_2"/></td>-->
-                                            <!--<td>-->
-                                                <!--<select id="core_sex_2">-->
-                                                    <!--<option value="男">男</option>-->
-                                                    <!--<option value="女">女</option>-->
-                                                <!--</select>-->
-                                            <!--</td>-->
-                                            <!--<td><input type="text" id="core_age_2"/></td>-->
-                                            <!--<td><input type="text" id="core_job_2"/></td>-->
-                                            <!--<td>  <select id="core_education_2">-->
-                                                <!--<option value="学士">学士</option>-->
-                                                <!--<option value="硕士">硕士</option>-->
-                                                <!--<option value="博士">博士</option>-->
-                                            <!--</select></td>-->
-                                            <!--<td><input type="text" id="core_experience_2"/></td>-->
-                                            <!--<td>-->
-                                                <!--<select id="core_millennium_2" onclick="change_millen(2)">-->
-                                                    <!--<option value="是">是</option>-->
-                                                    <!--<option value="否">否</option>-->
-                                                <!--</select>-->
-                                            <!--</td>-->
-                                            <!--<td  id="millennium_date_2"><input type="text" id="core_millennium_date_2"/></td>-->
-                                        <!--</tr>-->
-                                        <!--<tr id="core_7">-->
-                                            <!--<td colspan="8">主要工作经历/主要成就</td>-->
-                                        <!--</tr>-->
-                                        <!--<tr id="core_8">-->
-                                            <!--<td colspan="8"><textarea id="main_achive_2"></textarea></td>-->
-                                        <!--</tr>-->
                                         </tbody>
                                     </table>
                                 </td>
                             </tr>
                             </tbody>
                         </table>
-                        <div class="conservation " id="hxtd_conservation"><p>保存</p></div>
+                        <div class="conservation " id="hxtd_conservation"><p>修改</p></div>
                     </div>
                 </div>
                 <div id="third_table"  class="table_unit_content">

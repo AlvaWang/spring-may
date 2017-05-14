@@ -105,7 +105,7 @@ var getEntireProName_team = function (condition) {
                     $("#team_project_list ul").append(html_ul);
 
                     $("#team_list_"+condition).bind('click',function () {
-                        // window.location.href = "/unitCreate?entireId=" + result + "";
+                        window.location.href = "/teamTable?entireId=" + condition + "";
                     })
                 }
             }

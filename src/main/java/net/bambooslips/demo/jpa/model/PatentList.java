@@ -69,7 +69,7 @@ public class PatentList implements  Serializable {
      */
     public PatentList update(PatentList updated) {
         if(updated.getUeId() != null)this.setUeId(updated.getUeId());
-        if(updated.getTeId() != null)this.setTeId(updated.getTeId());
+        if(updated.getPatentId() != null)this.setPatentId(updated.getPatentId());
         if(updated.getPatentName() != null)this.setPatentName(updated.getPatentName());
         if(updated.getPatentType() != null)this.setPatentType(updated.getPatentType());
         if(updated.getPatentDate() != null)this.setPatentDate(updated.getPatentDate());

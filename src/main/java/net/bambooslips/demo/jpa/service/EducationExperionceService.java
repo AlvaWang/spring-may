@@ -7,6 +7,8 @@ import net.bambooslips.demo.jpa.model.TeamEssential;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * Created by Administrator on 2017/4/21.
  */
@@ -23,6 +25,8 @@ public interface EducationExperionceService {
 
 
     EducationExperionce delete(Long id);
+
+    List<EducationExperionce> findListByEntireId(Long ctId);
 
 //    Long findByEntireId(Long entireId);
 

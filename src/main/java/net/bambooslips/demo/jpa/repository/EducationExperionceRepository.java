@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 /**
  * Created by Administrator on 2017/4/21.
@@ -18,10 +19,10 @@ public interface EducationExperionceRepository extends JpaRepository<EducationEx
      * 查询
      * @return
      */
-//    @Query(
-//            "Select te FROM TeamEssential te WHERE te.entireId=:entireId "
-//    )
-//    TeamEssential findByEntireId(@Param("entireId") Long entireId);
+    @Query(
+            "Select ee FROM EducationExperionce ee WHERE ee.ctId=:ctId "
+    )
+    List<EducationExperionce> findListByEntireId(@Param("ctId") Long ctId);
 
 
 }

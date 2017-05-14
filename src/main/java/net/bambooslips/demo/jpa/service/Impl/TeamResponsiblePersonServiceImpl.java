@@ -73,6 +73,14 @@ public class TeamResponsiblePersonServiceImpl implements TeamResponsiblePersonSe
         }
     }
 
+    @Transactional(readOnly = true)
+    @Override
+    public TeamResponsiblePerson findListByEntireId(Long entireId) {
+        LOG.debug("Finding UnitEssential by id: " + entireId);
+        TeamResponsiblePerson teamResponsiblePerson =  teamResponsiblePersonRepository.findByEntireId(entireId);
+        return teamResponsiblePerson;
+    }
+
     @Override
     public TeamResponsiblePerson delete(Long id) {
         return null;

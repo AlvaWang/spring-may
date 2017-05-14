@@ -81,5 +81,13 @@ public class TeamBusinessPlanServiceImpl implements TeamBusinessPlanService{
         return list;
     }
 
+    @Transactional(readOnly = true)
+    @Override
+    public TeamBusinessPlan findListByEntireId(Long entireId) {
+        LOG.debug("Finding UnitEssential by id: " + entireId);
+        TeamBusinessPlan teamBusinessPlan =  teamBusinessPlanRepository.findByEntireId(entireId);
+        return  teamBusinessPlan;
+    }
+
 
 }

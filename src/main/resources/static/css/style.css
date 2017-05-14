@@ -79,7 +79,7 @@ nav {
  .content{
     width: 100%;
     height: 100%;
-    background: url("../img/banner2.jpg") center no-repeat;
+    background: url("../img/banner.jpg") center no-repeat;
     background-size: 100% 100%!important;
     z-index: 1;
     /*-moz-background-size:100%;*/
@@ -98,9 +98,10 @@ nav {
      text-align: center;
      vertical-align: middle;
      position: absolute;
-     margin-top: 390px;
+     margin-top: 315px;
      /*left: calc(90%/2);*/
      left: calc(90%/2 + 0.5%);
+     border-radius: 4px;
  }
  .content div a p{
      font-family: 微软雅黑;
@@ -119,7 +120,7 @@ nav {
     z-index: 2;
     background:url("../img/menu1.png") ;
     background-size: 100% 100%;
-    top:425px;
+    top:410px;
 }
 .content_blue div{
     width: 70%;
@@ -304,7 +305,9 @@ nav {
     font-size: 18px;
 }
 .content_blue div ul li:hover{
-    background: #7aae1a;
+    background: url("../img/lvse.png");
+    background-size: 100% 100%!important;
+
 }
 .content_blue div ul li a p{
     text-align: center;
@@ -525,7 +528,7 @@ p.ctl { font-family: "Times New Roman", serif; font-size: 11pt; so-language: ar-
     width: 70%;
     margin-right: auto;
     margin-left: auto;
-    margin-top: 55px;
+    margin-top: 42px;
     height: 500px;
 }
 .present{

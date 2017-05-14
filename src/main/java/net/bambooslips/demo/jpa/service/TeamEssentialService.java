@@ -26,5 +26,7 @@ public interface TeamEssentialService {
 
     Long findByEntireId(Long entireId);
 
+    TeamEssential findListByEntireId(Long entireId);
+
 //    Page<UnitEssential> findByComName(String comName);
 }

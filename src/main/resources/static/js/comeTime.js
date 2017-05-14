@@ -11,3 +11,20 @@ var comTime = function (comTime) {
         return date;
     }
 }
+var  add0 = function(m){
+    return m<10?'0'+m:m
+}
+var stampToStandard = function(resultDate){
+    var time = new Date(resultDate);
+    var y = time.getFullYear();
+    var m = time.getMonth()+1;
+    var d = time.getDate();
+    var h = time.getHours();
+    var mm = time.getMinutes();
+    var s = time.getSeconds();
+
+    var date = y+'-'+add0(m)+'-'+add0(d)+' '+add0(h)+':'+add0(mm)+':'+add0(s);
+
+    return date;
+
+}

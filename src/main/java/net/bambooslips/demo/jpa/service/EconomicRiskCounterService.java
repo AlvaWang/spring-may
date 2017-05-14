@@ -26,6 +26,8 @@ public interface EconomicRiskCounterService {
 
     List<EconomicRiskCounter> delete(Long id);
 
+    List<EconomicRiskCounter> findListByEntireId(Long entireId);
+
 //    Long findByEntireId(Long entireId);
 
 //    Page<UnitEssential> findByComName(String comName);

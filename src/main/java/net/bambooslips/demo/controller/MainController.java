@@ -110,6 +110,11 @@ public class MainController {
         return "teamCreate";
     }
 
+    @RequestMapping("/teamTable")
+    public String teamTable() {
+        return "teamTable";
+    }
+
     @ModelAttribute("avatars")
     @RequestMapping("/avatars")
     public Page<Resource> avatars(@RequestParam(defaultValue = PAGE) Integer page,
