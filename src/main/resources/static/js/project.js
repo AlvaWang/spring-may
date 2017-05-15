@@ -73,7 +73,7 @@ var getEntireProName_unit = function (condition) {
                     $("#unit_project_list ul").append(html_ul);
 
                     $("#unit_list_"+condition).bind('click',function () {
-                        window.location.href = "/unitTable?entireId=" + condition + "";
+                        window.location.href = "/unitTable?entireId=" + condition+"&type="+"KEEP";
                     })
                 }
             }
@@ -105,7 +105,7 @@ var getEntireProName_team = function (condition) {
                     $("#team_project_list ul").append(html_ul);
 
                     $("#team_list_"+condition).bind('click',function () {
-                        window.location.href = "/teamTable?entireId=" + condition + "";
+                        window.location.href = "/teamTable?entireId=" + condition +"&type="+"KEEP";
                     })
                 }
             }

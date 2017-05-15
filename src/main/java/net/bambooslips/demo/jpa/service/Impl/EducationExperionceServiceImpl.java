@@ -3,10 +3,8 @@ package net.bambooslips.demo.jpa.service.Impl;
 import net.bambooslips.demo.exception.EducationExperionceNotFoundException;
 import net.bambooslips.demo.exception.PostNotFoundException;
 import net.bambooslips.demo.exception.TeamEssentialNotFoundException;
-import net.bambooslips.demo.jpa.model.CompetitionAccount;
-import net.bambooslips.demo.jpa.model.EconomicRiskCounter;
-import net.bambooslips.demo.jpa.model.EducationExperionce;
-import net.bambooslips.demo.jpa.model.TeamEssential;
+import net.bambooslips.demo.exception.TeamResponsiblePersonNotFoundException;
+import net.bambooslips.demo.jpa.model.*;
 import net.bambooslips.demo.jpa.repository.EducationExperionceRepository;
 import net.bambooslips.demo.jpa.repository.TeamEssentialRepository;
 import net.bambooslips.demo.jpa.service.EducationExperionceService;
@@ -67,6 +65,22 @@ public class EducationExperionceServiceImpl implements EducationExperionceServic
 
         return list;
 
+    }
+
+    @Transactional(rollbackFor = EducationExperionceNotFoundException.class)
+    @Override
+    public EducationExperionce update(EducationExperionce updated) throws EducationExperionceNotFoundException {
+        LOG.debug("Updating TeamResponsiblePerson with information: " + updated);
+
+        EducationExperionce educationExperionce = educationExperionceRepository.findOne(updated.getEduId());
+
+        if (educationExperionce == null) {
+            LOG.debug("No teamResponsiblePerson found with id: " + updated.getEduId());
+            throw new PostNotFoundException("Post "+updated.getEduId()+" not found.");
+        }
+        educationExperionce.update(updated);
+
+        return educationExperionce;
     }
 
 

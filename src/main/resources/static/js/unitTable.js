@@ -2,7 +2,7 @@
  * Created by Administrator on 2017/4/30.
  */
 var entireId = GetQueryString("entireId");
-
+var type=GetQueryString("type");
 $(function () {
     $("#first_btn").css("background","#8fc320");
     $("#first_btn").find("p").css("color","#ffffff");
@@ -15,9 +15,18 @@ $(function () {
     $(".streamer_hxtd").hide();
     $(".streamer_syjhs").hide();
 
-    $("#jbxx_conservation").show();
-    $("#hxtd_conservation").hide();
-    $("#syjhs_conservation").hide();
+    
+
+    if(type == "KEEP"){
+        $("#jbxx_conservation").show();
+        $("#hxtd_conservation").show();
+        $(".submit_div").show();
+    }
+    if(type =="SUBMIT"){
+        $("#jbxx_conservation").hide();
+        $("#hxtd_conservation").hide();
+        $(".submit_div").hide();
+    }
 
     $("#patent_table").find("tr,td,input,div,button,textarea,select").attr("disabled", "disabled");
     $("#patent_table").find("tr,td,input,div,button,textarea,select").css("background","#dbdbdb")
@@ -555,7 +564,7 @@ var getDemandListByEntireId = function (entireId) {
                         $(":checkbox[name='tecInternational'][value='国际技术范围']").prop("checked", "checked");
                         $("#technical_desc_international").val(result.technicalDescInternational);
                     }
-                    if(result.technicalDescInternal == "国际技术范围"){
+                    if(result.technicalDescInternal == "国内技术范围"){
                         $(":checkbox[name='tecInternal'][value='国内技术范围']").prop("checked", "checked");
                         $("#technical_desc_internal").val(result.technicalDescInternal);
                     }
@@ -611,15 +620,15 @@ var getDemandListByEntireId = function (entireId) {
                     }
                     if(result.intermediaryFinance == "1"){
                         $(":checkbox[name='finance'][value='财务']").prop("checked", "checked");
-                        $("#intermediary_law_desc").val(result.intermediaryFinanceDesc)
+                        $("#intermediary_finance_desc").val(result.intermediaryFinanceDesc)
                     }
                     if(result.intermediaryFinancing == "1"){
                         $(":checkbox[name='financing'][value='融资']").prop("checked", "checked");
-                        $("#intermediary_law_desc").val(result.intermediaryFinancingDesc)
+                        $("#intermediary_financing_desc").val(result.intermediaryFinancingDesc)
                     }
                     if(result.intermediaryManage == "1"){
                         $(":checkbox[name='manage'][value='管理']").prop("checked", "checked");
-                        $("#intermediary_law_desc").val(result.intermediaryManageDesc)
+                        $("#intermediary_manage_desc").val(result.intermediaryManageDesc)
                     }
                 }else {
                     $("#intermediary,#intermediary_consult_type").attr("disabled", "disabled");
@@ -669,9 +678,7 @@ $("#first_btn").click(function () {
     $(".streamer_hxtd").hide();
     $(".streamer_syjhs").hide();
 
-    $("#jbxx_conservation").show();
-    $("#hxtd_conservation").hide();
-    $("#syjhs_conservation").hide();
+
 })
 
 $("#second_btn").click(function () {
@@ -691,9 +698,7 @@ $("#second_btn").click(function () {
     $(".streamer_jbxx").hide();
     $(".streamer_syjhs").hide();
 
-    $("#hxtd_conservation").show();
-    $("#jbxx_conservation").hide();
-    $("#syjhs_conservation").hide();
+
 })
 $("#third_btn").click(function () {
     $("#third_btn").css("background","#8fc320");
@@ -712,9 +717,7 @@ $("#third_btn").click(function () {
     $(".streamer_jbxx").hide();
     $(".streamer_hxtd").hide();
 
-    $("#syjhs_conservation").show();
-    $("#jbxx_conservation").hide();
-    $("#hxtd_conservation").hide();
+
 })
 
 var change_patent_table = function () {
@@ -933,7 +936,7 @@ $("#jbxx_conservation").click(function () {
                                 // alert(patent_choose);
                                 if(patent_choose == true){
                                     for(var i=1;i<=patent;i++){
-                                        var id = $("#patentId_"+i);
+                                        var id = $("#patentId_"+i).val();
                                         var patentNum = $("#patent_num_"+i).val();
                                         var patentType =$("#patent_type_"+i).val();
                                         // alert(patentType);
@@ -991,7 +994,7 @@ $("#jbxx_conservation").click(function () {
                                 else {
                                     //删除已有专利
                                     for(var i=1;i<=patent;i++){
-                                        var id = $("#patentId_"+i);
+                                        var id = $("#patentId_"+i).val();
 
                                         deletePatentList(id);
                                     }

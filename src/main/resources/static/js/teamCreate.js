@@ -620,9 +620,9 @@ var conditionEssential=function () {
     var te_key_word = $("#te_key_word").val();
 
 
-    if(Goal == "其他"){
+    if(Goal == "其它"){
         var te_compatition_goal = $("#teGoal").val();
-        if(Type == "其他"){
+        if(Type == "其它"){
             var te_power_type = $("#powerType").val();
             var Essential_data = {
                 entireId:entireId,
@@ -663,7 +663,7 @@ var conditionEssential=function () {
             return Essential_data;
         }
     }else {
-        if(Type == "其他"){
+        if(Type == "其它"){
             var te_power_type = $("#powerType").val();
             var Essential_data = {
                 entireId:entireId,
@@ -1194,8 +1194,8 @@ var change_litigation3_No = function () {
 }
 
 var addLitigationImg = function () {
-    var html_tr = "<tr id='liti_"+(liti-1)+"'><td>诉讼内容</td><td><input type='text' id='litigation_content_"+litigation+"' name='litigation_other'/></td></tr>"+
-        "<tr id='liti_"+liti+"'><td>诉讼原因</td><td><input type='text' id='litigation_reason_"+litigation+"' name='litigation_other'/></td></tr>";
+    var html_tr = "<tr id='liti_"+(liti-1)+"' class='reason3'><td>诉讼内容</td><td><input type='text' id='litigation_content_"+litigation+"' name='litigation_other'/></td></tr>"+
+        "<tr id='liti_"+liti+"' class='reason3'><td>诉讼原因</td><td><input type='text' id='litigation_reason_"+litigation+"' name='litigation_other'/></td></tr>";
 
     $("#litigation_table").append(html_tr);
 }
@@ -37700,8 +37700,25 @@ var updateEntireWorkState = function (condition,entireId) {
                 console.log(result);
 
                 alert("提交报名成功");
-                // window.location.href = "/registerSuccess?id=" + result + "";
-                // comId = result;
+                $("#submit_competition_kjjr").unbind('click');
+                $("#submit_competition_kjjr").css("background","#dbdbdb");
+                $("#submit_competition_kjjr").find("p").html("已提交报名");
+
+                $("#jbxx_conservation_team").unbind('click');
+                $("#jbxx_conservation_team").css("background","#dbdbdb");
+                $("#jbxx_conservation_team").find("p").html("修改");
+                $("#hxtd_conservation_team").unbind('click');
+                $("#hxtd_conservation_team").css("background","#dbdbdb");
+                $("#hxtd_conservation_team").find("p").html("修改");
+                $("#syjhs_conservation_team").unbind('click');
+                $("#syjhs_conservation_team").css("background","#dbdbdb");
+                $("#syjhs_conservation_team").find("p").html("修改");
+                $("#kjjr_conservation_team").unbind('click');
+                $("#kjjr_conservation_team").css("background","#dbdbdb");
+                $("#kjjr_conservation_team").find("p").html("修改");
+                $("#submit_competition_syjhs").unbind('click');
+                $("#submit_competition_syjhs").css("background","#dbdbdb");
+                $("#submit_competition_syjhs").find("p").html("修已提交商业计划书改");
             }
 
         }

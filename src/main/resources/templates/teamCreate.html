@@ -99,7 +99,7 @@
                                         <input type="radio" name="field" value="新能源与新动力"/>新能源与新动力
                                         <input type="radio"  name="field" value="生物医药"/>生物医药
                                         <input type="radio" name="field" value="节能环保"/>节能环保
-                                        <input type="radio"  name="field" value="其他"/>其他
+                                        <input type="radio"  name="field" value="其它"/>其它
                                     </div>
 
                                 </td>
@@ -238,7 +238,7 @@
                                                     <input type="radio" value="医疗器械批文"/>医疗器械批文
                                                     <input type="radio" value="创新商业模式"/>创新商业模式
                                                     <input type="radio" value="集成电路布图"/>集成电路布图
-                                                    <input type="radio" value="其他"/>其他
+                                                    <input type="radio" value="其它"/>其它
                                                     <input type="text" id="powerType"/>
                                                 </div>
                                             </td>
@@ -250,7 +250,7 @@
                                                     <input type="radio" value="独立知识产权"/>独立知识产权
                                                     <input type="radio" value="合作研发"/>合作研发
                                                     <input type="radio" value="购买技术"/>购买技术
-                                                    <input type="radio" value="其他"/>其他
+                                                    <input type="radio" value="其它"/>其它
                                                     <!--<input type="checkbox" value="其他"/>其他-->
                                                     <!--<input type="text"/>-->
                                                 </div>
@@ -292,9 +292,9 @@
                                         <tbody>
                                         <tr class="img_tr">
                                             <td colspan="9">
-                                                <div><img src="../static/img/zengjia.png" th:src="@{/img/zengjia.png}" alt="" onclick="addCoreTeamImg(++team,core=core+6)"/>增加</div>
+                                                <div><img src="../static/img/zengjia.png" th:src="@{/img/zengjia.png}" alt="" onclick="addCoreTeamImg(++team,core=core+5)"/>增加</div>
                                                 <!--<div><img src="../static/img/bianji.png" th:src="@{/img/bianji.png}" alt="" />编辑</div>-->
-                                                <div><img src="../static/img/shanchu.png" th:src="@{/img/shanchu.png}" alt="" onclick="reduceCoreImg(core = core-6)"/>减少</div>
+                                                <div><img src="../static/img/shanchu.png" th:src="@{/img/shanchu.png}" alt="" onclick="reduceCoreImg(core = core-5)"/>减少</div>
                                             </td>
 
                                         </tr>
@@ -508,6 +508,7 @@
                                 <td class="t_title">主要技术、产品及服务</td>
                                 <td>
                                     <table>
+                                        <tr hidden="hidden"><td><input type="text" id="tbusId"/></td></tr>
                                         <tr>
                                             <td class="t_title2">参赛项目名称</td>
                                             <td colspan="2"><input type="text" id="pro_name"/></td>

@@ -28,6 +28,8 @@ public interface EducationExperionceService {
 
     List<EducationExperionce> findListByEntireId(Long ctId);
 
+    EducationExperionce update(EducationExperionce updated);
+
 //    Long findByEntireId(Long entireId);
 
 //    Page<UnitEssential> findByComName(String comName);

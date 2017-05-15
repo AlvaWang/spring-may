@@ -326,4 +326,44 @@ public class TeamController {
         return economicRiskCounterService.delete(entireId);
     }
 
+    /**
+     * 修改联系人
+     * @return
+     */
+    @RequestMapping(value = "/updatePerson/{resId}", method = RequestMethod.PUT, consumes = "application/x-www-form-urlencoded")
+    @ResponseBody
+    public TeamResponsiblePerson updatePerson(@PathVariable Long resId, String resName,
+                                   String resJob,String resDocumentType, String documentNum,String resOfficeTel,String resMobileTel,String resEmail) {
+        TeamResponsiblePerson teamResponsiblePerson = new TeamResponsiblePerson();
+        teamResponsiblePerson.setResId(resId);
+        teamResponsiblePerson.setResName(resName);
+
+        teamResponsiblePerson.setResJob(resJob);
+        teamResponsiblePerson.setResDocumentType(resDocumentType);
+        teamResponsiblePerson.setDocumentNum(documentNum);
+        teamResponsiblePerson.setResOfficeTel(resOfficeTel);
+        teamResponsiblePerson.setResMobileTel(resMobileTel);
+        teamResponsiblePerson.setResEmail(resEmail);
+
+        return teamResponsiblePersonService.update(teamResponsiblePerson);
+    }
+
+    /**
+     * 教育经历
+     * @return
+     */
+    @RequestMapping(value = "/updateEducation/{eduId}", method = RequestMethod.PUT, consumes = "application/x-www-form-urlencoded")
+    @ResponseBody
+    public EducationExperionce updateEducation(@PathVariable Long eduId, String eduBackground,
+                                              String eduGraduateSchool,String eduMajor) {
+        EducationExperionce educationExperionce = new EducationExperionce();
+        educationExperionce.setEduId(eduId);
+        educationExperionce.setEduBackground(eduBackground);
+
+        educationExperionce.setEduGraduateSchool(eduGraduateSchool);
+        educationExperionce.setEduMajor(eduMajor);
+
+        return educationExperionceService.update(educationExperionce);
+    }
+
 }
