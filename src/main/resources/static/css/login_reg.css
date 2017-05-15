@@ -54,7 +54,7 @@ li{
     background: url("../img/dlbj2.png");
     /*background-size: cover;*/
     background-size: 100% 100%;
-    text-align: center;
+    /*text-align: center;*/
 
 }
 .entry_entry{
@@ -65,11 +65,13 @@ li{
 .reg_reg_div{
     height: calc(100% - 160px);
     width: 50%;
+    min-width: 600px;
     background: url("../img/denglu-zhuce-zhucechenggong.png");
     margin-left: 25%;
     background-size: 100% 100%;
     position: absolute;
-    margin-top: -38px;
+    margin-top: -20px;
+    margin-top: -38px\9;
 
 }
 .reg_suc_div{
@@ -189,6 +191,7 @@ li{
     font-size: 16px;
     color: #ffffff;
     padding-top: 8px;
+    text-align: center;
 }
 .suc{
     width: 60%;
@@ -294,10 +297,12 @@ input{
     background: none;
     outline: none;
     border: 0px;
-    margin-top: 5px;
+    /*margin-top: 5px;*/
     font-family: 微软雅黑;
     font-size: 16px;
     color: #888888;
+    /*width: calc(100% - 75px);*/
+    height: 100%;
 }
 label{
     margin-left: 20px;

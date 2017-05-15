@@ -4,7 +4,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>中国创新创业大赛 - 军转民分站</title>
     <link href="../static/lib/css/bootstrap.min.css" th:href="@{/lib/css/bootstrap.min.css}" rel="stylesheet" />
-    <!--<link href="../static/lib/css/jquery.fullPage.min.css" th:href="@{/lib/css/jquery.fullPage.min.css}" rel="stylesheet" />-->
     <link href="../static/lib/css/font-awesome.min.css" th:href="@{/lib/css/font-awesome.min.css}" rel="stylesheet" />
     <link rel="stylesheet" href="../static/css/app.css" th:href="@{/css/app.css}" />
     <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}" />
@@ -12,6 +11,12 @@
         a:focus,a:hover{
             color: #7aae1a;
             text-decoration: none!important;
+        }
+        .content{
+            height:307px;
+        }
+        :root .content{
+            height: 440px\0;
         }
     </style>
 </head>
@@ -27,7 +32,7 @@
             <div  class=""
                  style="height:auto; position: relative; touch-action: none; transform: translate3d(0px, 0px, 0px);" >
                 <div class="section section-banner active" style="margin-top: 70px;">
-                    <div class="content" style="height: 440px!important;">
+                    <div class="content" style="">
                         <div class="index_login_btn"><a href="/login"><p>参赛登录</p></a></div>
                     </div>
                     <div class="content_blue">
@@ -344,21 +349,8 @@
 
 <script src="../static/lib/js/jquery.min.js" th:src="@{/webjars/jquery/2.2.3/jquery.min.js}"></script>
 <script src="../static/lib/js/bootstrap.min.js" th:src="@{/webjars/bootstrap/3.3.6/js/bootstrap.min.js}"></script>
-<!--<script src="../static/lib/js/jquery.fullPage.min.js" th:src="@{/lib/js/jquery.fullPage.min.js}" ></script>-->
 <script src="../static/js/menu_click.js" th:src="@{/js/menu_click.js}"></script>
-<script>
-    $(function () {
-        $('#fullpage').fullpage({
-            navigation: true,
-            navigationPosition: 'right',
-            slidesNavigation: false,
-            easingcss3: 'cubic-bezier(.86, 0, .07, 1)',
-            css3: true,
-            verticalCentered: false,
-            loopHorizontal: false
-        });
-    });
-</script>
+
 
 
 

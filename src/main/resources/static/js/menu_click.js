@@ -24,6 +24,7 @@ $(function () {
     $("#review_banner_post").show();
     $("#news_center_banner_post").hide
 });
+
 $("#event_profile").click(function () {
     window.location.href="/intro/info";
 });

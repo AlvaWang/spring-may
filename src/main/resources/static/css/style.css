@@ -91,26 +91,35 @@ nav {
  .content .index_login_btn{
      width: 10%;
      max-width: 198px;
-     min-width: 100px;
-     height: 37px;
+     min-width: 80px;
+     height: 25px;
      background: #0545ab;
      opacity: 0.9;
      text-align: center;
      vertical-align: middle;
      position: absolute;
-     margin-top: 315px;
+     margin-top:220px;
      /*left: calc(90%/2);*/
      left: calc(90%/2 + 0.5%);
      border-radius: 4px;
  }
+ :root .content .index_login_btn{
+     margin-top: 315px\0;
+     height: 37px\0;
+     min-width: 100px\0;
+ }
  .content div a p{
      font-family: 微软雅黑;
-     font-size: 20px;
+     font-size: 15px;
      font-weight: bold;
      color: #fff;
      letter-spacing: 5px;
      text-align: center;
-     margin-top: 5px;
+     margin-top: 3px;
+ }
+ :root  .content div a p{
+     font-size: 20px\0;
+     margin-top: 5px\0;
  }
 
 .content_blue{
@@ -120,7 +129,10 @@ nav {
     z-index: 2;
     background:url("../img/menu1.png") ;
     background-size: 100% 100%;
-    top:410px;
+    top:260px;
+}
+:root .content_blue{
+    top:410px\0;
 }
 .content_blue div{
     width: 70%;
@@ -367,9 +379,17 @@ a .active {
     /*min-width: 1000px;*/
 }
 .login_but{
-    width: 15%;
+    width: 80px;
+    height: 30px;
     float: right;
-    margin-top: 12px;
+    margin-top: 25px;
+    border-radius: 4px;
+    background: #12aaf0;
+    text-align: center;
+}
+.login_but a{
+    font-size: 18px;
+    text-align: center;
 }
 .logo{float: left;}
 .my-logo>div>div{
@@ -389,7 +409,7 @@ a .active {
     color: black;
     text-decoration: none;
     font-size: 1.125em;
-    text-align: center;
+    /*text-align: center;*/
 }
 .my-logo-a:hover {
     /*color: white;*/
