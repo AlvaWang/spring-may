@@ -45,10 +45,13 @@ li{
     width: 40%;
     min-width: 480px;
     background:url("../img/denglu.png");
-    margin-left: 50%;
+    margin-left: 55%;
     background-size: 100% 100%;
     position: absolute;
-    margin-top: -38px;
+    margin-top: -22px;
+}
+:root .login_reg_div{
+    margin-top: -38px\0;
 }
 .reg_reg_bac{
     background: url("../img/dlbj2.png");

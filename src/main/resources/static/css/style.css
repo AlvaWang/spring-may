@@ -122,6 +122,62 @@ nav {
      margin-top: 5px\0;
  }
 
+
+
+
+.content2{
+    width: 100%;
+    height: 100%;
+    background: url("../img/banner2.jpg") center no-repeat;
+    background-size: 100% 100%!important;
+    z-index: 1;
+    /*-moz-background-size:100%;*/
+    /*-webkit-background-size:100%;*/
+    /*-o-background-size:100%;*/
+    /*-ms-background-size:100%;*/
+    position: relative;
+}
+.content2 .index_login_btn{
+    width: 6%;
+    max-width: 198px;
+    min-width: 70px;
+    height: 25px;
+    background: #0545ab;
+    opacity: 0.9;
+    text-align: center;
+    vertical-align: middle;
+    position: absolute;
+    margin-top:150px;
+    /*left: calc(90%/2);*/
+    left: calc(90%/2 + 2.5%);
+    border-radius: 4px;
+}
+:root .content2 .index_login_btn{
+    margin-top: 225px\0;
+    height: 37px\0;
+    min-width: 100px\0;
+}
+.content2 div a p{
+    font-family: 微软雅黑;
+    font-size: 12px;
+    font-weight: bold;
+    color: #fff;
+    letter-spacing: 5px;
+    text-align: center;
+    margin-top: 5px;
+}
+:root  .content2 div a p{
+    font-size: 20px\0;
+    margin-top: 5px\0;
+}
+
+.content2{
+    height:180px;
+}
+:root .content2{
+    height: 270px\0;
+}
+
 .content_blue{
     width: 100%;
     height: 80px;
@@ -142,6 +198,36 @@ nav {
     /*min-width: 1000px;*/
     /*background: red;*/
     margin-top: 30px;
+}
+
+
+.content_blue2{
+    width: 100%;
+    height: 70px;
+    position: absolute;
+    z-index: 2;
+    background:url("../img/menu1.png") ;
+    background-size: 100% 100%;
+    top:150px;
+}
+:root .content_blue2{
+    height: 80px\0;
+}
+:root .content_blue2{
+    top:240px\0;
+}
+.content_blue2 div{
+    width: 70%;
+    height: 38px;
+    margin-left: auto;
+    margin-right: auto;
+    /*min-width: 1000px;*/
+    /*background: red;*/
+    margin-top: 25px;
+}
+:root .content_blue2 div{
+    height: 43px\0;
+    margin-top: 30px\0;
 }
 .com_process{
     width: 70%;
@@ -330,6 +416,50 @@ nav {
     margin: auto;
 }
 
+
+
+.content_blue2 div ul{
+    width: 80%;
+    height:100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+.content_blue2 div ul li{
+    /*margin-top: 8px;*/
+    min-width: 100px;
+    width: 25%;
+    height: 100%;
+    /*background: red;*/
+    float:left;
+    list-style-type: none;
+    text-align: center;
+    vertical-align: middle;
+    /*margin-top: 10px;*/
+    font-size: 18px;
+}
+.content_blue2 div ul li:hover{
+    background: url("../img/lvse.png");
+    background-size: 100% 100%!important;
+
+}
+.content_blue2 div ul li a p{
+    text-align: center;
+    margin-top: 8px;
+    color: white;
+}
+.content_blue2 div ul li a{
+    margin: auto;
+}
+
+.header .navbar ul li {
+    text-align: center;
+    height: 100%;
+    float: right;
+    width: 20%;
+    min-width: 80px;
+    font-size: 16px;
+    margin-top: 10px;
+}
 .header .navbar ul li {
     text-align: center;
     height: 100%;
@@ -473,8 +603,8 @@ p.ctl { font-family: "Times New Roman", serif; font-size: 11pt; so-language: ar-
 .navbar-collapse{padding: 0!important;}
 .navigation{
     width: 75%;
-    height: 50px;
-    margin-left: 3%;
+    /*height: 50px;*/
+    /*margin-left: 3%;*/
     float: left;
 }
 .login-button{
@@ -548,14 +678,20 @@ p.ctl { font-family: "Times New Roman", serif; font-size: 11pt; so-language: ar-
     width: 70%;
     margin-right: auto;
     margin-left: auto;
+    margin-top: 23px;
+    height: 440px;
+}
+:root #meg_present{
     margin-top: 42px;
-    height: 500px;
 }
 .present{
-    width: 80%;
-    height: 80px;
+    width: 543px;
+    /*height: 80px;*/
     margin-right: auto;
     margin-left: auto;
+}
+:root .present{
+    width: 816px\0;
 }
 .index-text {
     display: block;
@@ -568,8 +704,8 @@ p.ctl { font-family: "Times New Roman", serif; font-size: 11pt; so-language: ar-
     margin-right: auto;
 }
 .present_content{
-    width: 100%;
-    max-width: 800px;
+    width: 670px;
+    /*max-width: 800px;*/
     height: 350px;
     margin-top: 30px;
     margin-right: auto;
@@ -578,45 +714,73 @@ p.ctl { font-family: "Times New Roman", serif; font-size: 11pt; so-language: ar-
     border: 1px dashed #12aaf0;
     border-radius: 4px;
 }
+:root .present_content{
+    width: 1000px\0;
+}
 .present_content div{
-    margin: 32px 50px;
+    margin: 20px 30px;
+}
+:root .present_content div{
+    margin: 32px\0 50px\0;
 }
 .present_content div p{
-    font-size: 18px;
+    font-size: 15px;
     color: #666;
     font-family: 幼圆;
     text-indent: 2em;
+    letter-spacing: 2px;
+    line-height: 24px;
+}
+:root .present_content div p{
+    font-size: 18px\0;
+    line-height: 30px\0;
+    letter-spacing: 4px\0;
 }
 .present_btn{
     height: 32px;
 }
-.present_btn  button{
-    width: 130px;
-    height: 32px;
+.present_btn  div{
+    width: 90px;
+    height: 20px;
     font-family: 微软雅黑;
-    font-size: 20px;
+    font-size: 14px;
     background: #539148;
     color: white;
     float: right;
     border-radius: 4px;
+    text-align: center;
+}
+:root .present_btn  div{
+    width: 130px\0;
+    height: 32px\0;
+    font-size: 20px\0;
+    margin-top: -10px\0;
 }
 
 .section-div{
-    margin-top: 60px;
-    width: 70%;
-    max-width: 800px;
+    margin-top: 36px;
+    width: 670px;
+    /*max-width: 800px;*/
     margin-right: auto;
     margin-left: auto;
+}
+:root .section-div{
+    width: 1000px\0;
+    margin-top: 60px\0;
 }
 #condition{
     height: 300px;
 }
 .little-pr{
-    width: 12.5%;
-    max-width: 100px;
-    height: 80px;
+    /*width: 12.5%;*/
+    /*max-width: 100px;*/
+    /*height: 80px;*/
+    width: 68px;
     margin-right: auto;
     margin-left: auto;
+}
+:root .little-pr{
+    width: 100px\0;
 }
 .condition_content{
     margin-top: 30px;
@@ -639,10 +803,18 @@ p.ctl { font-family: "Times New Roman", serif; font-size: 11pt; so-language: ar-
     text-align: center;
 }
 .con_con_con{
-    margin-top: 30px;
-    color:#666 ;
+    margin-top: 15px;
+    color: #666;
     font-family: 幼圆;
-    font-size: 18px;
+    font-size: 13px;
+    letter-spacing: 2px;
+    line-height: 24px;
+}
+:root .con_con_con{
+    margin-top: 30px\0;
+    font-size: 18px\0;
+    line-height: 30px\0;
+    letter-spacing: 4px\0;
 }
 
 #prize_set{
@@ -684,48 +856,74 @@ p.ctl { font-family: "Times New Roman", serif; font-size: 11pt; so-language: ar-
 .triangle-down {
     width: 0;
     height: 0;
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
-    border-top: 12px solid #f39800;
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+    border-top: 5px solid #f39800;
     margin: auto;
+}
+:root .triangle-down {
+    border-left: 5.5px\0 solid\0 transparent\0;
+    border-right: 5.5px\0 solid\0 transparent\0;
+    border-top: 7px\0 solid\0 #f39800\0;
 }
 .prize_red p{
     margin-top: 5px;
     color: #db170e;
     font-family: 微软雅黑;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 16px;
+}
+:root .prize_red p{
+    font-size: 24px\0;
 }
 .prize_title p{
     font-family: 微软雅黑;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 10px;
     color: #888888;
+}
+:root .prize_title p{
+    font-size: 14px\0;
 }
 .prize_title p span{
     font-family: 微软雅黑;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 10px;
     color: #db170e;
 }
+:root .prize_title p span{
+    font-size: 14px\0;
+}
 .div_2{
-    margin-top: 10px;
+    /*margin-top: 10px;*/
 }
 .content_jb{
     width: 100%;
     height: 140px;
 }
+
 .content_jb p{
-    font-family: "Rosewood Std Regular";
-    font-size: 20px;
+    font-family: 微软雅黑;
+    font-size: 14px;
+    line-height: 25px;
+    letter-spacing: 2px;
     color: #666;
+}
+:root .content_jb p{
+    font-size: 20px\0;
+    line-height: 40px\0;
+    letter-spacing: 4px\0;
 }
 .div_jb{
     text-align: center;
 }
 .img_jb{
-    width: 50px;
-    height: 60px;
+    width: 32px;
+    height: 40px;
+}
+:root .img_jb{
+    width: 50px\0;
+    height: 60px\0;
 }
 .org_content{
     margin-top: 40px;
@@ -742,22 +940,40 @@ p.ctl { font-family: "Times New Roman", serif; font-size: 11pt; so-language: ar-
 }
 .ore_up{
 }
-.org_deep{
-    margin-top: 40px;
+:root .org_deep{
+    margin-top: 40px\0;
 }
 .org_title div p{
     font-family: 微软雅黑;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 14px;
     color: #666;
+}
+.org_title img{
+    width: 15px;
+    height: 15px;
+}
+:root .org_title img{
+    width: 20px\0;
+    height: 20px\0;
+}
+:root .org_title div p{
+    font-size: 20px\0;
 }
 .org_title div{
     float: left;
 }
 ._content p{
     font-family: 幼圆;
-    font-size: 18px;
+    font-size: 12px;
     color: #666;
+    line-height: 12px;
+    letter-spacing: 2px;
+}
+:root ._content p{
+    font-size: 18px\0;
+    line-height: 20px\0;
+    letter-spacing: 4px\0;
 }
 
 .caret{
@@ -765,4 +981,14 @@ p.ctl { font-family: "Times New Roman", serif; font-size: 11pt; so-language: ar-
 }
 .changeImage{
     background: url("../img/lvse.png") no-repeat center;
+}
+.click li div{
+    width: 100%;
+    /*background: #7aae1a!important;;*/
+    height: 6px;
+    margin-top: -8px;
+}
+.click  li{
+    text-decoration: none;
+    list-style-type: none;
 }

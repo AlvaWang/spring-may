@@ -68,7 +68,8 @@ var getEntireProName_unit = function (condition) {
                 var resultData = result.data.data;
                 for(var i=0;i<resultData.length;i++){
                     // alert(resultData[i]);
-                    var html_ul = "<li id='unit_list_"+condition+"'>"+resultData[i]+"</li>";//id是entireId
+                    var text = (i+1)+"."+resultData[i];
+                    var html_ul = "<li id='unit_list_"+condition+"'>"+text+"</li>";//id是entireId
                     // alert(html_ul);
                     $("#unit_project_list ul").append(html_ul);
                     $("#unit_list_"+condition).bind('click',function () {
@@ -99,7 +100,8 @@ var getEntireProName_team = function (condition) {
                 var resultData = result.data.data;
                 for(var i=0;i<resultData.length;i++){
                     // alert(resultData[i]);
-                    var html_ul = "<li id='team_list_"+condition+"'>"+resultData[i]+"</li>";
+                    var text = (i+1)+"."+resultData[i];
+                    var html_ul = "<li id='team_list_"+condition+"'>"+text+"</li>";
                     // alert(html_ul);
                     $("#team_project_list ul").append(html_ul);
 
@@ -111,3 +113,7 @@ var getEntireProName_team = function (condition) {
         }
     });
 }
+
+$("#add_project").click(function () {
+    window.location.href="/entry?comName="+comName;
+})
