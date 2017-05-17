@@ -177,6 +177,22 @@ public class UnitEssentialController {
     }
 
     /**
+     * 查看专利是否增加
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "getEntireIdByPatentId", method = RequestMethod.POST,consumes = "application/x-www-form-urlencoded")
+    @ResponseBody
+    public Long getEntireIdByPatentId(@RequestParam(required = false) Long id) {
+        Long result = patentListService.findById(id);
+        if (result != null && result>0){
+            return result;
+        }
+        else {
+            return null;
+        }
+    }
+    /**
      * 查看对应作品的基本信息录入表是否插入
      * @param entireId
      * @return
@@ -966,6 +982,13 @@ public class UnitEssentialController {
     @ResponseStatus(HttpStatus.OK)
     public PatentList deletePatentById(@PathVariable Long id) {
         return patentListService.delete(id);
+    }
+
+    @RequestMapping(value = "/deleteCoreTeamByEntireId/{entireId}", method = RequestMethod.DELETE)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.OK)
+    public List<CoreTeam> deleteCoreTeamByEntireId(@PathVariable Long entireId) {
+        return coreTeamService.deleteByEntireId(entireId);
     }
 
 }

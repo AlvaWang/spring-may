@@ -29,4 +29,6 @@ public interface CoreTeamService {
     int findByEntireId(Long entireId);
 
     List<CoreTeam> findListByEntireId(Long entireId);
+
+    List<CoreTeam> deleteByEntireId(Long entireId);
 }

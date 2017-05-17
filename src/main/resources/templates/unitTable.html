@@ -58,7 +58,7 @@
                             <tr>
                                 <td class="t_title">参赛目的</td>
                                 <td class="t_middle" colspan="5">
-                                    <div id="ue_goal">
+                                    <div id="ue_goal"  onclick="change_otherGoal()">
                                         <input type="radio" name="goal" value="竞争大赛优胜荣誉"/>竞争大赛优胜荣誉
                                         <input type="radio"  name="goal" value="寻求股权融资机会"/>寻求股权融资机会
                                         <input type="radio"  name="goal" value="寻求债权融资机会"/>寻求债权融资机会
@@ -85,7 +85,7 @@
                                         <input type="radio" name="field" value="新能源与新动力"/>新能源与新动力
                                         <input type="radio"  name="field" value="生物医药"/>生物医药
                                         <input type="radio" name="field" value="节能环保"/>节能环保
-                                        <input type="radio"  name="field" value="其他"/>其他
+                                        <input type="radio"  name="field" value="其它"/>其它
                                     </div>
 
                                 </td>
@@ -199,14 +199,14 @@
                                         </tr>
                                         <tr>
                                             <td colspan="2">
-                                                <div id="post_code">
+                                                <div id="post_code" onclick="change_otherPost()">
                                                     <input type="radio" value="软件著作权" name="code"/>软件著作权
                                                     <input type="radio" value="专有技术"  name="code"/>专有技术
                                                     <input type="radio" value="药品批文" name="code"/>药品批文
                                                     <input type="radio" value="医疗器械批文" name="code"/>医疗器械批文
                                                     <input type="radio" value="创新商业模式" name="code"/>创新商业模式
                                                     <input type="radio" value="集成电路布图" name="code"/>集成电路布图
-                                                    <input type="radio" value="其它" name="code"/>其他
+                                                    <input type="radio" value="其它" name="code"/>其它
                                                     <input type="text" id="powerType"/>
                                                 </div>
                                             </td>

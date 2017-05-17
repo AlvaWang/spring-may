@@ -1,5 +1,7 @@
 package net.bambooslips.demo.jpa.model;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;

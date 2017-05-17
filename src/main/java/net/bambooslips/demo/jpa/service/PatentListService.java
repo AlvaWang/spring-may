@@ -30,4 +30,6 @@ public interface PatentListService {
     Long findByPatentId(String patentId);
 
     List<PatentList> findListByEntireId(Long entireId);
+
+    Long findById(Long id);
 }

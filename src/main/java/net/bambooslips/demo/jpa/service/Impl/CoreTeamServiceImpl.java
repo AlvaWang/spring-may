@@ -1,9 +1,11 @@
 package net.bambooslips.demo.jpa.service.Impl;
 
 import net.bambooslips.demo.exception.CoreTeamNotFoundException;
+import net.bambooslips.demo.exception.EconomicRiskCounterNotFoundException;
 import net.bambooslips.demo.exception.PatentListNotFoundException;
 import net.bambooslips.demo.exception.PostNotFoundException;
 import net.bambooslips.demo.jpa.model.CoreTeam;
+import net.bambooslips.demo.jpa.model.EconomicRiskCounter;
 import net.bambooslips.demo.jpa.model.PatentList;
 import net.bambooslips.demo.jpa.repository.CoreTeamRepository;
 import net.bambooslips.demo.jpa.repository.PatentListRepository;
@@ -102,6 +104,25 @@ public class CoreTeamServiceImpl implements CoreTeamService{
         LOG.debug("Finding patentList by id: " + entireId);
         List<CoreTeam> list =  coreTeamRepository.findListByEntireId(entireId);
         return list;
+    }
+
+    @Override
+    public List<CoreTeam> deleteByEntireId(Long entireId) {
+
+        LOG.debug("Deleting CoreTeam with id: " + entireId);
+
+
+        List<CoreTeam> deleted = coreTeamRepository.findListByEntireId(entireId);
+
+        if (deleted == null) {
+            LOG.debug("No CoreTeam found with id: " + entireId);
+            throw new CoreTeamNotFoundException("No CoreTeam found with id: " + entireId);
+        }else {
+            coreTeamRepository.deleteByEntireId(entireId);
+
+            return deleted;
+        }
+
     }
 
 

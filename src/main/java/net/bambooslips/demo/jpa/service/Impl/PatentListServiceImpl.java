@@ -111,4 +111,18 @@ public class PatentListServiceImpl implements PatentListService{
     }
 
 
+    @Transactional(readOnly = true)
+    @Override
+    public Long findById(Long id) {
+        LOG.debug("Finding patentList by id: " + id);
+        PatentList patentList =  patentListRepository.findById(id);
+        if (patentList != null){
+            Long entireId = patentList.getEntireId();
+            return entireId;
+        } else {
+            return null;
+        }
+    }
+
+
 }

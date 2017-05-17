@@ -25,6 +25,11 @@ public interface PatentListRepository extends JpaRepository<PatentList, Long> {
     )
     PatentList findByPatentId(@Param("patentId") String patentId);
 
+    @Query(
+            "Select pl FROM PatentList pl WHERE pl.id=:id "
+    )
+    PatentList findById(@Param("id") Long id);
+
 
     @Query(
             "Select pl FROM PatentList pl WHERE pl.entireId=:entireId "

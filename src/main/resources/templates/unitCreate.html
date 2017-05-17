@@ -57,7 +57,7 @@
                             <tr>
                                 <td class="t_title">参赛目的</td>
                                 <td class="t_middle" colspan="5">
-                                    <div id="ue_goal">
+                                    <div id="ue_goal"   onclick="change_otherGoal()">
                                         <input type="radio" name="goal" value="竞争大赛优胜荣誉"/>竞争大赛优胜荣誉
                                         <input type="radio"  name="goal" value="寻求股权融资机会"/>寻求股权融资机会
                                         <input type="radio"  name="goal" value="寻求债权融资机会"/>寻求债权融资机会
@@ -84,9 +84,8 @@
                                         <input type="radio" name="field" value="新能源与新动力"/>新能源与新动力
                                         <input type="radio"  name="field" value="生物医药"/>生物医药
                                         <input type="radio" name="field" value="节能环保"/>节能环保
-                                        <input type="radio"  name="field" value="其他"/>其他
+                                        <input type="radio"  name="field" value="其它"/>其它
                                     </div>
-
                                 </td>
                                 <!--<td class="t_end"></td>-->
                             </tr>
@@ -233,14 +232,14 @@
                                         </tr>
                                         <tr>
                                             <td colspan="2">
-                                                <div id="post_code">
-                                                    <input type="radio" value="软件著作权"/>软件著作权
-                                                    <input type="radio" value="专有技术"/>专有技术
-                                                    <input type="radio" value="药品批文"/>药品批文
-                                                    <input type="radio" value="医疗器械批文"/>医疗器械批文
-                                                    <input type="radio" value="创新商业模式"/>创新商业模式
-                                                    <input type="radio" value="集成电路布图"/>集成电路布图
-                                                    <input type="radio" value="其他"/>其他
+                                                <div id="post_code"  onclick="change_otherPost()">
+                                                    <input type="radio" value="软件著作权" name="post"/>软件著作权
+                                                    <input type="radio" value="专有技术"  name="post"/>专有技术
+                                                    <input type="radio" value="药品批文"  name="post"/>药品批文
+                                                    <input type="radio" value="医疗器械批文"  name="post"/>医疗器械批文
+                                                    <input type="radio" value="创新商业模式"  name="post"/>创新商业模式
+                                                    <input type="radio" value="集成电路布图"  name="post"/>集成电路布图
+                                                    <input type="radio" value="其它"  name="post"/>其它
                                                     <input type="text" id="powerType"/>
                                                 </div>
                                             </td>
@@ -295,31 +294,31 @@
                                             <td>入选时间</td>
                                         </tr>
                                         <tr id="core_2">
-                                            <td><input type="text" id="core_name_1"/></td>
+                                            <td><input type="text" id="core_name_1" name="coreTeam"/></td>
                                             <td><select id="core_sex_1">
                                                 <option value="男">男</option>
                                                 <option value="女">女</option>
                                             </select></td>
-                                            <td><input type="text" id="core_age_1"/></td>
-                                            <td><input type="text" id="core_job_1"/></td>
+                                            <td><input type="text" id="core_age_1"  name="coreTeam"/></td>
+                                            <td><input type="text" id="core_job_1"  name="coreTeam"/></td>
                                             <td>  <select id="core_education_1">
                                                 <option value="学士">学士</option>
                                                 <option value="硕士">硕士</option>
                                                 <option value="博士">博士</option>
                                             </select></td>
-                                            <td><input type="text" id="core_experience_1"/></td>
-                                            <td><select id="core_millennium_1" onclick="change_millen(1)">
+                                            <td><input type="text" id="core_experience_1"  name="coreTeam"/></td>
+                                            <td><select id="core_millennium_1" onclick="change_millen(1)" class="core_mille">
                                                 <option value="是">是</option>
                                                 <option value="否">否</option>
                                             </select></td>
-                                            <td  id="millennium_date_1"><input type="text" id="core_millennium_date_1"/></td>
+                                            <td  id="millennium_date_1"><input type="text" id="core_millennium_date_1"  name="coreTeam_date"/></td>
                                         </tr>
                                         <tr id="core_3">
                                             <td colspan="8">主要工作经历/主要成就</td>
                                         </tr>
                                         <tr id="core_4">
                                             <td colspan="8">
-                                                <textarea id="main_achive_1"></textarea>
+                                                <textarea id="main_achive_1"  name="coreTeam"></textarea>
                                             </td>
                                         </tr>
 
@@ -335,34 +334,34 @@
                                             <td>入选时间</td>
                                         </tr>
                                         <tr id="core_6">
-                                            <td><input type="text" id="core_name_2"/></td>
+                                            <td><input type="text" id="core_name_2"  name="coreTeam"/></td>
                                             <td>
                                                 <select id="core_sex_2">
                                                     <option value="男">男</option>
                                                     <option value="女">女</option>
                                                 </select>
                                             </td>
-                                            <td><input type="text" id="core_age_2"/></td>
-                                            <td><input type="text" id="core_job_2"/></td>
+                                            <td><input type="text" id="core_age_2"  name="coreTeam"/></td>
+                                            <td><input type="text" id="core_job_2"  name="coreTeam"/></td>
                                             <td>  <select id="core_education_2">
                                                 <option value="学士">学士</option>
                                                 <option value="硕士">硕士</option>
                                                 <option value="博士">博士</option>
                                             </select></td>
-                                            <td><input type="text" id="core_experience_2"/></td>
+                                            <td><input type="text" id="core_experience_2"  name="coreTeam"/></td>
                                             <td>
                                                 <select id="core_millennium_2" onclick="change_millen(2)">
                                                     <option value="是">是</option>
                                                     <option value="否">否</option>
                                                 </select>
                                             </td>
-                                            <td  id="millennium_date_2"><input type="text" id="core_millennium_date_2"/></td>
+                                            <td  id="millennium_date_2"><input type="text" id="core_millennium_date_2" name="coreTeam-date"/></td>
                                         </tr>
                                         <tr id="core_7">
                                             <td colspan="8">主要工作经历/主要成就</td>
                                         </tr>
                                         <tr id="core_8">
-                                            <td colspan="8"><textarea id="main_achive_2"></textarea></td>
+                                            <td colspan="8"><textarea id="main_achive_2" class="coreTeam"></textarea></td>
                                         </tr>
                                         </tbody>
                                     </table>

@@ -28,6 +28,11 @@ $(function () {
         $(".submit_div").hide();
     }
 
+    $("#powerType").attr("disabled", "disabled");
+    $("#powerType").css("background","#dbdbdb");
+    $("#ueGoal").attr("disabled", "disabled");
+    $("#ueGoal").css("background","#dbdbdb");
+
     $("#patent_table").find("tr,td,input,div,button,textarea,select").attr("disabled", "disabled");
     $("#patent_table").find("tr,td,input,div,button,textarea,select").css("background","#dbdbdb")
     $("#patent_table").css("background","#dbdbdb")
@@ -104,7 +109,22 @@ var getUnitEssentialList = function (entireId) {
                 $("#corporation_summary").val(result.ueCorporationSummary);
                 // alert($("#ueId").val()+"ueId");
                 $(":radio[name='code'][value='" + result.uePostCode + "']").prop("checked", "checked");
-                $("#powerType").val(result.uePowerType)
+                alert($("#ue_goal input:checked").val())
+                if($("#post_code input:checked").val() == "" ){
+
+                    $(":radio[name='code'][value='其它']").prop("checked", "checked");
+                    $("#powerType").val(result.uePostCode)
+
+                    $("#powerType").removeAttr("disabled");
+                    $("#powerType").css("background","#ffffff");
+                }
+                if($("#ue_goal input:checked").val() == "" || $("#ue_goal input:checked").val() == "undefined"){
+                    $(":radio[name='goal'][value='其它']").prop("checked", "checked");
+                    $("#ueGoal").val(result.ueGoal)
+
+                    $("#ueGoal").removeAttr("disabled");
+                    $("#ueGoal").css("background","#ffffff");
+                }
                 $(":radio[name='source'][value='" + result.ueTechnicalSources + "']").prop("checked", "checked");
             }
 
@@ -720,6 +740,24 @@ $("#third_btn").click(function () {
 
 })
 
+var change_otherGoal = function () {
+    if($("#ue_goal input:checked").val() == "其它"){
+        $("#ueGoal").removeAttr("disabled");
+        $("#ueGoal").css("background","#ffffff");
+    }else {
+        $("#ueGoal").attr("disabled", "disabled");
+        $("#ueGoal").css("background","#dbdbdb");
+    }
+}
+var change_otherPost = function () {
+    if($("#post_code input:checked").val() == "其它"){
+        $("#powerType").removeAttr("disabled");
+        $("#powerType").css("background","#ffffff");
+    }else {
+        $("#powerType").attr("disabled", "disabled");
+        $("#powerType").css("background","#dbdbdb");
+    }
+}
 var change_patent_table = function () {
     var patent_choose=$("#patent_choose input[type='checkbox']").is(':checked');
     if(patent_choose == true){
@@ -3200,7 +3238,7 @@ var updateDemand = function (condition,demandId,type) {
 var deletePatentList = function (id) {
     $.ajax({
         url: "/deletePatentById/"+id,
-        type: 'get',
+        type: 'delete',
         async: true,
         data: id,
         // dataType: 'json',
