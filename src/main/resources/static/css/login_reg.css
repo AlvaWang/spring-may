@@ -73,9 +73,11 @@ li{
     margin-left: 25%;
     background-size: 100% 100%;
     position: absolute;
-    margin-top: -20px;
-    margin-top: -38px\9;
+    margin-top: -22px;
 
+}
+:root .reg_reg_div{
+    margin-top: -38px\0;
 }
 .reg_suc_div{
     height: calc(100% - 160px);
@@ -84,7 +86,10 @@ li{
     margin-left: 25%;
     background-size: 100% 100%;
     position: absolute;
-    margin-top: -38px;
+    margin-top: -22px;
+}
+:root .reg_suc_div{
+    margin-top: -38px\0;
 }
 .entry_{
     width: 60%;

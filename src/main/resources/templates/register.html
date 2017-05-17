@@ -28,7 +28,7 @@
                             <tr>
                                 <td>
                                     <div>
-                                        <label>账户名:</label><input type="text" placeholder="" id="acc_name" name="comAccName"/>
+                                        <label>账户名:</label><input type="text" placeholder="" id="acc_name" name="comAccName" maxlength="20" onkeyup="value=value.replace(/[^\w\\/]/ig,'')"/>
                                     </div>
                                     <!--<p style="color:#f16792;">*</p>-->
                                 </td>
@@ -39,7 +39,7 @@
                             <tr class="login_mar">
                                 <td>
                                     <div>
-                                        <label>登录密码:</label><input type="password" placeholder="" id="acc_pwd"  name="comAccPwd"/>
+                                        <label>登录密码:</label><input type="password" placeholder="" id="acc_pwd"  name="comAccPwd" maxlength="20" onkeyup="value=value.replace(/[^\w\\/]/ig,'')"/>
                                     </div>
                                 </td>
                                 <td class="res_word"><span style="color: #f16792">*</span>密码由数字、大写字母、小写字母组成，长度不能超过20</td>

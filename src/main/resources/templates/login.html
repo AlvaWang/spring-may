@@ -22,7 +22,7 @@
                     <!--<hr/>-->
                 </div>
                 <div class="login_form" id="login_competition">
-                    <form th:action="@{loginAction}" method="post">
+                    <form th:action="@{loginAction}" method="post" target="loginAction_frame">
 
                         <div class="header">
                             <h2 class="logo png"></h2>
@@ -54,9 +54,10 @@
                             </li>
                         </ul>
                     </form>
+                    <iframe name='loginAction_frame' id="loginAction_frame" style='display: none'></iframe>
                 </div>
                 <div id="login_work" class="login_form">
-                    <form th:action="@{loginActionWork}" method="post">
+                    <form th:action="@{loginActionWork}" method="post" target="loginActionWork_frame">
 
                         <div class="header">
                             <h2 class="logo png"></h2>
@@ -95,7 +96,9 @@
                             <!--</li>-->
                         </ul>
                     </form>
+                    <iframe name='loginActionWork_frame' id="loginActionWork_frame" style='display: none'></iframe>
                 </div>
+
             </div>
         </div>
     </div>
@@ -109,5 +112,6 @@
 <script src="../static/lib/js/jquery.min.js" th:src="@{/webjars/jquery/2.2.3/jquery.min.js}"></script>
 <script src="../static/lib/js/bootstrap.min.js" th:src="@{/webjars/bootstrap/3.3.6/js/bootstrap.min.js}"></script>
 <script src="../static/js/menu_click.js" th:src="@{/js/menu_click.js}"></script>
+<script src="../static/js/login.js" th:src="@{/js/login.js}"></script>
 </body>
 </html>

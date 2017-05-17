@@ -41,38 +41,68 @@ public class CompetitionAccountController {
      */
     @RequestMapping(value = "loginAction",method = RequestMethod.POST,
             produces = {"text/html;charset=UTF-8;", "application/json", "*/*"})
-    public @ResponseBody
-    ModelAndView loginMethod(@RequestParam(required = false) String comAccName,
+    public @ResponseBody String loginMethod(@RequestParam(required = false) String comAccName,
                                          @RequestParam(required = false) String comAccPwd,
                                          @RequestParam(required = false) String comAccType) {
         String message = "这个是要传递的数据";
 //        comAccName = "wp";comAccPwd = "123456";
         comAccType = "COMPETITION";
-
-        List<CompetitionAccount> list = competitionAccountService.search(comAccName, comAccPwd, comAccType);
-        if (list != null && list.size() > 0) {
-            return new ModelAndView("redirect:success.html?comName=" + comAccName);
-        } else {
-            return new ModelAndView("redirect:login.html");
+        String result;
+        BaseResult baseResult = null;
+        if(comAccName =="" || comAccPwd == ""){
+            baseResult = new BaseResult(false, "信息未填写完全");
+            baseResult.setData("acc_null");
+            result = JSON.toJSONString(baseResult);
+            return result;
+        }else {
+            List<CompetitionAccount> list = competitionAccountService.search(comAccName, comAccPwd, comAccType);
+            if (list != null && list.size() > 0) {
+                baseResult = new BaseResult(true, "");
+                baseResult.setData(comAccName);
+                result = JSON.toJSONString(baseResult);
+                return result;
+//                return new ModelAndView("redirect:success.html?comName=" + comAccName);
+            } else {
+                baseResult = new BaseResult(false, "账号或密码错误");
+                baseResult.setData("acc_login_null");
+                result = JSON.toJSONString(baseResult);
+                return result;
+            }
         }
-
 
     }
     @RequestMapping(value = "loginActionWork",method = RequestMethod.POST,
             produces = {"text/html;charset=UTF-8;", "application/json", "*/*"})
-    public @ResponseBody
-    ModelAndView loginWorkMethod(@RequestParam(required = false) String comAccName,
+    public @ResponseBody String loginWorkMethod(@RequestParam(required = false) String comAccName,
                              @RequestParam(required = false) String comAccPwd,
                              @RequestParam(required = false) String comAccType){
         String message = "这个是要传递的数据";
 //        comAccName = "wp";comAccPwd = "123456";
         comAccType = "EXPERT";
-        List<CompetitionAccount> list = competitionAccountService.search(comAccName,comAccPwd,comAccType);
-        if (list != null && list.size()>0){
-            return new ModelAndView("redirect:success.html?comName="+comAccName);
+        String result;
+        BaseResult baseResult = null;
+        if(comAccName =="" || comAccPwd == ""){
+            baseResult = new BaseResult(false, "信息未填写完全");
+            baseResult.setData("accWork_null");
+            result = JSON.toJSONString(baseResult);
+            return result;
         }else {
-            return new ModelAndView("redirect:login.html");
+            List<CompetitionAccount> list = competitionAccountService.search(comAccName,comAccPwd,comAccType);
+            if (list != null && list.size()>0){
+                baseResult = new BaseResult(true, "");
+                baseResult.setData(comAccName);
+                result = JSON.toJSONString(baseResult);
+                return result;
+//                return new ModelAndView("redirect:success.html?comName="+comAccName);
+            }else {
+                baseResult = new BaseResult(false, "账号或密码错误");
+                baseResult.setData("accWork_login_null");
+                result = JSON.toJSONString(baseResult);
+                return result;
+//                return new ModelAndView("redirect:login.html");
+            }
         }
+
     }
 
     /*
