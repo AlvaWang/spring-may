@@ -3,6 +3,7 @@ package net.bambooslips.demo.jpa.repository;
 import net.bambooslips.demo.jpa.model.EducationExperionce;
 import net.bambooslips.demo.jpa.model.TeamEssential;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
@@ -23,6 +24,10 @@ public interface EducationExperionceRepository extends JpaRepository<EducationEx
             "Select ee FROM EducationExperionce ee WHERE ee.ctId=:ctId "
     )
     List<EducationExperionce> findListByEntireId(@Param("ctId") Long ctId);
+
+    @Modifying
+    @Query("delete from EducationExperionce ee where ee.ctId in (:ctId)")
+    public int deleteByEntireId(@Param("ctId")Long ctId);
 
 
 }

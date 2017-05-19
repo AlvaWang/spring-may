@@ -33,15 +33,45 @@ var getEntireList = function (comName,type) {
             alert("查询失败！")
         },
         success: function (result) {
+            var eu = 0;
+            var et = 0;
             if (result.data != null) {
                 // alert(result.data.data.length)
+                console.log(result.data.data)
                 var resultData = result.data.data;
                 for(var i=0;i<resultData.length;i++){
                     if (type == "unit"){
-                        getEntireProName_unit(resultData[i])
+                        $("#unit_project_list ul").empty();
+                        if(resultData[i][1] == "UNIT"){
+                            eu = eu+1
+                            var text = eu+"."+"作品Id为"+resultData[i][0]+"号作品";
+                            var html_ul = "<li id='unit_list_"+resultData[i][0]+"'>"+text+"</li>";//id是entireId
+                            // alert(html_ul);
+                            $("#unit_project_list ul").append(html_ul);
+
+                            var entireId =  resultData[i][0];
+                            // alert(entireId);
+                            $("#unit_list_"+resultData[i][0]).bind('click',function () {
+                                window.location.href = "/unitTable?entireId=" + entireId+"&type="+"KEEP";
+                            })
+                        }
+                        // getEntireProName_unit(resultData[i])
                     }
                     if (type == "team"){
-                        getEntireProName_team(resultData[i]);
+                        $("#team_project_list ul").empty();
+                        if(resultData[i][1] == "TEAM"){
+                            et = et+1
+                            // getEntireProName_team(resultData[i]);
+                            var text = et+"."+"作品Id为"+resultData[i][0]+"号作品";
+                            var html_ul = "<li id='team_list_"+resultData[i][0]+"'>"+text+"</li>";
+                            // alert(html_ul);
+                            $("#team_project_list ul").append(html_ul);
+                            var entireId =  resultData[i][0]
+                            $("#team_list_"+resultData[i][0]).bind('click',function () {
+                                window.location.href = "/teamTable?entireId=" + entireId +"&type="+"KEEP";
+                            })
+                        }
+
                     }
                 }
             }

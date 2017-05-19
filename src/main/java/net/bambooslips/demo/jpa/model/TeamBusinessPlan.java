@@ -36,7 +36,7 @@ public class TeamBusinessPlan implements Serializable {
 
     @Column(name = "tbus_pro_core")
     private String tbusProCore;
-    @Column(name = "tbus_major_desc")
+    @Column(name = "tbus_major_desc",length = 2400)
     private String tbusMajorDesc;
 
     @Column(name = "tbus_technology_maturity")
@@ -63,14 +63,14 @@ public class TeamBusinessPlan implements Serializable {
     @Column(name = "tbus_pro_picture")
     private String tbusProPicture;
 
-    @Column(name = "tbus_market_analysis")
+    @Column(name = "tbus_market_analysis",length = 2400)
     private String tbusMarketAnalysis;
 
 
-    @Column(name = "tbus_model")
+    @Column(name = "tbus_model",length = 2400)
     private String tbusModel;
 
-    @Column(name = "tbus_development_plan")
+    @Column(name = "tbus_development_plan",length = 2400)
     private String tbusDevelopmentPlan;
 
     @Column(name = "status")

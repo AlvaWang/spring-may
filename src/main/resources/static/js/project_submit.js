@@ -33,15 +33,25 @@ var getEntireList = function (comName,type) {
             alert("查询失败！")
         },
         success: function (result) {
+            var et = 0;
+            var eu = 0;
             if (result.data != null) {
                 // alert(result.data.data.length)
                 var resultData = result.data.data;
                 for(var i=0;i<resultData.length;i++){
                     if (type == "unit"){
-                        getEntireProName_unit(resultData[i])
+                        if(resultData[i][1] == "UNIT"){
+                            eu=eu+1;
+                            $("#unit_project_list ul").empty();
+                            getEntireProName_unit(resultData[i][0],eu)
+                        }
                     }
                     if (type == "team"){
-                        getEntireProName_team(resultData[i]);
+                        if(resultData[i][1] == "TEAM"){
+                            et =et+1;
+                            $("#team_project_list ul").empty();
+                            getEntireProName_team(resultData[i][0],et);
+                        }
                     }
                 }
             }
@@ -50,7 +60,7 @@ var getEntireList = function (comName,type) {
     });
 }
 
-var getEntireProName_unit = function (condition) {
+var getEntireProName_unit = function (condition,e_u) {
     // alert(condition);
     $.ajax({
         url: "/getEntireProNameByEntireId/"+condition,
@@ -64,14 +74,17 @@ var getEntireProName_unit = function (condition) {
         success: function (result) {
             if (result.data != null) {
                 // alert(result.data.data.length)
-                $("#unit_project_list ul").empty();
+                console.log(result.data.data)
+
                 var resultData = result.data.data;
                 for(var i=0;i<resultData.length;i++){
-                    // alert(resultData[i]);
-                    var text = (i+1)+"."+resultData[i];
+
+                    var text = (e_u)+"."+resultData[i];
+
                     var html_ul = "<li id='unit_list_"+condition+"'>"+text+"</li>";//id是entireId
                     // alert(html_ul);
                     $("#unit_project_list ul").append(html_ul);
+
                     $("#unit_list_"+condition).bind('click',function () {
                         window.location.href = "/unitTable?entireId=" + condition+"&type="+"SUBMIT";
                     })
@@ -82,7 +95,7 @@ var getEntireProName_unit = function (condition) {
     });
 }
 
-var getEntireProName_team = function (condition) {
+var getEntireProName_team = function (condition,e_t) {
     // alert(condition);
     $.ajax({
         url: "/getEntireProNameByEntireId_team/"+condition,
@@ -95,12 +108,13 @@ var getEntireProName_team = function (condition) {
         },
         success: function (result) {
             if (result.data != null) {
-                $("#team_project_list ul").empty();
-                // alert(result.data.data.length)
+
+                // alert(.length)
+                console.log(result.data.data)
                 var resultData = result.data.data;
                 for(var i=0;i<resultData.length;i++){
                     // alert(resultData[i]);
-                    var text = (i+1)+"."+resultData[i];
+                    var text = (e_t)+"."+resultData[i];
                     var html_ul = "<li id='team_list_"+condition+"'>"+text+"</li>";
                     // alert(html_ul);
                     $("#team_project_list ul").append(html_ul);

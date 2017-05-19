@@ -38,7 +38,7 @@ public class DemandFinancial implements  Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date dfEquityDate;
 
-    @Column(name = "df_equity_fund_plan")
+    @Column(name = "df_equity_fund_plan",length = 1500)
     private String equityFundPlan;
 
     @Column(name = "df_is_equity_recom")
@@ -57,7 +57,7 @@ public class DemandFinancial implements  Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date dfDebtDate;
 
-    @Column(name = "df_debt_fund_plan")
+    @Column(name = "df_debt_fund_plan",length = 1500)
     private String debtFundPlan;
 
     @Column(name = "df_is_debt_recom")

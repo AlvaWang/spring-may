@@ -22,7 +22,7 @@ import java.util.List;
  * Created by Administrator on 2017/4/21.
  */
 @Service
-public class EducationExperionceServiceImpl implements EducationExperionceService{
+public class EducationExperionceServiceImpl implements EducationExperionceService {
 
     private static final Logger LOG = LoggerFactory.getLogger(EducationExperionceServiceImpl.class);
     @Resource
@@ -33,7 +33,7 @@ public class EducationExperionceServiceImpl implements EducationExperionceServic
     public Long create(EducationExperionce educationExperionce) {
         LOG.debug("Creating a new educationExperionce with information: " + educationExperionce);
         EducationExperionce result = educationExperionceRepository.save(educationExperionce);
-        if(result != null){
+        if (result != null) {
             return educationExperionce.getEduId();
         }
         return null;
@@ -76,12 +76,30 @@ public class EducationExperionceServiceImpl implements EducationExperionceServic
 
         if (educationExperionce == null) {
             LOG.debug("No teamResponsiblePerson found with id: " + updated.getEduId());
-            throw new PostNotFoundException("Post "+updated.getEduId()+" not found.");
+            throw new PostNotFoundException("Post " + updated.getEduId() + " not found.");
         }
         educationExperionce.update(updated);
 
         return educationExperionce;
     }
 
+    @Override
+    public List<EducationExperionce> deleteByEntireId(Long ctId) {
 
+        LOG.debug("Deleting CoreTeam with id: " + ctId);
+
+
+        List<EducationExperionce> deleted = educationExperionceRepository.findListByEntireId(ctId);
+
+        if (deleted == null) {
+            LOG.debug("No EducationExperionceNotFoundException found with id: " + ctId);
+            throw new EducationExperionceNotFoundException("No EducationExperionceNotFoundException found with id: " + ctId);
+        } else {
+            educationExperionceRepository.deleteByEntireId(ctId);
+
+            return deleted;
+        }
+
+
+    }
 }

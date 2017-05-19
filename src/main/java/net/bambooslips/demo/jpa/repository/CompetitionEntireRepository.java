@@ -18,7 +18,7 @@ import java.util.List;
 public interface CompetitionEntireRepository extends JpaRepository<CompetitionEntire, Long>{
 
     @Query(
-            "SELECT ce.entireId from CompetitionEntire ce where ce.comName=:comName and ce.workState = :workState"
+            "SELECT ce.entireId,ce.entryType from CompetitionEntire ce where ce.comName=:comName and ce.workState = :workState"
     )
     List<CompetitionEntire> findByComName(@Param("comName") String comName,@Param("workState") String workState);
 

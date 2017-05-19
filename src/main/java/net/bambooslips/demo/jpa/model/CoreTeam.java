@@ -44,7 +44,7 @@ public class CoreTeam implements  Serializable {
     @Column(name = "ct_study_experience")
     private String ctStudyExperience;
 
-    @Column(name = "ct_main_achive")
+    @Column(name = "ct_main_achive",length = 1500)
     private String ctMainAchive;
 
     @Column(name = "ct_national_millennium")

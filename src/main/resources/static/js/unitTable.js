@@ -3,7 +3,10 @@
  */
 var entireId = GetQueryString("entireId");
 var type=GetQueryString("type");
+var comName = GetQueryString("comName");
 $(function () {
+    $(" .sample button").attr("hidden","hidden");
+
     $("#first_btn").css("background","#8fc320");
     $("#first_btn").find("p").css("color","#ffffff");
 
@@ -107,9 +110,9 @@ var getUnitEssentialList = function (entireId) {
                 $("#office_address").val(result.ueOfficeAddress);
                 $("#power_type").val(result.uePowerType);
                 $("#corporation_summary").val(result.ueCorporationSummary);
-                // alert($("#ueId").val()+"ueId");
+
                 $(":radio[name='code'][value='" + result.uePostCode + "']").prop("checked", "checked");
-                alert($("#ue_goal input:checked").val())
+
                 if($("#post_code input:checked").val() == "" ){
 
                     $(":radio[name='code'][value='其它']").prop("checked", "checked");
@@ -208,6 +211,7 @@ var getPatentListByEntireId = function (entireId) {
                $("#patent_table").css("background","#ecf7fd");
 
                for(var i=0;i<result.data.data.length;i++){
+                   var dataBeatpickerPosition = "["+"'"+"right"+"'"+","+"'"+"*"+"'"+"]";
                    patent=patent+1;
                    num = num+3;
                    var patentList = result.data.data;
@@ -221,7 +225,10 @@ var getPatentListByEntireId = function (entireId) {
                        "</select>"+
                        "</td>"+
                        "<td><input type='text' id='patent_num_"+patent+"' value='"+patentList[i].patentId+"'/></td>"+
-                       "<td><input type='text' id='patent_date_"+patent+"' value='"+stampToStandard(patentList[i].patentDate)+"'/></td></tr>"+
+                       "<td>" +
+                       "<div class='sample'>"+
+                       "<input type='text' id='patent_date_"+patent+"' value='"+stampToStandard(patentList[i].patentDate)+"' data-beatpicker='true' data-beatpicker-position="+dataBeatpickerPosition+" placeholder='"+"yyyy-mm-dd"+"'></div></td></tr>"+
+                       // "<input type='text' id='patent_date_"+patent+"' value='"+stampToStandard(patentList[i].patentDate)+"'/></td></tr>"+
                        "<tr hidden='hidden' id='patent_"+num+"'><td><input id='patentId_"+patent+"' value='"+patentList[i].id+"'/></td></tr>";
                    $("#patent_table table").append(html_tr);
 
@@ -251,6 +258,7 @@ var getCoreTeamListByEntireId = function (entireId) {
             var coreTeamList = result.data.data;
             if(coreTeamList.length>0){
                 for(var i = 0;i<coreTeamList.length;i++){
+                    var dataBeatpickerPosition = "["+"'"+"right"+"'"+","+"'"+"*"+"'"+"]";
                     team = team+1;
                     core =core+5;
                     var html_tr ="<tr hidden='hidden' id='core_"+(core-4)+"'><td><input type='text' id='ctId_"+team+"' value='"+coreTeamList[i].ctId+"'/></td></tr>"+
@@ -267,10 +275,12 @@ var getCoreTeamListByEntireId = function (entireId) {
                         "<td><input type='text' id='core_experience_"+team+"' value='"+coreTeamList[i].ctStudyExperience+"'/></td>"+
                         "<td><select  id='core_millennium_"+team+"'><option value='是'>是</option>" +
                         "<option value='否'>否</option>" + "</select></td>"+
-                        "<td id='millennium_date_"+team+"'><input type='text' id='core_millennium_date_"+team+"'/></td>"+
+                        "<td id='millennium_date_"+team+"'>" +
+                        "<div class='sample'>"+
+                        "<input type='text' id='core_millennium_date_"+team+"' name='coreTeam_date' data-beatpicker='true' data-beatpicker-position="+dataBeatpickerPosition+" placeholder='"+"yyyy-mm-dd"+"'></div></td>"+
                         "</tr>"+
                         "<tr id='core_"+(core-1)+"'><td colspan='8'>主要工作经历/主要成就</td></tr>"+
-                        "<tr id='core_"+core+"'><td colspan='8'><textarea id='main_achive_"+team+"' value='"+coreTeamList[i].ctMainAchive+"'>"+coreTeamList[i].ctMainAchive+"</textarea></td></tr>";
+                        "<tr id='core_"+core+"'><td colspan='8'><textarea id='main_achive_"+team+"' value='"+coreTeamList[i].ctMainAchive+"' maxlength='1200' placeholder='请简要描述，1200字以内!'>"+coreTeamList[i].ctMainAchive+"</textarea></td></tr>";
                     // alert(html_tr);
 
                     $("#core_team_table").append(html_tr);
@@ -283,28 +293,31 @@ var getCoreTeamListByEntireId = function (entireId) {
                         $("#core_millennium_date_"+team).val(stampToStandard(coreTeamList[i].nationalMilleDate));
                         $("#millennium_date_"+team).removeAttr("disabled");
                         $("#millennium_date_"+team).css("background","#ffffff");
-                        $("#millennium_date_"+team).find("input").removeAttr("disabled");
-                        $("#millennium_date_"+team).find("input").css("background","#ffffff");
+                        $("#millennium_date_"+team).find("input,div").removeAttr("disabled");
+                        $("#millennium_date_"+team).find("input,div").css("background","#ffffff");
                     }else {
                         $("#millennium_date_"+team).attr("disabled", "disabled");
                         $("#millennium_date_"+team).css("background","#dbdbdb");
-                        $("#millennium_date_"+team).find("input").attr("disabled", "disabled");
-                        $("#millennium_date_"+team).find("input").css("background","#dbdbdb");
+                        $("#millennium_date_"+team).find("input,div").attr("disabled", "disabled");
+                        $("#millennium_date_"+team).find("input,div").css("background","#dbdbdb");
                     }
 
-                    $("#core_millennium_"+(i+1)).click(function () {
-                        if($("#core_millennium_"+(i+1)).val() == "是"){
-                            $("#millennium_date_"+(i+1)).removeAttr("disabled");
-                            $("#millennium_date_"+(i+1)).css("background","#ffffff");
-                            $("#millennium_date_"+(i+1)).find("input").removeAttr("disabled");
-                            $("#millennium_date_"+(i+1)).find("input").css("background","#ffffff");
-                        }else {
-                            $("#millennium_date_"+(i+1)).attr("disabled", "disabled");
-                            $("#millennium_date_"+(i+1)).css("background","#dbdbdb");
-                            $("#millennium_date_"+(i+1)).find("input").attr("disabled", "disabled");
-                            $("#millennium_date_"+(i+1)).find("input").css("background","#dbdbdb");
-                        }
-                    })
+                    for(var i =1;i<=team;i++)
+                    {
+                        $("#core_millennium_"+team).click(function () {
+                            if($("#core_millennium_"+team).val() == "是"){
+                                $("#millennium_date_"+team).removeAttr("disabled");
+                                $("#millennium_date_"+team).css("background","#ffffff");
+                                $("#millennium_date_"+team).find("input").removeAttr("disabled");
+                                $("#millennium_date_"+team).find("input").css("background","#ffffff");
+                            }else {
+                                $("#millennium_date_"+team).attr("disabled", "disabled");
+                                $("#millennium_date_"+team).css("background","#dbdbdb");
+                                $("#millennium_date_"+team).find("input").attr("disabled", "disabled");
+                                $("#millennium_date_"+team).find("input").css("background","#dbdbdb");
+                            }
+                        })
+                    }
                 }
             }
 
@@ -698,7 +711,7 @@ $("#first_btn").click(function () {
     $(".streamer_hxtd").hide();
     $(".streamer_syjhs").hide();
 
-
+    $(" .sample button").attr("hidden","hidden");
 })
 
 $("#second_btn").click(function () {
@@ -718,7 +731,7 @@ $("#second_btn").click(function () {
     $(".streamer_jbxx").hide();
     $(".streamer_syjhs").hide();
 
-
+    $(" .sample button").attr("hidden","hidden");
 })
 $("#third_btn").click(function () {
     $("#third_btn").css("background","#8fc320");
@@ -737,7 +750,10 @@ $("#third_btn").click(function () {
     $(".streamer_jbxx").hide();
     $(".streamer_hxtd").hide();
 
-
+    $(" .sample button").attr("hidden","hidden");
+})
+$("#project_page").click(function () {
+    window.location.href = "/success?comName=" + comName;
 })
 
 var change_otherGoal = function () {
@@ -1553,6 +1569,7 @@ var updateContacts = function (condition,contactsId) {
 
 var addImg =function () {
     // alert(patent);
+    var dataBeatpickerPosition = "["+"'"+"right"+"'"+","+"'"+"*"+"'"+"]";
     var html_tr = "<tr id='patent_"+(num-2)+"'><td>专利名称</td><td>专利类型*</td><td>专利号</td> <td>获得时间选择</td></tr>"+
         "<tr id='patent_"+(num-1)+"'><td><input type='text' id='patent_name_"+patent+"'/></td>"+
         "<td>" +
@@ -1563,7 +1580,8 @@ var addImg =function () {
         "</select>"+
         "</td>"+
         "<td><input type='text' id='patent_num_"+patent+"'/></td>"+
-        "<td><input type='text' id='patent_date_"+patent+"'/></td></tr>"+
+        "<td>" +"<div class='sample'>"+
+        "<input type='text' id='patent_date_"+patent+"' data-beatpicker='true' data-beatpicker-position="+dataBeatpickerPosition+" placeholder='"+"yyyy-mm-dd"+"'></div></td></tr>"+
         "<tr hidden='hidden' id='patent_"+num+"'><td><input id='patentId_"+patent+"' value=''/></td></tr>";
     // alert(html_tr);
     $("#patent_table table").append(html_tr);
@@ -1658,6 +1676,7 @@ var reduceImg = function () {
 
 
 var addCoreTeamImg= function () {
+        var dataBeatpickerPosition = "["+"'"+"right"+"'"+","+"'"+"*"+"'"+"]";
     var html_tr ="<tr hidden='hidden' id='core_"+(core-4)+"'><td><input type='text' id='ctId_"+team+"' value=''/></td></tr>"+
         "<tr id='core_"+(core-3)+"' class='core_num'><td>姓名</td><td>性别</td> <td>年龄</td><td>职位</td>" +
         "<td>最高学历</td> <td>留学经历</td> <td>入选国家千人计划</td><td>入选时间</td>"+
@@ -1672,26 +1691,31 @@ var addCoreTeamImg= function () {
         "<td><input type='text' id='core_experience_"+team+"'/></td>"+
         "<td><select  id='core_millennium_"+team+"'><option value='是'>是</option>" +
         "<option value='否'>否</option>" + "</select></td>"+
-        "<td id='millennium_date_"+team+"'><input type='text' id='core_millennium_date_"+team+"'/></td>"+
+        "<td id='millennium_date_"+team+"'>" +
+        "<div class='sample'>"+
+        "<input type='text' id='core_millennium_date_"+team+"' name='coreTeam_date' data-beatpicker='true' data-beatpicker-position="+dataBeatpickerPosition+" placeholder='"+"yyyy-mm-dd"+"'></div></td>"+
         "</tr>"+
         "<tr id='core_"+(core-1)+"'><td colspan='8'>主要工作经历/主要成就</td></tr>"+
-        "<tr id='core_"+core+"'><td colspan='8'><textarea id='main_achive_"+team+"'></textarea></td></tr>";
+        "<tr id='core_"+core+"'><td colspan='8'><textarea id='main_achive_"+team+"' maxlength='1200' placeholder='请简要描述，1200字以内!'></textarea></td></tr>";
     // alert(html_tr);
     $("#core_team_table").append(html_tr);
 
-    $("#core_millennium_"+team).click(function () {
-        if($("#core_millennium_"+team).val() == "是"){
-            $("#millennium_date_"+team).removeAttr("disabled");
-            $("#millennium_date_"+team).css("background","#ffffff");
-            $("#millennium_date_"+team).find("input").removeAttr("disabled");
-            $("#millennium_date_"+team).find("input").css("background","#ffffff");
-        }else {
-            $("#millennium_date_"+team).attr("disabled", "disabled");
-            $("#millennium_date_"+team).css("background","#dbdbdb");
-            $("#millennium_date_"+team).find("input").attr("disabled", "disabled");
-            $("#millennium_date_"+team).find("input").css("background","#dbdbdb");
+        for(var i =1;i<=team;i++)
+        {
+            $("#core_millennium_"+team).click(function () {
+                if($("#core_millennium_"+team).val() == "是"){
+                    $("#millennium_date_"+team).removeAttr("disabled");
+                    $("#millennium_date_"+team).css("background","#ffffff");
+                    $("#millennium_date_"+team).find("input").removeAttr("disabled");
+                    $("#millennium_date_"+team).find("input").css("background","#ffffff");
+                }else {
+                    $("#millennium_date_"+team).attr("disabled", "disabled");
+                    $("#millennium_date_"+team).css("background","#dbdbdb");
+                    $("#millennium_date_"+team).find("input").attr("disabled", "disabled");
+                    $("#millennium_date_"+team).find("input").css("background","#dbdbdb");
+                }
+            })
         }
-    })
 }
 var reduceCoreImg = function () {
     // alert("#patent_"+(num+1));

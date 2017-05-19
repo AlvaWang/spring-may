@@ -30,6 +30,8 @@ public interface EducationExperionceService {
 
     EducationExperionce update(EducationExperionce updated);
 
+    List<EducationExperionce> deleteByEntireId(Long ctId);
+
 //    Long findByEntireId(Long entireId);
 
 //    Page<UnitEssential> findByComName(String comName);

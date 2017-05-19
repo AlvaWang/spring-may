@@ -58,7 +58,7 @@ public class UnitEssential implements  Serializable {
     @Column(name = "ue_technical_sources")
     private String ueTechnicalSources;
 
-    @Column(name = "ue_corporation_summary")
+    @Column(name = "ue_corporation_summary",length = 600)
     private String ueCorporationSummary;
 
     @Column(name = "status")

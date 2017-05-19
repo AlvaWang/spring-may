@@ -1,8 +1,11 @@
 /**
  * Created by Administrator on 2017/4/30.
  */
-
+var comName = GetQueryString("comName");
 $(function () {
+
+    $(" .sample button").attr("hidden","hidden");
+
     $("#first_btn").css("background","#8fc320");
     $("#first_btn").find("p").css("color","#ffffff");
 
@@ -83,395 +86,25 @@ $("#first_btn").click(function () {
     $("#hxtd_conservation").hide();
     $("#syjhs_conservation").hide();
 
+    $(" .sample button").attr("hidden","hidden");
 })
 
 $("#second_btn").click(function () {
     getUnitEssentialByEntireId(entireId,"second");
-
+    $(" .sample button").attr("hidden","hidden");
 })
 
 $("#third_btn").click(function () {
     getCoreTeamByEntireId(entireId,"third");
 
-    getUnitBusinessPlanByEntireId(entireId,"third");
     getEntireWorkStateById(entireId,"third")
+    $(" .sample button").attr("hidden","hidden");
 
-    getUnitBusinessPlanConditionByEntireId(entireId)
-    getHistoricalListByEntireId(entireId);
-    getForecastingListByEntireId(entireId);
-    getEquityFinancingListByEntireId(entireId);
-    getDebtFinancingListByEntireId(entireId);
-    getDemandListByEntireId(entireId)
 })
-var getUnitBusinessPlanConditionByEntireId = function (entireId) {
-    $.ajax({
-        url: "/getUnitBusinessPlanConditionByEntireId/"+entireId,
-        type: 'get',
-        async: true,
-        data: entireId,
-        // dataType: 'json',
-        error: function (obj, msg) {
-            alert("服务器异常！")
-        },
-        success: function (result) {
-            console.log(result);
-            if (result != null) {
-                $("#ubusId").val(result.ubusId);
-                $("#pro_name").val(result.ubusProName);
-                $("#pro_incomed").val(result.ubusProIncomed);
-                $(":radio[name='type'][value='" + result.ubusProType + "']").prop("checked", "checked");//根据value值选中vidio
-                $(":radio[name='internal'][value='" + result.ubusLeadInternal + "']").prop("checked", "checked");
-                $(":radio[name='international'][value='" + result.ubusLeadInternational + "']").prop("checked", "checked");
-                $(":radio[name='research'][value='" + result.ubusResearchInstitute + "']").prop("checked", "checked");
-                if(result.ubusResearchInstitute == "有"){
-                    $("#institute_name").val(result.instituteName);
-                }
-                $(":radio[name='picture'][value='" + result.ubusProPicture + "']").prop("checked", "checked");
-                $("#major_describe").text(result.ubusMajorDescribe);
-                $("#pro_market").text(result.ubusProMarket);
-                $("#bus_model").text(result.ubusModel);
-                $("#ubus_main").text(result.ubusMain);
+$("#project_page").click(function () {
+    window.location.href = "/success?comName=" + comName;
+})
 
-            }
-
-        }
-    });
-}
-
-var getHistoricalListByEntireId = function (entireId) {
-    $.ajax({
-        url: "/getHistoricalListByEntireId/"+entireId,
-        type: 'get',
-        async: true,
-        data: entireId,
-        dataType: 'json',
-        error: function (obj, msg) {
-            alert("服务器异常！")
-        },
-        success: function (result) {
-            console.log(result.data.data);
-            var historicalData = result.data.data;
-            if(result.data.data.length>0){
-                for(var i =0;i<historicalData.length;i++){
-                    var year = result.data.data[i].hfinYear.substring(3);
-                    $("#hfinId_"+year).val(historicalData[i].hfinId);
-                    $("#hfin_income_"+year).val(historicalData[i].hfinIncome);
-                    $("#hfin_cost_"+year).val(historicalData[i].hfinCost);
-                    $("#hfin_profit_"+year).val(historicalData[i].hfinProfit);
-                    $("#hfin_profit_rate_"+year).val(historicalData[i].hfinProfitRate);
-                    $("#hfin_expenses_"+year).val(historicalData[i].hfinExpenses);
-                    $("#operating_profit_"+year).val(historicalData[i].hfinOperatingProfit);
-                    $("#operating_profit_rate_"+year).val(historicalData[i].operatingProfitRate);
-                    $("#beforeTax_profit_"+year).val(historicalData[i].hfinBeforeTaxProfit);
-                    $("#net_margin_"+year).val(historicalData[i].hfinNetMargin);
-                    $("#fixed_netValue_"+year).val(historicalData[i].fixedNetValue);
-
-                    $("#assets_total_"+year).val(historicalData[i].hfinAssetsTotal);
-                    $("#liabilites_total_"+year).val(historicalData[i].hfinLialilitesTotal);
-                    $("#net_asset_"+year).val(historicalData[i].hfinNetAsset);
-                    // alert($("#hfinId_"+year).val());
-                }
-
-            }
-
-        }
-    });
-}
-
-var getForecastingListByEntireId = function (entireId) {
-    $.ajax({
-        url: "/getForecastingListByEntireId/"+entireId,
-        type: 'get',
-        async: true,
-        data: entireId,
-        dataType: 'json',
-        error: function (obj, msg) {
-            alert("服务器异常！")
-        },
-        success: function (result) {
-            console.log(result.data.data);
-            var foreData = result.data.data;
-            if(result.data.data.length>0){
-                for(var i =0;i<foreData.length;i++){
-                    var year = result.data.data[i].foreYear.substring(3);
-                    $("#foreId_"+year).val(foreData[i].foreId);
-                    $("#fore_income_"+year).val(foreData[i].foreIncome);
-                    $("#fore_cost_"+year).val(foreData[i].foreCost);
-                    $("#tax_expense_"+year).val(foreData[i].foreTaxExpense);
-                    $("#fore_profit_"+year).val(foreData[i].foreProfit);
-                    $("#profit_rate_"+year).val(foreData[i].foreProfitRate);
-                    $("#net_margin_"+year).val(foreData[i].foreNetMargin);
-                }
-
-            }
-
-        }
-    });
-}
-
-var getEquityFinancingListByEntireId = function (entireId) {
-    $.ajax({
-        url: "/getEquityFinancingListByEntireId/"+entireId,
-        type: 'get',
-        async: true,
-        data: entireId,
-        // dataType: 'json',
-        error: function (obj, msg) {
-            alert("服务器异常！")
-        },
-        success: function (result) {
-            console.log(result);
-            // alert(result)
-            if (result != null && result != "") {
-                $("#equityId").val(result.equityId);
-                $(":radio[name='equity'][value='是']").prop("checked", "checked");//根据value值选中vidio
-                $("#equity_investor").val(result.equityInvestor);
-                $("#equity_money").val(result.equityMoney);
-                $("#equity_rate").val(result.equityRate);
-                $("#equity_date").val(stampToStandard(result.equityDate));
-
-                $("#equity").find(".equity_tr,.equity_tr td,.equity_tr td input").removeAttr("disabled");
-                $("#equity").find(".equity_tr td input").css("background","#ffffff");
-                $("#equity").find(".equity_tr,.equity_tr td").css("background","#ecf7fd");
-            }else {
-                $("#equity").find(".equity_tr,.equity_tr td,.equity_tr td input").attr("disabled", "disabled");
-                $("#equity").find(".equity_tr,.equity_tr td,.equity_tr td input").css("background","#dbdbdb");
-                $("#equity").find(".debt_tr,.debt_tr td,.debt_tr td input").attr("disabled", "disabled");
-                $("#equity").find(".debt_tr,.debt_tr td,.debt_tr td input").css("background","#dbdbdb");
-            }
-
-        }
-    });
-}
-var getDebtFinancingListByEntireId = function (entireId) {
-    $.ajax({
-        url: "/getDebtFinancingListByEntireId/"+entireId,
-        type: 'get',
-        async: true,
-        data: entireId,
-        // dataType: 'json',
-        error: function (obj, msg) {
-            alert("服务器异常！")
-        },
-        success: function (result) {
-            console.log(result);
-            // alert(result)
-            if (result != null && result != "") {
-                $("#debtId").val(result.debtId);
-                $(":radio[name='debt'][value='是']").prop("checked", "checked");//根据value值选中vidio
-                $("#debt_leader").val(result.debtLeader);
-                $("#debt_money").val(result.debtMoney);
-                $("#debt_start_time").val(stampToStandard(result.debtStartTime));
-                $("#debt_end_time").val(stampToStandard(result.debtEndTime));
-
-                $("#equity").find(".debt_tr,.debt_tr td,.debt_tr td input").removeAttr("disabled");
-                $("#equity").find(".debt_tr td input").css("background","#ffffff");
-                $("#equity").find(".debt_tr,.debt_tr td").css("background","#ecf7fd");
-            }else {
-                $("#equity").find(".debt_tr,.debt_tr td,.debt_tr td input").attr("disabled", "disabled");
-                $("#equity").find(".debt_tr,.debt_tr td,.debt_tr td input").css("background","#dbdbdb");
-            }
-
-        }
-    });
-}
-
-var getDemandListByEntireId = function (entireId) {
-    $.ajax({
-        url: "/getDemandListByEntireId/"+entireId,
-        type: 'get',
-        async: true,
-        data: entireId,
-        // dataType: 'json',
-        error: function (obj, msg) {
-            alert("服务器异常！")
-        },
-        success: function (result) {
-            console.log(result);
-            if (result != null && result != "") {
-                $("#demandId").val(result.dfId);
-                if (result.dfEquity == "是"){
-                    $(":radio[name='df_equity'][value='是']").prop("checked", "checked");
-                    $("#df_equity_money").val(result.dfEquityMoney)
-                    $("#df_equity_shares").val(result.dfEquityShares)
-                    $("#df_equity_date").val(stampToStandard(result.dfEquityDate))
-                    $("#df_equityFund_plan").text(result.equityFundPlan)
-                    $(":radio[name='equity_recom'][value='"+result.dfEquityRecom+"']").prop("checked", "checked");
-                    $("#technology").find(".df_equity_yes,.df_equity_yes td,.df_equity_yes td input,.df_equity_yes td div input,#df_equityFund_plan").removeAttr("disabled");
-                    $("#technology").find(".df_equity_yes td input,.df_equity_yes td div input,#df_equityFund_plan").css("background","#ffffff");
-                    $("#technology").find(".df_equity_yes,.df_equity_yes td").css("background","#ecf7fd");
-                }else {
-                    $("#technology").find(".df_equity_yes,.df_equity_yes td,.df_equity_yes td input,.df_equity_yes td div input,#df_equityFund_plan").attr("disabled", "disabled");
-                    $("#technology").find(".df_equity_yes,.df_equity_yes td,.df_equity_yes td input,.df_equity_yes td div input,#df_equityFund_plan").css("background","#dbdbdb");
-                }
-                if (result.dfDebt == "是"){
-                    $(":radio[name='df_debt'][value='是']").prop("checked", "checked");
-                    $("#df_debt_money").val(result.dfDebtMoney)
-                    $("#df_debt_maxAnnual").val(result.debtMaxAnnual)
-                    $("#df_debt_date").val(stampToStandard(result.dfDebtDate))
-                    $("#df_equityFund_plan").text(result.debtFundPlan)
-                    $(":radio[name='debt_recom'][value='"+result.dfDebtRecom+"']").prop("checked", "checked");
-
-                    $("#technology").find(".df_debt_yes,.df_debt_yes td,.df_debt_yes td input,.df_debt_yes td div input,#df_debtFund_plan").removeAttr("disabled");
-                    $("#technology").find(".df_debt_yes td input,.df_debt_yes td div input,#df_debtFund_plan").css("background","#ffffff");
-                    $("#technology").find(".df_debt_yes,.df_debt_yes td").css("background","#ecf7fd");
-                }else {
-                    $("#technology").find(".df_debt_yes,.df_debt_yes td,.df_debt_yes td input,.df_debt_yes td div input,#df_debtFund_plan").attr("disabled", "disabled");
-                    $("#technology").find(".df_debt_yes,.df_debt_yes td,.df_debt_yes td input,.df_debt_yes td div input,#df_debtFund_plan").css("background","#dbdbdb");
-                }
-                if(result.dfCrowdFunding == "1"){
-                    $(":checkbox[name='crowd_title'][value='众筹']").prop("checked", "checked");
-                    $(":checkbox[name='crowd'][value='"+result.crowsFundType+"']").prop("checked", "checked");
-
-                    $(".crowd_td,.crowd_td #crows_fund_type,#crows_fund_type tr td input,#crows_fund_type tr,#crows_fund_type td").removeAttr("disabled");
-                    $(".crowd_td,.crowd_td #crows_fund_type,#crows_fund_type tr,#crows_fund_type td").css("background","#ecf7fd")
-                    $("#crows_fund_type tr td input").css("background","#fff")
-                }else {
-                    $(".crowd_td,.crowd_td #crows_fund_type,#crows_fund_type tr td input,#crows_fund_type tr,#crows_fund_type td").attr("disabled", "disabled");
-                    $(".crowd_td,.crowd_td #crows_fund_type,#crows_fund_type tr td input,#crows_fund_type tr,#crows_fund_type td").css("background","#dbdbdb")
-                }
-
-                if(result.dfMerge == "1"){
-                    $(":checkbox[name='marge'][value='并购']").prop("checked", "checked");
-                }
-
-                if(result.dfListedShareReform == "1"){
-                    $(":checkbox[name='reform'][value='上市股改']").prop("checked", "checked");
-                }
-
-                if(result.dfFinancingGuarantee == "1"){
-                    $(":checkbox[name='guarantee'][value='融资担保']").prop("checked", "checked");
-                }
-
-                if(result.dfPettyLoan == "1"){
-                    $(":checkbox[name='petty'][value='小额贷款']").prop("checked", "checked");
-                    $("#petty_loan_money").val(result.pettyLoanMoney);
-
-                    $(".pettyMoney,.pettyMoney input").removeAttr("disabled");
-                    $(".pettyMoney input").css("background","#ffffff")
-                    $(".pettyMoney").css("background","#ecf7fd")
-                }else {
-                    $(".pettyMoney,.pettyMoney input").attr("disabled", "disabled");
-                    $(".pettyMoney,.pettyMoney input").css("background","#dbdbdb")
-                }
-
-                if(result.dfCompanyDebt == "1"){
-                    $(":checkbox[name='companyDebt'][value='企业债券发行']").prop("checked", "checked");
-                }
-
-                if(result.minorEnterprisesDebt == "1"){
-                    $(":checkbox[name='minorEnterprisesDebt'][value='中小企业集合债券发行']").prop("checked", "checked");
-                }
-
-                if(result.dfTechnicalImport == "1"){
-                    $(":checkbox[name='technicalImport'][value='技术引进']").prop("checked", "checked");
-                    $("#importTechnical,#technical_import_range").removeAttr("disabled");
-                    $("#technical_import_range").find("tr td input").removeAttr("disabled");
-                    $("#technical_import_range").find("tr td input").css("background","#ffffff")
-                    $("#importTechnical,#technical_import_range,#technical_import_international,#technical_import_internal").css("background","#ecf7fd")
-                    $("#technical_import_range").find("tr,td").css("background","#ecf7fd")
-
-                    if(result.technicalDescInternational == "国际技术范围"){
-                        $(":checkbox[name='tecInternational'][value='国际技术范围']").prop("checked", "checked");
-                        $("#technical_desc_international").val(result.technicalDescInternational);
-                    }
-                    if(result.technicalDescInternal == "国内技术范围"){
-                        $(":checkbox[name='tecInternal'][value='国内技术范围']").prop("checked", "checked");
-                        $("#technical_desc_internal").val(result.technicalDescInternal);
-                    }
-                }else {
-                    $("#importTechnical,#technical_import_range").attr("disabled", "disabled");
-                    $("#importTechnical,#technical_import_range").css("background","#dbdbdb")
-                    $("#technical_import_range").find("tr, td ,input").attr("disabled", "disabled");
-                    $("#technical_import_range").find("tr ,td ,input").css("background","#dbdbdb")
-                }
-
-                if(result.dfTechnicalTransfer == "1"){
-                    $(":checkbox[name='transfer'][value='技术转让']").prop("checked", "checked");
-                    $("#technical_transfer_range").val(result.technicalTransferRange)
-                    $(".transferTechnical,.transferTechnical input").removeAttr("disabled");
-                    $(".transferTechnical,.transferTechnical input").css("background","#ffffff")
-                }else {
-                    $(".transferTechnical,.transferTechnical input").attr("disabled", "disabled");
-                    $(".transferTechnical,.transferTechnical input").css("background","#dbdbdb")
-                }
-
-                if(result.dfPropertyAssign == "1"){
-                    $(":checkbox[name='assign'][value='产权转让']").prop("checked", "checked");
-                }
-                if(result.dfFinaceLease == "1"){
-                    $(":checkbox[name='lease'][value='金融租赁']").prop("checked", "checked");
-                }
-                if(result.dfTechnologyInsurance == "1"){
-                    $(":checkbox[name='insurance'][value='科技保险']").prop("checked", "checked");
-                }
-                if(result.dfAssetManage == "1"){
-                    $(":checkbox[name='assetManage'][value='资产管理']").prop("checked", "checked");
-                }
-                if(result.branchChongCheck == "1"){
-                    $(":checkbox[name='branch'][value='入住科创园区']").prop("checked", "checked");
-                }
-                if(result.dfPoliticalConsult == "1"){
-                    $(":checkbox[name='political'][value='政策咨询']").prop("checked", "checked");
-                }
-                if(result.dfTechnologyConsult == "1"){
-                    $(":checkbox[name='technologyConsult'][value='科技咨询']").prop("checked", "checked");
-                }
-                if(result.dfIntermediaryConsult == "1"){
-                    $(":checkbox[name='intermediary'][value='中介咨询']").prop("checked", "checked");
-                    $("#intermediary,#intermediary_consult_type").removeAttr("disabled");
-                    $("#intermediary_consult_type").find("tr td input").removeAttr("disabled");
-                    $("#intermediary_consult_type").find("tr td input").css("background","#ffffff")
-                    $("#intermediary,#intermediary_consult_type").css("background","#ffffff")
-                    $("#intermediary").find("tr td").css("background","#ecf7fd")
-
-                    if(result.intermediaryLaw == "1"){
-                        $(":checkbox[name='law'][value='法律']").prop("checked", "checked");
-                        $("#intermediary_law_desc").val(result.intermediaryLawDesc)
-                    }
-                    if(result.intermediaryFinance == "1"){
-                        $(":checkbox[name='finance'][value='财务']").prop("checked", "checked");
-                        $("#intermediary_finance_desc").val(result.intermediaryFinanceDesc)
-                    }
-                    if(result.intermediaryFinancing == "1"){
-                        $(":checkbox[name='financing'][value='融资']").prop("checked", "checked");
-                        $("#intermediary_financing_desc").val(result.intermediaryFinancingDesc)
-                    }
-                    if(result.intermediaryManage == "1"){
-                        $(":checkbox[name='manage'][value='管理']").prop("checked", "checked");
-                        $("#intermediary_manage_desc").val(result.intermediaryManageDesc)
-                    }
-                }else {
-                    $("#intermediary,#intermediary_consult_type").attr("disabled", "disabled");
-                    $("#intermediary,#intermediary_consult_type").css("background","#dbdbdb")
-                    $("#intermediary_consult_type").find("tr td input").attr("disabled", "disabled");
-                    $("#intermediary_consult_type").find("tr td input").css("background","#dbdbdb")
-                    $("#intermediary").find("tr td").css("background","#dbdbdb")
-                }
-
-                if(result.dfOtherService == "1"){
-                    $(":checkbox[name='other'][value='其他服务需求']").prop("checked", "checked");
-                    $("#other_service_desc").val(result.otherServiceDesc);
-                    $("#otherDesc,#otherDesc input").removeAttr("disabled");
-                    $("#otherDesc,#otherDesc input").css("background","#ffffff")
-
-                }else {
-                    $("#otherDesc,#otherDesc input").attr("disabled", "disabled");
-                    $("#otherDesc,#otherDesc input").css("background","#dbdbdb")
-                }
-
-                if(result.dfAcceptTrain == "1"){
-                    $(":checkbox[name='train'][value='愿意接受专业培训和创业教育学位进修机会']").prop("checked", "checked");
-                }
-                if(result.dfNo == "1"){
-                    $(":checkbox[name='no'][value='无']").prop("checked", "checked");
-                }
-
-            }
-
-        }
-    });
-}
 //
 // $("input:radio[id=ueGoal]").change(function () {
 //     alert(1);
@@ -722,11 +355,6 @@ var getUnitBusinessPlanByEntireId = function (condition,i) {
             console.log(result+"busId")
             if (result != null && result>0) {
                 // alert(result);
-                if(i == "third"){
-                    $("#syjhs_conservation").unbind('click');
-                    $("#syjhs_conservation").css("background","#dbdbdb");
-                    $("#syjhs_conservation").find("p").html("已保存");
-                }
                 if(i == "submit_yy"){
                     var data = conditionUnitBusinessPlan_update();
                     updateUnitBusinessPlan(data,result);
@@ -763,8 +391,7 @@ var getUnitBusinessPlanByEntireId = function (condition,i) {
                     getDebtEntireId(entireId,"submit_no")
                     getEquityEntireId(entireId,"submit_no")
                 }
-
-
+                getDemandByEntireId(entireId,"keep")
 
             }else {
                 var isEquity = $("#isEquity input:checked").val();
@@ -838,6 +465,7 @@ var getUnitBusinessPlanByEntireId = function (condition,i) {
                     var data = conditionUnitBusinessPlan();
                     addUnitBusinessPlan(data,"submit")
                 }
+                getDemandByEntireId(entireId,"keep")
             }
         }
     });
@@ -1620,6 +1248,7 @@ var patent=2;
 var num =4;
 var addImg =function () {
     // alert(patent);
+    var dataBeatpickerPosition = "["+"'"+"right"+"'"+","+"'"+"*"+"'"+"]";
     var html_tr = "<tr id='patent_"+(num-1)+"'><td>专利名称</td><td>专利类型*</td><td>专利号</td> <td>获得时间选择</td></tr>"+
         "<tr id='patent_"+num+"'><td><input type='text' id='patent_name_"+patent+"'/></td>"+
         "<td>" +
@@ -1630,7 +1259,10 @@ var addImg =function () {
         "</select>"+
         "</td>"+
         "<td><input type='text' id='patent_num_"+patent+"'/></td>"+
-        "<td><input type='text' id='patent_date_"+patent+"'/></td></tr>";
+        "<td>" +
+        "<div class='sample'>"+
+        "<input type='text' id='patent_date_"+team+"' data-beatpicker='true' data-beatpicker-position="+dataBeatpickerPosition+" placeholder='"+"yyyy-mm-dd"+"'></div></td>"+
+        "</tr>";
     // alert(html_tr);
     $("#patent_table").append(html_tr);
 };
@@ -1795,6 +1427,7 @@ var reduceImg = function () {
     var team=2;
     var core=8;
    var addCoreTeamImg= function () {
+       var dataBeatpickerPosition = "["+"'"+"right"+"'"+","+"'"+"*"+"'"+"]";
         var html_tr ="<tr id='core_"+(core-3)+"'><td>姓名</td><td>性别</td> <td>年龄</td><td>职位</td>" +
                 "<td>最高学历</td> <td>留学经历</td> <td>入选国家千人计划</td><td>入选时间</td>"+
             "</tr >"+
@@ -1808,12 +1441,19 @@ var reduceImg = function () {
                 "<td><input type='text' id='core_experience_"+team+"' name='coreTeam'/></td>"+
                 "<td><select  id='core_millennium_"+team+"'><option value='是'>是</option>" +
             "<option value='否'>否</option>" + "</select></td>"+
-                "<td id='millennium_date_"+team+"'><input type='text' id='core_millennium_date_"+team+"' name='coreTeam_date'/></td>"+
+                "<td id='millennium_date_"+team+"'>" +
+                "<div class='sample'>"+
+            "<input type='text' id='core_millennium_date_"+team+"' name='coreTeam_date' data-beatpicker='true' data-beatpicker-position="+dataBeatpickerPosition+" placeholder='"+"yyyy-mm-dd"+"'></div></td>"+
             "</tr>"+
             "<tr id='core_"+(core-1)+"'><td colspan='8'>主要工作经历/主要成就</td></tr>"+
-                "<tr id='core_"+core+"'><td colspan='8'><textarea id='main_achive_"+team+"' class='coreTeam'></textarea></td></tr>";
+                "<tr id='core_"+core+"'><td colspan='8'><textarea id='main_achive_"+team+"' class='coreTeam' maxlength='1200' placeholder='请简要描述，1200字以内!'></textarea></td></tr>";
         // alert(html_tr);
         $("#core_team_table").append(html_tr);
+
+       //需要重新加载JS时间控件
+       // $('script[src*="jquery-1.11.0.min.js"]').attr('src', $('script[src*="jquery-1.11.0.min.js"]').attr('src') );
+       // $('script[src*="BeatPicker.min.js"]').attr('src', $('script[src*="BeatPicker.min.js"]').attr('src'));
+       // $('script[src*="prism.js"]').attr('src', $('script[src*="prism.js"]').attr('src'));
 
        $("#core_millennium_"+team).click(function () {
            if($("#core_millennium_"+team).val() == "是"){
@@ -1996,32 +1636,17 @@ $("#syjhs_conservation").click(function () {
 
     if($("#pro_name").val() == ""){
         alert("请填写参赛项目名称！")
-    }else {
+    }
+    else {
         if(isDebt == "否" && isEquity == "否"){
-            var plan_data = conditionUnitBusinessPlan();
-            // alert(data);
-            addUnitBusinessPlan(plan_data,"");
+            getUnitBusinessPlanByEntireId(entireId,"submit_nn")
 
         }
         if(isDebt == "是" && isEquity == "否"){
             if(debt_leader == "" || debt_money == "" || debt_start_time == "" || debt_end_time == ""){
                 alert("请将债权融资信息补充完整！")
             } else {
-                var plan_data = conditionUnitBusinessPlan();
-                // alert(data);
-                addUnitBusinessPlan(plan_data,"");
-
-                var unitDebt_data = {
-                    ubusId:null,
-                    entireId:entireId,
-                    debtLeader:debt_leader,
-                    debtMoney:debt_money,
-                    debtStartTime:comTime(debt_start_time),
-                    debtEndTime:comTime(debt_end_time)
-
-                }
-                addDebt(unitDebt_data);
-
+                getUnitBusinessPlanByEntireId(entireId,"submit_ny")
 
             }
         }
@@ -2029,56 +1654,20 @@ $("#syjhs_conservation").click(function () {
             if(equity_investor == "" || equity_money == "" || equity_rate == "" || equity_date =="") {
                 alert("请将股权融资信息补充完整！")
             } else {
-                var plan_data = conditionUnitBusinessPlan();
-                // alert(data);
-                addUnitBusinessPlan(plan_data,"");
-
-                var unitEquity_data = {
-                    ubusId:null,
-                    entireId:entireId,
-                    equityInvestor:equity_investor,
-                    equityMoney:equity_money,
-                    equityRate:equity_rate,
-                    equityDate:comTime(equity_date)
-
-                }
-                addEquity(unitEquity_data);
+                getUnitBusinessPlanByEntireId(entireId,"submit_yn")
             }
 
         }
         if(isDebt == "是" && isEquity == "是"){
-            var plan_data = conditionUnitBusinessPlan();
-            // alert(data);
-            addUnitBusinessPlan(plan_data,"");
-
             if(equity_investor == "" || equity_money == "" || equity_rate == "" || equity_date =="" || debt_leader == "" || debt_money == "" || debt_start_time == "" || debt_end_time == "") {
                 alert("请将融资信息补充完整！")
             }else {
+                getUnitBusinessPlanByEntireId(entireId,"submit_yy")
 
-                var unitEquity_data = {
-                    ubusId:null,
-                    entireId:entireId,
-                    equityInvestor:equity_investor,
-                    equityMoney:equity_money,
-                    equityRate:equity_rate,
-                    equityDate:comTime(equity_date)
-
-                }
-                addEquity(unitEquity_data);
-
-                var unitDebt_data = {
-                    ubusId:null,
-                    entireId:entireId,
-                    debtLeader:debt_leader,
-                    debtMoney:debt_money,
-                    debtStartTime:comTime(debt_start_time),
-                    debtEndTime:comTime(debt_end_time)
-
-                }
-                addDebt(unitDebt_data);
             }
         }
     }
+
 
 });
 
@@ -2881,12 +2470,7 @@ var addDemand = function (condition) {
         },
         success: function (result) {
             if (result != null) {
-
-                $("#syjhs_conservation").unbind('click');
-                $("#syjhs_conservation").css("background","#dbdbdb");
-                $("#syjhs_conservation").find("p").html("已保存");
-
-                alert("商业计划书已保存！如需修改请到“我的比赛-未提交项目”处进行修改。")
+                alert("商业计划书已保存！")
             }
 
         }
@@ -37829,21 +37413,33 @@ var getDemandByEntireId = function (condition,i) {
         success: function (result) {
             // alert(result);
             if (result != null && result>0) {
-                getEntireWorkStateById(entireId,"demand",result);
+                if(i == "submit"){
+                    getEntireWorkStateById(entireId,"demand",result);
+                }
+                if(i=="keep"){
+                    getEntireWorkStateById(entireId,"demandKeep",result);
+                }
+
 
             }else {
-                conditionDemand();
-                var data = {
-                    workState:"SUBMIT"
-                }
-                updateEntireWorkState(data,entireId)
+                if(i=="submit"){
+                    conditionDemand();
+                    var data = {
+                        workState:"SUBMIT"
+                    }
+                    updateEntireWorkState(data,entireId)
 
-                $("#syjhs_conservation").unbind('click');
-                $("#syjhs_conservation").css("background","#dbdbdb");
-                $("#syjhs_conservation").find("p").html("已保存");
-                $("#submit_competition_syjhs").unbind('click');
-                $("#submit_competition_syjhs").css("background","#dbdbdb");
-                $("#submit_competition_syjhs").find("p").html("已提交报名");
+                    $("#syjhs_conservation").unbind('click');
+                    $("#syjhs_conservation").css("background","#dbdbdb");
+                    // $("#syjhs_conservation").find("p").html("已保存");
+                    $("#submit_competition_syjhs").unbind('click');
+                    $("#submit_competition_syjhs").css("background","#dbdbdb");
+                    $("#submit_competition_syjhs").find("p").html("已提交报名");
+                }
+                if(i== "keep"){
+                    conditionDemand();
+                }
+
             }
         }
     });
@@ -38394,7 +37990,7 @@ var getDebtEntireId = function (condition,i) {
 
     $.ajax({
         url: "/getDebtFinancingByEntireId/"+condition,
-        type: 'DELETE',
+        type: 'get',
         async: true,
         data: condition,
         // dataType: 'json',
@@ -38408,6 +38004,7 @@ var getDebtEntireId = function (condition,i) {
             var debt_money = $("#debt_money").val();
             var debt_start_time = $("#debt_start_time").val();
             var debt_end_time = $("#debt_end_time").val();
+            // alert(debt_money)
             if (result != null && result>0) {
                 if(i == "submit_yes"){
                     var unitDebt_dataUpdate = {
@@ -38443,8 +38040,8 @@ var getDebtEntireId = function (condition,i) {
 }
 var deleteDebtByEntireId = function (condition) {
     $.ajax({
-        url: "/deleteEquityByEntireId/"+condition,
-        type: 'get',
+        url: "/deleteDebtByEntireId/"+condition,
+        type: 'DELETE',
         async: true,
         data: condition,
         // dataType: 'json',
@@ -38454,7 +38051,7 @@ var deleteDebtByEntireId = function (condition) {
         success: function (result) {
             // alert(result);
             if (result != null && result>0) {
-                alert("删除成功！")
+                // alert("删除成功！")
             }
 
         }
@@ -38474,7 +38071,7 @@ var updateDebt = function (condition,debtId) {
             if (result != null) {
                 console.log(result);
 
-                alert("修改股权融资信息成功");
+                // alert("修改股权融资信息成功");
                 // window.location.href = "/registerSuccess?id=" + result + "";
                 // comId = result;
             }
@@ -38521,19 +38118,19 @@ var getFinancialHistoricalByEntireId = function (data) {
 
 }
 var conditionHistorical_update = function (hfinId,year) {
-        var hfin_income=$("hfin_income_"+year).val();
-        var hfin_cost=$("hfin_cost_"+year).val();
-        var hfin_profit=$("hfin_profit_"+year).val();
-        var hfin_profit_rate=$("hfin_profit_rate_"+year).val();
-        var hfin_expenses=$("hfin_expenses_"+year).val();
-        var operating_profit=$("operating_profit_"+year).val();
-        var operating_profit_rate=$("operating_profit_rate_"+year).val();
-        var beforeTax_profit=$("beforeTax_profit_"+year).val();
-        var net_margin=$("net_margin_"+year).val();
-        var fixed_netValue=$("fixed_netValue_"+year).val();
-        var assets_total=$("assets_total_"+year).val();
-        var liabilites_total=$("liabilites_total_"+year).val();
-        var net_asset=$("net_asset_"+year).val();
+        var hfin_income=$("#hfin_income_"+year).val();
+        var hfin_cost=$("#hfin_cost_"+year).val();
+        var hfin_profit=$("#hfin_profit_"+year).val();
+        var hfin_profit_rate=$("#hfin_profit_rate_"+year).val();
+        var hfin_expenses=$("#hfin_expenses_"+year).val();
+        var operating_profit=$("#operating_profit_"+year).val();
+        var operating_profit_rate=$("#operating_profit_rate_"+year).val();
+        var beforeTax_profit=$("#beforeTax_profit_"+year).val();
+        var net_margin=$("#net_margin_"+year).val();
+        var fixed_netValue=$("#fixed_netValue_"+year).val();
+        var assets_total=$("#assets_total_"+year).val();
+        var liabilites_total=$("#liabilites_total_"+year).val();
+        var net_asset=$("#net_asset_"+year).val();
         var hfin_year = "201"+year;
 
         var condition = {
@@ -38572,7 +38169,7 @@ var updateFinancialHistorical = function (condition,hfinId) {
             if (result != null) {
                 console.log(result);
 
-                alert("修改财务预测信息成功");
+                // alert("修改财务预测信息成功");
                 // window.location.href = "/registerSuccess?id=" + result + "";
                 // comId = result;
             }
@@ -38599,7 +38196,14 @@ var getEntireWorkStateById = function (condition,i,demandId) {
                     if(result == "SUBMIT"){
                         $("#submit_competition_syjhs").unbind('click');
                         $("#submit_competition_syjhs").css("background","#dbdbdb");
-                        $("#submit_competition_syjhs").find("p").html("已提交报名");
+                        // $("#submit_competition_syjhs").find("p").html("已提交报名");
+
+                        $("#syjhs_conservation").unbind('click');
+                        $("#syjhs_conservation").css("background","#dbdbdb");
+                        $("#jbxx_conservation").unbind('click');
+                        $("#jbxx_conservation").css("background","#dbdbdb");
+                        $("#hxtd_conservation").unbind('click');
+                        $("#hxtd_conservation").css("background","#dbdbdb");
                     }
                 }
                 if( i == "demand"){
@@ -38614,7 +38218,31 @@ var getEntireWorkStateById = function (condition,i,demandId) {
                     if(result == "SUBMIT"){
                         $("#submit_competition_syjhs").unbind('click');
                         $("#submit_competition_syjhs").css("background","#dbdbdb");
-                        $("#submit_competition_syjhs").find("p").html("已提交报名");
+                        // $("#submit_competition_syjhs").find("p").html("已提交报名");
+
+                        $("#syjhs_conservation").unbind('click');
+                        $("#syjhs_conservation").css("background","#dbdbdb");
+                        $("#jbxx_conservation").unbind('click');
+                        $("#jbxx_conservation").css("background","#dbdbdb");
+                        $("#hxtd_conservation").unbind('click');
+                        $("#hxtd_conservation").css("background","#dbdbdb");
+                    }
+                }
+                if(i == "demandKeep"){
+                    if(result == "KEEP") {
+                        conditionDemand_update(demandId);
+                    }
+                    if(result == "SUBMIT"){
+                        $("#submit_competition_syjhs").unbind('click');
+                        $("#submit_competition_syjhs").css("background","#dbdbdb");
+                        // $("#submit_competition_syjhs").find("p").html("已提交报名");
+
+                        $("#syjhs_conservation").unbind('click');
+                        $("#syjhs_conservation").css("background","#dbdbdb");
+                        $("#jbxx_conservation").unbind('click');
+                        $("#jbxx_conservation").css("background","#dbdbdb");
+                        $("#hxtd_conservation").unbind('click');
+                        $("#hxtd_conservation").css("background","#dbdbdb");
                     }
                 }
 
@@ -38640,6 +38268,13 @@ var updateEntireWorkState = function (condition,entireId) {
                 $("#submit_competition_syjhs").unbind('click');
                 $("#submit_competition_syjhs").css("background","#dbdbdb");
                 $("#submit_competition_syjhs").find("p").html("已提交报名");
+
+                $("#syjhs_conservation").unbind('click');
+                $("#syjhs_conservation").css("background","#dbdbdb");
+                $("#jbxx_conservation").unbind('click');
+                $("#jbxx_conservation").css("background","#dbdbdb");
+                $("#hxtd_conservation").unbind('click');
+                $("#hxtd_conservation").css("background","#dbdbdb");
             }
 
         }

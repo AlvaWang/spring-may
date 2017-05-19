@@ -61,7 +61,7 @@ public class TeamEssential implements  Serializable {
     @Column(name = "te_techinical_source")
     private String teTechnicalSource;
 
-    @Column(name = "te_pro_outline")
+    @Column(name = "te_pro_outline",length = 1200)
     private String teProOutline;
 
     @Column(name = "te_key_word")

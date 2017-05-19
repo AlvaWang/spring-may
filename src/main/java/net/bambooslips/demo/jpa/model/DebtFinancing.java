@@ -62,7 +62,7 @@ public class DebtFinancing implements  Serializable {
      */
     public DebtFinancing update(DebtFinancing updated) {
         if(updated.getDebtLeader() != null)this.setDebtLeader(updated.getDebtLeader());
-        if(updated.getDebtMoney() <= 0)this.setDebtMoney(updated.getDebtMoney());
+        if(updated.getDebtMoney() !=null && updated.getDebtMoney()>0)this.setDebtMoney(updated.getDebtMoney());
         if(updated.getDebtStartTime() != null)this.setDebtStartTime(updated.getDebtStartTime());
         if(updated.getDebtEndTime() != null)this.setDebtEndTime(updated.getDebtEndTime());
 

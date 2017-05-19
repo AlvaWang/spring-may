@@ -1,8 +1,10 @@
 /**
  * Created by Administrator on 2017/4/30.
  */
-
+var comName = GetQueryString("comName");
 $(function () {
+    $(" .sample button").attr("hidden","hidden");
+
     $("#first_table").show();
     $("#first_btn").css("background","#8fc320");
     $("#first_btn").find("p").css("color","#ffffff");
@@ -58,8 +60,14 @@ $(function () {
     $("#technology").find(".df_equity_yes,.df_equity_yes td,.df_equity_yes td input,.df_equity_yes td div input,#df_equityFund_plan").attr("disabled", "disabled");
     $("#technology").find(".df_equity_yes,.df_equity_yes td,.df_equity_yes td input,.df_equity_yes td div input,#df_equityFund_plan").css("background","#dbdbdb");
 
+    $("#teGoal").attr("disabled", "disabled");
+    $("#teGoal").css("background","#dbdbdb");
+    $("#powerType").attr("disabled", "disabled");
+    $("#powerType").css("background","#dbdbdb");
 });
 $("#first_btn").click(function () {
+    $(" .sample button").attr("hidden","hidden");
+
     $("#first_table").show();
     $(this).css("background","#8fc320");
     $(this).find("p").css("color","#ffffff");
@@ -79,26 +87,45 @@ $("#first_btn").click(function () {
     $(".streamer_syjhs_team").hide();
     $(".streamer_kjjr_team").hide();
 
-    getTeamEssentialByEntireId(entireId,"first");
+
 
 })
-
 $("#second_btn").click(function () {
-    getCoreTeamByEntireId(entireId,"second");
-
+    $(" .sample button").attr("hidden","hidden");
     getTeamEssentialByEntireId(entireId,"second");
 });
 $("#third_btn").click(function () {
+    $(" .sample button").attr("hidden","hidden");
     getCoreTeamByEntireId(entireId,"third");
-    getTeamBusinessPlanByEntireId(entireId,"third");
 })
+$("#project_page").click(function () {
+    window.location.href = "/success?comName=" + comName;
+})
+
+
 $("#four_btn").click(function () {
-    getTeamBusinessPlanByEntireId(entireId,"four");
-
-    getDemandByEntireId(entireId,"four");
+    getTeamBusinessPlanByEntireId(entireId,"","four");
+    $(" .sample button").attr("hidden","hidden");
 })
 
-
+var change_otherGoal = function () {
+    if($("#te_compatition_goal input:checked").val() == "其它"){
+        $("#teGoal").removeAttr("disabled");
+        $("#teGoal").css("background","#ffffff");
+    }else {
+        $("#teGoal").attr("disabled", "disabled");
+        $("#teGoal").css("background","#dbdbdb");
+    }
+}
+var change_otherPost = function () {
+    if($("#post_code input:checked").val() == "其它"){
+        $("#powerType").removeAttr("disabled");
+        $("#powerType").css("background","#ffffff");
+    }else {
+        $("#powerType").attr("disabled", "disabled");
+        $("#powerType").css("background","#dbdbdb");
+    }
+}
 var change_patent_table = function () {
     var patent_choose=$("#patent_choose input[type='checkbox']").is(':checked');
     if(patent_choose == true){
@@ -299,10 +326,10 @@ $("#jbxx_conservation_team").bind('click',function () {
                     var patentDate = $("#patent_date_"+i).val();
                     var patentVerification = $("#patent_verification_"+i).val();
                     if(patentNum == "" || patentType == "" || patentNum ==""
-                        || patentDate == "" || patentVerification ==""
-                    ){
+                        || patentDate == "" || patentVerification ==""){
                         alert("请将专利相关信息补充完整")
-                    }else {
+                    }
+                    else {
                         var condition = {
                             patentId:patentNum
                         }
@@ -318,32 +345,31 @@ $("#jbxx_conservation_team").bind('click',function () {
                         }
                         // addPatentList(data);
                         getPatentListByPatentId(condition,data,patentNum,i);
-                        // for(var j=1;j<=patent;j++){
-                            // if(i=patent){
-                                getTeamEssentialByEntireId(entireId,i);
-                                getPersonByEntireId(entireId,i);
-                                // return true;
-                            // }
-                        $(this).unbind('click');
-                        $(this).css("background","#dbdbdb");
-                        $(this).find("p").html("已保存");
-                        // }
-
+                        getTeamEssentialByEntireId(entireId,i);
+                        getPersonByEntireId(entireId,i);
                     }
 
                 }
 
-            }else {
-                var teamEssencialData = conditionEssential();
-                // alert(data);
-                addTeamEssential(teamEssencialData);
+            }
+            else {
+                var condition = {
+                    patentId:patentNum
+                }
+                var data = {
+                    ueId:null,
+                    patentId:patentNum,
+                    entireId:entireId,
+                    teId:null,
+                    patentName:patentName,
+                    patentType:patentType,
+                    patentDate:comTime(patentDate),
+                    patentVerification:patentVerification
+                }
+                getPatentListByEntireId(entireId,"patent_no")
+                getTeamEssentialByEntireId(entireId,"patent_no");
+                getPersonByEntireId(entireId,"patent_no");
 
-                var person_data = conditionPerson();
-                // alert(data);
-                addPerson(person_data);
-                $(this).unbind('click');
-                $(this).css("background","#dbdbdb");
-                $(this).find("p").html("已保存");
             }
         }
 
@@ -386,11 +412,6 @@ var getCoreTeamByEntireId = function (condition,i) {
                     $(".streamer_kjjr_team").hide();
 
                 }
-                if(i == "second"){
-                    $("#hxtd_conservation_team").unbind('click');
-                    $("#hxtd_conservation_team").css("background","#dbdbdb");
-                    $("#hxtd_conservation_team").find("p").html("已保存");
-                }
             }else {
                 if(i == "third"){
                     alert("团队报名第二步：核心团队成员信息还未完成填写，请先填写！");
@@ -401,7 +422,7 @@ var getCoreTeamByEntireId = function (condition,i) {
     });
 
 }
-var getTeamBusinessPlanByEntireId = function (condition,i) {
+var getTeamBusinessPlanByEntireId = function (condition,tbusId,i) {
 
     $.ajax({
         url: "/getTeamBusinessPlanByEntireId/"+condition,
@@ -419,15 +440,10 @@ var getTeamBusinessPlanByEntireId = function (condition,i) {
                 if(result == "KEEP"){
                     if(i == "submit"){
                         var data = conditionTeamBusinessPlan_update();
-                        updateTeamBusinessPlan(data,result)
+                        updateTeamBusinessPlan(data,tbusId,"submit")
                     }
                     if(i == "four"){
                         alert("团队报名第三步：商业计划书还未提交，请先提交！");
-                    }
-                    if(i == "third") {
-                        $("#syjhs_conservation_team").unbind('click');
-                        $("#syjhs_conservation_team").css("background", "#dbdbdb");
-                        $("#syjhs_conservation_team").find("p").html("已保存");
                     }
                 }
                 if(result == "SUBMIT"){
@@ -451,16 +467,8 @@ var getTeamBusinessPlanByEntireId = function (condition,i) {
                         $(".streamer_hxtd_team").hide();
                         $(".streamer_syjhs_team").hide();
                     }
-                    if(i == "third"){
-                        $("#syjhs_conservation_team").unbind('click');
-                        $("#syjhs_conservation_team").css("background","#dbdbdb");
-                        $("#syjhs_conservation_team").find("p").html("已保存");
-
-                        $("#submit_competition_syjhs").unbind('click');
-                        $("#submit_competition_syjhs").css("background","#dbdbdb");
-                        $("#submit_competition_syjhs").find("p").html("商业计划书已提交");
-                    }
                 }
+
 
                 // alert(result+"teamEssensial");
             }else {
@@ -470,7 +478,7 @@ var getTeamBusinessPlanByEntireId = function (condition,i) {
                 if(i == "submit"){
                     var plan_data = conditionTeamBusinessPlan();
                     // alert(data);
-                    addTeamBusinessPlan(plan_data);
+                    addTeamBusinessPlan(plan_data,"submit");
                 }
             }
 
@@ -493,10 +501,9 @@ var getTeamEssentialByEntireId = function (condition,i) {
             // alert(result);
             if (result != null && result>0) {
                 // alert(result+"teamEssensial");
-                if(i == patent){
-                    var teamEssencialData = conditionEssential();
-                    // alert(data);
-                    addTeamEssential(teamEssencialData);
+                if(i == patent || i == "patent_no"){
+                    var essentialData = updateTeamEssential_data();
+                    updateTeamEssential(essentialData,result)
                 }
                 if(i == "second"){
                     $("#second_btn").css("background","#8fc320");
@@ -520,13 +527,8 @@ var getTeamEssentialByEntireId = function (condition,i) {
 
                 }
 
-                if(i == "first"){
-                    $("#jbxx_conservation_team").unbind('click');
-                    $("#jbxx_conservation_team").css("background","#dbdbdb");
-                    $("#jbxx_conservation_team").find("p").html("已保存");
-                }
             }else {
-                if(i == patent){
+                if(i == patent || i == "patent_no"){
                     var teamEssencialData = conditionEssential();
                     // alert(data);
                     addTeamEssential(teamEssencialData);
@@ -539,6 +541,43 @@ var getTeamEssentialByEntireId = function (condition,i) {
         }
     });
 
+}
+var getTeamBusinessPlanConditionByEntireId = function (entireId,i) {
+    $.ajax({
+        url: "/getTeamBusinessPlanConditionByEntireId/"+entireId,
+        type: 'get',
+        async: true,
+        data: entireId,
+        // dataType: 'json',
+        error: function (obj, msg) {
+            alert("服务器异常！")
+        },
+        success: function (result) {
+            console.log(result);
+            if (result != null && result.tbusId>0) {
+                if(i == "keep"){
+                    var data = conditionTeamBusinessPlan();
+
+                    updateTeamBusinessPlan(data, result.tbusId,i)
+                }
+                if(i == "submit"){
+                    var tbusId = result.tbusId;
+                    getTeamBusinessPlanByEntireId(entireId,tbusId,"submit")
+                }
+
+
+
+            }else {
+                if(i == "keep"){
+                    var plan_data = conditionTeamBusinessPlan();
+                    // alert(data);
+                    addTeamBusinessPlan(plan_data);
+                }
+
+            }
+
+        }
+    });
 }
 var getPersonByEntireId = function (condition,i) {
 
@@ -553,14 +592,13 @@ var getPersonByEntireId = function (condition,i) {
         },
         success: function (result) {
             if (result != null && result>0) {
-                alert(result)
-                if(i == patent){
-                    var person_data = conditionPerson();
-                    // alert(data);
-                    addPerson(person_data);
+                // alert(result)
+                if(i == patent || i == "patent_no"){
+                    var teamDate = conditionPerson_data();
+                    updatePerson(teamDate,result)
                 }
             }else {
-                if(i == patent){
+                if(i == patent || i == "patent_no"){
                     var person_data = conditionPerson();
                     // alert(data);
                     addPerson(person_data);
@@ -614,7 +652,7 @@ var conditionEssential=function () {
 
     var te_address = $("#te_address").val();
     var te_postalcode = $("#te_postalcode").val();
-    var Type = $("#post_code").val();
+    var Type = $("#post_code  input:checked").val();
     var technical_sources = $("#technical_sources input:checked").val();
     var te_pro_outline = $("#te_pro_outline").val();
     var te_key_word = $("#te_key_word").val();
@@ -683,7 +721,8 @@ var conditionEssential=function () {
                 teKeyWord:te_key_word
             }
             return Essential_data;
-        }else {
+        }
+        else {
             var Essential_data = {
                 entireId:entireId,
                 teamName:team_name,
@@ -705,7 +744,136 @@ var conditionEssential=function () {
         }
     }
 };
+var updateTeamEssential_data = function () {
+    var team_name = $("#team_name").val();
+    var te_pro_name = $("#te_pro_name").val();
+    var Goal = $("#te_compatition_goal input:radio:checked").val();
+    var te_pro_stage = $("#te_pro_stage input:radio:checked").val();
+    var te_industry_field = $("#te_industry_field input:radio:checked").val();
+    var admin_area_province = $("#admin_area_province").val();
+    var admin_area_city = $("#admin_area_city").val();
+    var admin_area = admin_area_province+"省"+admin_area_city+"市";
+    var team_year = $("#team_year").val();
+    if ($("#team_month").val()<10){
+        var team_month = "0"+$("#team_month").val();
+    }else {
+        var team_month = $("#team_month").val();
+    }
+    if ($("#team_day").val()<10){
+        var team_day = "0"+$("#team_day").val();
+    }else {
+        var team_day = $("#team_day").val();
+    }
+    var team_fund_time = team_year+"-"+team_month+"-"+team_day;
+    // alert(team_fund_time);
+    var company_year = $("#company_year").val();
+    if ($("#company_month").val()<10){
+        var company_month = "0"+$("#company_month").val();
+    }else {
+        var company_month = $("#company_month").val();
+    }
+    if ($("#company_day").val()<10){
+        var company_day = "0"+$("#company_day").val();
+    }else {
+        var company_day = $("#company_day").val();
+    }
+    var company_fund_time = company_year+"-"+company_month+"-"+company_day;
 
+
+    var te_address = $("#te_address").val();
+    var te_postalcode = $("#te_postalcode").val();
+    var Type = $("#post_code input:checked").val();
+    var technical_sources = $("#technical_sources input:checked").val();
+    var te_pro_outline = $("#te_pro_outline").val();
+    var te_key_word = $("#te_key_word").val();
+
+
+    if(Goal == "其它"){
+        var te_compatition_goal = $("#teGoal").val();
+        if(Type == "其它"){
+            var te_power_type = $("#powerType").val();
+            var Essential_data = {
+                entireId:entireId,
+                teamName:team_name,
+                teProName:te_pro_name,
+                teCompatitionGoal:te_compatition_goal,
+                teIndustryFild:te_industry_field,
+                teProStage:te_pro_stage,
+                teAdminStrativeArea:admin_area,
+                teamFundTime:comTime(team_fund_time),
+                companyFundTime:comTime(company_fund_time),
+                teAddress:te_address,
+                tePostalcode:te_postalcode,
+                tePowerType:te_power_type,
+                teTechnicalSource:technical_sources,
+                teProOutline:te_pro_outline,
+                teKeyWord:te_key_word
+            }
+            return Essential_data;
+        }else {
+            var Essential_data = {
+                entireId:entireId,
+                teamName:team_name,
+                teProName:te_pro_name,
+                teCompatitionGoal:te_compatition_goal,
+                teIndustryFild:te_industry_field,
+                teProStage:te_pro_stage,
+                teAdminStrativeArea:admin_area,
+                teamFundTime:comTime(team_fund_time),
+                companyFundTime:comTime(company_fund_time),
+                teAddress:te_address,
+                tePostalcode:te_postalcode,
+                tePowerType:Type,
+                teTechnicalSource:technical_sources,
+                teProOutline:te_pro_outline,
+                teKeyWord:te_key_word
+            }
+            return Essential_data;
+        }
+    }else {
+        if(Type == "其它"){
+            var te_power_type = $("#powerType").val();
+            var Essential_data = {
+                entireId:entireId,
+                teamName:team_name,
+                teProName:te_pro_name,
+                teCompatitionGoal:Goal,
+                teIndustryFild:te_industry_field,
+                teProStage:te_pro_stage,
+                teAdminStrativeArea:admin_area,
+                teamFundTime:comTime(team_fund_time),
+                companyFundTime:comTime(company_fund_time),
+                teAddress:te_address,
+                tePostalcode:te_postalcode,
+                tePowerType:te_power_type,
+                teTechnicalSource:technical_sources,
+                teProOutline:te_pro_outline,
+                teKeyWord:te_key_word
+            }
+            return Essential_data;
+        }
+        else {
+            var Essential_data = {
+                entireId:entireId,
+                teamName:team_name,
+                teProName:te_pro_name,
+                teCompatitionGoal:Goal,
+                teIndustryFild:te_industry_field,
+                teProStage:te_pro_stage,
+                teAdminStrativeArea:admin_area,
+                teamFundTime:comTime(team_fund_time),
+                companyFundTime:comTime(company_fund_time),
+                teAddress:te_address,
+                tePostalcode:te_postalcode,
+                tePowerType:Type,
+                teTechnicalSource:technical_sources,
+                teProOutline:te_pro_outline,
+                teKeyWord:te_key_word
+            }
+            return Essential_data;
+        }
+    }
+}
 /**
  * 创建基本信息
  * @param condition
@@ -723,7 +891,29 @@ var addTeamEssential = function (condition) {
         },
         success: function (result) {
             if (result != null) {
-                alert(result);
+                // alert(result);
+                // window.location.href = "/registerSuccess?id=" + result + "";
+                // comId = result;
+            }
+
+        }
+    });
+
+}
+var updateTeamEssential = function (condition,teId) {
+
+    $.ajax({
+        url: "/updateTeamEssential/"+teId,
+        type: 'put',
+        async: true,
+        data: condition,
+        dataType: 'json',
+        error: function (obj, msg) {
+            alert("服务器异常！")
+        },
+        success: function (result) {
+            if (result != null) {
+                // alert(result);
                 // window.location.href = "/registerSuccess?id=" + result + "";
                 // comId = result;
             }
@@ -778,6 +968,48 @@ var addPerson = function (condition) {
         }
     });
 }
+var conditionPerson_data = function () {
+    var resName = $("#res_name").val();
+    var resJob = $("#res_job").val();
+    var resDocumentType = $("#res_document_type").val();
+    var documentNum = $("#document_num").val();
+    var resOfficeTel = $("#res_office_tel").val();
+    var resEmail = $("#res_email").val();
+    var resMobileTel = $("#res_mobile_tel").val();
+    var person_data = {
+        resName:resName,
+        resJob:resJob,
+        resDocumentType:resDocumentType,
+        documentNum:documentNum,
+        resOfficeTel:resOfficeTel,
+        resMobileTel:resMobileTel,
+        resEmail:resEmail
+    }
+
+    return person_data;
+}
+var updatePerson = function (condition,resId) {
+
+    $.ajax({
+        url: "/updatePerson/"+resId,
+        type: 'put',
+        async: true,
+        data: condition,
+        dataType: 'json',
+        error: function (obj, msg) {
+            alert("服务器异常！")
+        },
+        success: function (result) {
+            if (result != null) {
+                alert("基本信息已保存");
+                // window.location.href = "/registerSuccess?id=" + result + "";
+                // comId = result;
+            }
+
+        }
+    });
+
+}
 
 
 
@@ -789,6 +1021,7 @@ var patent=2;
 var num =4;
 var addImg =function () {
     // alert(patent);
+    var dataBeatpickerPosition = "["+"'"+"right"+"'"+","+"'"+"*"+"'"+"]";
     var html_tr = "<tr id='patent_"+(num-1)+"'><td>专利名称</td><td>专利类型*</td><td>专利号</td> <td>获得时间选择</td><td>核验</td></tr>"+
         "<tr id='patent_"+num+"'><td><input type='text' id='patent_name_"+patent+"'/></td>"+
         "<td>" +
@@ -799,7 +1032,9 @@ var addImg =function () {
         "</select>"+
         "</td>"+
         "<td><input type='text' id='patent_num_"+patent+"'/></td>"+
-        "<td><input type='text' id='patent_date_"+patent+"'/></td>" +
+        "<td>" +
+        "<div class='sample'>"+
+        "<input type='text' id='patent_date_"+patent+"' data-beatpicker='true' data-beatpicker-position="+dataBeatpickerPosition+" placeholder='"+"yyyy-mm-dd"+"'></div></td>"+
         "<td><input type='text' id='patent_verification_"+patent+"'/></td>" +
         "</tr>";
     // alert(html_tr);
@@ -819,7 +1054,7 @@ var addPatentList = function (condition) {
         },
         success: function (result) {
             if (result != null) {
-                alert(result);
+                // alert(result);
                 // window.location.href = "/registerSuccess?id=" + result + "";
                 // comId = result;
             }
@@ -829,7 +1064,7 @@ var addPatentList = function (condition) {
 }
 /**
  查询专利号看是否增加*/
-var getPatentListByPatentId=function (condition,data,patentId,i) {
+var getPatentListByPatentId=function (condition,data,patentNum,i) {
     // alert(condition)
     $.ajax({
         url: "/getPatentListByPatentId",
@@ -841,9 +1076,12 @@ var getPatentListByPatentId=function (condition,data,patentId,i) {
             alert("服务器异常！")
         },
         success: function (result) {
-            alert(result);
+            // alert(result);
             if (result != null && result>0) {
-                alert("专利号"+patentId+"已被增加！请核实！！！");
+                var data_id = {
+                    id:result
+                }
+                getEntireIdByPatentId(result,data,patentNum);
             }else {
                 addPatentList(data);
 
@@ -852,6 +1090,97 @@ var getPatentListByPatentId=function (condition,data,patentId,i) {
         }
     });
 };
+var getEntireIdByPatentId=function (id,data,patentNum) {
+    // alert(condition)
+    $.ajax({
+        url: "/getEntireIdByPatentId",
+        type: 'post',
+        async: true,
+        data: {
+            id:id
+        },
+        // dataType: 'json',
+        error: function (obj, msg) {
+            // alert("服务器异常！")
+        },
+        success: function (result) {
+            // alert(result);
+            if(result == entireId){
+                updatePatentList(data,id)
+            }else {
+                alert("该专利号"+patentNum+"已被其它参赛组录入，请核实!")
+            }
+
+        }
+    });
+};
+var updatePatentList = function (condition,id) {
+
+    $.ajax({
+        url: "/updatePatentList/"+id,
+        type: 'put',
+        async: true,
+        data: condition,
+        dataType: 'json',
+        error: function (obj, msg) {
+            // alert("服务器异常！")
+        },
+        success: function (result) {
+            if (result != null) {
+                // alert(result);
+                // window.location.href = "/registerSuccess?id=" + result + "";
+                // comId = result;
+            }
+
+        }
+    });
+}
+
+var getPatentListByEntireId = function (entireId,typePatent) {
+    $.ajax({
+        url: "/getPatentListByEntireId/"+entireId,
+        type: 'post',
+        async: true,
+        data: entireId,
+        dataType: 'json',
+        error: function (obj, msg) {
+            alert("服务器异常！")
+        },
+        success: function (result) {
+            console.log(result.data.data);
+            if(result.data.data.length>0){
+                if(typePatent == "patent_no"){
+                    var patentList = result.data.data
+                    for(var i=0;i<patentList.length;i++){
+                        var id = patentList[i].id;
+                        deletePatentList(id);
+
+                    }
+                }
+            }
+
+        }
+    });
+}
+var deletePatentList = function (id) {
+    $.ajax({
+        url: "/deletePatentById/"+id,
+        type: 'delete',
+        async: true,
+        data: id,
+        // dataType: 'json',
+        error: function (obj, msg) {
+            alert("服务器异常！")
+        },
+        success: function (result) {
+            // alert(result);
+            if (result != null && result>0) {
+                // alert("删除成功！")
+            }
+
+        }
+    });
+}
 
 var reduceImg = function () {
     // alert("#patent_"+(num+1));
@@ -870,6 +1199,7 @@ var reduceImg = function () {
     var core=15;
 var edu = 1;
  var addCoreTeamImg= function () {
+     var dataBeatpickerPosition = "["+"'"+"right"+"'"+","+"'"+"*"+"'"+"]";
         var html_tr =
             "<tr id='core_"+(core-4)+"'><td>姓名</td><td>性别</td> <td>年龄</td><td>职位</td>" +
                 "<td>最高学历</td> <td>留学经历</td> <td>入选国家千人计划</td><td>入选时间</td><td>大学生创业</td>"+
@@ -892,7 +1222,9 @@ var edu = 1;
                         "<option value='否'>否</option>" +
                     "</select>" +
                 "</td>"+
-                "<td id='millennium_date_"+team+"'><input type='text' id='core_millennium_date_"+team+"'/></td>"+
+                "<td id='millennium_date_"+team+"'>" +
+            "<div class='sample'>"+
+            "<input type='text' id='core_millennium_date_"+team+"' name='coreTeam_date' data-beatpicker='true' data-beatpicker-position="+dataBeatpickerPosition+" placeholder='"+"yyyy-mm-dd"+"'></div></td>"+
                 "<td><select id='ct_university_business_"+team+"'><option value='是'>是</option><option value='否'>否</option></select></td>"+
             "</tr>"+
             "<tr id='core_"+(core-2)+"'>" +
@@ -938,19 +1270,22 @@ var edu = 1;
            edu=edu-1;
        })
 
-       $("#core_millennium_"+team).click(function () {
-           if($("#core_millennium_"+team).val() == "是"){
-               $("#millennium_date_"+team).removeAttr("disabled");
-               $("#millennium_date_"+team).css("background","#ffffff");
-               $("#millennium_date_"+team).find("input").removeAttr("disabled");
-               $("#millennium_date_"+team).find("input").css("background","#ffffff");
-           }else {
-               $("#millennium_date_"+team).attr("disabled", "disabled");
-               $("#millennium_date_"+team).css("background","#dbdbdb");
-               $("#millennium_date_"+team).find("input").attr("disabled", "disabled");
-               $("#millennium_date_"+team).find("input").css("background","#dbdbdb");
-           }
-       })
+     for(var i =1;i<=team;i++)
+     {
+         $("#core_millennium_"+team).click(function () {
+             if($("#core_millennium_"+team).val() == "是"){
+                 $("#millennium_date_"+team).removeAttr("disabled");
+                 $("#millennium_date_"+team).css("background","#ffffff");
+                 $("#millennium_date_"+team).find("input").removeAttr("disabled");
+                 $("#millennium_date_"+team).find("input").css("background","#ffffff");
+             }else {
+                 $("#millennium_date_"+team).attr("disabled", "disabled");
+                 $("#millennium_date_"+team).css("background","#dbdbdb");
+                 $("#millennium_date_"+team).find("input").attr("disabled", "disabled");
+                 $("#millennium_date_"+team).find("input").css("background","#dbdbdb");
+             }
+         })
+     }
     }
 $("#addEducationImg3").click(function () {
     edu+= 1;
@@ -1045,6 +1380,53 @@ var change_millen = function (choose) {
     }
 }
 $("#hxtd_conservation_team").bind('click',function () {
+    deleteCoreTeamByEntireId(entireId)
+
+});
+var deleteCoreTeamByEntireId = function (entireId) {
+    $.ajax({
+        url: "/deleteCoreTeamByEntireId/"+entireId,
+        type: 'delete',
+        async: true,
+        data: entireId,
+        // dataType: 'json',
+        error: function (obj, msg) {
+            alert("服务器异常！")
+        },
+        success: function (result) {
+          console.log(result)
+            // alert(result.length);
+            if(result.length>0){
+                for(var i = 0;i<result.length;i++){
+                    var ctId = result[i].ctId;
+                    deleteEducationByEntireId(ctId,i,result.length)
+                }
+
+            }else {
+                addCoreTeamCondition
+            }
+
+        }
+    });
+}
+var deleteEducationByEntireId = function (ctId,i,length) {
+    $.ajax({
+        url: "/deleteEducationByEntireId/"+ctId,
+        type: 'delete',
+        async: true,
+        data: ctId,
+        // dataType: 'json',
+        error: function (obj, msg) {
+            alert("服务器异常！")
+        },
+        success: function (result) {
+           if((i+1) == length){
+               addCoreTeamCondition()
+           }
+        }
+    });
+}
+var  addCoreTeamCondition= function () {
     for(var i=1;i<=team;i++){
         var coreName = $("#core_name_"+i).val();
         var coreSex = $("#core_sex_"+i).val();
@@ -1101,7 +1483,7 @@ $("#hxtd_conservation_team").bind('click',function () {
 
         }
     }
-});
+}
 var addCoreTeam=function (condition,t_i) {
     $.ajax({
         url: "/addCoreTeam",
@@ -1118,9 +1500,9 @@ var addCoreTeam=function (condition,t_i) {
                 addEducationExperionce(result,t_i);
                 // window.location.href = "/registerSuccess?id=" + result + "";
                 // comId = result;
-                $("#hxtd_conservation_team").unbind('click');
-                $("#hxtd_conservation_team").css("background","#dbdbdb");
-                $("#hxtd_conservation_team").find("p").html("已保存");
+                // $("#hxtd_conservation_team").unbind('click');
+                // $("#hxtd_conservation_team").css("background","#dbdbdb");
+                // $("#hxtd_conservation_team").find("p").html("已保存");
             }
 
         }
@@ -1194,8 +1576,8 @@ var change_litigation3_No = function () {
 }
 
 var addLitigationImg = function () {
-    var html_tr = "<tr id='liti_"+(liti-1)+"' class='reason3'><td>诉讼内容</td><td><input type='text' id='litigation_content_"+litigation+"' name='litigation_other'/></td></tr>"+
-        "<tr id='liti_"+liti+"' class='reason3'><td>诉讼原因</td><td><input type='text' id='litigation_reason_"+litigation+"' name='litigation_other'/></td></tr>";
+    var html_tr = "<tr id='liti_"+(liti-1)+"' class='reason3'><td>诉讼内容</td><td><input type='text' id='litigation_content_"+litigation+"' name='litigation_other' maxlength='50'/></td></tr>"+
+        "<tr id='liti_"+liti+"' class='reason3'><td>诉讼原因</td><td><input type='text' id='litigation_reason_"+litigation+"' name='litigation_other' maxlength='200'/></td></tr>";
 
     $("#litigation_table").append(html_tr);
 }
@@ -1212,14 +1594,9 @@ $("#syjhs_conservation_team").click(function () {
     if($("#pro_name").val()==""){
         alert("请输入参赛项目名称！")
     }else {
-        var plan_data = conditionTeamBusinessPlan();
-        // alert(data);
-        addTeamBusinessPlan(plan_data);
-        conditionFore();
-        conditionTeamRisk();
-        $(this).unbind('click');
-        $(this).css("background","#dbdbdb");
-        $(this).find("p").html("已保存");
+        getTeamBusinessPlanConditionByEntireId(entireId,"keep")
+        getFinancialForecastingByEntireId(entireId,"keep")
+        deleteRisk(entireId);
     }
 });
 
@@ -1273,7 +1650,7 @@ $("#submit_competition_syjhs").bind('click',function () {
                                         }
                                     });
                                     if(flag_fore == true){
-                                        getTeamBusinessPlanByEntireId(entireId,"submit");
+                                        getTeamBusinessPlanConditionByEntireId(entireId,"submit");
                                         getFinancialForecastingByEntireId(entireId,"submit")
                                         deleteRisk(entireId);
                                     }
@@ -1290,7 +1667,7 @@ $("#submit_competition_syjhs").bind('click',function () {
                                     }
                                 });
                                 if(flag_fore == true){
-                                    getTeamBusinessPlanByEntireId(entireId,"submit");
+                                    getTeamBusinessPlanConditionByEntireId(entireId,"submit");
                                     getFinancialForecastingByEntireId(entireId,"submit")
                                     deleteRisk(entireId);
                                 }
@@ -1317,7 +1694,7 @@ $("#submit_competition_syjhs").bind('click',function () {
                                 }
                             });
                             if(flag_fore == true){
-                                getTeamBusinessPlanByEntireId(entireId,"submit");
+                                getTeamBusinessPlanConditionByEntireId(entireId,"submit");
                                 getFinancialForecastingByEntireId(entireId,"submit")
                                 deleteRisk(entireId);
                             }
@@ -1334,14 +1711,14 @@ $("#submit_competition_syjhs").bind('click',function () {
                             }
                         });
                         if(flag_fore == true){
-                            getTeamBusinessPlanByEntireId(entireId,"submit");
+                            getTeamBusinessPlanConditionByEntireId(entireId,"submit");
                             getFinancialForecastingByEntireId(entireId,"submit")
                             deleteRisk(entireId);
                         }
                     }
                 }
                 else if($("#litigation_2 input:checked").val() == "有"){
-                    if($("#litigation_reason_2").val() == ""){
+                    if($("#litigation_reason_1").val() == ""){
                         alert("请填写环保诉讼的诉讼原因！")
                     }
                     else {
@@ -1358,16 +1735,33 @@ $("#submit_competition_syjhs").bind('click',function () {
                                 var flag_fore = true ;
                                 $("input[name=fore]").each(function(a,b){
                                     if($(this).val() == ""){
-                                        alert("请将其他诉讼的诉讼原因填写完整！");
-                                        flag = false;
+                                        alert("请将财务预测数据信息填写完整！");
+                                        flag_fore = false;
+
                                         return false;
                                     }
                                 });
                                 if(flag_fore == true){
-                                    getTeamBusinessPlanByEntireId(entireId,"submit");
+                                    getTeamBusinessPlanConditionByEntireId(entireId,"submit");
                                     getFinancialForecastingByEntireId(entireId,"submit")
-                                    // deleteRisk(entireId);
+                                    deleteRisk(entireId);
                                 }
+                            }
+                        }
+                        else {
+                            var flag_fore = true ;
+                            $("input[name=fore]").each(function(a,b){
+                                if($(this).val() == ""){
+                                    alert("请将财务预测数据信息填写完整！");
+                                    flag_fore = false;
+
+                                    return false;
+                                }
+                            });
+                            if(flag_fore == true){
+                                getTeamBusinessPlanConditionByEntireId(entireId,"submit");
+                                getFinancialForecastingByEntireId(entireId,"submit")
+                                deleteRisk(entireId);
                             }
                         }
                     }
@@ -1392,54 +1786,26 @@ $("#submit_competition_syjhs").bind('click',function () {
                             }
                         });
                         if(flag_fore == true){
-                            getTeamBusinessPlanByEntireId(entireId,"submit");
+                            getTeamBusinessPlanConditionByEntireId(entireId,"submit");
                             getFinancialForecastingByEntireId(entireId,"submit")
                             deleteRisk(entireId);
                         }
                     }
                 }
                 else {
-                    if($("#other_litigation input:checked").val() == "有"){
-                        var flag = true ;
-                        $("input[name=litigation_other]").each(function(a,b){
-                            if($(this).val() == ""){
-                                alert("请将其他诉讼的诉讼原因填写完整！");
-                                flag = false;
-                                return false;
-                            }
-                        });
-                        if(flag == true){
-                            var flag_fore = true ;
-                            $("input[name=fore]").each(function(a,b){
-                                if($(this).val() == ""){
-                                    alert("请将财务预测数据信息填写完整！");
-                                    flag_fore = false;
+                    var flag_fore = true ;
+                    $("input[name=fore]").each(function(a,b){
+                        if($(this).val() == ""){
+                            alert("请将财务预测数据信息填写完整！");
+                            flag_fore = false;
 
-                                    return false;
-                                }
-                            });
-                            if(flag_fore == true){
-                                getTeamBusinessPlanByEntireId(entireId,"submit");
-                                getFinancialForecastingByEntireId(entireId,"submit")
-                                deleteRisk(entireId);
-                            }
+                            return false;
                         }
-                    }
-                    else {
-                        var flag_fore = true ;
-                        $("input[name=fore]").each(function(a,b){
-                            if($(this).val() == ""){
-                                alert("请将财务预测数据信息填写完整！");
-                                flag_fore = false;
-
-                                return false;
-                            }
-                        });
-                        if(flag_fore == true){
-                            getTeamBusinessPlanByEntireId(entireId,"submit");
-                            getFinancialForecastingByEntireId(entireId,"submit")
-                            deleteRisk(entireId);
-                        }
+                    });
+                    if(flag_fore == true){
+                        getTeamBusinessPlanConditionByEntireId(entireId,"submit");
+                        getFinancialForecastingByEntireId(entireId,"submit")
+                        deleteRisk(entireId);
                     }
                 }
             }
@@ -1474,7 +1840,7 @@ $("#submit_competition_syjhs").bind('click',function () {
                                     }
                                 });
                                 if(flag_fore == true){
-                                    getTeamBusinessPlanByEntireId(entireId,"submit");
+                                    getTeamBusinessPlanConditionByEntireId(entireId,"submit");
                                     getFinancialForecastingByEntireId(entireId,"submit")
                                     deleteRisk(entireId);
                                 }
@@ -1491,7 +1857,7 @@ $("#submit_competition_syjhs").bind('click',function () {
                                 }
                             });
                             if(flag_fore == true){
-                                getTeamBusinessPlanByEntireId(entireId,"submit");
+                                getTeamBusinessPlanConditionByEntireId(entireId,"submit");
                                 getFinancialForecastingByEntireId(entireId,"submit")
                                 deleteRisk(entireId);
                             }
@@ -1518,7 +1884,7 @@ $("#submit_competition_syjhs").bind('click',function () {
                             }
                         });
                         if(flag_fore == true){
-                            getTeamBusinessPlanByEntireId(entireId,"submit");
+                            getTeamBusinessPlanConditionByEntireId(entireId,"submit");
                             getFinancialForecastingByEntireId(entireId,"submit")
                             deleteRisk(entireId);
                         }
@@ -1535,14 +1901,14 @@ $("#submit_competition_syjhs").bind('click',function () {
                         }
                     });
                     if(flag_fore == true){
-                        getTeamBusinessPlanByEntireId(entireId,"submit");
+                        getTeamBusinessPlanConditionByEntireId(entireId,"submit");
                         getFinancialForecastingByEntireId(entireId,"submit")
                         deleteRisk(entireId);
                     }
                 }
             }
             else if($("#litigation_2 input:checked").val() == "有"){
-                if($("#litigation_reason_2").val() == ""){
+                if($("#litigation_reason_1").val() == ""){
                     alert("请填写环保诉讼的诉讼原因！")
                 }
                 else {
@@ -1559,16 +1925,33 @@ $("#submit_competition_syjhs").bind('click',function () {
                             var flag_fore = true ;
                             $("input[name=fore]").each(function(a,b){
                                 if($(this).val() == ""){
-                                    alert("请将其他诉讼的诉讼原因填写完整！");
-                                    flag = false;
+                                    alert("请将财务预测数据信息填写完整！");
+                                    flag_fore = false;
+
                                     return false;
                                 }
                             });
                             if(flag_fore == true){
-                                getTeamBusinessPlanByEntireId(entireId,"submit");
+                                getTeamBusinessPlanConditionByEntireId(entireId,"submit");
                                 getFinancialForecastingByEntireId(entireId,"submit")
-                                // deleteRisk(entireId);
+                                deleteRisk(entireId);
                             }
+                        }
+                    }
+                    else {
+                        var flag_fore = true ;
+                        $("input[name=fore]").each(function(a,b){
+                            if($(this).val() == ""){
+                                alert("请将财务预测数据信息填写完整！");
+                                flag_fore = false;
+
+                                return false;
+                            }
+                        });
+                        if(flag_fore == true){
+                            getTeamBusinessPlanConditionByEntireId(entireId,"submit");
+                            getFinancialForecastingByEntireId(entireId,"submit")
+                            deleteRisk(entireId);
                         }
                     }
                 }
@@ -1593,54 +1976,26 @@ $("#submit_competition_syjhs").bind('click',function () {
                         }
                     });
                     if(flag_fore == true){
-                        getTeamBusinessPlanByEntireId(entireId,"submit");
+                        getTeamBusinessPlanConditionByEntireId(entireId,"submit");
                         getFinancialForecastingByEntireId(entireId,"submit")
                         deleteRisk(entireId);
                     }
                 }
             }
             else {
-                if($("#other_litigation input:checked").val() == "有"){
-                    var flag = true ;
-                    $("input[name=litigation_other]").each(function(a,b){
-                        if($(this).val() == ""){
-                            alert("请将其他诉讼的诉讼原因填写完整！");
-                            flag = false;
-                            return false;
-                        }
-                    });
-                    if(flag == true){
-                        var flag_fore = true ;
-                        $("input[name=fore]").each(function(a,b){
-                            if($(this).val() == ""){
-                                alert("请将财务预测数据信息填写完整！");
-                                flag_fore = false;
+                var flag_fore = true ;
+                $("input[name=fore]").each(function(a,b){
+                    if($(this).val() == ""){
+                        alert("请将财务预测数据信息填写完整！");
+                        flag_fore = false;
 
-                                return false;
-                            }
-                        });
-                        if(flag_fore == true){
-                            getTeamBusinessPlanByEntireId(entireId,"submit");
-                            getFinancialForecastingByEntireId(entireId,"submit")
-                            deleteRisk(entireId);
-                        }
+                        return false;
                     }
-                }
-                else {
-                    var flag_fore = true ;
-                    $("input[name=fore]").each(function(a,b){
-                        if($(this).val() == ""){
-                            alert("请将财务预测数据信息填写完整！");
-                            flag_fore = false;
-
-                            return false;
-                        }
-                    });
-                    if(flag_fore == true){
-                        getTeamBusinessPlanByEntireId(entireId,"submit");
-                        getFinancialForecastingByEntireId(entireId,"submit")
-                        deleteRisk(entireId);
-                    }
+                });
+                if(flag_fore == true){
+                    getTeamBusinessPlanConditionByEntireId(entireId,"submit");
+                    getFinancialForecastingByEntireId(entireId,"submit")
+                    deleteRisk(entireId);
                 }
             }
         }
@@ -1755,7 +2110,7 @@ var conditionTeamBusinessPlan_update=function () {
 
     return teamBusinessPlan_data;
 };
-var updateTeamBusinessPlan = function (condition,tbusId) {
+var updateTeamBusinessPlan = function (condition,tbusId,i) {
     // alert(condition);
     $.ajax({
         url: "/updateTeamBusinessPlan/"+tbusId,
@@ -1769,7 +2124,12 @@ var updateTeamBusinessPlan = function (condition,tbusId) {
         success: function (result) {
             console.log(result)
             if (result != null) {
-                // alert(result);
+                if(i == "keep"){
+                    alert("商业计划书保存成功！")
+                }
+                if(i == "submit"){
+                    alert("商业计划书已提交！")
+                }
                 // window.location.href = "/registerSuccess?id=" + result + "";
                 // comId = result;
             }
@@ -1782,7 +2142,7 @@ var updateTeamBusinessPlan = function (condition,tbusId) {
  * 创建商业计划书
  * @param condition
  */
-var addTeamBusinessPlan = function (condition) {
+var addTeamBusinessPlan = function (condition,i) {
     // alert(condition);
     $.ajax({
         url: "/addTeamBusinessPlan",
@@ -1795,9 +2155,12 @@ var addTeamBusinessPlan = function (condition) {
         },
         success: function (result) {
             if (result != null) {
-                alert(result);
-                // window.location.href = "/registerSuccess?id=" + result + "";
-                // comId = result;
+
+                if(i == "submit"){
+                    alert("商业计划书已提交！")
+                }else {
+                    alert("商业计划书保存成功！")
+                }
             }
 
         }
@@ -1861,9 +2224,7 @@ var addRisk = function (condition) {
         },
         success: function (result) {
             if (result != null) {
-                alert(result);
-                // window.location.href = "/registerSuccess?id=" + result + "";
-                // comId = result;
+
             }
 
         }
@@ -1911,7 +2272,7 @@ var addFinancialForecasting = function (condition) {
         },
         success: function (result) {
             if (result != null) {
-                alert(result);
+                // alert(result);
                 // window.location.href = "/registerSuccess?id=" + result + "";
                 // comId = result;
             }
@@ -1940,7 +2301,7 @@ var deleteRisk = function (entireId) {
         }
     });
 }
-var getFinancialForecastingByEntireId = function (data) {
+var getFinancialForecastingByEntireId = function (data,i) {
 
     $.ajax({
         url: "/getForecastingByEntireId/"+data,
@@ -37188,11 +37549,6 @@ var getDemandByEntireId = function (condition,i) {
         success: function (result) {
             // alert(result);
             if (result != null && result>0) {
-                if(i == "four"){
-                    $("#kjjr_conservation_team").unbind('click');
-                    $("#kjjr_conservation_team").css("background","#dbdbdb");
-                    $("#kjjr_conservation_team").find("p").html("已保存");
-                }
                 getEntireWorkStateById(entireId,result);
 
             }else {
@@ -37201,12 +37557,13 @@ var getDemandByEntireId = function (condition,i) {
                     workState:"SUBMIT"
                 }
                 updateEntireWorkState(data,entireId)
-                $("#kjjr_conservation_team").unbind('click');
-                $("#kjjr_conservation_team").css("background","#dbdbdb");
-                $("#kjjr_conservation_team").find("p").html("已保存");
-                $("#submit_competition_kjjr").unbind('click');
-                $("#submit_competition_kjjr").css("background","#dbdbdb");
-                $("#submit_competition_kjjr").find("p").html("已提交报名");
+
+                // $("#kjjr_conservation_team").unbind('click');
+                // $("#kjjr_conservation_team").css("background","#dbdbdb");
+                // $("#kjjr_conservation_team").find("p").html("已保存");
+                // $("#submit_competition_kjjr").unbind('click');
+                // $("#submit_competition_kjjr").css("background","#dbdbdb");
+                // $("#submit_competition_kjjr").find("p").html("已提交报名");
             }
         }
     });
@@ -37238,6 +37595,22 @@ var getEntireWorkStateById = function (condition,demandId) {
                     $("#submit_competition_kjjr").unbind('click');
                     $("#submit_competition_kjjr").css("background","#dbdbdb");
                     $("#submit_competition_kjjr").find("p").html("已提交报名");
+
+                    $("#jbxx_conservation_team").unbind('click');
+                    $("#jbxx_conservation_team").css("background","#dbdbdb");
+                    $("#jbxx_conservation_team").find("p").html("保存");
+                    $("#hxtd_conservation_team").unbind('click');
+                    $("#hxtd_conservation_team").css("background","#dbdbdb");
+                    $("#hxtd_conservation_team").find("p").html("保存");
+                    $("#syjhs_conservation_team").unbind('click');
+                    $("#syjhs_conservation_team").css("background","#dbdbdb");
+                    $("#syjhs_conservation_team").find("p").html("保存");
+                    $("#kjjr_conservation_team").unbind('click');
+                    $("#kjjr_conservation_team").css("background","#dbdbdb");
+                    $("#kjjr_conservation_team").find("p").html("保存");
+                    $("#submit_competition_syjhs").unbind('click');
+                    $("#submit_competition_syjhs").css("background","#dbdbdb");
+                    $("#submit_competition_syjhs").find("p").html("已提交商业计划书");
                 }
 
             }
@@ -37700,25 +38073,26 @@ var updateEntireWorkState = function (condition,entireId) {
                 console.log(result);
 
                 alert("提交报名成功");
+
                 $("#submit_competition_kjjr").unbind('click');
                 $("#submit_competition_kjjr").css("background","#dbdbdb");
                 $("#submit_competition_kjjr").find("p").html("已提交报名");
 
                 $("#jbxx_conservation_team").unbind('click');
                 $("#jbxx_conservation_team").css("background","#dbdbdb");
-                $("#jbxx_conservation_team").find("p").html("修改");
+                $("#jbxx_conservation_team").find("p").html("保存");
                 $("#hxtd_conservation_team").unbind('click');
                 $("#hxtd_conservation_team").css("background","#dbdbdb");
-                $("#hxtd_conservation_team").find("p").html("修改");
+                $("#hxtd_conservation_team").find("p").html("保存");
                 $("#syjhs_conservation_team").unbind('click');
                 $("#syjhs_conservation_team").css("background","#dbdbdb");
-                $("#syjhs_conservation_team").find("p").html("修改");
+                $("#syjhs_conservation_team").find("p").html("保存");
                 $("#kjjr_conservation_team").unbind('click');
                 $("#kjjr_conservation_team").css("background","#dbdbdb");
-                $("#kjjr_conservation_team").find("p").html("修改");
+                $("#kjjr_conservation_team").find("p").html("保存");
                 $("#submit_competition_syjhs").unbind('click');
                 $("#submit_competition_syjhs").css("background","#dbdbdb");
-                $("#submit_competition_syjhs").find("p").html("修已提交商业计划书改");
+                $("#submit_competition_syjhs").find("p").html("已提交商业计划书");
             }
 
         }

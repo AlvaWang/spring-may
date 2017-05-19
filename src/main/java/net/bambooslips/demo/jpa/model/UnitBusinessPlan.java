@@ -49,16 +49,16 @@ public class UnitBusinessPlan  implements Serializable {
     @Column(name = "ubus_is_pro_picture")
     private String ubusProPicture;
 
-    @Column(name = "ubus_major_describe")
+    @Column(name = "ubus_major_describe",length = 2400)
     private String ubusMajorDescribe;
 
-    @Column(name = "ubus_pro_market")
+    @Column(name = "ubus_pro_market",length = 2400)
     private String ubusProMarket;
 
-    @Column(name = "ubus_model")
+    @Column(name = "ubus_model",length = 2400)
     private String ubusModel;
 
-    @Column(name = "ubus_main")
+    @Column(name = "ubus_main",length = 500)
     private String ubusMain;
 
     @Column(name = "status")
