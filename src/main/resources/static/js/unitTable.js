@@ -269,7 +269,7 @@ var getCoreTeamListByEntireId = function (entireId) {
                         "<td><input type='text' id='core_name_"+team+"' value='"+coreTeamList[i].ctName+"'/></td>"+
                         "<td><select  id='core_sex_"+team+"'><option value='男'>男</option>" +
                         "<option value='女'>女</option>" + "</select></td>"+
-                        "<td><input type='text' id='core_age_"+team+"' value='"+coreTeamList[i].ctAge+"'/></td>"+
+                        "<td><input type='number' id='core_age_"+team+"' value='"+coreTeamList[i].ctAge+"'/></td>"+
                         "<td><input type='text' id='core_job_"+team+"' value='"+coreTeamList[i].ctJob+"'/></td>"+
                         "<td><select id='core_education_"+team+"' ><option value='学士'>学士</option><option value='硕士'>硕士</option><option value='博士'>博士</option></select></td>"+
                         "<td><input type='text' id='core_experience_"+team+"' value='"+coreTeamList[i].ctStudyExperience+"'/></td>"+
@@ -1470,7 +1470,7 @@ var updateUnitEssential = function (condition,ueId) {
         },
         success: function (result) {
             if (result != null) {
-                // alert(result);
+                alert("修改基本信息成功！");
                 // window.location.href = "/registerSuccess?id=" + result + "";
                 // comId = result;
             }
@@ -1685,7 +1685,7 @@ var addCoreTeamImg= function () {
         "<td><input type='text' id='core_name_"+team+"'/></td>"+
         "<td><select  id='core_sex_"+team+"'><option value='男'>男</option>" +
         "<option value='女'>女</option>" + "</select></td>"+
-        "<td><input type='text' id='core_age_"+team+"'/></td>"+
+        "<td><input type='number' id='core_age_"+team+"'/></td>"+
         "<td><input type='text' id='core_job_"+team+"'/></td>"+
         "<td><select id='core_education_"+team+"'><option value='学士'>学士</option><option value='硕士'>硕士</option><option value='博士'>博士</option></select></td>"+
         "<td><input type='text' id='core_experience_"+team+"'/></td>"+

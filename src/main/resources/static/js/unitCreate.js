@@ -1376,7 +1376,7 @@ var getPatentListByEntireId = function (entireId,typePatent) {
             alert("服务器异常！")
         },
         success: function (result) {
-            console.log(result.data.data);
+            // console.log(result.data.data);
             if(result.data.data.length>0){
                 if(typePatent == "patent_no"){
                     var patentList = result.data.data
@@ -1386,6 +1386,8 @@ var getPatentListByEntireId = function (entireId,typePatent) {
 
                     }
                 }
+            }else {
+
             }
 
         }
@@ -1435,7 +1437,7 @@ var reduceImg = function () {
                 "<td><input type='text' id='core_name_"+team+"' name='coreTeam'/></td>"+
                 "<td><select  id='core_sex_"+team+"'><option value='男'>男</option>" +
                 "<option value='女'>女</option>" + "</select></td>"+
-                "<td><input type='text' id='core_age_"+team+"' name='coreTeam'/></td>"+
+                "<td><input type='number' id='core_age_"+team+"' name='coreTeam'/></td>"+
                 "<td><input type='text' id='core_job_"+team+"' name='coreTeam'/></td>"+
                 "<td><select id='core_education_"+team+"'><option value='学士'>学士</option><option value='硕士'>硕士</option><option value='博士'>博士</option></select></td>"+
                 "<td><input type='text' id='core_experience_"+team+"' name='coreTeam'/></td>"+
