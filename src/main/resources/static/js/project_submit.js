@@ -5,17 +5,26 @@ var comName = GetQueryString("comName")
 $(function () {
     $("#unit_project_list").show();
     $("#team_project_list").hide();
+    $("#unit_list").css("background","#0fc9f4");
+    $("#team_list").css("background","#67b4dc");
+
     getEntireList(comName,"unit");
 })
 $("#unit_list").click(function () {
     $("#unit_project_list").show();
     $("#team_project_list").hide();
+    $("#unit_list").css("background","#0fc9f4");
+    $("#team_list").css("background","#67b4dc");
+
     getEntireList(comName,"unit");
 })
 
 $("#team_list").click(function () {
     $("#team_project_list").show();
     $("#unit_project_list").hide();
+    $("#unit_list").css("background","#67b4dc");
+    $("#team_list").css("background","#0fc9f4");
+
     getEntireList(comName,"team");
 })
 

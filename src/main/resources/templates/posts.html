@@ -11,6 +11,10 @@
     <script src="../static/lib/js/jquery.min.js" th:src="@{/webjars/jquery/2.2.3/jquery.min.js}"></script>
     <script src="../static/lib/js/bootstrap.min.js" th:src="@{/webjars/bootstrap/3.3.6/js/bootstrap.min.js}"></script>
     <script src="../static/lib/js/lightbox.min.js" th:src="@{/lib/js/lightbox.min.js}"></script>
+    <script src="../static/js/public.js" th:src="@{/js/public.js}"></script>
+    <script type="text/javascript">
+        var type = GetQueryString("type")
+    </script>
     <style>
 
         .my-content {
@@ -164,5 +168,6 @@
     </div>
 </div>
 <script src="../static/js/menu_click.js" th:src="@{/js/menu_click.js}"></script>
+
 </body>
 </html>

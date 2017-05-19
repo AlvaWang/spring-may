@@ -54,6 +54,8 @@ if(bannerType == "NATIONAL" || bannerType == "MAIN" || bannerType == "REPORT" ||
 $(function () {
    $("#login_competition") .show();
     $("#login_work") .hide();
+    $("#login_competition_btn").css("background","#0fc9f4")
+    $("#login_work_btn").css("background","#638daa")
 
     $("#review_banner").show();
     $("#news_center_banner").hide
@@ -102,12 +104,16 @@ $("#login_competition_btn").click(function () {
 
     $("#login_competition") .show();
     $("#login_work") .hide();
+    $("#login_competition_btn").css("background","#0fc9f4")
+    $("#login_work_btn").css("background","#638daa")
 });
 
 $("#login_work_btn").click(function () {
 
     $("#login_work") .show();
     $("#login_competition") .hide();
+    $("#login_competition_btn").css("background","#638daa")
+    $("#login_work_btn").css("background","#0fc9f4")
 });
 
 $("#register_btn").click(function () {

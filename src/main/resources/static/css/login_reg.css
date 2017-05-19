@@ -376,6 +376,28 @@ label{
     font-size: 12px;
 
 }
-
+#register_btn div:hover{
+    background: #0fc9f4!important;
+}
+.login_hover:hover{
+    background: #0fc9f4!important;
+}
+#login_competition_btn:hover{
+    background: #8fc31f!important;
+}
+#login_work_btn:hover{
+    background: #8fc31f!important;
+}
+#suc_entry:hover,.btn_div_submit:hover,.btn_div_keep:hover,.project_btn:hover{
+    background:  #8fc31f!important;
+}
+.entry_div:hover{
+    background: #0fc9f4!important;
+    border-radius: 4px;
+    /* height: 100%; */
+    width: 30%;
+    min-width: 150px;
+    height: 80px;
+}
 
 

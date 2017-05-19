@@ -47,7 +47,7 @@
 
         <div class="row thread">
             <h2 th:text="${post.title}"></h2>
-            <h4><small th:text="'类别：'+ ${post.postType.toChinese()}" ></small><small class="time" th:text="'发布时间：'+ ${formatter.format(post.createdAt)}"></small></h4>
+            <h4><small th:text="'类别：'+ ${post.postType.toChinese()}" id="postType"></small><small class="time" th:text="'发布时间：'+ ${formatter.format(post.createdAt)}"></small></h4>
             <hr/>
             <div class="row " th:utext="${post.content}">
             </div>
@@ -57,5 +57,16 @@
     </div>
 </div>
 <script src="../static/js/menu_click.js" th:src="@{/js/menu_click.js}"></script>
+<script type="text/javascript">
+    var postType = $("#postType").text().substring(3)
+    if(postType == "项目" || postType == "视频"){
+        $("#review_banner_post").show();
+        $("#news_center_banner_post").hide();
+    }
+    if(postType == "军转民分区" || postType == "全国大赛" || postType == "报告" || postType == "其他"){
+        $("#review_banner_post").hide();
+        $("#news_center_banner_post").show();
+    }
+</script>
 </body>
 </html>

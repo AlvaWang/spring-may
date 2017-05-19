@@ -517,6 +517,9 @@ a .active {
     background: #12aaf0;
     text-align: center;
 }
+.login_but:hover,.login_mar div:hover{
+    background: #0fc9f4;
+}
 .login_but a{
     font-size: 18px;
     text-align: center;

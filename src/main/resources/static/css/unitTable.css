@@ -299,3 +299,6 @@ div#post_code input,#technical_sources input ,#te_compatition_goal input,
 #project_page{
     height: 140px!important;
 }
+.conservation:hover,.submit_div div:hover{
+    background: #638daa!important;
+}
