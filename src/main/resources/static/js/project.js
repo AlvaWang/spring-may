@@ -8,12 +8,16 @@ $(function () {
     getEntireList(comName,"unit");
 })
 $("#unit_list").click(function () {
+    $("#unit_project_list ul").empty();
+
     $("#unit_project_list").show();
     $("#team_project_list").hide();
     getEntireList(comName,"unit");
 })
 
 $("#team_list").click(function () {
+    $("#team_project_list ul").empty();
+
     $("#team_project_list").show();
     $("#unit_project_list").hide();
     getEntireList(comName,"team");
@@ -36,12 +40,13 @@ var getEntireList = function (comName,type) {
             var eu = 0;
             var et = 0;
             if (result.data != null) {
+
+
                 // alert(result.data.data.length)
                 console.log(result.data.data)
                 var resultData = result.data.data;
                 for(var i=0;i<resultData.length;i++){
                     if (type == "unit"){
-                        $("#unit_project_list ul").empty();
                         if(resultData[i][1] == "UNIT"){
                             eu = eu+1
                             var text = eu+"."+"作品Id为"+resultData[i][0]+"号作品";
@@ -52,13 +57,13 @@ var getEntireList = function (comName,type) {
                             var entireId =  resultData[i][0];
                             // alert(entireId);
                             $("#unit_list_"+resultData[i][0]).bind('click',function () {
-                                window.location.href = "/unitTable?entireId=" + entireId+"&type="+"KEEP";
+                                window.location.href = "/unitTable?entireId=" + entireId+"&type="+"KEEP"+"&comName="+comName;
                             })
                         }
                         // getEntireProName_unit(resultData[i])
                     }
                     if (type == "team"){
-                        $("#team_project_list ul").empty();
+
                         if(resultData[i][1] == "TEAM"){
                             et = et+1
                             // getEntireProName_team(resultData[i]);
@@ -68,7 +73,7 @@ var getEntireList = function (comName,type) {
                             $("#team_project_list ul").append(html_ul);
                             var entireId =  resultData[i][0]
                             $("#team_list_"+resultData[i][0]).bind('click',function () {
-                                window.location.href = "/teamTable?entireId=" + entireId +"&type="+"KEEP";
+                                window.location.href = "/teamTable?entireId=" + entireId +"&type="+"KEEP"+"&comName="+comName;
                             })
                         }
 

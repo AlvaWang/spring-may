@@ -960,7 +960,7 @@ var addPerson = function (condition) {
         },
         success: function (result) {
             if (result != null) {
-                alert(result);
+                alert("基本信息已保存！");
                 // window.location.href = "/registerSuccess?id=" + result + "";
                 // comId = result;
             }
@@ -1270,22 +1270,19 @@ var edu = 1;
            edu=edu-1;
        })
 
-     for(var i =1;i<=team;i++)
-     {
-         $("#core_millennium_"+team).click(function () {
-             if($("#core_millennium_"+team).val() == "是"){
-                 $("#millennium_date_"+team).removeAttr("disabled");
-                 $("#millennium_date_"+team).css("background","#ffffff");
-                 $("#millennium_date_"+team).find("input").removeAttr("disabled");
-                 $("#millennium_date_"+team).find("input").css("background","#ffffff");
-             }else {
-                 $("#millennium_date_"+team).attr("disabled", "disabled");
-                 $("#millennium_date_"+team).css("background","#dbdbdb");
-                 $("#millennium_date_"+team).find("input").attr("disabled", "disabled");
-                 $("#millennium_date_"+team).find("input").css("background","#dbdbdb");
-             }
-         })
-     }
+     $("#core_millennium_"+team).click(function () {
+         if($("#core_millennium_"+team).val() == "是"){
+             $("#millennium_date_"+team).removeAttr("disabled");
+             $("#millennium_date_"+team).css("background","#ffffff");
+             $("#millennium_date_"+team).find("input").removeAttr("disabled");
+             $("#millennium_date_"+team).find("input").css("background","#ffffff");
+         }else {
+             $("#millennium_date_"+team).attr("disabled", "disabled");
+             $("#millennium_date_"+team).css("background","#dbdbdb");
+             $("#millennium_date_"+team).find("input").attr("disabled", "disabled");
+             $("#millennium_date_"+team).find("input").css("background","#dbdbdb");
+         }
+     })
     }
 $("#addEducationImg3").click(function () {
     edu+= 1;
@@ -1403,7 +1400,7 @@ var deleteCoreTeamByEntireId = function (entireId) {
                 }
 
             }else {
-                addCoreTeamCondition
+                addCoreTeamCondition()
             }
 
         }
@@ -1428,6 +1425,9 @@ var deleteEducationByEntireId = function (ctId,i,length) {
 }
 var  addCoreTeamCondition= function () {
     for(var i=1;i<=team;i++){
+        var core_Number = $("#core_name_"+i).parent().parent().attr("id").substring(5,7);
+       var  coreNumber = parseInt(core_Number)+1;
+        alert(coreNumber)
         var coreName = $("#core_name_"+i).val();
         var coreSex = $("#core_sex_"+i).val();
         var coreAge = $("#core_age_"+i).val();
@@ -1459,7 +1459,7 @@ var  addCoreTeamCondition= function () {
                     ctNationalMillennium:coreMillennium,
                     ctUniversityBusiness:ct_university_business
                 }
-                addCoreTeam(condition,i);
+                addCoreTeam(condition,coreNumber,i);
 
             }else {
                 var condition={
@@ -1477,14 +1477,14 @@ var  addCoreTeamCondition= function () {
                     nationalMilleDate:comTime(coreMillenniumDate),
                     ctUniversityBusiness:ct_university_business
                 }
-                addCoreTeam(condition,i);
+                addCoreTeam(condition,coreNumber,i);
 
             }
 
         }
     }
 }
-var addCoreTeam=function (condition,t_i) {
+var addCoreTeam=function (condition,coreNumber,t_i) {
     $.ajax({
         url: "/addCoreTeam",
         type: 'post',
@@ -1497,7 +1497,7 @@ var addCoreTeam=function (condition,t_i) {
         success: function (result) {
             if (result != null) {
                 // alert(result);
-                addEducationExperionce(result,t_i);
+                addEducationExperionce(result,coreNumber,t_i);
                 // window.location.href = "/registerSuccess?id=" + result + "";
                 // comId = result;
                 // $("#hxtd_conservation_team").unbind('click');
@@ -1509,17 +1509,17 @@ var addCoreTeam=function (condition,t_i) {
     });
 }
 
-var addEducationExperionce = function (coreTeamId,t_i) {
+var addEducationExperionce = function (coreTeamId,coreNumber,t_i) {
     var core_edu=3;
     var edu_length = $("#append_education_"+t_i).find("tr").length-3;
     // alert(edu_length);
     core_edu = core_edu+(t_i-1)*5;
         for(var i=1;i<=edu_length;i++){
             // alert(core_edu+","+team_edu);
-            var edu_background = $("#edu_background_"+core_edu+"_"+t_i+"_"+i).val();
+            var edu_background = $("#edu_background_"+coreNumber+"_"+t_i+"_"+i).val();
             // alert("#edu_background_"+core_edu+"_"+t_i+"_"+i);
-            var edu_graduate_school = $("#edu_graduate_school_"+core_edu+"_"+t_i+"_"+i).val();
-            var edu_major = $("#edu_major_"+core_edu+"_"+t_i+"_"+i).val();
+            var edu_graduate_school = $("#edu_graduate_school_"+coreNumber+"_"+t_i+"_"+i).val();
+            var edu_major = $("#edu_major_"+coreNumber+"_"+t_i+"_"+i).val();
             var condition = {
                 entireId:entireId,
                 ctId:coreTeamId,
@@ -1527,14 +1527,14 @@ var addEducationExperionce = function (coreTeamId,t_i) {
                 eduGraduateSchool:edu_graduate_school,
                 eduMajor:edu_major
             }
-            addEducationExpeionceCondition(condition);
+            addEducationExpeionceCondition(condition,t_i);
         }
     team=team+1;
 
     // }
 
 }
-var addEducationExpeionceCondition = function (condition) {
+var addEducationExpeionceCondition = function (condition,t_i) {
 
     $.ajax({
         url: "/addEducationExperionce",
@@ -1547,7 +1547,10 @@ var addEducationExpeionceCondition = function (condition) {
         },
         success: function (result) {
             if (result != null) {
-                alert("增加核心成员信息成功！");
+                if(t_i == team){
+                    alert("增加核心成员信息成功！");
+                }
+
             }
 
         }
@@ -2382,7 +2385,8 @@ var updateFinancialForecasting =  function (condition,foreId) {
 /****************************************科技金融服务需求*/
 
 $("#kjjr_conservation_team").bind('click',function () {
-    conditionDemand();
+    getDemandByEntireId(entireId,"keep");
+    // conditionDemand();
 })
 
 var conditionDemand=function () {
@@ -2785,7 +2789,7 @@ var conditionDemand=function () {
 var addDemand = function (condition) {
     // alert(condition);
     $.ajax({
-        url: "/",
+        url: "/addDemandFinancial",
         type: 'post',
         async: true,
         data: condition,
@@ -2795,12 +2799,12 @@ var addDemand = function (condition) {
         },
         success: function (result) {
             if (result != null) {
-                alert(result);
+                alert("已保存科技金融服务相关信息！")
                 // window.location.href = "/registerSuccess?id=" + result + "";
                 // comId = result;
-                $("#kjjr_conservation_team").unbind('click');
-                $("#kjjr_conservation_team").css("background","#dbdbdb");
-                $("#kjjr_conservation_team").find("p").html("已保存");
+                // $("#kjjr_conservation_team").unbind('click');
+                // $("#kjjr_conservation_team").css("background","#dbdbdb");
+                // $("#kjjr_conservation_team").find("p").html("已保存");
             }
 
         }
@@ -37549,14 +37553,23 @@ var getDemandByEntireId = function (condition,i) {
         success: function (result) {
             // alert(result);
             if (result != null && result>0) {
-                getEntireWorkStateById(entireId,result);
-
-            }else {
-                conditionDemand();
-                var data = {
-                    workState:"SUBMIT"
+                if(i == "keep"){
+                    conditionDemand_update(result);
                 }
-                updateEntireWorkState(data,entireId)
+                if( i == "submit"){
+                    getEntireWorkStateById(entireId,result);
+                }
+            }else {
+                if(i == "keep"){
+                    conditionDemand();
+                }
+                if( i == "submit"){
+                    conditionDemand();
+                    var data = {
+                        workState:"SUBMIT"
+                    }
+                    updateEntireWorkState(data,entireId)
+                }
 
                 // $("#kjjr_conservation_team").unbind('click');
                 // $("#kjjr_conservation_team").css("background","#dbdbdb");
@@ -37826,61 +37839,77 @@ var conditionDemand_update=function (demandId) {
     }
     // alert(df_equity_date)
     if(df_isEquity == "是" && df_isDebt == "是"){
-        var unitDemand_data = {
-            dfEquity:df_isEquity,
-            dfEquityShares:df_equity_shares,
-            dfEquityMoney:df_equity_money,
-            dfEquityDate:comTime(df_equity_date),
-            equityFundPlan:df_equityFund_plan,
+        if($("#df_isEquity input:checked").val() == "是") {
+            if ($("#df_equity_money").val() == "" || $("#df_equity_shares").val() == "" ||
+                $("#df_equity_date").val() == "" || $("#df_equityFund_plan").val() == "") {
+                alert("请将融资信息填写完整")
+            }
+            else {
+                if ($("#df_isDebt input:checked").val() == "是") {
+                    if ($("#df_debt_money").val() == "" || $("#df_debt_maxAnnual").val() == "" ||
+                        $("#df_debt_date").val() == "" || $("#df_debtFund_plan").val() == "") {
+                        alert("请将融资信息填写完整")
+                    }else {
+                        var unitDemand_data = {
+                            dfEquity:df_isEquity,
+                            dfEquityShares:df_equity_shares,
+                            dfEquityMoney:df_equity_money,
+                            dfEquityDate:comTime(df_equity_date),
+                            equityFundPlan:df_equityFund_plan,
 
-            dfEquityRecom:df_isEquity_recom,
-            dfDebt:df_isDebt,
-            dfDebtMoney:df_debt_money,
-            debtMaxAnnual:df_debt_maxAnnual,
-            dfDebtDate:comTime(df_debt_date),
-            debtFundPlan:df_debtFund_plan,
-            dfDebtRecom:df_isDebt_recom,
-            dfCrowdFunding:df_isCrowd_funding,
-            crowsFundType:crows_fund_type,
-            dfMerge:df_isMerge,
-            dfListedShareReform:df_isListed_shareReform,
-            dfFinancingGuarantee:df_isFinancing_guarantee,
-            dfPettyLoan:df_isPetty_loan,
-            pettyLoanMoney:petty_loan_money,
+                            dfEquityRecom:df_isEquity_recom,
+                            dfDebt:df_isDebt,
+                            dfDebtMoney:df_debt_money,
+                            debtMaxAnnual:df_debt_maxAnnual,
+                            dfDebtDate:comTime(df_debt_date),
+                            debtFundPlan:df_debtFund_plan,
+                            dfDebtRecom:df_isDebt_recom,
+                            dfCrowdFunding:df_isCrowd_funding,
+                            crowsFundType:crows_fund_type,
+                            dfMerge:df_isMerge,
+                            dfListedShareReform:df_isListed_shareReform,
+                            dfFinancingGuarantee:df_isFinancing_guarantee,
+                            dfPettyLoan:df_isPetty_loan,
+                            pettyLoanMoney:petty_loan_money,
 
-            dfCompanyDebt:df_company_isDebt,
-            minorEnterprisesDebt:df_minorEnterprises_isDebt,
-            dfTechnicalImport:df_technical_import,
-            technicalImportInternational:technical_import_international,
-            technicalDescInternational:technical_desc_international,
-            technicalImportInternal:technical_import_internal,
-            technicalDescInternal:technical_desc_internal,
-            dfTechnicalTransfer:df_technical_transfer,
-            technicalTransferRange:technical_transfer_range,
-            dfPropertyAssign:df_property_assign,
-            dfFinaceLease:df_finace_lease,
-            dfTechnologyInsurance:df_technology_insurance,
-            dfAssetManage:df_asset_manage,
-            branchChongCheck:df_branchChong_check,
+                            dfCompanyDebt:df_company_isDebt,
+                            minorEnterprisesDebt:df_minorEnterprises_isDebt,
+                            dfTechnicalImport:df_technical_import,
+                            technicalImportInternational:technical_import_international,
+                            technicalDescInternational:technical_desc_international,
+                            technicalImportInternal:technical_import_internal,
+                            technicalDescInternal:technical_desc_internal,
+                            dfTechnicalTransfer:df_technical_transfer,
+                            technicalTransferRange:technical_transfer_range,
+                            dfPropertyAssign:df_property_assign,
+                            dfFinaceLease:df_finace_lease,
+                            dfTechnologyInsurance:df_technology_insurance,
+                            dfAssetManage:df_asset_manage,
+                            branchChongCheck:df_branchChong_check,
 
-            dfPoliticalConsult:df_political_consult,
-            dfTechnologyConsult:df_technology_consult,
-            dfIntermediaryConsult:df_intermediary_consult,
-            intermediaryLaw:intermediary_law,
-            intermediaryLawDesc:intermediary_law_desc,
-            intermediaryFinance:intermediary_finance,
-            intermediaryFinanceDesc:intermediary_finance_desc,
-            intermediaryFinancing:intermediary_Financing,
-            intermediaryFinancingDesc:intermediary_financing_desc,
-            intermediaryManage:intermediary_manage,
-            intermediaryManageDesc:intermediary_manage_desc,
-            dfOtherService:df_other_service,
-            otherServiceDesc:other_service_desc,
-            dfAcceptTrain:df_accept_train,
-            dfNo:df_no
+                            dfPoliticalConsult:df_political_consult,
+                            dfTechnologyConsult:df_technology_consult,
+                            dfIntermediaryConsult:df_intermediary_consult,
+                            intermediaryLaw:intermediary_law,
+                            intermediaryLawDesc:intermediary_law_desc,
+                            intermediaryFinance:intermediary_finance,
+                            intermediaryFinanceDesc:intermediary_finance_desc,
+                            intermediaryFinancing:intermediary_Financing,
+                            intermediaryFinancingDesc:intermediary_financing_desc,
+                            intermediaryManage:intermediary_manage,
+                            intermediaryManageDesc:intermediary_manage_desc,
+                            dfOtherService:df_other_service,
+                            otherServiceDesc:other_service_desc,
+                            dfAcceptTrain:df_accept_train,
+                            dfNo:df_no
+                        }
+
+                        updateDemand(unitDemand_data,demandId);
+                    }
+                }
+            }
         }
 
-        updateDemand(unitDemand_data,demandId);
     }
     if(df_isEquity == "否" && df_isDebt == "否"){
         var unitDemand_data = {
@@ -37931,109 +37960,126 @@ var conditionDemand_update=function (demandId) {
         updateDemand(unitDemand_data,demandId);
     }
     if(df_isEquity == "是" && df_isDebt == "否"){
-        var unitDemand_data = {
-            dfEquity:df_isEquity,
-            dfEquityShares:df_equity_shares,
-            dfEquityMoney:df_equity_money,
-            dfEquityDate:comTime(df_equity_date),
-            equityFundPlan:df_equityFund_plan,
+        if($("#df_isEquity input:checked").val() == "是") {
+            if ($("#df_equity_money").val() == "" || $("#df_equity_shares").val() == "" ||
+                $("#df_equity_date").val() == "" || $("#df_equityFund_plan").val() == "") {
+                alert("请将融资信息填写完整")
+            }
+            else {
+                var unitDemand_data = {
+                    dfEquity:df_isEquity,
+                    dfEquityShares:df_equity_shares,
+                    dfEquityMoney:df_equity_money,
+                    dfEquityDate:comTime(df_equity_date),
+                    equityFundPlan:df_equityFund_plan,
 
-            dfEquityRecom:df_isEquity_recom,
-            dfDebt:df_isDebt,
+                    dfEquityRecom:df_isEquity_recom,
+                    dfDebt:df_isDebt,
 
-            dfCrowdFunding:df_isCrowd_funding,
-            crowsFundType:crows_fund_type,
-            dfMerge:df_isMerge,
-            dfListedShareReform:df_isListed_shareReform,
-            dfFinancingGuarantee:df_isFinancing_guarantee,
-            dfPettyLoan:df_isPetty_loan,
-            pettyLoanMoney:petty_loan_money,
+                    dfCrowdFunding:df_isCrowd_funding,
+                    crowsFundType:crows_fund_type,
+                    dfMerge:df_isMerge,
+                    dfListedShareReform:df_isListed_shareReform,
+                    dfFinancingGuarantee:df_isFinancing_guarantee,
+                    dfPettyLoan:df_isPetty_loan,
+                    pettyLoanMoney:petty_loan_money,
 
-            dfCompanyDebt:df_company_isDebt,
-            minorEnterprisesDebt:df_minorEnterprises_isDebt,
-            dfTechnicalImport:df_technical_import,
-            technicalImportInternational:technical_import_international,
-            technicalDescInternational:technical_desc_international,
-            technicalImportInternal:technical_import_internal,
-            technicalDescInternal:technical_desc_internal,
-            dfTechnicalTransfer:df_technical_transfer,
-            technicalTransferRange:technical_transfer_range,
-            dfPropertyAssign:df_property_assign,
-            dfFinaceLease:df_finace_lease,
-            dfTechnologyInsurance:df_technology_insurance,
-            dfAssetManage:df_asset_manage,
-            branchChongCheck:df_branchChong_check,
+                    dfCompanyDebt:df_company_isDebt,
+                    minorEnterprisesDebt:df_minorEnterprises_isDebt,
+                    dfTechnicalImport:df_technical_import,
+                    technicalImportInternational:technical_import_international,
+                    technicalDescInternational:technical_desc_international,
+                    technicalImportInternal:technical_import_internal,
+                    technicalDescInternal:technical_desc_internal,
+                    dfTechnicalTransfer:df_technical_transfer,
+                    technicalTransferRange:technical_transfer_range,
+                    dfPropertyAssign:df_property_assign,
+                    dfFinaceLease:df_finace_lease,
+                    dfTechnologyInsurance:df_technology_insurance,
+                    dfAssetManage:df_asset_manage,
+                    branchChongCheck:df_branchChong_check,
 
-            dfPoliticalConsult:df_political_consult,
-            dfTechnologyConsult:df_technology_consult,
-            dfIntermediaryConsult:df_intermediary_consult,
-            intermediaryLaw:intermediary_law,
-            intermediaryLawDesc:intermediary_law_desc,
-            intermediaryFinance:intermediary_finance,
-            intermediaryFinanceDesc:intermediary_finance_desc,
-            intermediaryFinancing:intermediary_Financing,
-            intermediaryFinancingDesc:intermediary_financing_desc,
-            intermediaryManage:intermediary_manage,
-            intermediaryManageDesc:intermediary_manage_desc,
-            dfOtherService:df_other_service,
-            otherServiceDesc:other_service_desc,
-            dfAcceptTrain:df_accept_train,
-            dfNo:df_no
+                    dfPoliticalConsult:df_political_consult,
+                    dfTechnologyConsult:df_technology_consult,
+                    dfIntermediaryConsult:df_intermediary_consult,
+                    intermediaryLaw:intermediary_law,
+                    intermediaryLawDesc:intermediary_law_desc,
+                    intermediaryFinance:intermediary_finance,
+                    intermediaryFinanceDesc:intermediary_finance_desc,
+                    intermediaryFinancing:intermediary_Financing,
+                    intermediaryFinancingDesc:intermediary_financing_desc,
+                    intermediaryManage:intermediary_manage,
+                    intermediaryManageDesc:intermediary_manage_desc,
+                    dfOtherService:df_other_service,
+                    otherServiceDesc:other_service_desc,
+                    dfAcceptTrain:df_accept_train,
+                    dfNo:df_no
+                }
+
+                updateDemand(unitDemand_data,demandId);
+            }
         }
 
-        updateDemand(unitDemand_data,demandId);
     }
     if(df_isEquity == "否" && df_isDebt == "是"){
-        var unitDemand_data = {
-            dfEquity:df_isEquity,
+        if ($("#df_isDebt input:checked").val() == "是") {
+            if ($("#df_debt_money").val() == "" || $("#df_debt_maxAnnual").val() == "" ||
+                $("#df_debt_date").val() == "" || $("#df_debtFund_plan").val() == "") {
+                alert("请将融资信息填写完整")
+            } else {
+                var unitDemand_data = {
+                    dfEquity:df_isEquity,
 
-            dfDebt:df_isDebt,
-            dfDebtMoney:df_debt_money,
-            debtMaxAnnual:df_debt_maxAnnual,
-            dfDebtDate:comTime(df_debt_date),
-            debtFundPlan:df_debtFund_plan,
-            dfDebtRecom:df_isDebt_recom,
-            dfCrowdFunding:df_isCrowd_funding,
-            crowsFundType:crows_fund_type,
-            dfMerge:df_isMerge,
-            dfListedShareReform:df_isListed_shareReform,
-            dfFinancingGuarantee:df_isFinancing_guarantee,
-            dfPettyLoan:df_isPetty_loan,
-            pettyLoanMoney:petty_loan_money,
+                    dfDebt:df_isDebt,
+                    dfDebtMoney:df_debt_money,
+                    debtMaxAnnual:df_debt_maxAnnual,
+                    dfDebtDate:comTime(df_debt_date),
+                    debtFundPlan:df_debtFund_plan,
+                    dfDebtRecom:df_isDebt_recom,
+                    dfCrowdFunding:df_isCrowd_funding,
+                    crowsFundType:crows_fund_type,
+                    dfMerge:df_isMerge,
+                    dfListedShareReform:df_isListed_shareReform,
+                    dfFinancingGuarantee:df_isFinancing_guarantee,
+                    dfPettyLoan:df_isPetty_loan,
+                    pettyLoanMoney:petty_loan_money,
 
-            dfCompanyDebt:df_company_isDebt,
-            minorEnterprisesDebt:df_minorEnterprises_isDebt,
-            dfTechnicalImport:df_technical_import,
-            technicalImportInternational:technical_import_international,
-            technicalDescInternational:technical_desc_international,
-            technicalImportInternal:technical_import_internal,
-            technicalDescInternal:technical_desc_internal,
-            dfTechnicalTransfer:df_technical_transfer,
-            technicalTransferRange:technical_transfer_range,
-            dfPropertyAssign:df_property_assign,
-            dfFinaceLease:df_finace_lease,
-            dfTechnologyInsurance:df_technology_insurance,
-            dfAssetManage:df_asset_manage,
-            branchChongCheck:df_branchChong_check,
+                    dfCompanyDebt:df_company_isDebt,
+                    minorEnterprisesDebt:df_minorEnterprises_isDebt,
+                    dfTechnicalImport:df_technical_import,
+                    technicalImportInternational:technical_import_international,
+                    technicalDescInternational:technical_desc_international,
+                    technicalImportInternal:technical_import_internal,
+                    technicalDescInternal:technical_desc_internal,
+                    dfTechnicalTransfer:df_technical_transfer,
+                    technicalTransferRange:technical_transfer_range,
+                    dfPropertyAssign:df_property_assign,
+                    dfFinaceLease:df_finace_lease,
+                    dfTechnologyInsurance:df_technology_insurance,
+                    dfAssetManage:df_asset_manage,
+                    branchChongCheck:df_branchChong_check,
 
-            dfPoliticalConsult:df_political_consult,
-            dfTechnologyConsult:df_technology_consult,
-            dfIntermediaryConsult:df_intermediary_consult,
-            intermediaryLaw:intermediary_law,
-            intermediaryLawDesc:intermediary_law_desc,
-            intermediaryFinance:intermediary_finance,
-            intermediaryFinanceDesc:intermediary_finance_desc,
-            intermediaryFinancing:intermediary_Financing,
-            intermediaryFinancingDesc:intermediary_financing_desc,
-            intermediaryManage:intermediary_manage,
-            intermediaryManageDesc:intermediary_manage_desc,
-            dfOtherService:df_other_service,
-            otherServiceDesc:other_service_desc,
-            dfAcceptTrain:df_accept_train,
-            dfNo:df_no
+                    dfPoliticalConsult:df_political_consult,
+                    dfTechnologyConsult:df_technology_consult,
+                    dfIntermediaryConsult:df_intermediary_consult,
+                    intermediaryLaw:intermediary_law,
+                    intermediaryLawDesc:intermediary_law_desc,
+                    intermediaryFinance:intermediary_finance,
+                    intermediaryFinanceDesc:intermediary_finance_desc,
+                    intermediaryFinancing:intermediary_Financing,
+                    intermediaryFinancingDesc:intermediary_financing_desc,
+                    intermediaryManage:intermediary_manage,
+                    intermediaryManageDesc:intermediary_manage_desc,
+                    dfOtherService:df_other_service,
+                    otherServiceDesc:other_service_desc,
+                    dfAcceptTrain:df_accept_train,
+                    dfNo:df_no
+                }
+
+                updateDemand(unitDemand_data,demandId);
+            }
         }
 
-        updateDemand(unitDemand_data,demandId);
     }
 };
 var updateDemand = function (condition,demandId) {
@@ -38042,7 +38088,7 @@ var updateDemand = function (condition,demandId) {
         type: 'put',
         async: true,
         data: condition,
-        dataType: 'json',
+        // dataType: 'json',
         error: function (obj, msg) {
             alert("服务器异常！")
         },
@@ -38050,7 +38096,7 @@ var updateDemand = function (condition,demandId) {
             if (result != null) {
                 console.log(result);
 
-                // alert("提交报名成功");
+               alert("已保存科技金融服务相关信息！")
                 // window.location.href = "/registerSuccess?id=" + result + "";
                 // comId = result;
             }

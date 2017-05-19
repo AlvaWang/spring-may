@@ -446,13 +446,19 @@ public class UnitEssentialController {
 
 //        Date date = timeF.parse(patentDate);
 
-        CoreTeam coreTeam = new CoreTeam(ueId,teId, entireId,ctName,ctSex,ctAge,ctJob,
-                ctHigbestEducation,ctStudyExperience,ctMainAchive,ctNationalMillennium,
-                nationalMilleDate, ctUniversityBusiness);
+        if(ctAge != null && ctName != null && ctSex != null && ctJob != null && ctHigbestEducation != null && ctStudyExperience != null
+                && ctMainAchive != null && ctNationalMillennium != null){
+            CoreTeam coreTeam = new CoreTeam(ueId,teId, entireId,ctName,ctSex,ctAge,ctJob,
+                    ctHigbestEducation,ctStudyExperience,ctMainAchive,ctNationalMillennium,
+                    nationalMilleDate, ctUniversityBusiness);
 
-        Long result =  coreTeamService.create(coreTeam);
+            Long result =  coreTeamService.create(coreTeam);
 
-        return result;
+            return result;
+        }else {
+            return null;
+        }
+
     }
 
     @RequestMapping(value = "addUnitBusinessPlan",method = RequestMethod.POST, consumes = "application/x-www-form-urlencoded")

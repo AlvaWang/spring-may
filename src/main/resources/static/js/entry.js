@@ -2,6 +2,7 @@
  * Created by Administrator on 2017/4/29.
  */
 var comName = GetQueryString("comName");
+
 $("#entry_unit").click(function () {
     var comName = GetQueryString("comName");
     // alert(comName);
@@ -16,6 +17,8 @@ $("#entry_unit").click(function () {
         state:state
     }
     addEntireUnit(condition)
+
+
 });
 var addEntireUnit = function (condition) {
     // alert(condition)
@@ -31,6 +34,7 @@ var addEntireUnit = function (condition) {
         success: function (result) {
             if (result != null) {
                 // alert(result);
+                // alert(comName)
                 window.location.href = "/unitCreate?entireId=" + result+"&comName="+comName;
                 // comId = result;
             }
@@ -38,8 +42,6 @@ var addEntireUnit = function (condition) {
         }
     });
 }
-
-
 $("#entry_team").click(function () {
     var comName = GetQueryString("comName");
     // alert(comName);

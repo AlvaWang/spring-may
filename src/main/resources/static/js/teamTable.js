@@ -347,22 +347,19 @@ var getCoreTeamListByEntireId = function (entireId) {
                         edu=edu-1;
                     })
 
-                    for(var i =1;i<=team;i++)
-                    {
-                        $("#core_millennium_"+team).click(function () {
-                            if($("#core_millennium_"+team).val() == "是"){
-                                $("#millennium_date_"+team).removeAttr("disabled");
-                                $("#millennium_date_"+team).css("background","#ffffff");
-                                $("#millennium_date_"+team).find("input").removeAttr("disabled");
-                                $("#millennium_date_"+team).find("input").css("background","#ffffff");
-                            }else {
-                                $("#millennium_date_"+team).attr("disabled", "disabled");
-                                $("#millennium_date_"+team).css("background","#dbdbdb");
-                                $("#millennium_date_"+team).find("input").attr("disabled", "disabled");
-                                $("#millennium_date_"+team).find("input").css("background","#dbdbdb");
-                            }
-                        })
-                    }
+                    $("#core_millennium_"+team).click(function () {
+                        if($("#core_millennium_"+team).val() == "是"){
+                            $("#millennium_date_"+team).removeAttr("disabled");
+                            $("#millennium_date_"+team).css("background","#ffffff");
+                            $("#millennium_date_"+team).find("input").removeAttr("disabled");
+                            $("#millennium_date_"+team).find("input").css("background","#ffffff");
+                        }else {
+                            $("#millennium_date_"+team).attr("disabled", "disabled");
+                            $("#millennium_date_"+team).css("background","#dbdbdb");
+                            $("#millennium_date_"+team).find("input").attr("disabled", "disabled");
+                            $("#millennium_date_"+team).find("input").css("background","#dbdbdb");
+                        }
+                    })
 
                 }
             }
@@ -1800,22 +1797,19 @@ var reduceImg = function () {
             edu=edu-1;
         })
 
-        for(var i =1;i<=team;i++)
-        {
-            $("#core_millennium_"+team).click(function () {
-                if($("#core_millennium_"+team).val() == "是"){
-                    $("#millennium_date_"+team).removeAttr("disabled");
-                    $("#millennium_date_"+team).css("background","#ffffff");
-                    $("#millennium_date_"+team).find("input").removeAttr("disabled");
-                    $("#millennium_date_"+team).find("input").css("background","#ffffff");
-                }else {
-                    $("#millennium_date_"+team).attr("disabled", "disabled");
-                    $("#millennium_date_"+team).css("background","#dbdbdb");
-                    $("#millennium_date_"+team).find("input").attr("disabled", "disabled");
-                    $("#millennium_date_"+team).find("input").css("background","#dbdbdb");
-                }
-            })
-        }
+        $("#core_millennium_"+team).click(function () {
+            if($("#core_millennium_"+team).val() == "是"){
+                $("#millennium_date_"+team).removeAttr("disabled");
+                $("#millennium_date_"+team).css("background","#ffffff");
+                $("#millennium_date_"+team).find("input").removeAttr("disabled");
+                $("#millennium_date_"+team).find("input").css("background","#ffffff");
+            }else {
+                $("#millennium_date_"+team).attr("disabled", "disabled");
+                $("#millennium_date_"+team).css("background","#dbdbdb");
+                $("#millennium_date_"+team).find("input").attr("disabled", "disabled");
+                $("#millennium_date_"+team).find("input").css("background","#dbdbdb");
+            }
+        })
     }
 
 
