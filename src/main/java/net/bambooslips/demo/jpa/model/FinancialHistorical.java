@@ -116,7 +116,7 @@ public class FinancialHistorical implements  Serializable {
         if(updated.getFixedNetValue() != null)this.setFixedNetValue(updated.getFixedNetValue());
         if(updated.getHfinAssetsTotal() != null)this.setHfinAssetsTotal(updated.getHfinAssetsTotal());
         if(updated.getHfinLialilitesTotal() != null)this.setHfinLialilitesTotal(updated.getHfinLialilitesTotal());
-        if(updated.getHfinNetAsset() != null)this.setHfinNetMargin(updated.getHfinNetAsset());
+        if(updated.getHfinNetAsset() != null)this.setHfinNetAsset(updated.getHfinNetAsset());
         if(updated.getHfinYear() != null)this.setHfinYear(updated.getHfinYear());
 
         return this;

@@ -124,24 +124,41 @@ var getTeamEssentialList = function (entireId) {
                 $(":radio[name='code'][value='" + result.tePowerType + "']").prop("checked", "checked");
                 $(":radio[name='source'][value='" + result.teTechnicalSource + "']").prop("checked", "checked");
 
-                if($("#post_code input:checked").val() == ""){
-                    $(":radio[name='code'][value='其它']").prop("checked", "checked");
-                    $("#powerType").val(result.tePowerType)
-                    $("#powerType").removeAttr("disabled");
-                    $("#powerType").css("background","#ffffff");
-                }else {
-                    $("#powerType").attr("disabled", "disabled");
-                    $("#powerType").css("background","#dbdbdb");
-                }
-                if($("#te_compatition_goal input:checked").val() == ""){
-                    $(":radio[name='code'][value='其它']").prop("checked", "checked");
-                    $("#teGoal").val(result.teCompatitionGoal)
+
+                var flag_goal = true;
+                $("input[name=goal]").each(function(a,b){
+                    if($(this).val() == result.teCompatitionGoal){
+                        $(":radio[name='goal'][value='" + result.teCompatitionGoal + "']").prop("checked", "checked");//根据value值选中vidio
+                        $("#teGoal").attr("disabled", "disabled");
+                        $("#teGoal").css("background","#dbdbdb");
+                        flag_goal = false;
+                        return false;
+                    }
+                });
+                if(flag_goal == true){
+                    $(":radio[name='goal'][value='其它']").prop("checked", "checked");//根据value值选中vidio
+                    $("#teGoal").val(result.teCompatitionGoal);
 
                     $("#teGoal").removeAttr("disabled");
                     $("#teGoal").css("background","#ffffff");
-                }else {
-                    $("#teGoal").attr("disabled", "disabled");
-                    $("#teGoal").css("background","#dbdbdb");
+                }
+
+                var flag_code = true;
+                $("input[name=code]").each(function(a,b){
+                    if($(this).val() == result.tePowerType){
+                        $(":radio[name='code'][value='" + result.tePowerType + "']").prop("checked", "checked");//根据value值选中vidio
+                        $("#powerType").attr("disabled", "disabled");
+                        $("#powerType").css("background","#dbdbdb");
+                        flag_code = false;
+                        return false;
+                    }
+                });
+                if(flag_code == true){
+                    $(":radio[name='code'][value='其它']").prop("checked", "checked");//根据value值选中vidio
+                    $("#powerType").val(result.tePowerType);
+
+                    $("#powerType").removeAttr("disabled");
+                    $("#powerType").css("background","#ffffff");
                 }
 
 
@@ -1690,8 +1707,8 @@ var updateTeamEssential_data = function () {
 
 
     var te_address = $("#te_address").val();
-    var te_postalcode = $("#te_postalcode").val();
-    var Type = $("#post_code").val();
+    var te_postalcode = $("#te_postalcode").val();//邮政编码
+    var Type = $("#post_code input:checked").val();//技术类型范围
     var technical_sources = $("#technical_sources input:checked").val();
     var te_pro_outline = $("#te_pro_outline").val();
     var te_key_word = $("#te_key_word").val();
@@ -2120,9 +2137,6 @@ var reduceCoreImg = function () {
     $("#core_"+(core+4)).remove();
     $("#core_"+(core+5)).remove();
     $("#core_"+(core+6)).remove();
-
-
-
 }
 
 $("#hxtd_conservation_team").click(function () {

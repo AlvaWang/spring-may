@@ -652,8 +652,8 @@ public class UnitEssentialController {
     @RequestMapping(value = "/updateEssential/{ueId}", method = RequestMethod.PUT, consumes = "application/x-www-form-urlencoded")
     @ResponseBody
     public UnitEssential updateByForm(@PathVariable Long ueId, String ueProjectName,String ueGoal,String ueField,Long ueRegisterCapital,
-                                      Long ueWinNum,Long ueStaffNum,Long ueResearhNum,Long ueDeputyNum,
-                                      String ueOfficeAddress,String uePostCode,String uePowerType,String ueCorporationSummary,String technicalSources ) {
+                                      Long ueWinNum,Long ueStaffNum,Long ueResearchNum,Long ueDeputyNum,
+                                      String ueOfficeAddress,String uePostCode,String uePowerType,String ueCorporationSummary,String ueTechnicalSources ) {
         UnitEssential unitEssential = new UnitEssential();
         unitEssential.setUeId(ueId);
         unitEssential.setUeProjectName(ueProjectName);
@@ -663,13 +663,13 @@ public class UnitEssentialController {
         unitEssential.setUeRegisterCapital(ueRegisterCapital);
         unitEssential.setUeWinNum(ueWinNum);
         unitEssential.setUeStaffNum(ueStaffNum);
-        unitEssential.setUeResearchNum(ueResearhNum);
+        unitEssential.setUeResearchNum(ueResearchNum);
         unitEssential.setUeDeputyNum(ueDeputyNum);
         unitEssential.setUeOfficeAddress(ueOfficeAddress);
         unitEssential.setUePostCode(uePostCode);
         unitEssential.setUePowerType(uePowerType);
         unitEssential.setUeCorporationSummary(ueCorporationSummary);
-        unitEssential.setUeTechnicalSources(technicalSources);
+        unitEssential.setUeTechnicalSources(ueTechnicalSources);
 
         return unitEssentialService.update(unitEssential);
     }

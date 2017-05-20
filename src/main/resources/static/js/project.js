@@ -138,3 +138,6 @@ var getUnitEssentialList = function (entireId) {
 $("#add_project").click(function () {
     window.location.href="/entry?comName="+comName;
 })
+$("#turn_competition").click(function () {
+    window.location.href="/success?comName="+comName;
+});
