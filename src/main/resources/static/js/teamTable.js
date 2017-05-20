@@ -25,16 +25,16 @@ $(function () {
     $("#patent_table").find("tr,td,input,div,button,textarea,select").css("background","#dbdbdb")
     $("#patent_table").css("background","#dbdbdb")
 
-    if(type == "KEEP"){
-        $("#jbxx_conservation_team").show();
-        $("#hxtd_conservation_team").show();
-        $(".submit_div").show();
-    }
-    if(type =="SUBMIT"){
-        $("#jbxx_conservation_team").hide();
-        $("#hxtd_conservation_team").hide();
-        $(".submit_div").hide();
-    }
+    // if(type == "KEEP"){
+    //     $("#jbxx_conservation_team").show();
+    //     $("#hxtd_conservation_team").show();
+    //     $(".submit_div").show();
+    // }
+    // if(type =="SUBMIT"){
+    //     $("#jbxx_conservation_team").hide();
+    //     $("#hxtd_conservation_team").hide();
+    //     $(".submit_div").hide();
+    // }
 
     $(".crowd_td,.crowd_td #crows_fund_type,#crows_fund_type tr td input,#crows_fund_type tr,#crows_fund_type td").attr("disabled", "disabled");
     $(".crowd_td,.crowd_td #crows_fund_type,#crows_fund_type tr td input,#crows_fund_type tr,#crows_fund_type td").css("background","#dbdbdb")
@@ -343,6 +343,14 @@ var getCoreTeamListByEntireId = function (entireId) {
                     })
 
                     $("#reduceEducationImg"+(core-2)).click(function () {
+                        var edu_length = $("#append_education_"+team).find("tr").length-3;
+                        // alert(edu_length);
+                        if(edu_length>0){
+                            var eduId = $("#eduId_"+(core-2)+"_"+team+"_"+edu).val();
+                            if(eduId != "" && eduId != "undefined"){
+                                deleteEducationExperionceById(eduId)
+                            }
+                        }
                         $("#education_"+(core-2)+"_"+team+"_"+edu).remove();
                         edu=edu-1;
                     })
@@ -1119,13 +1127,28 @@ $("#jbxx_conservation_team").click(function () {
                                         }
                                         var teId  = $("#teId").val();
                                         // alert(ueId+"ueId");
-                                        var essentialData = updateTeamEssential_data();
-                                        updateTeamEssential(essentialData,teId)
+                                        if(teId ==""){
+                                            var teamEssencialData = conditionEssential();
+                                            // alert(data);
+                                            addTeamEssential(teamEssencialData);
+                                        }
+                                        else {
+                                            var essentialData = updateTeamEssential_data();
+                                            updateTeamEssential(essentialData,teId)
+                                        }
+
 
                                         //
                                         var teamId = $("#teamId").val();
-                                        var teamDate = conditionPerson_data();
-                                        updatePerson(teamDate,teamId)
+                                        if(teamId == ""){
+                                            var person_data = conditionPerson();
+                                            // alert(data);
+                                            addPerson(person_data);
+                                        }else {
+                                            var teamData = conditionPerson_data();
+                                            updatePerson(teamData,teamId)
+                                        }
+
                                     }
 
                                 }
@@ -1140,13 +1163,27 @@ $("#jbxx_conservation_team").click(function () {
 
                                 var teId  = $("#teId").val();
                                 // alert(ueId+"ueId");
-                                var essentialData = updateTeamEssential_data();
-                                updateTeamEssential(essentialData,teId)
+                                if(teId ==""){
+                                    var teamEssencialData = conditionEssential();
+                                    // alert(data);
+                                    addTeamEssential(teamEssencialData);
+                                }
+                                else {
+                                    var essentialData = updateTeamEssential_data();
+                                    updateTeamEssential(essentialData,teId)
+                                }
+
 
                                 //
                                 var teamId = $("#teamId").val();
-                                var teamDate = conditionPerson_data();
-                                updatePerson(teamDate,teamId)
+                                if(teamId == ""){
+                                    var person_data = conditionPerson();
+                                    // alert(data);
+                                    addPerson(person_data);
+                                }else {
+                                    var teamData = conditionPerson_data();
+                                    updatePerson(teamData,teamId)
+                                }
                             }
                         }
                     }
@@ -1222,13 +1259,27 @@ $("#jbxx_conservation_team").click(function () {
 
                             var teId  = $("#teId").val();
                             // alert(ueId+"ueId");
-                            var essentialData = updateTeamEssential_data();
-                            updateTeamEssential(essentialData,teId)
+                            if(teId ==""){
+                                var teamEssencialData = conditionEssential();
+                                // alert(data);
+                                addTeamEssential(teamEssencialData);
+                            }
+                            else {
+                                var essentialData = updateTeamEssential_data();
+                                updateTeamEssential(essentialData,teId)
+                            }
+
 
                             //
                             var teamId = $("#teamId").val();
-                            var teamDate = conditionPerson_data();
-                            updatePerson(teamDate,teamId)
+                            if(teamId == ""){
+                                var person_data = conditionPerson();
+                                // alert(data);
+                                addPerson(person_data);
+                            }else {
+                                var teamData = conditionPerson_data();
+                                updatePerson(teamData,teamId)
+                            }
                         }
                     }
                 }
@@ -1288,13 +1339,27 @@ $("#jbxx_conservation_team").click(function () {
                                     }
                                     var teId  = $("#teId").val();
                                     // alert(ueId+"ueId");
-                                    var essentialData = updateTeamEssential_data();
-                                    updateTeamEssential(essentialData,teId)
+                                    if(teId ==""){
+                                        var teamEssencialData = conditionEssential();
+                                        // alert(data);
+                                        addTeamEssential(teamEssencialData);
+                                    }
+                                    else {
+                                        var essentialData = updateTeamEssential_data();
+                                        updateTeamEssential(essentialData,teId)
+                                    }
+
 
                                     //
                                     var teamId = $("#teamId").val();
-                                    var teamDate = conditionPerson_data();
-                                    updatePerson(teamDate,teamId)
+                                    if(teamId == ""){
+                                        var person_data = conditionPerson();
+                                        // alert(data);
+                                        addPerson(person_data);
+                                    }else {
+                                        var teamData = conditionPerson_data();
+                                        updatePerson(teamData,teamId)
+                                    }
                                 }
 
                             }
@@ -1309,13 +1374,27 @@ $("#jbxx_conservation_team").click(function () {
 
                             var teId  = $("#teId").val();
                             // alert(ueId+"ueId");
-                            var essentialData = updateTeamEssential_data();
-                            updateTeamEssential(essentialData,teId)
+                            if(teId ==""){
+                                var teamEssencialData = conditionEssential();
+                                // alert(data);
+                                addTeamEssential(teamEssencialData);
+                            }
+                            else {
+                                var essentialData = updateTeamEssential_data();
+                                updateTeamEssential(essentialData,teId)
+                            }
+
 
                             //
                             var teamId = $("#teamId").val();
-                            var teamDate = conditionPerson_data();
-                            updatePerson(teamDate,teamId)
+                            if(teamId == ""){
+                                var person_data = conditionPerson();
+                                // alert(data);
+                                addPerson(person_data);
+                            }else {
+                                var teamData = conditionPerson_data();
+                                updatePerson(teamData,teamId)
+                            }
                         }
                     }
                 }
@@ -1391,13 +1470,27 @@ $("#jbxx_conservation_team").click(function () {
 
                         var teId  = $("#teId").val();
                         // alert(ueId+"ueId");
-                        var essentialData = updateTeamEssential_data();
-                        updateTeamEssential(essentialData,teId)
+                        if(teId ==""){
+                            var teamEssencialData = conditionEssential();
+                            // alert(data);
+                            addTeamEssential(teamEssencialData);
+                        }
+                        else {
+                            var essentialData = updateTeamEssential_data();
+                            updateTeamEssential(essentialData,teId)
+                        }
+
 
                         //
                         var teamId = $("#teamId").val();
-                        var teamDate = conditionPerson_data();
-                        updatePerson(teamDate,teamId)
+                        if(teamId == ""){
+                            var person_data = conditionPerson();
+                            // alert(data);
+                            addPerson(person_data);
+                        }else {
+                            var teamData = conditionPerson_data();
+                            updatePerson(teamData,teamId)
+                        }
                     }
                 }
             }
@@ -1406,7 +1499,160 @@ $("#jbxx_conservation_team").click(function () {
 });
 
 
+var conditionEssential=function () {
+    /**
+     * 增加基本信息
+     * @type {any}
+     */
+    var team_name = $("#team_name").val();
+    var te_pro_name = $("#te_pro_name").val();
+    var Goal = $("#te_compatition_goal input:radio:checked").val();
+    var te_pro_stage = $("#te_pro_stage input:radio:checked").val();
+    var te_industry_field = $("#te_industry_field input:radio:checked").val();
+    var admin_area_province = $("#admin_area_province").val();
+    var admin_area_city = $("#admin_area_city").val();
+    var admin_area = admin_area_province+"省"+admin_area_city+"市";
+    var team_year = $("#team_year").val();
+    if ($("#team_month").val()<10){
+        var team_month = "0"+$("#team_month").val();
+    }else {
+        var team_month = $("#team_month").val();
+    }
+    if ($("#team_day").val()<10){
+        var team_day = "0"+$("#team_day").val();
+    }else {
+        var team_day = $("#team_day").val();
+    }
+    var team_fund_time = team_year+"-"+team_month+"-"+team_day;
+    // alert(team_fund_time);
+    var company_year = $("#company_year").val();
+    if ($("#company_month").val()<10){
+        var company_month = "0"+$("#company_month").val();
+    }else {
+        var company_month = $("#company_month").val();
+    }
+    if ($("#company_day").val()<10){
+        var company_day = "0"+$("#company_day").val();
+    }else {
+        var company_day = $("#company_day").val();
+    }
+    var company_fund_time = company_year+"-"+company_month+"-"+company_day;
 
+
+    var te_address = $("#te_address").val();
+    var te_postalcode = $("#te_postalcode").val();
+    var Type = $("#post_code  input:checked").val();
+    var technical_sources = $("#technical_sources input:checked").val();
+    var te_pro_outline = $("#te_pro_outline").val();
+    var te_key_word = $("#te_key_word").val();
+
+
+    if(Goal == "其它"){
+        var te_compatition_goal = $("#teGoal").val();
+        if(Type == "其它"){
+            var te_power_type = $("#powerType").val();
+            var Essential_data = {
+                entireId:entireId,
+                teamName:team_name,
+                teProName:te_pro_name,
+                teCompatitionGoal:te_compatition_goal,
+                teIndustryFild:te_industry_field,
+                teProStage:te_pro_stage,
+                teAdminStrativeArea:admin_area,
+                teamFundTime:comTime(team_fund_time),
+                companyFundTime:comTime(company_fund_time),
+                teAddress:te_address,
+                tePostalcode:te_postalcode,
+                tePowerType:te_power_type,
+                teTechnicalSource:technical_sources,
+                teProOutline:te_pro_outline,
+                teKeyWord:te_key_word
+            }
+            return Essential_data;
+        }else {
+            var Essential_data = {
+                entireId:entireId,
+                teamName:team_name,
+                teProName:te_pro_name,
+                teCompatitionGoal:te_compatition_goal,
+                teIndustryFild:te_industry_field,
+                teProStage:te_pro_stage,
+                teAdminStrativeArea:admin_area,
+                teamFundTime:comTime(team_fund_time),
+                companyFundTime:comTime(company_fund_time),
+                teAddress:te_address,
+                tePostalcode:te_postalcode,
+                tePowerType:Type,
+                teTechnicalSource:technical_sources,
+                teProOutline:te_pro_outline,
+                teKeyWord:te_key_word
+            }
+            return Essential_data;
+        }
+    }else {
+        if(Type == "其它"){
+            var te_power_type = $("#powerType").val();
+            var Essential_data = {
+                entireId:entireId,
+                teamName:team_name,
+                teProName:te_pro_name,
+                teCompatitionGoal:Goal,
+                teIndustryFild:te_industry_field,
+                teProStage:te_pro_stage,
+                teAdminStrativeArea:admin_area,
+                teamFundTime:comTime(team_fund_time),
+                companyFundTime:comTime(company_fund_time),
+                teAddress:te_address,
+                tePostalcode:te_postalcode,
+                tePowerType:te_power_type,
+                teTechnicalSource:technical_sources,
+                teProOutline:te_pro_outline,
+                teKeyWord:te_key_word
+            }
+            return Essential_data;
+        }
+        else {
+            var Essential_data = {
+                entireId:entireId,
+                teamName:team_name,
+                teProName:te_pro_name,
+                teCompatitionGoal:Goal,
+                teIndustryFild:te_industry_field,
+                teProStage:te_pro_stage,
+                teAdminStrativeArea:admin_area,
+                teamFundTime:comTime(team_fund_time),
+                companyFundTime:comTime(company_fund_time),
+                teAddress:te_address,
+                tePostalcode:te_postalcode,
+                tePowerType:Type,
+                teTechnicalSource:technical_sources,
+                teProOutline:te_pro_outline,
+                teKeyWord:te_key_word
+            }
+            return Essential_data;
+        }
+    }
+};
+var addTeamEssential = function (condition) {
+    // alert(condition);
+    $.ajax({
+        url: "/addTeamEssential",
+        type: 'post',
+        async: true,
+        data: condition,
+        dataType: 'json',
+        error: function (obj, msg) {
+            alert("创建基本信息失败！")
+        },
+        success: function (result) {
+            if (result != null) {
+                alert("基本信息保存成功！")
+            }
+
+        }
+    });
+
+}
 var updateTeamEssential_data = function () {
     var team_name = $("#team_name").val();
     var te_pro_name = $("#te_pro_name").val();
@@ -1536,8 +1782,6 @@ var updateTeamEssential_data = function () {
         }
     }
 }
-
-
 var updateTeamEssential = function (condition,teId) {
 
     $.ajax({
@@ -1551,9 +1795,7 @@ var updateTeamEssential = function (condition,teId) {
         },
         success: function (result) {
             if (result != null) {
-                // alert(result);
-                // window.location.href = "/registerSuccess?id=" + result + "";
-                // comId = result;
+                alert("基本信息保存成功！")
             }
 
         }
@@ -1563,7 +1805,50 @@ var updateTeamEssential = function (condition,teId) {
 
 
 
+var conditionPerson = function () {
+    var res_name = $("#res_name").val();
+    var res_job = $("#res_job").val();
+    var res_document_type = $("#res_document_type").val();
+    var document_num = $("#document_num").val();
+    var res_office_tel = $("#res_office_tel").val();
+    var res_mobile_tel = $("#res_mobile_tel").val();
+    var res_email = $("#res_email").val();
+    var contacts_data = {
+        entireId:entireId,
+        teId:null,
+        resName:res_name,
+        resJob:res_job,
+        resDocumentType:res_document_type,
+        documentNum:document_num,
+        resOfficeTel:res_office_tel,
+        resMobileTel:res_mobile_tel,
+        resEmail:res_email
+    }
 
+    return contacts_data;
+}
+
+var addPerson = function (condition) {
+    // alert(condition+"condition")
+    $.ajax({
+        url: "/addPerson",
+        type: 'post',
+        async: true,
+        data: condition,
+        dataType: 'json',
+        error: function (obj, msg) {
+            alert("增加团队联系人失败！")
+        },
+        success: function (result) {
+            if (result != null) {
+                alert("基本信息已保存！");
+                // window.location.href = "/registerSuccess?id=" + result + "";
+                // comId = result;
+            }
+
+        }
+    });
+}
 var conditionPerson_data = function () {
     var resName = $("#res_name").val();
     var resJob = $("#res_job").val();
@@ -1709,6 +1994,14 @@ var updatePatentList = function (condition,id) {
 }
 var reduceImg = function () {
     // alert("#patent_"+(num+1));
+    var patent_length = $("#patent_table").find("tr").length-3;
+    // alert(patent_length)
+    if(patent_length>0){
+        var id = $("#patent_"+(num+3)).find("input").attr("id");
+        var patentId = $("#"+id).val();
+        // alert(patentId);
+        deletePatentList(patentId);
+    }
     $("#patent_"+(num+1)).remove();
     $("#patent_"+(num+2)).remove();
     $("#patent_"+(num+3)).remove();
@@ -1814,18 +2107,30 @@ var reduceImg = function () {
 
 
 var reduceCoreImg = function () {
-    // alert("#patent_"+(num+1));
+    var ctId_text =$("#core_"+(core+1)).find("input").attr("id");
+    var ctId = $("#"+ctId_text).val();
+
+    if(ctId != null && ctId != ""){
+        deleteCoreTeamById(ctId);
+    }
+    // alert(ctId);
     $("#core_"+(core+1)).remove();
     $("#core_"+(core+2)).remove();
     $("#core_"+(core+3)).remove();
     $("#core_"+(core+4)).remove();
     $("#core_"+(core+5)).remove();
     $("#core_"+(core+6)).remove();
+
+
+
 }
 
 $("#hxtd_conservation_team").click(function () {
     //更新已有成员信息 创建未有成员信息
     for(var i=1;i<=team;i++){
+        var core_Number = $("#core_name_"+i).parent().parent().attr("id").substring(5,7);
+        var  coreNumber = parseInt(core_Number)+1;
+
         var　ctId = $("#ctId_"+i).val();
         var coreName = $("#core_name_"+i).val();
         var coreSex = $("#core_sex_"+i).val();
@@ -1865,7 +2170,7 @@ $("#hxtd_conservation_team").click(function () {
                                 nationalMilleDate:comTime(coreMillenniumDate),
                                 ctUniversityBusiness:ct_university_business
                             }
-                            addCoreTeam(condition,i);
+                            addCoreTeam(condition,coreNumber,i);
                         }else {
                             var condition={
                                 ueId:null,
@@ -1881,7 +2186,7 @@ $("#hxtd_conservation_team").click(function () {
                                 ctNationalMillennium:coreMillennium,
                                 ctUniversityBusiness:ct_university_business
                             }
-                            addCoreTeam(condition,i);
+                            addCoreTeam(condition,coreNumber,i);
                         }
 
                     }
@@ -1899,7 +2204,7 @@ $("#hxtd_conservation_team").click(function () {
                                 nationalMilleDate:comTime(coreMillenniumDate),
                                 ctUniversityBusiness:ct_university_business
                             }
-                            updateCoreTeam(condition,ctId,i);
+                            updateCoreTeam(condition,ctId,i,coreNumber);
                         }else {
                             var condition={
                                 ctName:coreName,
@@ -1912,7 +2217,7 @@ $("#hxtd_conservation_team").click(function () {
                                 ctNationalMillennium:coreMillennium,
                                 ctUniversityBusiness:ct_university_business
                             }
-                            updateCoreTeam(condition,ctId,i);
+                            updateCoreTeam(condition,ctId,i,coreNumber);
                         }
 
                     }
@@ -1935,7 +2240,7 @@ $("#hxtd_conservation_team").click(function () {
                             nationalMilleDate:comTime(coreMillenniumDate),
                             ctUniversityBusiness:ct_university_business
                         }
-                        addCoreTeam(condition,i);
+                        addCoreTeam(condition,coreNumber,i);
                     }else {
                         var condition={
                             ueId:null,
@@ -1951,7 +2256,7 @@ $("#hxtd_conservation_team").click(function () {
                             ctNationalMillennium:coreMillennium,
                             ctUniversityBusiness:ct_university_business
                         }
-                        addCoreTeam(condition,i);
+                        addCoreTeam(condition,coreNumber,i);
                     }
 
                 }
@@ -1969,7 +2274,7 @@ $("#hxtd_conservation_team").click(function () {
                             nationalMilleDate:comTime(coreMillenniumDate),
                             ctUniversityBusiness:ct_university_business
                         }
-                        updateCoreTeam(condition,ctId,i);
+                        updateCoreTeam(condition,ctId,i,coreNumber);
                     }else {
                         var condition={
                             ctName:coreName,
@@ -1982,7 +2287,7 @@ $("#hxtd_conservation_team").click(function () {
                             ctNationalMillennium:coreMillennium,
                             ctUniversityBusiness:ct_university_business
                         }
-                        updateCoreTeam(condition,ctId,i);
+                        updateCoreTeam(condition,ctId,i,coreNumber);
                     }
 
                 }
@@ -1991,7 +2296,7 @@ $("#hxtd_conservation_team").click(function () {
 
     }
 });
-var addCoreTeam=function (condition,t_i) {
+var addCoreTeam=function (condition,coreNumber,t_i) {
     $.ajax({
         url: "/addCoreTeam",
         type: 'post',
@@ -2003,14 +2308,18 @@ var addCoreTeam=function (condition,t_i) {
         },
         success: function (result) {
             if (result != null) {
-                addEducationExperionce(result,t_i);
+                // alert(t_i+","+team)
+                if(t_i == team){
+                    alert("核心成员信息保存成功！");
+                }
+                addEducationExperionce(result,coreNumber,t_i);
 
             }
 
         }
     });
 }
-var updateCoreTeam = function (condition,ctId,t_i) {
+var updateCoreTeam = function (condition,ctId,t_i,coreNumber) {
     $.ajax({
         url: "/updateCoreTeam/"+ctId,
         type: 'put',
@@ -2022,24 +2331,30 @@ var updateCoreTeam = function (condition,ctId,t_i) {
         },
         success: function (result) {
             if (result != null) {
-                updateEducationExperionce(ctId,t_i);
+                // alert(t_i+","+team)
+                if(t_i == team){
+                    alert("核心成员信息保存成功！");
+                }
+
+                updateEducationExperionce(ctId,t_i,coreNumber);
+
             }
 
         }
     });
 }
 
-var addEducationExperionce = function (coreTeamId,t_i) {
+var addEducationExperionce = function (coreTeamId,coreNumber,t_i) {
     var core_edu=4;
     var edu_length = $("#append_education_"+t_i).find("tr").length-3;
     // alert(edu_length);
     core_edu = core_edu+(t_i-1)*6;
     for(var i=1;i<=edu_length;i++){
         // alert(core_edu+","+team_edu);
-        var edu_background = $("#edu_background_"+core_edu+"_"+t_i+"_"+i).val();
+        var edu_background = $("#edu_background_"+coreNumber+"_"+t_i+"_"+i).val();
         // alert("#edu_background_"+core_edu+"_"+t_i+"_"+i);
-        var edu_graduate_school = $("#edu_graduate_school_"+core_edu+"_"+t_i+"_"+i).val();
-        var edu_major = $("#edu_major_"+core_edu+"_"+t_i+"_"+i).val();
+        var edu_graduate_school = $("#edu_graduate_school_"+coreNumber+"_"+t_i+"_"+i).val();
+        var edu_major = $("#edu_major_"+coreNumber+"_"+t_i+"_"+i).val();
         var condition = {
             entireId:entireId,
             ctId:coreTeamId,
@@ -2047,14 +2362,14 @@ var addEducationExperionce = function (coreTeamId,t_i) {
             eduGraduateSchool:edu_graduate_school,
             eduMajor:edu_major
         }
-        addEducationExpeionceCondition(condition);
+        addEducationExpeionceCondition(condition,t_i);
     }
     team=team+1;
 
     // }
 
 }
-var addEducationExpeionceCondition = function (condition) {
+var addEducationExpeionceCondition = function (condition,t_i) {
 
     $.ajax({
         url: "/addEducationExperionce",
@@ -2067,24 +2382,25 @@ var addEducationExpeionceCondition = function (condition) {
         },
         success: function (result) {
             if (result != null) {
-                // alert("增加核心成员信息成功！");
+
+
             }
 
         }
     });
 }
-var updateEducationExperionce = function (coreTeamId,t_i) {
+var updateEducationExperionce = function (coreTeamId,t_i,coreNumber) {
     var core_edu=4;
     var edu_length = $("#append_education_"+t_i).find("tr").length-3;
     // alert(edu_length);
     core_edu = core_edu+(t_i-1)*6;
     for(var i=1;i<=edu_length;i++){
         // alert(core_edu+","+team_edu);
-        var eduId = $("#eduId_"+core_edu+"_"+t_i+"_"+i).val();
-        var edu_background = $("#edu_background_"+core_edu+"_"+t_i+"_"+i).val();
+        var eduId = $("#eduId_"+coreNumber+"_"+t_i+"_"+i).val();
+        var edu_background = $("#edu_background_"+coreNumber+"_"+t_i+"_"+i).val();
         // alert("#edu_background_"+core_edu+"_"+t_i+"_"+i);
-        var edu_graduate_school = $("#edu_graduate_school_"+core_edu+"_"+t_i+"_"+i).val();
-        var edu_major = $("#edu_major_"+core_edu+"_"+t_i+"_"+i).val();
+        var edu_graduate_school = $("#edu_graduate_school_"+coreNumber+"_"+t_i+"_"+i).val();
+        var edu_major = $("#edu_major_"+coreNumber+"_"+t_i+"_"+i).val();
         if(eduId == ""){
             var condition = {
                 entireId:entireId,
@@ -2093,14 +2409,14 @@ var updateEducationExperionce = function (coreTeamId,t_i) {
                 eduGraduateSchool:edu_graduate_school,
                 eduMajor:edu_major
             }
-            addEducationExpeionceCondition(condition);
+            addEducationExpeionceCondition(condition,t_i);
         }else {
             var condition = {
                 eduBackground:edu_background,
                 eduGraduateSchool:edu_graduate_school,
                 eduMajor:edu_major
             }
-            updateEducationExpeionceCondition(condition,eduId);
+            updateEducationExpeionceCondition(condition,eduId,t_i);
         }
 
     }
@@ -2109,7 +2425,7 @@ var updateEducationExperionce = function (coreTeamId,t_i) {
     // }
 
 }
-var updateEducationExpeionceCondition = function (condition,eduId) {
+var updateEducationExpeionceCondition = function (condition,eduId,t_i) {
 
     $.ajax({
         url: "/updateEducation/"+eduId,
@@ -2122,7 +2438,64 @@ var updateEducationExpeionceCondition = function (condition,eduId) {
         },
         success: function (result) {
             if (result != null) {
-               // getCoreTeamListByEntireId(entireId);
+
+            }
+
+        }
+    });
+}
+
+var deleteCoreTeamById = function (ctId) {
+    $.ajax({
+        url: "/deleteCoreTeamById/"+ctId,
+        type: 'delete',
+        async: true,
+        data: ctId,
+        // dataType: 'json',
+        error: function (obj, msg) {
+            alert("服务器异常！")
+        },
+        success: function (result) {
+            // alert(result);
+            // console.log(result)
+            if (result != null) {
+                // alert("删除成功！")
+                deleteEducationByEntireId(ctId);
+            }
+
+        }
+    });
+}
+var deleteEducationByEntireId = function (ctId) {
+    $.ajax({
+        url: "/deleteEducationByEntireId/"+ctId,
+        type: 'delete',
+        async: true,
+        data: ctId,
+        // dataType: 'json',
+        error: function (obj, msg) {
+            alert("服务器异常！")
+        },
+        success: function (result) {
+        }
+    });
+}
+
+var deleteEducationExperionceById = function (eduId) {
+    $.ajax({
+        url: "/deleteEducationExperionceById/"+eduId,
+        type: 'delete',
+        async: true,
+        data: eduId,
+        // dataType: 'json',
+        error: function (obj, msg) {
+            alert("服务器异常！")
+        },
+        success: function (result) {
+            // alert(result);
+            // console.log(result)
+            if (result != null) {
+
             }
 
         }
@@ -2142,8 +2515,18 @@ var updateEducationExpeionceCondition = function (condition,eduId) {
 
 $("#syjhs_conservation_team").click(function () {
     var tbusId = $("#tbusId").val();
-    var data = conditionTeamBusinessPlan();
-    updateTeamBusinessPlan(data,tbusId)
+    if(tbusId == ""){
+        if($("#pro_name").val() == "" ){
+            alert("请填写项目名称！")
+        }else {
+            var data = conditionTeamBusinessPlan();
+            addTeamBusinessPlan(data)
+        }
+    }else {
+        var data = conditionTeamBusinessPlan();
+        updateTeamBusinessPlan(data,tbusId)
+    }
+
     conditionForeUpdate()
     deleteRisk(entireId)
 
@@ -2201,8 +2584,13 @@ $("#submit_competition_syjhs").bind('click',function () {
                                     });
                                     if(flag_fore == true){
                                         var tbusId = $("#tbusId").val();
-                                        var data = conditionTeamBusinessPlan_update();
-                                        updateTeamBusinessPlan(data,tbusId)
+                                        if(tbusId == ""){
+                                            var data = conditionTeamBusinessPlan_update();
+                                            addTeamBusinessPlan(data,"submit")
+                                        }else {
+                                            var data = conditionTeamBusinessPlan_update();
+                                            updateTeamBusinessPlan(data,tbusId,"submit")
+                                        }
                                         conditionForeUpdate()
                                         deleteRisk(entireId)
                                     }
@@ -2220,8 +2608,13 @@ $("#submit_competition_syjhs").bind('click',function () {
                                 });
                                 if(flag_fore == true){
                                     var tbusId = $("#tbusId").val();
-                                    var data = conditionTeamBusinessPlan_update();
-                                    updateTeamBusinessPlan(data,tbusId)
+                                    if(tbusId == ""){
+                                        var data = conditionTeamBusinessPlan_update();
+                                        addTeamBusinessPlan(data,"submit")
+                                    }else {
+                                        var data = conditionTeamBusinessPlan_update();
+                                        updateTeamBusinessPlan(data,tbusId,"submit")
+                                    }
                                     conditionForeUpdate()
                                     deleteRisk(entireId)
                                 }
@@ -2249,8 +2642,13 @@ $("#submit_competition_syjhs").bind('click',function () {
                             });
                             if(flag_fore == true){
                                 var tbusId = $("#tbusId").val();
-                                var data = conditionTeamBusinessPlan_update();
-                                updateTeamBusinessPlan(data,tbusId)
+                                if(tbusId == ""){
+                                    var data = conditionTeamBusinessPlan_update();
+                                    addTeamBusinessPlan(data,"submit")
+                                }else {
+                                    var data = conditionTeamBusinessPlan_update();
+                                    updateTeamBusinessPlan(data,tbusId,"submit")
+                                }
                                 conditionForeUpdate()
                                 deleteRisk(entireId)
                             }
@@ -2268,8 +2666,13 @@ $("#submit_competition_syjhs").bind('click',function () {
                         });
                         if(flag_fore == true){
                             var tbusId = $("#tbusId").val();
-                            var data = conditionTeamBusinessPlan_update();
-                            updateTeamBusinessPlan(data,tbusId)
+                            if(tbusId == ""){
+                                var data = conditionTeamBusinessPlan_update();
+                                addTeamBusinessPlan(data,"submit")
+                            }else {
+                                var data = conditionTeamBusinessPlan_update();
+                                updateTeamBusinessPlan(data,tbusId,"submit")
+                            }
                             conditionForeUpdate()
                             deleteRisk(entireId)
                         }
@@ -2301,8 +2704,13 @@ $("#submit_competition_syjhs").bind('click',function () {
                                 });
                                 if(flag_fore == true){
                                     var tbusId = $("#tbusId").val();
-                                    var data = conditionTeamBusinessPlan_update();
-                                    updateTeamBusinessPlan(data,tbusId)
+                                    if(tbusId == ""){
+                                        var data = conditionTeamBusinessPlan_update();
+                                        addTeamBusinessPlan(data,"submit")
+                                    }else {
+                                        var data = conditionTeamBusinessPlan_update();
+                                        updateTeamBusinessPlan(data,tbusId,"submit")
+                                    }
                                     conditionForeUpdate()
                                     deleteRisk(entireId)
                                 }
@@ -2320,8 +2728,13 @@ $("#submit_competition_syjhs").bind('click',function () {
                             });
                             if(flag_fore == true){
                                 var tbusId = $("#tbusId").val();
-                                var data = conditionTeamBusinessPlan_update();
-                                updateTeamBusinessPlan(data,tbusId)
+                                if(tbusId == ""){
+                                    var data = conditionTeamBusinessPlan_update();
+                                    addTeamBusinessPlan(data,"submit")
+                                }else {
+                                    var data = conditionTeamBusinessPlan_update();
+                                    updateTeamBusinessPlan(data,tbusId,"submit")
+                                }
                                 conditionForeUpdate()
                                 deleteRisk(entireId)
                             }
@@ -2349,8 +2762,13 @@ $("#submit_competition_syjhs").bind('click',function () {
                         });
                         if(flag_fore == true){
                             var tbusId = $("#tbusId").val();
-                            var data = conditionTeamBusinessPlan_update();
-                            updateTeamBusinessPlan(data,tbusId)
+                            if(tbusId == ""){
+                                var data = conditionTeamBusinessPlan_update();
+                                addTeamBusinessPlan(data,"submit")
+                            }else {
+                                var data = conditionTeamBusinessPlan_update();
+                                updateTeamBusinessPlan(data,tbusId,"submit")
+                            }
                             conditionForeUpdate()
                             deleteRisk(entireId)
                         }
@@ -2368,8 +2786,13 @@ $("#submit_competition_syjhs").bind('click',function () {
                     });
                     if(flag_fore == true){
                         var tbusId = $("#tbusId").val();
-                        var data = conditionTeamBusinessPlan_update();
-                        updateTeamBusinessPlan(data,tbusId)
+                        if(tbusId == ""){
+                            var data = conditionTeamBusinessPlan_update();
+                            addTeamBusinessPlan(data,"submit")
+                        }else {
+                            var data = conditionTeamBusinessPlan_update();
+                            updateTeamBusinessPlan(data,tbusId,"submit")
+                        }
                         conditionForeUpdate()
                         deleteRisk(entireId)
                     }
@@ -2407,8 +2830,13 @@ $("#submit_competition_syjhs").bind('click',function () {
                                 });
                                 if(flag_fore == true){
                                     var tbusId = $("#tbusId").val();
-                                    var data = conditionTeamBusinessPlan_update();
-                                    updateTeamBusinessPlan(data,tbusId)
+                                    if(tbusId == ""){
+                                        var data = conditionTeamBusinessPlan_update();
+                                        addTeamBusinessPlan(data,"submit")
+                                    }else {
+                                        var data = conditionTeamBusinessPlan_update();
+                                        updateTeamBusinessPlan(data,tbusId,"submit")
+                                    }
                                     conditionForeUpdate()
                                     deleteRisk(entireId)
                                 }
@@ -2426,8 +2854,13 @@ $("#submit_competition_syjhs").bind('click',function () {
                             });
                             if(flag_fore == true){
                                 var tbusId = $("#tbusId").val();
-                                var data = conditionTeamBusinessPlan_update();
-                                updateTeamBusinessPlan(data,tbusId)
+                                if(tbusId == ""){
+                                    var data = conditionTeamBusinessPlan_update();
+                                    addTeamBusinessPlan(data,"submit")
+                                }else {
+                                    var data = conditionTeamBusinessPlan_update();
+                                    updateTeamBusinessPlan(data,tbusId,"submit")
+                                }
                                 conditionForeUpdate()
                                 deleteRisk(entireId)
                             }
@@ -2455,8 +2888,13 @@ $("#submit_competition_syjhs").bind('click',function () {
                         });
                         if(flag_fore == true){
                             var tbusId = $("#tbusId").val();
-                            var data = conditionTeamBusinessPlan_update();
-                            updateTeamBusinessPlan(data,tbusId)
+                            if(tbusId == ""){
+                                var data = conditionTeamBusinessPlan_update();
+                                addTeamBusinessPlan(data,"submit")
+                            }else {
+                                var data = conditionTeamBusinessPlan_update();
+                                updateTeamBusinessPlan(data,tbusId,"submit")
+                            }
                             conditionForeUpdate()
                             deleteRisk(entireId)
                         }
@@ -2474,8 +2912,13 @@ $("#submit_competition_syjhs").bind('click',function () {
                     });
                     if(flag_fore == true){
                         var tbusId = $("#tbusId").val();
-                        var data = conditionTeamBusinessPlan_update();
-                        updateTeamBusinessPlan(data,tbusId)
+                        if(tbusId == ""){
+                            var data = conditionTeamBusinessPlan_update();
+                            addTeamBusinessPlan(data,"submit")
+                        }else {
+                            var data = conditionTeamBusinessPlan_update();
+                            updateTeamBusinessPlan(data,tbusId,"submit")
+                        }
                         conditionForeUpdate()
                         deleteRisk(entireId)
                     }
@@ -2507,8 +2950,13 @@ $("#submit_competition_syjhs").bind('click',function () {
                             });
                             if(flag_fore == true){
                                 var tbusId = $("#tbusId").val();
-                                var data = conditionTeamBusinessPlan_update();
-                                updateTeamBusinessPlan(data,tbusId)
+                                if(tbusId == ""){
+                                    var data = conditionTeamBusinessPlan_update();
+                                    addTeamBusinessPlan(data,"submit")
+                                }else {
+                                    var data = conditionTeamBusinessPlan_update();
+                                    updateTeamBusinessPlan(data,tbusId,"submit")
+                                }
                                 conditionForeUpdate()
                                 deleteRisk(entireId)
                             }
@@ -2526,8 +2974,13 @@ $("#submit_competition_syjhs").bind('click',function () {
                         });
                         if(flag_fore == true){
                             var tbusId = $("#tbusId").val();
-                            var data = conditionTeamBusinessPlan_update();
-                            updateTeamBusinessPlan(data,tbusId)
+                            if(tbusId == ""){
+                                var data = conditionTeamBusinessPlan_update();
+                                addTeamBusinessPlan(data,"submit")
+                            }else {
+                                var data = conditionTeamBusinessPlan_update();
+                                updateTeamBusinessPlan(data,tbusId,"submit")
+                            }
                             conditionForeUpdate()
                             deleteRisk(entireId)
                         }
@@ -2555,8 +3008,13 @@ $("#submit_competition_syjhs").bind('click',function () {
                     });
                     if(flag_fore == true){
                         var tbusId = $("#tbusId").val();
-                        var data = conditionTeamBusinessPlan_update();
-                        updateTeamBusinessPlan(data,tbusId)
+                        if(tbusId == ""){
+                            var data = conditionTeamBusinessPlan_update();
+                            addTeamBusinessPlan(data,"submit")
+                        }else {
+                            var data = conditionTeamBusinessPlan_update();
+                            updateTeamBusinessPlan(data,tbusId,"submit")
+                        }
                         conditionForeUpdate()
                         deleteRisk(entireId)
                     }
@@ -2574,8 +3032,13 @@ $("#submit_competition_syjhs").bind('click',function () {
                 });
                 if(flag_fore == true){
                     var tbusId = $("#tbusId").val();
-                    var data = conditionTeamBusinessPlan_update();
-                    updateTeamBusinessPlan(data,tbusId)
+                    if(tbusId == ""){
+                        var data = conditionTeamBusinessPlan_update();
+                        addTeamBusinessPlan(data,"submit")
+                    }else {
+                        var data = conditionTeamBusinessPlan_update();
+                        updateTeamBusinessPlan(data,tbusId,"submit")
+                    }
                     conditionForeUpdate()
                     deleteRisk(entireId)
                 }
@@ -2664,6 +3127,8 @@ var conditionTeamBusinessPlan_update=function () {
     var tbus_development_plan = $("#tbus_development_plan").val();
 
     var teamBusinessPlan_data = {
+        entireId:entireId,
+        teId:null,
         tbusProName:pro_name,
         tbusProIncomed:pro_incomed,
         tbusNewChips:tbus_new_chips,
@@ -2688,7 +3153,7 @@ var conditionTeamBusinessPlan_update=function () {
 
     return teamBusinessPlan_data;
 };
-var updateTeamBusinessPlan = function (condition,tbusId) {
+var updateTeamBusinessPlan = function (condition,tbusId,i) {
     // alert(condition);
     $.ajax({
         url: "/updateTeamBusinessPlan/"+tbusId,
@@ -2702,9 +3167,36 @@ var updateTeamBusinessPlan = function (condition,tbusId) {
         success: function (result) {
             console.log(result)
             if (result != null) {
-                // alert(result);
-                // window.location.href = "/registerSuccess?id=" + result + "";
-                // comId = result;
+                if(i == "submit"){
+                    alert("商业计划书已提交！")
+                }else {
+                    alert("商业计划书保存成功！")
+                }
+            }
+
+        }
+    });
+
+}
+var addTeamBusinessPlan = function (condition,i) {
+    // alert(condition);
+    $.ajax({
+        url: "/addTeamBusinessPlan",
+        type: 'post',
+        async: true,
+        data: condition,
+        dataType: 'json',
+        error: function (obj, msg) {
+            alert("创建团队商业计划书失败！")
+        },
+        success: function (result) {
+            if (result != null) {
+
+                if(i == "submit"){
+                    alert("商业计划书已提交！")
+                }else {
+                    alert("商业计划书保存成功！")
+                }
             }
 
         }
@@ -2806,6 +3298,8 @@ var conditionForeUpdate = function () {
         var net_margin=$("#net_margin_"+i).val();
         var fore_year = "201"+i
         var condition = {
+            entireId:entireId,
+            tbusId:null,
             foreIncome:fore_income,
             foreCost:fore_cost,
             foreProfit:fore_profit,
@@ -2813,8 +3307,12 @@ var conditionForeUpdate = function () {
             foreYear:fore_year
 
         }
+        if(foreId == ""){
+            addFinancialForecasting(condition);
+        }else {
+            updateFinancialForecasting(condition,foreId);
+        }
 
-        updateFinancialForecasting(condition,foreId);
     }
 
 
@@ -2839,459 +3337,28 @@ var updateFinancialForecasting =  function (condition,foreId) {
         }
     });
 }
-
-
-var conditionDemand_update=function (demandId) {
-    /**
-     * 增加基本信息
-     * @type {any}
-     */
-    var df_isEquity = $("#df_isEquity input:checked").val();
-
-    var df_equity_money = $("#df_equity_money").val();
-    var df_equity_shares = $("#df_equity_shares").val();
-    var df_equity_date = $("#df_equity_date").val();
-    var df_equityFund_plan = $("#df_equityFund_plan").val();
-    var df_isEquity_recom = $("#df_isEquity_recom input:checked").val();
-
-    var df_isDebt = $("#df_isDebt input:checked").val();
-
-    var df_debt_money = $("#df_debt_money").val();
-    var df_debt_maxAnnual = $("#df_debt_maxAnnual").val();
-    var df_debt_date = $("#df_debt_date").val();
-    var df_debtFund_plan = $("#df_debtFund_plan").val();
-    var df_isDebt_recom = $("#df_isDebt_recom input:checked").val();
-
-
-    if( $("#choose_crowd input[type='checkbox']").is(':checked') == true) {
-        var df_isCrowd_funding = "1";
-    }else {
-        var df_isCrowd_funding = "0";
-    }
-    // alert(df_isCrowd_funding+"df_isCrowd_funding");
-    var crows_fund_type = $("#crows_fund_type tr td input:checked").val();
-    // alert(crows_fund_type);
-    if( $("#df_isMerge input[type='checkbox']").is(':checked') == true) {
-        var df_isMerge = "1";
-    }else {
-        var df_isMerge = "0";
-    }
-    if( $("#df_isListed_shareReform input[type='checkbox']").is(':checked') == true) {
-        var df_isListed_shareReform = "1";
-    }else {
-        var df_isListed_shareReform = "0";
-    }
-
-    if( $("#df_isFinancing_guarantee input[type='checkbox']").is(':checked') == true) {
-        var df_isFinancing_guarantee = "1";
-    }else {
-        var df_isFinancing_guarantee = "0";
-    }
-
-    if( $("#change_petty input[type='checkbox']").is(':checked') == true) {
-        var df_isPetty_loan = "1";
-    }else {
-        var df_isPetty_loan = "0";
-    }
-    var petty_loan_money = $("#petty_loan_money").val();
-
-    if( $("#df_company_isDebt input[type='checkbox']").is(':checked') == true) {
-        var df_company_isDebt = "1";
-    }else {
-        var df_company_isDebt = "0";
-    }
-
-    if( $("#df_minorEnterprises_isDebt input[type='checkbox']").is(':checked') == true) {
-        var df_minorEnterprises_isDebt = "1";
-    }else {
-        var df_minorEnterprises_isDebt = "0";
-    }
-
-    if( $("#change_import_technical input[type='checkbox']").is(':checked') == true) {
-        var df_technical_import = "1";
-        if( $("#technical_import_international input[type='checkbox']").is(':checked') == true) {
-            var technical_import_international = "国际技术范围";
-            var technical_desc_international = $("#technical_desc_international").val();
-        }else {
-            var technical_import_international = null;
-            var technical_desc_international =null;
-        }
-        if( $("#technical_import_internal input[type='checkbox']").is(':checked') == true) {
-            var technical_import_internal = "国内技术范围";
-            var technical_desc_internal = $("#technical_desc_internal").val();
-        }else {
-            var technical_import_internal = null;
-            var technical_desc_internal = null
-        }
-    }else {
-        var df_technical_import = "0";
-        var technical_import_internal = null;
-        var technical_desc_internal = null;
-        var technical_import_international = null;
-        var technical_desc_international =null;
-    }
-
-
-    if( $("#change_transfer input[type='checkbox']").is(':checked') == true) {
-        var df_technical_transfer = "1";
-        var technical_transfer_range = $("#technical_transfer_range").val();
-    }else {
-        var df_technical_transfer = "0";
-        var technical_transfer_range = null;
-    }
-
-
-    if( $("#df_property_assign input[type='checkbox']").is(':checked') == true) {
-        var df_property_assign = "1";
-    }else {
-        var df_property_assign = "0";
-    }
-
-    if( $("#df_finace_lease input[type='checkbox']").is(':checked') == true) {
-        var df_finace_lease = "1";
-    }else {
-        var df_finace_lease = "0";
-    }
-
-    if( $("#df_technology_insurance input[type='checkbox']").is(':checked') == true) {
-        var df_technology_insurance = "1";
-    }else {
-        var df_technology_insurance = "0";
-    }
-
-    if( $("#df_asset_manage input[type='checkbox']").is(':checked') == true) {
-        var df_asset_manage = "1";
-    }else {
-        var df_asset_manage = "0";
-    }
-
-    if( $("#df_branchChong_check input[type='checkbox']").is(':checked') == true) {
-        var df_branchChong_check = "1";
-    }else {
-        var df_branchChong_check = "0";
-    }
-
-    if( $("#df_political_consult input[type='checkbox']").is(':checked') == true) {
-        var df_political_consult = "1";
-    }else {
-        var df_political_consult = "0";
-    }
-
-    if( $("#df_technology_consult input[type='checkbox']").is(':checked') == true) {
-        var df_technology_consult = "1";
-    }else {
-        var df_technology_consult = "0";
-    }
-
-    if( $("#change_intermediary input[type='checkbox']").is(':checked') == true) {
-        var df_intermediary_consult = "1";
-        if( $("#intermediary_law input[type='checkbox']").is(':checked') == true) {
-            var intermediary_law = "1";
-            var intermediary_law_desc = $("#intermediary_law_desc").val();
-        }else {
-            var intermediary_law = "0";
-            var intermediary_law_desc = null
-        }
-        if( $("#intermediary_finance input[type='checkbox']").is(':checked') == true) {
-            var intermediary_finance = "1";
-            var intermediary_finance_desc = $("#intermediary_finance_desc").val();
-        }else {
-            var intermediary_finance = "0";
-            var intermediary_finance_desc = null
-        }
-        if( $("#intermediary_Financing input[type='checkbox']").is(':checked') == true) {
-            var intermediary_Financing = "1";
-            var intermediary_financing_desc = $("#intermediary_financing_desc").val();
-        }else {
-            var intermediary_Financing = "0";
-            var intermediary_financing_desc = null
-        }
-        if( $("#intermediary_manage input[type='checkbox']").is(':checked') == true) {
-            var intermediary_manage = "1";
-            var intermediary_manage_desc = $("#intermediary_manage_desc").val();
-        }else {
-            var intermediary_manage = "0";
-            var intermediary_manage_desc = null
-        }
-    }else {
-        var df_intermediary_consult = "0";
-        var intermediary_law = null;
-        var intermediary_law_desc = null
-        var intermediary_finance = null;
-        var intermediary_finance_desc = null;
-        var intermediary_Financing =null;
-        var intermediary_financing_desc = null
-        var intermediary_manage = null;
-        var intermediary_manage_desc = null
-
-    }
-
-
-    var df_other_service = $("#df_other_service").val();
-    if( $("#change_other input[type='checkbox']").is(':checked') == true) {
-        var df_other_service = "1";
-        var other_service_desc = $("#other_service_desc").val();
-    }else {
-        var df_other_service = "0";
-        var other_service_desc = null
-    }
-
-    var df_accept_train = $("#df_accept_train").val();
-    if( $("#df_accept_train input[type='checkbox']").is(':checked') == true) {
-        var df_accept_train = "1";
-    }else {
-        var df_accept_train = "0";
-    }
-    var df_no = $("#df_no").val();
-    if( $("#df_no input[type='checkbox']").is(':checked') == true) {
-        var df_no = "1";
-    }else {
-        var df_no = "0";
-    }
-    // alert(df_equity_date)
-    if(df_isEquity == "是" && df_isDebt == "是"){
-        if($("#df_isEquity input:checked").val() == "是") {
-            if ($("#df_equity_money").val() == "" || $("#df_equity_shares").val() == "" ||
-                $("#df_equity_date").val() == "" || $("#df_equityFund_plan").val() == "") {
-                alert("请将融资信息填写完整")
+var addFinancialForecasting = function (condition) {
+    $.ajax({
+        url: "/addFinancialForecasting",
+        type: 'post',
+        async: true,
+        data: condition,
+        dataType: 'json',
+        error: function (obj, msg) {
+            alert("创建财务预测数据失败！")
+        },
+        success: function (result) {
+            if (result != null) {
+                // alert(result);
+                // window.location.href = "/registerSuccess?id=" + result + "";
+                // comId = result;
             }
-            else {
-                if ($("#df_isDebt input:checked").val() == "是") {
-                    if ($("#df_debt_money").val() == "" || $("#df_debt_maxAnnual").val() == "" ||
-                        $("#df_debt_date").val() == "" || $("#df_debtFund_plan").val() == "") {
-                        alert("请将融资信息填写完整")
-                    }else {
-                        var unitDemand_data = {
-                            dfEquity:df_isEquity,
-                            dfEquityShares:df_equity_shares,
-                            dfEquityMoney:df_equity_money,
-                            dfEquityDate:comTime(df_equity_date),
-                            equityFundPlan:df_equityFund_plan,
 
-                            dfEquityRecom:df_isEquity_recom,
-                            dfDebt:df_isDebt,
-                            dfDebtMoney:df_debt_money,
-                            debtMaxAnnual:df_debt_maxAnnual,
-                            dfDebtDate:comTime(df_debt_date),
-                            debtFundPlan:df_debtFund_plan,
-                            dfDebtRecom:df_isDebt_recom,
-                            dfCrowdFunding:df_isCrowd_funding,
-                            crowsFundType:crows_fund_type,
-                            dfMerge:df_isMerge,
-                            dfListedShareReform:df_isListed_shareReform,
-                            dfFinancingGuarantee:df_isFinancing_guarantee,
-                            dfPettyLoan:df_isPetty_loan,
-                            pettyLoanMoney:petty_loan_money,
-
-                            dfCompanyDebt:df_company_isDebt,
-                            minorEnterprisesDebt:df_minorEnterprises_isDebt,
-                            dfTechnicalImport:df_technical_import,
-                            technicalImportInternational:technical_import_international,
-                            technicalDescInternational:technical_desc_international,
-                            technicalImportInternal:technical_import_internal,
-                            technicalDescInternal:technical_desc_internal,
-                            dfTechnicalTransfer:df_technical_transfer,
-                            technicalTransferRange:technical_transfer_range,
-                            dfPropertyAssign:df_property_assign,
-                            dfFinaceLease:df_finace_lease,
-                            dfTechnologyInsurance:df_technology_insurance,
-                            dfAssetManage:df_asset_manage,
-                            branchChongCheck:df_branchChong_check,
-
-                            dfPoliticalConsult:df_political_consult,
-                            dfTechnologyConsult:df_technology_consult,
-                            dfIntermediaryConsult:df_intermediary_consult,
-                            intermediaryLaw:intermediary_law,
-                            intermediaryLawDesc:intermediary_law_desc,
-                            intermediaryFinance:intermediary_finance,
-                            intermediaryFinanceDesc:intermediary_finance_desc,
-                            intermediaryFinancing:intermediary_Financing,
-                            intermediaryFinancingDesc:intermediary_financing_desc,
-                            intermediaryManage:intermediary_manage,
-                            intermediaryManageDesc:intermediary_manage_desc,
-                            dfOtherService:df_other_service,
-                            otherServiceDesc:other_service_desc,
-                            dfAcceptTrain:df_accept_train,
-                            dfNo:df_no
-                        }
-
-                        updateDemand(unitDemand_data,demandId,"");
-                    }
-                }
-            }
         }
+    });
+}
 
-    }
-    if(df_isEquity == "否" && df_isDebt == "否"){
-        var unitDemand_data = {
-            dfEquity:df_isEquity,
 
-            dfDebt:df_isDebt,
-
-            dfCrowdFunding:df_isCrowd_funding,
-            crowsFundType:crows_fund_type,
-            dfMerge:df_isMerge,
-            dfListedShareReform:df_isListed_shareReform,
-            dfFinancingGuarantee:df_isFinancing_guarantee,
-            dfPettyLoan:df_isPetty_loan,
-            pettyLoanMoney:petty_loan_money,
-
-            dfCompanyDebt:df_company_isDebt,
-            minorEnterprisesDebt:df_minorEnterprises_isDebt,
-            dfTechnicalImport:df_technical_import,
-            technicalImportInternational:technical_import_international,
-            technicalDescInternational:technical_desc_international,
-            technicalImportInternal:technical_import_internal,
-            technicalDescInternal:technical_desc_internal,
-            dfTechnicalTransfer:df_technical_transfer,
-            technicalTransferRange:technical_transfer_range,
-            dfPropertyAssign:df_property_assign,
-            dfFinaceLease:df_finace_lease,
-            dfTechnologyInsurance:df_technology_insurance,
-            dfAssetManage:df_asset_manage,
-            branchChongCheck:df_branchChong_check,
-
-            dfPoliticalConsult:df_political_consult,
-            dfTechnologyConsult:df_technology_consult,
-            dfIntermediaryConsult:df_intermediary_consult,
-            intermediaryLaw:intermediary_law,
-            intermediaryLawDesc:intermediary_law_desc,
-            intermediaryFinance:intermediary_finance,
-            intermediaryFinanceDesc:intermediary_finance_desc,
-            intermediaryFinancing:intermediary_Financing,
-            intermediaryFinancingDesc:intermediary_financing_desc,
-            intermediaryManage:intermediary_manage,
-            intermediaryManageDesc:intermediary_manage_desc,
-            dfOtherService:df_other_service,
-            otherServiceDesc:other_service_desc,
-            dfAcceptTrain:df_accept_train,
-            dfNo:df_no
-        }
-
-        updateDemand(unitDemand_data,demandId,"");
-    }
-    if(df_isEquity == "是" && df_isDebt == "否"){
-        if($("#df_isEquity input:checked").val() == "是") {
-            if ($("#df_equity_money").val() == "" || $("#df_equity_shares").val() == "" ||
-                $("#df_equity_date").val() == "" || $("#df_equityFund_plan").val() == "") {
-                alert("请将融资信息填写完整")
-            }else {
-                var unitDemand_data = {
-                    dfEquity:df_isEquity,
-                    dfEquityShares:df_equity_shares,
-                    dfEquityMoney:df_equity_money,
-                    dfEquityDate:comTime(df_equity_date),
-                    equityFundPlan:df_equityFund_plan,
-
-                    dfEquityRecom:df_isEquity_recom,
-                    dfDebt:df_isDebt,
-
-                    dfCrowdFunding:df_isCrowd_funding,
-                    crowsFundType:crows_fund_type,
-                    dfMerge:df_isMerge,
-                    dfListedShareReform:df_isListed_shareReform,
-                    dfFinancingGuarantee:df_isFinancing_guarantee,
-                    dfPettyLoan:df_isPetty_loan,
-                    pettyLoanMoney:petty_loan_money,
-
-                    dfCompanyDebt:df_company_isDebt,
-                    minorEnterprisesDebt:df_minorEnterprises_isDebt,
-                    dfTechnicalImport:df_technical_import,
-                    technicalImportInternational:technical_import_international,
-                    technicalDescInternational:technical_desc_international,
-                    technicalImportInternal:technical_import_internal,
-                    technicalDescInternal:technical_desc_internal,
-                    dfTechnicalTransfer:df_technical_transfer,
-                    technicalTransferRange:technical_transfer_range,
-                    dfPropertyAssign:df_property_assign,
-                    dfFinaceLease:df_finace_lease,
-                    dfTechnologyInsurance:df_technology_insurance,
-                    dfAssetManage:df_asset_manage,
-                    branchChongCheck:df_branchChong_check,
-
-                    dfPoliticalConsult:df_political_consult,
-                    dfTechnologyConsult:df_technology_consult,
-                    dfIntermediaryConsult:df_intermediary_consult,
-                    intermediaryLaw:intermediary_law,
-                    intermediaryLawDesc:intermediary_law_desc,
-                    intermediaryFinance:intermediary_finance,
-                    intermediaryFinanceDesc:intermediary_finance_desc,
-                    intermediaryFinancing:intermediary_Financing,
-                    intermediaryFinancingDesc:intermediary_financing_desc,
-                    intermediaryManage:intermediary_manage,
-                    intermediaryManageDesc:intermediary_manage_desc,
-                    dfOtherService:df_other_service,
-                    otherServiceDesc:other_service_desc,
-                    dfAcceptTrain:df_accept_train,
-                    dfNo:df_no
-                }
-
-                updateDemand(unitDemand_data,demandId,"");
-            }
-        }
-
-    }
-    if(df_isEquity == "否" && df_isDebt == "是"){
-        if ($("#df_isDebt input:checked").val() == "是") {
-            if ($("#df_debt_money").val() == "" || $("#df_debt_maxAnnual").val() == "" ||
-                $("#df_debt_date").val() == "" || $("#df_debtFund_plan").val() == "") {
-                alert("请将融资信息填写完整")
-            }else {
-                var unitDemand_data = {
-                    dfEquity:df_isEquity,
-
-                    dfDebt:df_isDebt,
-                    dfDebtMoney:df_debt_money,
-                    debtMaxAnnual:df_debt_maxAnnual,
-                    dfDebtDate:comTime(df_debt_date),
-                    debtFundPlan:df_debtFund_plan,
-                    dfDebtRecom:df_isDebt_recom,
-                    dfCrowdFunding:df_isCrowd_funding,
-                    crowsFundType:crows_fund_type,
-                    dfMerge:df_isMerge,
-                    dfListedShareReform:df_isListed_shareReform,
-                    dfFinancingGuarantee:df_isFinancing_guarantee,
-                    dfPettyLoan:df_isPetty_loan,
-                    pettyLoanMoney:petty_loan_money,
-
-                    dfCompanyDebt:df_company_isDebt,
-                    minorEnterprisesDebt:df_minorEnterprises_isDebt,
-                    dfTechnicalImport:df_technical_import,
-                    technicalImportInternational:technical_import_international,
-                    technicalDescInternational:technical_desc_international,
-                    technicalImportInternal:technical_import_internal,
-                    technicalDescInternal:technical_desc_internal,
-                    dfTechnicalTransfer:df_technical_transfer,
-                    technicalTransferRange:technical_transfer_range,
-                    dfPropertyAssign:df_property_assign,
-                    dfFinaceLease:df_finace_lease,
-                    dfTechnologyInsurance:df_technology_insurance,
-                    dfAssetManage:df_asset_manage,
-                    branchChongCheck:df_branchChong_check,
-
-                    dfPoliticalConsult:df_political_consult,
-                    dfTechnologyConsult:df_technology_consult,
-                    dfIntermediaryConsult:df_intermediary_consult,
-                    intermediaryLaw:intermediary_law,
-                    intermediaryLawDesc:intermediary_law_desc,
-                    intermediaryFinance:intermediary_finance,
-                    intermediaryFinanceDesc:intermediary_finance_desc,
-                    intermediaryFinancing:intermediary_Financing,
-                    intermediaryFinancingDesc:intermediary_financing_desc,
-                    intermediaryManage:intermediary_manage,
-                    intermediaryManageDesc:intermediary_manage_desc,
-                    dfOtherService:df_other_service,
-                    otherServiceDesc:other_service_desc,
-                    dfAcceptTrain:df_accept_train,
-                    dfNo:df_no
-                }
-
-                updateDemand(unitDemand_data,demandId,"");
-            }
-        }
-
-    }
-};
 var conditionDemand_update_submit=function (demandId) {
     /**
      * 增加基本信息
@@ -3513,6 +3580,9 @@ var conditionDemand_update_submit=function (demandId) {
                         alert("请将融资信息填写完整")
                     }else {
                         var unitDemand_data = {
+                            entireId:entireId,
+                            ubusId:null,
+                            tbusId:null,
                             dfEquity:df_isEquity,
                             dfEquityShares:df_equity_shares,
                             dfEquityMoney:df_equity_money,
@@ -3566,7 +3636,11 @@ var conditionDemand_update_submit=function (demandId) {
                             dfNo:df_no
                         }
 
-                        updateDemand(unitDemand_data,demandId,"submit");
+                        if(demandId != ""){
+                            updateDemand(unitDemand_data,demandId,"submit");
+                        }else {
+                            addDemand(unitDemand_data,"submit")
+                        }
                     }
                 }
             }
@@ -3575,6 +3649,9 @@ var conditionDemand_update_submit=function (demandId) {
     }
     if(df_isEquity == "否" && df_isDebt == "否"){
         var unitDemand_data = {
+            entireId:entireId,
+            ubusId:null,
+            tbusId:null,
             dfEquity:df_isEquity,
 
             dfDebt:df_isDebt,
@@ -3619,7 +3696,11 @@ var conditionDemand_update_submit=function (demandId) {
             dfNo:df_no
         }
 
-        updateDemand(unitDemand_data,demandId,"submit");
+        if(demandId != ""){
+            updateDemand(unitDemand_data,demandId,"submit");
+        }else {
+            addDemand(unitDemand_data,"submit")
+        }
     }
     if(df_isEquity == "是" && df_isDebt == "否"){
         if($("#df_isEquity input:checked").val() == "是") {
@@ -3628,6 +3709,9 @@ var conditionDemand_update_submit=function (demandId) {
                 alert("请将融资信息填写完整")
             }else {
                 var unitDemand_data = {
+                    entireId:entireId,
+                    ubusId:null,
+                    tbusId:null,
                     dfEquity:df_isEquity,
                     dfEquityShares:df_equity_shares,
                     dfEquityMoney:df_equity_money,
@@ -3677,7 +3761,11 @@ var conditionDemand_update_submit=function (demandId) {
                     dfNo:df_no
                 }
 
-                updateDemand(unitDemand_data,demandId,"submit");
+                if(demandId != ""){
+                    updateDemand(unitDemand_data,demandId,"submit");
+                }else {
+                    addDemand(unitDemand_data,"submit")
+                }
             }
         }
 
@@ -3689,6 +3777,9 @@ var conditionDemand_update_submit=function (demandId) {
                 alert("请将融资信息填写完整")
             }else {
                 var unitDemand_data = {
+                    entireId:entireId,
+                    ubusId:null,
+                    tbusId:null,
                     dfEquity:df_isEquity,
 
                     dfDebt:df_isDebt,
@@ -3737,13 +3828,19 @@ var conditionDemand_update_submit=function (demandId) {
                     dfNo:df_no
                 }
 
-                updateDemand(unitDemand_data,demandId,"submit");
+                if(demandId != ""){
+                    updateDemand(unitDemand_data,demandId,"submit");
+                }else {
+                    addDemand(unitDemand_data,"submit")
+                }
+
             }
         }
 
     }
 };
-var updateDemand = function (condition,demandId,type) {
+var updateDemand = function (condition,demandId,i) {
+    alert(i)
     $.ajax({
         url: "/updateDemandFinancial/"+demandId,
         type: 'put',
@@ -3756,12 +3853,15 @@ var updateDemand = function (condition,demandId,type) {
         success: function (result) {
             if (result != null) {
                 console.log(result);
-                if(type = "submit"){
+                if(i == "submit"){
                     var data = {
                         workState:"SUBMIT"
                     }
                     updateEntireWorkState(data,entireId)
-                }else {
+                }
+                if(i == "keep"){
+                    alert("保存科技金融相关信息成功")
+
                     getDemandListByEntireId(entireId);
                 }
 
@@ -3770,11 +3870,41 @@ var updateDemand = function (condition,demandId,type) {
         }
     });
 }
+var addDemand = function (condition,i) {
+    // alert(condition);
+    $.ajax({
+        url: "/addDemandFinancial",
+        type: 'post',
+        async: true,
+        data: condition,
+        dataType: 'json',
+        error: function (obj, msg) {
+            alert("创建科技服务信息失败！")
+        },
+        success: function (result) {
+            if (result != null) {
+                if(i == "submit"){
+                    var data = {
+                        workState:"SUBMIT"
+                    }
+                    updateEntireWorkState(data,entireId)
+                }else {
+                    alert("已保存科技金融服务相关信息！")
+                }
+
+
+            }
+
+
+        }
+    });
+
+}
 
 var deletePatentList = function (id) {
     $.ajax({
         url: "/deletePatentById/"+id,
-        type: 'get',
+        type: 'delete',
         async: true,
         data: id,
         // dataType: 'json',
@@ -3784,7 +3914,7 @@ var deletePatentList = function (id) {
         success: function (result) {
             // alert(result);
             if (result != null && result>0) {
-                alert("删除成功！")
+                // alert("删除成功！")
             }
 
         }
@@ -3804,26 +3934,8 @@ var updateEntireWorkState = function (condition,entireId) {
             if (result != null) {
                 console.log(result);
                 alert("提交报名成功！")
-                $("#submit_competition_kjjr").unbind('click');
-                $("#submit_competition_kjjr").css("background","#dbdbdb");
-                $("#submit_competition_kjjr").find("p").html("已提交报名");
 
-                $("#jbxx_conservation_team").unbind('click');
-                $("#jbxx_conservation_team").css("background","#dbdbdb");
-                $("#jbxx_conservation_team").find("p").html("修改");
-                $("#hxtd_conservation_team").unbind('click');
-                $("#hxtd_conservation_team").css("background","#dbdbdb");
-                $("#hxtd_conservation_team").find("p").html("修改");
-                $("#syjhs_conservation_team").unbind('click');
-                $("#syjhs_conservation_team").css("background","#dbdbdb");
-                $("#syjhs_conservation_team").find("p").html("修改");
-                $("#kjjr_conservation_team").unbind('click');
-                $("#kjjr_conservation_team").css("background","#dbdbdb");
-                $("#kjjr_conservation_team").find("p").html("修改");
-                $("#submit_competition_syjhs").unbind('click');
-                $("#submit_competition_syjhs").css("background","#dbdbdb");
-                $("#submit_competition_syjhs").find("p").html("修已提交商业计划书改");
-
+                getDemandListByEntireId(entireId);
             }
 
         }
@@ -4064,8 +4176,12 @@ var conditionDemand=function () {
                             dfAcceptTrain:df_accept_train,
                             dfNo:df_no
                         }
+                        if(demandId == ""){
+                            addDemand(unitDemand_data)
+                        }else {
+                            updateDemand(unitDemand_data,demandId,"keep");
+                        }
 
-                        updateDemand(unitDemand_data,demandId,"");
                     }
                 }
             }
@@ -4115,7 +4231,11 @@ var conditionDemand=function () {
             dfNo:df_no
         }
 
-        updateDemand(unitDemand_data,demandId,"");
+        if(demandId == ""){
+            addDemand(unitDemand_data)
+        }else {
+            updateDemand(unitDemand_data,demandId,"keep");
+        }
     }
     if(df_isEquity == "是" && df_isDebt == "否") {
         if ($("#df_isEquity input:checked").val() == "是") {
@@ -4170,7 +4290,11 @@ var conditionDemand=function () {
                     dfNo:df_no
                 }
 
-                updateDemand(unitDemand_data,demandId,"");
+                if(demandId == ""){
+                    addDemand(unitDemand_data)
+                }else {
+                    updateDemand(unitDemand_data,demandId,"keep");
+                }
             }
         }
     }
@@ -4222,8 +4346,11 @@ var conditionDemand=function () {
                     dfAcceptTrain: df_accept_train,
                     dfNo: df_no
                 }
-
-                updateDemand(unitDemand_data,demandId,"");
+                if(demandId == ""){
+                    addDemand(unitDemand_data)
+                }else {
+                    updateDemand(unitDemand_data,demandId,"keep");
+                }
             }
         }
     }
@@ -38971,7 +39098,10 @@ var getDemandByEntireId = function (condition,i) {
             // alert(result);
             if (result != null && result > 0) {
                 getTeamBusinessPlanByEntireId(entireId)
+            }else {
+                conditionDemand_update_submit()
             }
+
         }
     });
 

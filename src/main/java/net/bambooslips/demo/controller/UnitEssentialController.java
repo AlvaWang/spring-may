@@ -337,6 +337,7 @@ public class UnitEssentialController {
     @ResponseBody
     @ResponseStatus(HttpStatus.CREATED)
     public Long create(@RequestParam(required = false) Long entireId,
+                       @RequestParam(required = false) String ueProjectName,
                        @RequestParam(required = false) String ueCompanyName,
                        @RequestParam(required = false) String ueGoal,
                        @RequestParam(required = false) String ueField,
@@ -351,7 +352,7 @@ public class UnitEssentialController {
                        @RequestParam(required = false) String ueCorporationSummary,
                        @RequestParam(required = false) String ueTechnicalSources,
                        @RequestParam(required = false) String status) {
-        UnitEssential unitEssential = new UnitEssential(entireId, ueCompanyName, ueGoal,ueField,ueRegisterCapital,
+        UnitEssential unitEssential = new UnitEssential(entireId,ueProjectName, ueCompanyName, ueGoal,ueField,ueRegisterCapital,
                 ueWinNum,ueStaffNum,ueResearchNum,ueDeputyNum,ueOfficeAddress,uePostCode,uePowerType,ueCorporationSummary,ueTechnicalSources,status);
 
         Long result =  unitEssentialService.create(unitEssential);
@@ -650,11 +651,12 @@ public class UnitEssentialController {
      */
     @RequestMapping(value = "/updateEssential/{ueId}", method = RequestMethod.PUT, consumes = "application/x-www-form-urlencoded")
     @ResponseBody
-    public UnitEssential updateByForm(@PathVariable Long ueId, String ueGoal,String ueField,Long ueRegisterCapital,
+    public UnitEssential updateByForm(@PathVariable Long ueId, String ueProjectName,String ueGoal,String ueField,Long ueRegisterCapital,
                                       Long ueWinNum,Long ueStaffNum,Long ueResearhNum,Long ueDeputyNum,
                                       String ueOfficeAddress,String uePostCode,String uePowerType,String ueCorporationSummary,String technicalSources ) {
         UnitEssential unitEssential = new UnitEssential();
         unitEssential.setUeId(ueId);
+        unitEssential.setUeProjectName(ueProjectName);
         unitEssential.setUeGoal(ueGoal);
 
         unitEssential.setUeField(ueField);
@@ -995,6 +997,13 @@ public class UnitEssentialController {
     @ResponseStatus(HttpStatus.OK)
     public List<CoreTeam> deleteCoreTeamByEntireId(@PathVariable Long entireId) {
         return coreTeamService.deleteByEntireId(entireId);
+    }
+
+    @RequestMapping(value = "/deleteCoreTeamById/{id}", method = RequestMethod.DELETE)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.OK)
+    public CoreTeam deleteCoreTeamById(@PathVariable Long id) {
+        return coreTeamService.delete(id);
     }
 
 }

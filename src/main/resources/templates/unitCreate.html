@@ -33,7 +33,7 @@
             <p>1、单击<span style="color: #f16792">第一步</span>，录入参赛基本信息并保存</p>
             <p>2、确认<span style="color: #f16792">第一步</span>信息填写并保存完毕后，单击<span style="color: #f16792">第二步</span>，录入核心团队人员信息</p>
             <p>3、确认核心团队人员信息已录入保存，单击<span style="color: #f16792">第三步</span>，录入商业计划书相关内容。商业计划书内提供两个接口：<span style="color: #f16792">保存和提交报名</span>，点击<span style="color: #f16792">保存</span>则保存信息不报名，点击<span style="color: #f16792">提交报名</span>完成报名流程！</p>
-            <p style="color: #f16792;font-size: 14px!important;">注：点击提交报名后报名信息不可更改请谨慎操作！退出报名前要确保所填信息已保存，避免重新填写！点击我的比赛课跳转至我的比赛页面，可查看已报名项目、已保存未提交项目相关信息并可对未提交项目进行编辑、提交报名操作！</p>
+            <p style="color: #f16792;font-size: 14px!important;">注：在报名截止日期前所有项目均可修改！退出报名前要确保所填信息已保存，避免重新填写！点击我的比赛课跳转至我的比赛页面，可查看已报名项目、已保存未提交项目相关信息并可对未提交项目进行编辑、提交报名操作！</p>
         </div>
         <div class="main_div">
             <!--//飘带-->
@@ -81,6 +81,13 @@
                                 <td class="t_title">企业名称</td>
                                 <td class="t_middle" colspan="5">
                                     <input type="text" id="company_name"/>
+                                    <div style="float: right;width: 15px;"><p>*</p></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="t_title">项目名称</td>
+                                <td class="t_middle" colspan="5">
+                                    <input type="text" id="project_name"/>
                                     <div style="float: right;width: 15px;"><p>*</p></div>
                                 </td>
                             </tr>
@@ -286,10 +293,10 @@
                                             <td colspan="2">
                                                 <div id="technical_sources">
                                                     技术来源：
-                                                    <input type="radio" value="独立知识产权"/>独立知识产权
-                                                    <input type="radio" value="合作研发"/>合作研发
-                                                    <input type="radio" value="购买技术"/>购买技术
-                                                    <input type="radio" value="其他"/>其他
+                                                    <input type="radio" value="独立知识产权" name="source"/>独立知识产权
+                                                    <input type="radio" value="合作研发"  name="source"/>合作研发
+                                                    <input type="radio" value="购买技术"  name="source"/>购买技术
+                                                    <input type="radio" value="其他"  name="source"/>其他
                                                     <!--<input type="checkbox" value="其他"/>其他-->
                                                     <!--<input type="text"/>-->
                                                 </div>

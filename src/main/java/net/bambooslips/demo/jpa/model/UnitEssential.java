@@ -22,6 +22,9 @@ public class UnitEssential implements  Serializable {
     @Column(name = "entire_id")
     private Long entireId;
 
+    @Column(name = "ue_project_name")
+    private String ueProjectName;
+
     @Column(name = "ue_company_name")
     private String ueCompanyName;
 
@@ -67,11 +70,12 @@ public class UnitEssential implements  Serializable {
     public UnitEssential(){
 
     }
-    public UnitEssential(Long entireId,String ueCompanyName,String ueGoal,
+    public UnitEssential(Long entireId,String ueProjectName,String ueCompanyName,String ueGoal,
                          String ueField,Long ueRegisterCapital,Long ueWinNum, Long ueStaffNum,
                          Long ueResearchNum,Long ueDeputyNum,String ueOfficeAddress,String uePostCode,
                          String uePowerType,String ueCorporationSummary,String ueTechnicalSources,String status){
         this.entireId = entireId;
+        this.ueProjectName = ueProjectName;
         this.ueCompanyName = ueCompanyName;
         this.ueGoal = ueGoal;
         this.ueField = ueField;
@@ -94,6 +98,7 @@ public class UnitEssential implements  Serializable {
      * @return
      */
     public UnitEssential update(UnitEssential updated) {
+        if(updated.getUeProjectName() != null)this.setUeProjectName(updated.getUeProjectName());
         if(updated.getUeGoal() != null)this.setUeGoal(updated.getUeGoal());
         if(updated.getUeField() != null)this.setUeField(updated.getUeField());
         if(updated.getUeRegisterCapital() != null)this.setUeRegisterCapital(updated.getUeRegisterCapital());
@@ -129,6 +134,13 @@ public class UnitEssential implements  Serializable {
     }
     public void setUeCompanyName(String ueCompanyName){
         this.ueCompanyName = ueCompanyName;
+    }
+
+    public String getUeProjectName(){
+        return ueProjectName;
+    }
+    public void setUeProjectName(String ueProjectName){
+        this.ueProjectName = ueProjectName;
     }
 
     public String getUeGoal(){

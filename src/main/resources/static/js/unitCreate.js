@@ -480,7 +480,7 @@ var getUnitBusinessPlanByEntireId = function (condition,i) {
 
 $("#jbxx_conservation").click(function () {
     // alert(entireId)
-    if($("#company_name").val() == "" ||
+    if($("#company_name").val() == "" || $("#project_name").val() == "" ||
         $("#ue_goal input:checked").val() == "" ||   $("#ue_filed input:checked").val() == ""
          || $("#register_capital").val() == "" ||
         $("#win_num").val() == "" || $("#staff_num").val() == ""
@@ -839,6 +839,7 @@ var conditionEssential=function () {
      * @type {any}
      */
     var companyName = $("#company_name").val();
+    var projectName = $("#project_name").val();
     var Goal = $("#ue_goal input:radio:checked").val();
     var ueFiled = $("#ue_filed input:radio:checked").val();
     var registerCapital = $("#register_capital").val();
@@ -850,7 +851,7 @@ var conditionEssential=function () {
     var postCode = $("#post_code input:radio:checked").val();
     var Type = $("#power_type").val();
     var corporationSummary = $("#corporation_summary").val();
-    var technicalSources = $("#post_code input:radio:checked").val();
+    var technicalSources = $("#technical_sources input:checked").val();
     if(Goal == "其它"){
         var ueGoal = $("#ueGoal").val();
         if(Type == "其它"){
@@ -858,6 +859,7 @@ var conditionEssential=function () {
             var Essential_data = {
                 entireId:entireId,
                 ueCompanyName:companyName,
+                ueProjectName:projectName,
                 ueGoal:ueGoal,
                 ueField:ueFiled,
                 ueRegisterCapital:registerCapital,
@@ -876,6 +878,7 @@ var conditionEssential=function () {
             var Essential_data = {
                 entireId:entireId,
                 ueCompanyName:companyName,
+                ueProjectName:projectName,
                 ueGoal:ueGoal,
                 ueField:ueFiled,
                 ueRegisterCapital:registerCapital,
@@ -897,6 +900,7 @@ var conditionEssential=function () {
             var Essential_data = {
                 entireId:entireId,
                 ueCompanyName:companyName,
+                ueProjectName:projectName,
                 ueGoal:Goal,
                 ueField:ueFiled,
                 ueRegisterCapital:registerCapital,
@@ -915,6 +919,7 @@ var conditionEssential=function () {
             var Essential_data = {
                 entireId:entireId,
                 ueCompanyName:companyName,
+                ueProjectName:projectName,
                 ueGoal:Goal,
                 ueField:ueFiled,
                 ueRegisterCapital:registerCapital,
@@ -951,6 +956,7 @@ var addUnitEssential = function (condition,i) {
         success: function (result) {
             if (result != null) {
                 if(i == patent || i=="patent_no"){
+
                     var legal_data = conditionLegal();
                     // alert(data);
                     addLegalRepresentative(legal_data);
@@ -967,6 +973,7 @@ var addUnitEssential = function (condition,i) {
 }
 
 var updateUnitEssential_data = function () {
+    var projectName = $("#project_name").val();
     var Goal = $("#ue_goal input:radio:checked").val();
     var ueFiled = $("#ue_filed input:radio:checked").val();
     var registerCapital = $("#register_capital").val();
@@ -978,13 +985,15 @@ var updateUnitEssential_data = function () {
     var Code = $("#post_code input:radio:checked").val();
     var Type = $("#power_type").val();
     var corporationSummary = $("#corporation_summary").val();
-    var technicalSources = $("#post_code input:radio:checked").val();
+    var technicalSources = $("#technical_sources input:radio:checked").val();
+    alert(technicalSources);
     if(Goal == "其它"){
         var ueGoal = $("#ueGoal").val();
         if(Code == "其它"){
             var postCode = $("#powerType").val();
             var Essential_data = {
                 entireId:entireId,
+                ueProjectName:projectName,
                 ueGoal:ueGoal,
                 ueField:ueFiled,
                 ueRegisterCapital:registerCapital,
@@ -1002,6 +1011,7 @@ var updateUnitEssential_data = function () {
         }else {
             var Essential_data = {
                 entireId:entireId,
+                ueProjectName:projectName,
                 ueGoal:ueGoal,
                 ueField:ueFiled,
                 ueRegisterCapital:registerCapital,
@@ -1022,6 +1032,7 @@ var updateUnitEssential_data = function () {
             var postCode = $("#powerType").val();
             var Essential_data = {
                 entireId:entireId,
+                ueProjectName:projectName,
                 ueGoal:Goal,
                 ueField:ueFiled,
                 ueRegisterCapital:registerCapital,
@@ -1039,6 +1050,7 @@ var updateUnitEssential_data = function () {
         }else {
             var Essential_data = {
                 entireId:entireId,
+                ueProjectName:projectName,
                 ueGoal:Goal,
                 ueField:ueFiled,
                 ueRegisterCapital:registerCapital,
@@ -1069,6 +1081,7 @@ var updateUnitEssential = function (condition,ueId) {
         },
         success: function (result) {
             if (result != null) {
+                alert("基本信息已保存！")
                 getLegalRepresentativeByEntireId(entireId)
                 getContactsByEntireId(entireId)
             }

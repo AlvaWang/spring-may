@@ -229,7 +229,7 @@ textarea{
     height: 60px;
 }
 
-#team_name,#te_pro_name,#te_key_word,#company_name{
+#team_name,#te_pro_name,#te_key_word,#company_name,#project_name{
     width: calc(100% - 30px);
 }
 .date_input_td input{

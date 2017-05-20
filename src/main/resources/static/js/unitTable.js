@@ -20,16 +20,16 @@ $(function () {
 
     
 
-    if(type == "KEEP"){
-        $("#jbxx_conservation").show();
-        $("#hxtd_conservation").show();
-        $(".submit_div").show();
-    }
-    if(type =="SUBMIT"){
-        $("#jbxx_conservation").hide();
-        $("#hxtd_conservation").hide();
-        $(".submit_div").hide();
-    }
+    // if(type == "KEEP"){
+    //     $("#jbxx_conservation").show();
+    //     $("#hxtd_conservation").show();
+    //     $(".submit_div").show();
+    // }
+    // if(type =="SUBMIT"){
+    //     $("#jbxx_conservation").hide();
+    //     $("#hxtd_conservation").hide();
+    //     $(".submit_div").hide();
+    // }
 
     $("#powerType").attr("disabled", "disabled");
     $("#powerType").css("background","#dbdbdb");
@@ -100,6 +100,7 @@ var getUnitEssentialList = function (entireId) {
             if (result != null) {
                 $("#ueId").val(result.ueId);
                 $("#company_name").val(result.ueCompanyName);
+                $("#project_name").val(result.ueProjectName);
                 $(":radio[name='goal'][value='" + result.ueGoal + "']").prop("checked", "checked");//根据value值选中vidio
                 $(":radio[name='field'][value='" + result.ueField + "']").prop("checked", "checked");
                 $("#register_capital").val(result.ueRegisterCapital);
@@ -1519,6 +1520,7 @@ var conditionEssential=function () {
      * @type {any}
      */
     var companyName = $("#company_name").val();
+    var projectName = $("#project_name").val();
     var Goal = $("#ue_goal input:radio:checked").val();
     var ueFiled = $("#ue_filed input:radio:checked").val();
     var registerCapital = $("#register_capital").val();
@@ -1538,6 +1540,7 @@ var conditionEssential=function () {
             var Essential_data = {
                 entireId:entireId,
                 ueCompanyName:companyName,
+                ueProjectName:projectName,
                 ueGoal:ueGoal,
                 ueField:ueFiled,
                 ueRegisterCapital:registerCapital,
@@ -1556,6 +1559,7 @@ var conditionEssential=function () {
             var Essential_data = {
                 entireId:entireId,
                 ueCompanyName:companyName,
+                ueProjectName:projectName,
                 ueGoal:ueGoal,
                 ueField:ueFiled,
                 ueRegisterCapital:registerCapital,
@@ -1577,6 +1581,7 @@ var conditionEssential=function () {
             var Essential_data = {
                 entireId:entireId,
                 ueCompanyName:companyName,
+                ueProjectName:projectName,
                 ueGoal:Goal,
                 ueField:ueFiled,
                 ueRegisterCapital:registerCapital,
@@ -1595,6 +1600,7 @@ var conditionEssential=function () {
             var Essential_data = {
                 entireId:entireId,
                 ueCompanyName:companyName,
+                ueProjectName:projectName,
                 ueGoal:Goal,
                 ueField:ueFiled,
                 ueRegisterCapital:registerCapital,
@@ -1645,6 +1651,7 @@ var addUnitEssential = function (condition) {
 
 }
 var updateUnitEssential_data = function () {
+    var projectName = $("#project_name").val();
     var Goal = $("#ue_goal input:radio:checked").val();
     var ueFiled = $("#ue_filed input:radio:checked").val();
     var registerCapital = $("#register_capital").val();
@@ -1663,6 +1670,7 @@ var updateUnitEssential_data = function () {
             var postCode = $("#powerType").val();
             var Essential_data = {
                 entireId:entireId,
+                ueProjectName:projectName,
                 ueGoal:ueGoal,
                 ueField:ueFiled,
                 ueRegisterCapital:registerCapital,
@@ -1680,6 +1688,7 @@ var updateUnitEssential_data = function () {
         }else {
             var Essential_data = {
                 entireId:entireId,
+                ueProjectName:projectName,
                 ueGoal:ueGoal,
                 ueField:ueFiled,
                 ueRegisterCapital:registerCapital,
@@ -1700,6 +1709,7 @@ var updateUnitEssential_data = function () {
             var postCode = $("#powerType").val();
             var Essential_data = {
                 entireId:entireId,
+                ueProjectName:projectName,
                 ueGoal:Goal,
                 ueField:ueFiled,
                 ueRegisterCapital:registerCapital,
@@ -1717,6 +1727,7 @@ var updateUnitEssential_data = function () {
         }else {
             var Essential_data = {
                 entireId:entireId,
+                ueProjectName:projectName,
                 ueGoal:Goal,
                 ueField:ueFiled,
                 ueRegisterCapital:registerCapital,
@@ -2014,6 +2025,14 @@ var updatePatentList = function (condition,id) {
 }
 var reduceImg = function () {
     // alert("#patent_"+(num+1));
+    var patent_length = $("#patent_table").find("tr").length-3;
+    // alert(patent_length)
+    if(patent_length>0){
+        var id = $("#patent_"+(num+3)).find("input").attr("id");
+        var patentId = $("#"+id).val();
+        // alert(patentId);
+        deletePatentList(patentId);
+    }
     $("#patent_"+(num+1)).remove();
     $("#patent_"+(num+2)).remove();
     $("#patent_"+(num+3)).remove();
@@ -2070,6 +2089,13 @@ var addCoreTeamImg= function () {
 }
 var reduceCoreImg = function () {
     // alert("#patent_"+(num+1));
+    var ctId_text =$("#core_"+(core+1)).find("input").attr("id");
+    var ctId = $("#"+ctId_text).val();
+
+    if(ctId != null && ctId != ""){
+        deleteCoreTeamById(ctId);
+    }
+
     $("#core_"+(core+1)).remove();
     $("#core_"+(core+2)).remove();
     $("#core_"+(core+3)).remove();
@@ -2271,6 +2297,27 @@ var updateCoreTeam = function (condition,ctId) {
                 // alert(result);
                 // window.location.href = "/registerSuccess?id=" + result + "";
                 // comId = result;
+            }
+
+        }
+    });
+}
+var deleteCoreTeamById = function (ctId) {
+    $.ajax({
+        url: "/deleteCoreTeamById/"+ctId,
+        type: 'delete',
+        async: true,
+        data: ctId,
+        // dataType: 'json',
+        error: function (obj, msg) {
+            alert("服务器异常！")
+        },
+        success: function (result) {
+            // alert(result);
+            // console.log(result)
+            if (result != null) {
+                // alert("删除成功！")
+                deleteEducationByEntireId(ctId);
             }
 
         }
@@ -2501,17 +2548,6 @@ var addUnitBusinessPlan = function (condition) {
             alert("创建商业计划书失败！")
         },
         success: function (result) {
-            if (result != null) {
-                if(i == "submit"){
-                    conditionHistorical();
-                    conditionFore();
-                }else {
-                    conditionHistorical();
-                    conditionFore();
-
-                    conditionDemand();
-                }
-            }
 
         }
     });

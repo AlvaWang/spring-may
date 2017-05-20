@@ -1426,8 +1426,8 @@ var deleteEducationByEntireId = function (ctId,i,length) {
 var  addCoreTeamCondition= function () {
     for(var i=1;i<=team;i++){
         var core_Number = $("#core_name_"+i).parent().parent().attr("id").substring(5,7);
-       var  coreNumber = parseInt(core_Number)+1;
-        alert(coreNumber)
+        var  coreNumber = parseInt(core_Number)+1;
+        // alert(coreNumber)
         var coreName = $("#core_name_"+i).val();
         var coreSex = $("#core_sex_"+i).val();
         var coreAge = $("#core_age_"+i).val();

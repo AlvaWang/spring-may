@@ -373,4 +373,10 @@ public class TeamController {
         return educationExperionceService.deleteByEntireId(ctId);
     }
 
+    @RequestMapping(value = "/deleteEducationExperionceById/{id}", method = RequestMethod.DELETE)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.OK)
+    public EducationExperionce deleteEducationExperionceById(@PathVariable Long id) {
+        return educationExperionceService.delete(id);
+    }
 }
