@@ -49,7 +49,8 @@ var getEntireList = function (comName,type) {
 
 
             if (result.data != null) {
-
+                var et = 0;
+                var eu = 0;
 
                 // alert(result.data.data.length)
                 console.log(result.data.data)
@@ -57,14 +58,16 @@ var getEntireList = function (comName,type) {
                 for(var i=0;i<resultData.length;i++){
                     if (type == "unit"){
                         if(resultData[i][1] == "UNIT"){
-                            getUnitEssentialList(resultData[i][0])
+                            eu = eu+1;
+                            getUnitEssentialList(resultData[i][0],eu)
                         }
                         // getEntireProName_unit(resultData[i])
                     }
                     if (type == "team"){
 
                         if(resultData[i][1] == "TEAM"){
-                            getTeamEssentialList(resultData[i][0]);
+                            et = et+1
+                            getTeamEssentialList(resultData[i][0],et);
                         }
 
                     }
@@ -75,8 +78,7 @@ var getEntireList = function (comName,type) {
     });
 }
 
-var getTeamEssentialList = function (entireId) {
-    var et = 0;
+var getTeamEssentialList = function (entireId,et) {
 
     $.ajax({
         url: "/getTeamEssentialListByEntireId/"+entireId,
@@ -90,7 +92,7 @@ var getTeamEssentialList = function (entireId) {
         success: function (result) {
             console.log(result);
             if (result != null) {
-                et = et+1
+
                 // getEntireProName_team(resultData[i]);
                 var text = et+"."+result.teProName+"项目";
                 var html_ul = "<li id='team_list_"+entireId+"'>"+text+"</li>";
@@ -106,8 +108,7 @@ var getTeamEssentialList = function (entireId) {
         }
     });
 }
-var getUnitEssentialList = function (entireId) {
-    var eu = 0;
+var getUnitEssentialList = function (entireId,eu) {
     $.ajax({
         url: "/getUnitEssentialListByEntireId/"+entireId,
         type: 'get',
@@ -120,7 +121,7 @@ var getUnitEssentialList = function (entireId) {
         success: function (result) {
             console.log(result);
             if (result != null) {
-                eu = eu+1;
+
                 var text = eu+"."+result.ueProjectName+"项目";
                 var html_ul = "<li id='unit_list_"+entireId+"'>"+text+"</li>";//id是entireId
                 // alert(html_ul);
