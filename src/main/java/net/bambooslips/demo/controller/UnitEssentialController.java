@@ -968,7 +968,7 @@ public class UnitEssentialController {
         coreTeam.setNationalMilleDate(nationalMilleDate);
         coreTeam.setCtUniversityBusiness(ctUniversityBusiness);
 
-        return coreTeamService.update(coreTeam);
+        return coreTeamService.update(coreTeam,ctHigbestEducation);
     }
 
     @RequestMapping(value = "/deleteEquityByEntireId/{entireId}", method = RequestMethod.DELETE)

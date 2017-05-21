@@ -21,7 +21,7 @@ public interface CoreTeamService {
     /**
      * 更新法定联系人
      */
-    CoreTeam update(CoreTeam update);
+    CoreTeam update(CoreTeam update,String ctHigbestEducation);
 
 
     CoreTeam delete(Long id);

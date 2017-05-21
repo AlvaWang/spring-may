@@ -49,7 +49,7 @@ public class CoreTeamServiceImpl implements CoreTeamService{
      */
     @Transactional(rollbackFor = CoreTeamNotFoundException.class)
     @Override
-    public CoreTeam update(CoreTeam updated) throws CoreTeamNotFoundException {
+    public CoreTeam update(CoreTeam updated, String ctHigbestEducation) throws CoreTeamNotFoundException {
         LOG.debug("Updating CoreTeam with information: " + updated);
 
         CoreTeam coreTeam = coreTeamRepository.findOne(updated.getCtId());
@@ -58,7 +58,7 @@ public class CoreTeamServiceImpl implements CoreTeamService{
             LOG.debug("No post found with id: " + updated.getCtId());
             throw new PostNotFoundException("Post "+updated.getCtId()+" not found.");
         }
-        coreTeam.update(updated);
+        coreTeam.update(updated,ctHigbestEducation);
 
         return coreTeam;
     }

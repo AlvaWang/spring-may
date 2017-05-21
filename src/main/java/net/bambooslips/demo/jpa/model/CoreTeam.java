@@ -97,12 +97,13 @@ public class CoreTeam implements  Serializable {
      * @param updated
      * @return
      */
-    public CoreTeam update(CoreTeam updated) {
+    public CoreTeam update(CoreTeam updated,String ctHigbestEducation) {
         if(updated.getCtName() != null)this.setCtName(updated.getCtName());
         if(updated.getCtJob() != null)this.setCtJob(updated.getCtJob());
         if(updated.getCtSex() != null)this.setCtSex(updated.getCtSex());
         if(updated.getCtAge() != null)this.setCtAge(updated.getCtAge());
-        if(updated.getCtHigbestEducation() != null)this.setCtHigbestEducation(updated.getCtHigbestEducation());
+//        if(updated.getCtHigbestEducation() != null)this.setCtHigbestEducation(updated.getCtHigbestEducation());
+        this.ctHigbestEducation = ctHigbestEducation;
         if(updated.getCtStudyExperience() != null)this.setCtStudyExperience(updated.getCtStudyExperience());
         if(updated.getCtMainAchive() != null)this.setCtMainAchive(updated.getCtMainAchive());
         if(updated.getCtNationalMillennium() != null)this.setCtNationalMillennium(updated.getCtNationalMillennium());
@@ -167,11 +168,12 @@ public class CoreTeam implements  Serializable {
         this.ctJob = ctJob;
     }
 
+
     public String getCtHigbestEducation(){
         return ctHigbestEducation;
     }
     public void setCtHigbestEducation(String ctHigbestEducation){
-        this.ctHigbestEducation =ctHigbestEducation;
+        this.ctHigbestEducation = ctHigbestEducation;
     }
 
     public String getCtStudyExperience(){
