@@ -15,6 +15,7 @@ $("#unit_list").click(function () {
     $("#unit_project_list").show();
     $("#team_project_list").hide();
 
+    $("#unit_project_list ul").empty();
     $("#unit_list").css("background","#0fc9f4");
     $("#team_list").css("background","#67b4dc");
 
@@ -28,6 +29,7 @@ $("#team_list").click(function () {
 
     $("#unit_list").css("background","#67b4dc");
     $("#team_list").css("background","#0fc9f4");
+    $("#team_project_list ul").empty();
 
     getEntireList(comName,"team");
 })
@@ -55,14 +57,14 @@ var getEntireList = function (comName,type) {
                     if (type == "unit"){
                         if(resultData[i][1] == "UNIT"){
                             eu=eu+1;
-                            $("#unit_project_list ul").empty();
+
                             getEntireProName_unit(resultData[i][0],eu)
                         }
                     }
                     if (type == "team"){
                         if(resultData[i][1] == "TEAM"){
                             et =et+1;
-                            $("#team_project_list ul").empty();
+
                             getEntireProName_team(resultData[i][0],et);
                         }
                     }
