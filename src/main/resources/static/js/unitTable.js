@@ -93,7 +93,7 @@ var getUnitEssentialList = function (entireId) {
         data: entireId,
         // dataType: 'json',
         error: function (obj, msg) {
-            alert("服务器异常！")
+            // alert("服务器异常！")
         },
         success: function (result) {
             console.log(result);
@@ -161,7 +161,7 @@ var getLegalRepresentativeListByEntireId = function (entireId) {
         data: entireId,
         // dataType: 'json',
         error: function (obj, msg) {
-            alert("服务器异常！")
+            // alert("服务器异常！")
         },
         success: function (result) {
             console.log(result);
@@ -187,7 +187,7 @@ var getContactsListByEntireId = function (entireId) {
         data: entireId,
         // dataType: 'json',
         error: function (obj, msg) {
-            alert("服务器异常！")
+            // alert("服务器异常！")
         },
         success: function (result) {
             console.log(result);
@@ -216,7 +216,7 @@ var getPatentListByEntireId = function (entireId) {
         data: entireId,
         dataType: 'json',
         error: function (obj, msg) {
-            alert("服务器异常！")
+            // alert("服务器异常！")
         },
         success: function (result) {
             console.log(result.data.data);
@@ -269,7 +269,7 @@ var getCoreTeamListByEntireId = function (entireId) {
         data: entireId,
         dataType: 'json',
         error: function (obj, msg) {
-            alert("服务器异常！")
+            // alert("服务器异常！")
         },
         success: function (result) {
             console.log(result.data.data);
@@ -290,7 +290,7 @@ var getCoreTeamListByEntireId = function (entireId) {
                         "<option value='女'>女</option>" + "</select></td>"+
                         "<td><input type='number' id='core_age_"+team+"' value='"+coreTeamList[i].ctAge+"'/></td>"+
                         "<td><input type='text' id='core_job_"+team+"' value='"+coreTeamList[i].ctJob+"'/></td>"+
-                        "<td><select id='core_education_"+team+"' ><option value='学士'>学士</option><option value='硕士'>硕士</option><option value='博士'>博士</option></select></td>"+
+                        "<td><select id='core_education_"+team+"' value='"+coreTeamList[i].ctHigbestEducation+"'><option value='学士'>学士</option><option value='硕士'>硕士</option><option value='博士'>博士</option></select></td>"+
                         "<td><input type='text' id='core_experience_"+team+"' value='"+coreTeamList[i].ctStudyExperience+"'/></td>"+
                         "<td><select  id='core_millennium_"+team+"'><option value='是'>是</option>" +
                         "<option value='否'>否</option>" + "</select></td>"+
@@ -351,7 +351,7 @@ var getUnitBusinessPlanConditionByEntireId = function (entireId) {
         data: entireId,
         // dataType: 'json',
         error: function (obj, msg) {
-            alert("服务器异常！")
+            // alert("服务器异常！")
         },
         success: function (result) {
             console.log(result);
@@ -400,7 +400,7 @@ var getHistoricalListByEntireId = function (entireId) {
         data: entireId,
         dataType: 'json',
         error: function (obj, msg) {
-            alert("服务器异常！")
+            // alert("服务器异常！")
         },
         success: function (result) {
             console.log(result.data.data);
@@ -441,7 +441,7 @@ var getForecastingListByEntireId = function (entireId) {
         data: entireId,
         dataType: 'json',
         error: function (obj, msg) {
-            alert("服务器异常！")
+            // alert("服务器异常！")
         },
         success: function (result) {
             console.log(result.data.data);
@@ -472,7 +472,7 @@ var getEquityFinancingListByEntireId = function (entireId) {
         data: entireId,
         // dataType: 'json',
         error: function (obj, msg) {
-            alert("服务器异常！")
+            // alert("服务器异常！")
         },
         success: function (result) {
             console.log(result);
@@ -506,7 +506,7 @@ var getDebtFinancingListByEntireId = function (entireId) {
         data: entireId,
         // dataType: 'json',
         error: function (obj, msg) {
-            alert("服务器异常！")
+            // alert("服务器异常！")
         },
         success: function (result) {
             console.log(result);
@@ -539,7 +539,7 @@ var getDemandListByEntireId = function (entireId) {
         data: entireId,
         // dataType: 'json',
         error: function (obj, msg) {
-            alert("服务器异常！")
+            // alert("服务器异常！")
         },
         success: function (result) {
             console.log(result);
@@ -990,7 +990,7 @@ var change_patent_table = function () {
 $("#jbxx_conservation").click(function () {
     // alert($("#technical_sources input:checked").val())
     //修改基本信息
-    if($("#company_name").val() == "" ||
+    if($("#company_name").val() == "" || $("#project_name").val() == "" ||
         $("#ue_goal input:checked").val() == "" ||   $("#ue_filed input:checked").val() == ""
         || $("#register_capital").val() == "" ||
         $("#win_num").val() == "" || $("#staff_num").val() == ""
@@ -2145,6 +2145,7 @@ $("#hxtd_conservation").click(function () {
         var coreAge = $("#core_age_"+i).val();
         var coreJob = $("#core_job_"+i).val();
         var coreEducation = $("#core_education_"+i).val();
+        // alert(coreEducation);
         var coreExperience = $("#core_experience_"+i).val();
         var coreMillennium = $("#core_millennium_"+i).val();
         var coreMillenniumDate = $("#core_millennium_date_"+i).val();
@@ -2176,7 +2177,7 @@ $("#hxtd_conservation").click(function () {
                                 ctNationalMillennium:coreMillennium,
                                 nationalMilleDate:comTime(coreMillenniumDate)
                             }
-                            addCoreTeam(condition);
+                            addCoreTeam(condition,i);
                         }else {
                             var condition={
                                 ueId:null,
@@ -2191,7 +2192,7 @@ $("#hxtd_conservation").click(function () {
                                 ctMainAchive:mainAchive,
                                 ctNationalMillennium:coreMillennium
                             }
-                            addCoreTeam(condition);
+                            addCoreTeam(condition,i);
                         }
 
                     }
@@ -2208,7 +2209,7 @@ $("#hxtd_conservation").click(function () {
                                 ctNationalMillennium:coreMillennium,
                                 nationalMilleDate:comTime(coreMillenniumDate)
                             }
-                            updateCoreTeam(condition,ctId);
+                            updateCoreTeam(condition,ctId,i);
                         }else {
                             var condition={
                                 ctName:coreName,
@@ -2220,7 +2221,7 @@ $("#hxtd_conservation").click(function () {
                                 ctMainAchive:mainAchive,
                                 ctNationalMillennium:coreMillennium
                             }
-                            updateCoreTeam(condition,ctId);
+                            updateCoreTeam(condition,ctId,i);
                         }
 
                     }
@@ -2242,7 +2243,7 @@ $("#hxtd_conservation").click(function () {
                             ctNationalMillennium:coreMillennium,
                             nationalMilleDate:comTime(coreMillenniumDate)
                         }
-                        addCoreTeam(condition);
+                        addCoreTeam(condition,i);
                     }else {
                         var condition={
                             ueId:null,
@@ -2257,7 +2258,7 @@ $("#hxtd_conservation").click(function () {
                             ctMainAchive:mainAchive,
                             ctNationalMillennium:coreMillennium
                         }
-                        addCoreTeam(condition);
+                        addCoreTeam(condition,i);
                     }
 
                 }
@@ -2274,7 +2275,7 @@ $("#hxtd_conservation").click(function () {
                             ctNationalMillennium:coreMillennium,
                             nationalMilleDate:comTime(coreMillenniumDate)
                         }
-                        updateCoreTeam(condition,ctId);
+                        updateCoreTeam(condition,ctId,i);
                     }else {
                         var condition={
                             ctName:coreName,
@@ -2286,7 +2287,7 @@ $("#hxtd_conservation").click(function () {
                             ctMainAchive:mainAchive,
                             ctNationalMillennium:coreMillennium
                         }
-                        updateCoreTeam(condition,ctId);
+                        updateCoreTeam(condition,ctId,i);
                     }
 
                 }
@@ -2295,7 +2296,7 @@ $("#hxtd_conservation").click(function () {
 
     }
 });
-var addCoreTeam=function (condition) {
+var addCoreTeam=function (condition,i) {
     $.ajax({
         url: "/addCoreTeam",
         type: 'post',
@@ -2307,7 +2308,9 @@ var addCoreTeam=function (condition) {
         },
         success: function (result) {
             if (result != null) {
-                alert("已保存修改！");
+                if(i == team){
+                    alert("已保存修改！");
+                }
                 // window.location.href = "/registerSuccess?id=" + result + "";
                 // comId = result;
             }
@@ -2315,7 +2318,7 @@ var addCoreTeam=function (condition) {
         }
     });
 }
-var updateCoreTeam = function (condition,ctId) {
+var updateCoreTeam = function (condition,ctId,i) {
     $.ajax({
         url: "/updateCoreTeam/"+ctId,
         type: 'put',
@@ -2327,6 +2330,9 @@ var updateCoreTeam = function (condition,ctId) {
         },
         success: function (result) {
             if (result != null) {
+                if(i == team){
+                    alert("已保存修改！");
+                }
                 // alert(result);
                 // window.location.href = "/registerSuccess?id=" + result + "";
                 // comId = result;
@@ -2546,7 +2552,6 @@ var conditionUnitBusinessPlan=function () {
     var pro_market = $("#pro_market").val();
     var bus_model = $("#bus_model").val();
     var ubus_main = $("#ubus_main").val();
-
     var unitBusinessPlan_data = {
         ueId:null,
         entireId:entireId,
@@ -4799,7 +4804,7 @@ $("#submit_competition_syjhs").bind('click',function () {
     if($("#pro_name").val() == "" || $("#pro_incomed").val() == "" ||$("#pro_type input:checked").val() == "" ||
         $("#lead_internal input:checked").val() == "" ||$("#lead_international input:checked").val() == "" ||$("#research_institute input:checked").val() == "" ||
         $("#pro_picture input:checked").val() == "" ||$("#major_describe").val() == "" || $("#pro_market").val() == "" ||
-        $("#bus_model").val() == "" || $("#ubus_main").val() == "" ){
+        $("#bus_model").val() == "" ){
         alert("请将商业计划书填写完整！")
     }
     else {

@@ -63,8 +63,8 @@ public class EquityFinancing implements  Serializable {
      */
     public EquityFinancing update(EquityFinancing updated) {
         if(updated.getEquityInvestor() != null)this.setEquityInvestor(updated.getEquityInvestor());
-        if(updated.getEquityMoney() <= 0)this.setEquityMoney(updated.getEquityMoney());
-        if(updated.getEquityRate() <= 0)this.setEquityRate(updated.getEquityRate());
+        if(updated.getEquityMoney() != null)this.setEquityMoney(updated.getEquityMoney());
+        if(updated.getEquityRate() != null)this.setEquityRate(updated.getEquityRate());
         if(updated.getEquityDate() != null)this.setEquityDate(updated.getEquityDate());
 
         return this;

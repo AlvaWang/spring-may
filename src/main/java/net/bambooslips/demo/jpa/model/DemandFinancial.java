@@ -270,10 +270,17 @@ public class DemandFinancial implements  Serializable {
         this.setDfPoliticalConsult(updated.getDfPoliticalConsult());
         this.setDfTechnologyConsult(updated.getDfTechnologyConsult());
         this.setDfIntermediaryConsult(updated.getDfIntermediaryConsult());
+
         this.setIntermediaryLaw(updated.getIntermediaryLaw());
         this.setIntermediaryFinance(updated.getIntermediaryFinance());
         this.setIntermediaryFinancing(updated.getIntermediaryFinancing());
         this.setIntermediaryManage(updated.getIntermediaryManage());
+
+        this.setIntermediaryLawDesc(updated.getIntermediaryLawDesc());
+        this.setIntermediaryFinanceDesc(updated.getIntermediaryFinanceDesc());
+        this.setIntermediaryFinancingDesc(updated.getIntermediaryFinancingDesc());
+        this.setIntermediaryManageDesc(updated.getIntermediaryManageDesc());
+
         this.setDfOtherService(updated.getDfOtherService());
         this.setOtherServiceDesc(updated.getOtherServiceDesc());
         this.setDfAcceptTrain(updated.getDfAcceptTrain());
@@ -569,6 +576,7 @@ public class DemandFinancial implements  Serializable {
     public void setIntermediaryLawDesc(String intermediaryLawDesc){
         this.intermediaryLawDesc = intermediaryLawDesc;
     }
+
     public String getIntermediaryFinanceDesc(){
         return intermediaryFinanceDesc;
     }

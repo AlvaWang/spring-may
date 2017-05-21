@@ -60,7 +60,6 @@ public class CoreTeam implements  Serializable {
 
 
     public CoreTeam(){
-        super();
 
     }
     public CoreTeam(Long ueId,

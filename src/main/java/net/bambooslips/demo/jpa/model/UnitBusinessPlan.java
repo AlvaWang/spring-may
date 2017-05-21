@@ -106,7 +106,7 @@ public class UnitBusinessPlan  implements Serializable {
         if(updated.getUbusProMarket() != null)this.setUbusProMarket(updated.getUbusProMarket());
 
         if(updated.getUbusModel() != null)this.setUbusModel(updated.getUbusModel());
-        if(updated.getUbusMain() != null)this.setUbusMain(updated.getInstituteName());
+        if(updated.getUbusMain() != null)this.setUbusMain(updated.getUbusMain());
         if(updated.getStatus() != null)this.setStatus(updated.getStatus());
 
         return this;

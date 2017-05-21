@@ -84,7 +84,7 @@ var getTeamEssentialList = function (entireId) {
         data: entireId,
         // dataType: 'json',
         error: function (obj, msg) {
-            alert("服务器异常！")
+            // alert("服务器异常！")
         },
         success: function (result) {
             console.log(result);
@@ -176,7 +176,7 @@ var getResponsibleListByEntireId = function (entireId) {
         data: entireId,
         // dataType: 'json',
         error: function (obj, msg) {
-            alert("服务器异常！")
+            // alert("服务器异常！")
         },
         success: function (result) {
             console.log(result);
@@ -208,7 +208,7 @@ var getPatentListByEntireId = function (entireId) {
         data: entireId,
         dataType: 'json',
         error: function (obj, msg) {
-            alert("服务器异常！")
+            // alert("服务器异常！")
         },
         success: function (result) {
             console.log(result.data.data);
@@ -264,7 +264,7 @@ var getCoreTeamListByEntireId = function (entireId) {
         data: entireId,
         dataType: 'json',
         error: function (obj, msg) {
-            alert("服务器异常！")
+            // alert("服务器异常！")
         },
         success: function (result) {
             console.log(result.data.data);
@@ -400,7 +400,7 @@ var getEducationListByCtId = function (ctId) {
         data:ctId,
         dataType: 'json',
         error: function (obj, msg) {
-            alert("服务器异常！")
+            // alert("服务器异常！")
         },
         success: function (result) {
             console.log(result.data.data);
@@ -434,7 +434,7 @@ var getTeamBusinessPlanConditionByEntireId = function (entireId) {
         data: entireId,
         // dataType: 'json',
         error: function (obj, msg) {
-            alert("服务器异常！")
+            // alert("服务器异常！")
         },
         success: function (result) {
             console.log(result);
@@ -490,7 +490,7 @@ var getRiskListByEntireId = function (entireId) {
         data: entireId,
         dataType: 'json',
         error: function (obj, msg) {
-            alert("服务器异常！")
+            // alert("服务器异常！")
         },
         success: function (result) {
             console.log(result.data.data);
@@ -568,7 +568,7 @@ var getForecastingListByEntireId = function (entireId) {
         data: entireId,
         dataType: 'json',
         error: function (obj, msg) {
-            alert("服务器异常！")
+            // alert("服务器异常！")
         },
         success: function (result) {
             console.log(result.data.data);
@@ -597,7 +597,7 @@ var getDemandListByEntireId = function (entireId) {
         data: entireId,
         // dataType: 'json',
         error: function (obj, msg) {
-            alert("服务器异常！")
+            // alert("服务器异常！")
         },
         success: function (result) {
             console.log(result);
